@@ -9,21 +9,21 @@ import { FAQAccordion } from "@/components/FAQAccordion";
 import { EmblemWatermark } from "@/components/SectionTextures";
 
 const baseMetadata: Metadata = {
-  title: "About Kings Jeweler — Family Jewelers in Manchester, CT",
+  title: "About King's Jeweler — Family Jewelers in Manchester, CT",
   description:
-    "Meet Kings Jeweler, a family-run jewelry store inside The Shoppes at Buckland Hills in Manchester, Connecticut — where every customer is helped personally by a jeweler who cares.",
+    "Meet King's Jeweler, a family-run jewelry store inside The Shoppes at Buckland Hills in Manchester, Connecticut — where every customer is helped personally by a jeweler who cares.",
   alternates: {
     canonical: "https://www.kingsjewelerct.com/about",
   },
   openGraph: {
-    title: "About Kings Jeweler",
+    title: "About King's Jeweler",
     description:
       "A family-run jewelry store inside The Shoppes at Buckland Hills in Manchester, Connecticut.",
     images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "About Kings Jeweler",
+    title: "About King's Jeweler",
     description:
       "A family-run jewelry store inside The Shoppes at Buckland Hills in Manchester, Connecticut.",
     images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
@@ -74,7 +74,7 @@ export default async function AboutPage() {
       <section className="relative isolate overflow-hidden bg-[#14141A] text-white">
         <Image
           src={brandImages.aboutFeature}
-          alt="Fine jewelry at Kings Jeweler in Manchester, Connecticut"
+          alt="Fine jewelry at King's Jeweler in Manchester, Connecticut"
           fill
           priority
           sizes="100vw"
@@ -83,7 +83,7 @@ export default async function AboutPage() {
         <div className="absolute inset-0 bg-linear-to-b from-[#14141A]/60 via-[#14141A]/70 to-[#14141A]" />
         <EmblemWatermark className="-right-16 top-24 hidden md:block" opacity={0.06} size="clamp(260px, 32vw, 460px)" />
         <div className="relative mx-auto max-w-5xl px-6 pb-20 pt-40 lg:px-8">
-          <p className="text-sm font-heading font-semibold uppercase tracking-[0.2em] text-[#D4B36A]">
+          <p className="text-sm font-heading font-semibold uppercase tracking-[0.2em] text-[#F0A92D]">
             Our Story
           </p>
           <h1 className="mt-4 max-w-3xl font-display! text-4xl font-normal! uppercase leading-tight md:text-6xl">
@@ -101,7 +101,7 @@ export default async function AboutPage() {
       <section className="relative overflow-hidden bg-[#FBF9F4] text-[#14141A]">
         <div className="relative z-10 mx-auto max-w-4xl px-6 py-20 lg:px-8 lg:py-28">
           <p className="text-lg leading-relaxed text-[#14141A]/75">
-            Kings Jeweler was built on a simple idea: when you walk into a
+            King's Jeweler was built on a simple idea: when you walk into a
             jewelry store, you should be talking to a jeweler. Not a rotating
             cast of salespeople — the actual person who will size your ring,
             set your stone, or design the piece you&apos;ve been imagining.
@@ -128,7 +128,7 @@ export default async function AboutPage() {
         <EmblemWatermark className="-left-20 bottom-0 hidden lg:block" opacity={0.05} size="clamp(280px, 30vw, 440px)" />
         <div className="relative mx-auto max-w-6xl px-6 py-20 lg:px-8 lg:py-28">
           <div className="max-w-2xl">
-            <p className="text-sm font-heading font-semibold uppercase tracking-[0.2em] text-[#D4B36A]">
+            <p className="text-sm font-heading font-semibold uppercase tracking-[0.2em] text-[#F0A92D]">
               What We Stand For
             </p>
             <h2 className="mt-3 font-display! text-3xl font-normal! uppercase md:text-4xl">
@@ -147,7 +147,7 @@ export default async function AboutPage() {
                   key={v.title}
                   className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm"
                 >
-                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-[#B08D3E]/15 text-[#D4B36A]">
+                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-[#C68A17]/15 text-[#F0A92D]">
                     <Icon size={20} />
                   </span>
                   <h3 className="mt-4 font-heading text-lg font-bold">
@@ -169,20 +169,20 @@ export default async function AboutPage() {
           <div className="relative aspect-square overflow-hidden rounded-3xl shadow-xl">
             <Image
               src={brandImages.owner}
-              alt={`${siteConfig.owner.name}, ${siteConfig.owner.title} at Kings Jeweler`}
+              alt={`${siteConfig.owner.name}, ${siteConfig.owner.title} at King's Jeweler`}
               fill
               sizes="(max-width: 1024px) 100vw, 40vw"
               className="object-cover"
             />
           </div>
           <div>
-            <p className="text-sm font-heading font-semibold uppercase tracking-[0.2em] text-[#B08D3E]">
+            <p className="text-sm font-heading font-semibold uppercase tracking-[0.2em] text-[#C68A17]">
               Meet the Family
             </p>
             <h2 className="mt-3 font-display! text-3xl font-normal! uppercase md:text-4xl">
               {siteConfig.owner.name}
             </h2>
-            <p className="mt-1 font-semibold text-[#B08D3E]">
+            <p className="mt-1 font-semibold text-[#C68A17]">
               {siteConfig.owner.title}
             </p>
             <p className="mt-5 text-lg leading-relaxed text-[#14141A]/75">
@@ -208,7 +208,7 @@ export default async function AboutPage() {
       <section className="relative overflow-hidden bg-[#FBF9F4]">
         <div className="relative z-10 mx-auto max-w-3xl px-6 py-20 lg:px-8 lg:py-28">
           <div className="text-center">
-            <p className="text-sm font-heading font-semibold uppercase tracking-[0.2em] text-[#B08D3E]">
+            <p className="text-sm font-heading font-semibold uppercase tracking-[0.2em] text-[#C68A17]">
               Good to Know
             </p>
             <h2 className="mt-3 font-display! text-3xl font-normal! uppercase text-[#14141A] md:text-4xl">
@@ -216,7 +216,7 @@ export default async function AboutPage() {
             </h2>
           </div>
           <div className="mt-10">
-            <FAQAccordion items={faqs.about} variant="light" accentColor="#B08D3E" />
+            <FAQAccordion items={faqs.about} variant="light" accentColor="#C68A17" />
           </div>
         </div>
       </section>

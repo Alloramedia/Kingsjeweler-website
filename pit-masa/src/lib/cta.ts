@@ -96,13 +96,13 @@ export const SETUP_NEEDS_OPTIONS = [
   "Not sure yet",
 ] as const;
 
-/** How the customer heard about Kings Jeweler. */
+/** How the customer heard about King's Jeweler. */
 export const HOW_HEARD_OPTIONS = [
   "Google search",
   "Walked by in the mall",
   "Instagram",
   "Facebook",
   "Friend or family referral",
-  "Past Kings Jeweler customer",
+  "Past King's Jeweler customer",
   "Other",
 ] as const;

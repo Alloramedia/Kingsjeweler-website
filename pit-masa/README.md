@@ -1,4 +1,4 @@
-# Kings Jeweler — Website
+# King's Jeweler — Website
 
 ## Getting Started
 

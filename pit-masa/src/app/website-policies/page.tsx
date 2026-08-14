@@ -5,24 +5,24 @@ import { BreadcrumbSchema } from "@/components/StructuredData";
 export const metadata: Metadata = {
   title: "Website Policies",
   description:
-    "Privacy policy and terms of service for Kings Jeweler. Learn how we collect, use, and protect your information.",
+    "Privacy policy and terms of service for King's Jeweler. Learn how we collect, use, and protect your information.",
   alternates: {
     canonical: "https://www.kingsjewelerct.com/website-policies",
   },
   openGraph: {
-    title: "Website Policies | Kings Jeweler",
+    title: "Website Policies | King's Jeweler",
     description:
-      "Privacy policy and terms of service for Kings Jeweler. Learn how we collect, use, and protect your information.",
+      "Privacy policy and terms of service for King's Jeweler. Learn how we collect, use, and protect your information.",
     url: "https://www.kingsjewelerct.com/website-policies",
-    siteName: "Kings Jeweler",
+    siteName: "King's Jeweler",
     type: "website",
     images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Website Policies | Kings Jeweler",
+    title: "Website Policies | King's Jeweler",
     description:
-      "Privacy policy and terms of service for Kings Jeweler.",
+      "Privacy policy and terms of service for King's Jeweler.",
     images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
   },
 };
@@ -38,7 +38,7 @@ export default function WebsitePoliciesPage() {
       />
       <section className="bg-[#14141A] pt-32 pb-16 md:pt-40 md:pb-20">
         <div className="mx-auto max-w-4xl px-6 lg:px-8">
-          <p className="mb-3 text-sm font-heading font-semibold uppercase tracking-[0.2em] text-[#B08D3E]">
+          <p className="mb-3 text-sm font-heading font-semibold uppercase tracking-[0.2em] text-[#C68A17]">
             Legal
           </p>
           <h1 className="font-display! text-4xl font-normal! uppercase text-white md:text-5xl">
@@ -57,14 +57,14 @@ export default function WebsitePoliciesPage() {
             <div id="privacy-policy">
               <h2>Privacy Policy</h2>
               <p>
-                Kings Jeweler (&ldquo;we,&rdquo; &ldquo;us,&rdquo; or
+                King's Jeweler (&ldquo;we,&rdquo; &ldquo;us,&rdquo; or
                 &ldquo;our&rdquo;) respects your privacy and is committed to
                 protecting the personal information you share with us. This
                 Privacy Policy explains how we collect, use, and safeguard your
                 information when you visit our website at{" "}
                 <a
                   href={siteConfig.url}
-                  className="text-[#B08D3E] hover:underline"
+                  className="text-[#C68A17] hover:underline"
                 >
                   {siteConfig.url}
                 </a>
@@ -124,7 +124,7 @@ export default function WebsitePoliciesPage() {
                 information. To exercise these rights, please contact us at{" "}
                 <a
                   href={`mailto:${siteConfig.email}`}
-                  className="text-[#B08D3E] hover:underline"
+                  className="text-[#C68A17] hover:underline"
                 >
                   {siteConfig.email}
                 </a>
@@ -136,7 +136,7 @@ export default function WebsitePoliciesPage() {
             <div id="terms-of-service" className="pt-8 border-t border-white/10">
               <h2>Terms of Service</h2>
               <p>
-                By accessing and using the Kings Jeweler website, you accept and
+                By accessing and using the King's Jeweler website, you accept and
                 agree to be bound by these Terms of Service.
               </p>
 
@@ -151,7 +151,7 @@ export default function WebsitePoliciesPage() {
               <h3>Intellectual Property</h3>
               <p>
                 All content on this website — including text, graphics, logos,
-                images, videos, and software — is the property of Kings Jeweler
+                images, videos, and software — is the property of King's Jeweler
                 and is protected by copyright and intellectual property laws.
                 You may not reproduce, distribute, or create derivative works
                 without our express written permission.
@@ -168,7 +168,7 @@ export default function WebsitePoliciesPage() {
 
               <h3>Limitation of Liability</h3>
               <p>
-                Kings Jeweler shall not be liable for any indirect, incidental,
+                King's Jeweler shall not be liable for any indirect, incidental,
                 special, or consequential damages arising from your use of this
                 website or our services.
               </p>
@@ -178,14 +178,14 @@ export default function WebsitePoliciesPage() {
                 For questions about these policies, please contact us at{" "}
                 <a
                   href={`mailto:${siteConfig.email}`}
-                  className="text-[#B08D3E] hover:underline"
+                  className="text-[#C68A17] hover:underline"
                 >
                   {siteConfig.email}
                 </a>{" "}
                 or call{" "}
                 <a
                   href={`tel:${siteConfig.phone.replace(/\D/g, "")}`}
-                  className="text-[#B08D3E] hover:underline"
+                  className="text-[#C68A17] hover:underline"
                 >
                   {siteConfig.phone}
                 </a>

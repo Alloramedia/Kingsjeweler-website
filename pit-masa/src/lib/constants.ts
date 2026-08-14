@@ -1,7 +1,7 @@
 export const siteConfig = {
-  name: "Kings Jeweler",
+  name: "King's Jeweler",
   description:
-    "Kings Jeweler is a family jewelry store at The Shoppes at Buckland Hills in Manchester, Connecticut — fine jewelry, engagement rings, custom designs, watch batteries, and expert jewelry repair while you shop.",
+    "King's Jeweler is a family jewelry store at The Shoppes at Buckland Hills in Manchester, Connecticut — fine jewelry, engagement rings, custom designs, watch batteries, and expert jewelry repair while you shop.",
   // TODO: replace with the real domain before launch.
   url: "https://www.kingsjewelerct.com",
   ogImage: "/og-image.jpg",
@@ -29,9 +29,9 @@ export const siteConfig = {
   gmb: "https://maps.google.com/?q=Kings+Jeweler+Buckland+Hills+Manchester+CT",
   foundingDate: "2000",
   owner: {
-    name: "The Kings Jeweler Family",
+    name: "The King's Jeweler Family",
     title: "Owners & Master Jewelers",
-    bio: "Kings Jeweler is a family-run jewelry store inside The Shoppes at Buckland Hills in Manchester, Connecticut. From engagement rings and custom pieces to same-day watch batteries and expert repairs, every customer is helped personally by a jeweler who cares about getting it right.",
+    bio: "King's Jeweler is a family-run jewelry store inside The Shoppes at Buckland Hills in Manchester, Connecticut. From engagement rings and custom pieces to same-day watch batteries and expert repairs, every customer is helped personally by a jeweler who cares about getting it right.",
   },
 };
 

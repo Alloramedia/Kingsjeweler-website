@@ -25,7 +25,7 @@
   /* Warm cream / earthtone palette */
   --background: #FBF9F4;
   --foreground: #14141A;
-  --primary: #B08D3E;
+  --primary: #C68A17;
   --primary-foreground: #ffffff;
   --secondary: #1F3A5F;
   --secondary-foreground: #ffffff;
@@ -34,15 +34,15 @@
   --accent: #1F3A5F;
   --accent-foreground: #ffffff;
   --border: rgba(36, 27, 22, 0.12);
-  --ring: #B08D3E;
+  --ring: #C68A17;
   --card: #FFFDF8;
   --card-foreground: #14141A;
 
-  /* Brand tokens — official Kings Jeweler teals + warm accents */
+  /* Brand tokens — official King's Jeweler teals + warm accents */
   --cream: #FBF9F4;
   --espresso: #14141A;
   --espresso-band: #14141A;
-  --orange: #B08D3E;
+  --orange: #C68A17;
   --teal: #1F3A5F;
   --teal-bright: #33a8a8;
   --teal-dark: #14141A;
@@ -50,7 +50,7 @@
 
   --color-1: #14141A;
   --color-2: #FBF9F4;
-  --color-3: #B08D3E;
+  --color-3: #C68A17;
   --color-4: #1F3A5F;
 }
 
@@ -119,13 +119,13 @@ h1, h2, h3, h4, h5, h6 {
   display: block;
 }
 
-/* ═══════ DIAMOND-PLATE METAL TEXTURE (dark bands only) ═══════ */
-/* Single full-frame tread-plate image behind a section's dark background.
-   Rendered once with `cover` (no repeat) so it never reads as a tiled pattern.
-   Built from public/images/Steel_.png — regenerate with:
-   node scripts/generate-metal-texture.mjs */
+/* ═══════ VELVET TEXTURE (dark bands only) ═══════ */
+/* Soft radial sheen behind a section's dark background —
+   a subtle jewelry-case velvet feel with a faint gold glow. */
 .metal-texture {
-  background-image: url("/images/diamond-plate.webp");
+  background-image:
+    radial-gradient(ellipse 120% 80% at 50% -10%, rgba(198, 138, 23, 0.12), transparent 60%),
+    radial-gradient(ellipse 100% 100% at 50% 110%, rgba(31, 58, 95, 0.35), transparent 65%);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -245,7 +245,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .animate-text-gradient {
-  background: linear-gradient(90deg, #B08D3E, #99782F, #D4B36A, #B08D3E);
+  background: linear-gradient(90deg, #C68A17, #A87310, #F0A92D, #C68A17);
   background-size: 300% 100%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -310,7 +310,7 @@ html {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #99782F;
+  background: #A87310;
 }
 
 /* ═══════ SCROLL PROGRESS INDICATOR ═══════ */
@@ -319,7 +319,7 @@ html {
   top: 0;
   left: 0;
   height: 2px;
-  background: linear-gradient(90deg, #B08D3E, #99782F, #D4B36A);
+  background: linear-gradient(90deg, #C68A17, #A87310, #F0A92D);
   z-index: 9999;
   transform-origin: left;
   will-change: transform;
@@ -336,7 +336,7 @@ html {
   bottom: -4px;
   width: 100%;
   height: 2px;
-  background: linear-gradient(90deg, #B08D3E, #99782F);
+  background: linear-gradient(90deg, #C68A17, #A87310);
   border-radius: 1px;
   transform: scaleX(0);
   transform-origin: right;
@@ -350,7 +350,7 @@ html {
 
 /* Active nav indicator dot */
 .nav-link-animated[data-active="true"] {
-  color: #B08D3E !important;
+  color: #C68A17 !important;
 }
 
 /* ═══════ FOOTER / BODY LINK UNDERLINE ═══════ */
@@ -364,7 +364,7 @@ html {
   bottom: -2px;
   width: 0;
   height: 1px;
-  background: #B08D3E;
+  background: #C68A17;
   transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .link-hover-underline:hover::after {
@@ -529,7 +529,7 @@ html {
   transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .social-icon-hover:hover {
-  color: #B08D3E;
+  color: #C68A17;
   transform: translateY(-2px) scale(1.15);
   filter: drop-shadow(0 0 6px rgba(190, 90, 36, 0.3));
 }
@@ -670,7 +670,7 @@ html {
   inset: 0;
   border-radius: inherit;
   padding: 1px;
-  background: conic-gradient(from var(--border-angle), transparent 25%, #B08D3E 50%, transparent 75%);
+  background: conic-gradient(from var(--border-angle), transparent 25%, #C68A17 50%, transparent 75%);
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -737,7 +737,7 @@ html {
   appearance: none;
   height: 6px;
   border-radius: 999px;
-  background: linear-gradient(to right, #14141A, #B08D3E);
+  background: linear-gradient(to right, #14141A, #C68A17);
   outline: none;
 }
 .shoot-slider::-webkit-slider-thumb {
@@ -746,7 +746,7 @@ html {
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background: #B08D3E;
+  background: #C68A17;
   cursor: pointer;
   box-shadow: 0 0 12px rgba(190, 90, 36, 0.4), 0 0 0 4px rgba(190, 90, 36, 0.15);
   transition: box-shadow 0.2s, transform 0.2s;
@@ -759,7 +759,7 @@ html {
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background: #B08D3E;
+  background: #C68A17;
   cursor: pointer;
   border: none;
   box-shadow: 0 0 12px rgba(190, 90, 36, 0.4), 0 0 0 4px rgba(190, 90, 36, 0.15);
@@ -767,5 +767,5 @@ html {
 .shoot-slider::-moz-range-track {
   height: 6px;
   border-radius: 999px;
-  background: linear-gradient(to right, #14141A, #B08D3E);
+  background: linear-gradient(to right, #14141A, #C68A17);
 }

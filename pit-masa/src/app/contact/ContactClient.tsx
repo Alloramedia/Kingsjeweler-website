@@ -19,7 +19,7 @@ interface ContactClientProps {
 }
 
 const inputClass =
-  "w-full rounded-xl border border-[#14141A]/15 bg-white px-4 py-3 text-sm text-[#14141A] placeholder:text-[#14141A]/40 focus:border-[#B08D3E] focus:outline-none focus:ring-2 focus:ring-[#B08D3E]/25";
+  "w-full rounded-xl border border-[#14141A]/15 bg-white px-4 py-3 text-sm text-[#14141A] placeholder:text-[#14141A]/40 focus:border-[#C68A17] focus:outline-none focus:ring-2 focus:ring-[#C68A17]/25";
 
 const labelClass = "mb-1.5 block text-sm font-semibold text-[#14141A]";
 
@@ -76,12 +76,12 @@ export function ContactClient({ heroSlides }: ContactClientProps) {
       <section className="relative isolate overflow-hidden bg-[#14141A] text-white">
         <HeroSlideshow
           images={heroSlides}
-          alt="Fine jewelry at Kings Jeweler"
+          alt="Fine jewelry at King's Jeweler"
           className="opacity-30"
         />
         <div className="absolute inset-0 bg-linear-to-b from-[#14141A]/60 via-[#14141A]/70 to-[#14141A]" />
         <div className="relative mx-auto max-w-5xl px-6 pb-16 pt-40 lg:px-8">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#D4B36A]">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#F0A92D]">
             Visit Us
           </p>
           <h1 className="mt-4 max-w-3xl font-display! text-4xl font-normal! uppercase leading-tight md:text-6xl">
@@ -102,7 +102,7 @@ export function ContactClient({ heroSlides }: ContactClientProps) {
           <div className="space-y-6">
             <div className="rounded-2xl border border-[#14141A]/10 bg-white p-7 shadow-sm">
               <div className="flex items-start gap-4">
-                <MapPin size={22} className="mt-0.5 shrink-0 text-[#B08D3E]" />
+                <MapPin size={22} className="mt-0.5 shrink-0 text-[#C68A17]" />
                 <div>
                   <h2 className="font-bold">Our Store</h2>
                   <p className="mt-1 text-sm leading-relaxed text-[#14141A]/65">
@@ -117,7 +117,7 @@ export function ContactClient({ heroSlides }: ContactClientProps) {
                     href={siteConfig.gmb}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-2 inline-flex items-center gap-1 text-sm font-semibold text-[#B08D3E] hover:underline"
+                    className="mt-2 inline-flex items-center gap-1 text-sm font-semibold text-[#C68A17] hover:underline"
                   >
                     Get directions
                     <ArrowRight size={14} />
@@ -128,7 +128,7 @@ export function ContactClient({ heroSlides }: ContactClientProps) {
 
             <div className="rounded-2xl border border-[#14141A]/10 bg-white p-7 shadow-sm">
               <div className="flex items-start gap-4">
-                <Clock size={22} className="mt-0.5 shrink-0 text-[#B08D3E]" />
+                <Clock size={22} className="mt-0.5 shrink-0 text-[#C68A17]" />
                 <div>
                   <h2 className="font-bold">Store Hours</h2>
                   <p className="mt-1 text-sm leading-relaxed text-[#14141A]/65">
@@ -144,13 +144,13 @@ export function ContactClient({ heroSlides }: ContactClientProps) {
 
             <div className="rounded-2xl border border-[#14141A]/10 bg-white p-7 shadow-sm">
               <div className="flex items-start gap-4">
-                <Phone size={22} className="mt-0.5 shrink-0 text-[#B08D3E]" />
+                <Phone size={22} className="mt-0.5 shrink-0 text-[#C68A17]" />
                 <div>
                   <h2 className="font-bold">Call or Email</h2>
                   <p className="mt-1 text-sm text-[#14141A]/65">
                     <a
                       href={`tel:${siteConfig.phone.replace(/\D/g, "")}`}
-                      className="font-medium text-[#B08D3E] hover:underline"
+                      className="font-medium text-[#C68A17] hover:underline"
                     >
                       {siteConfig.phone}
                     </a>
@@ -159,7 +159,7 @@ export function ContactClient({ heroSlides }: ContactClientProps) {
                     <Mail size={14} />
                     <a
                       href={`mailto:${siteConfig.email}`}
-                      className="font-medium text-[#B08D3E] hover:underline"
+                      className="font-medium text-[#C68A17] hover:underline"
                     >
                       {siteConfig.email}
                     </a>
@@ -293,7 +293,7 @@ export function ContactClient({ heroSlides }: ContactClientProps) {
               <button
                 type="submit"
                 disabled={submitting}
-                className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#B08D3E] px-8 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-[#99782F] disabled:opacity-60"
+                className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#C68A17] px-8 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-[#A87310] disabled:opacity-60"
               >
                 {submitting ? (
                   <>

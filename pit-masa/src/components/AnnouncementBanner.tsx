@@ -19,7 +19,7 @@ export function AnnouncementBanner() {
   return (
     <div
       role="status"
-      className="relative z-50 bg-[#B08D3E] px-4 py-2.5 text-center text-sm font-semibold text-[#14141A]"
+      className="relative z-50 bg-[#C68A17] px-4 py-2.5 text-center text-sm font-semibold text-[#14141A]"
     >
       {announcement.message}
     </div>

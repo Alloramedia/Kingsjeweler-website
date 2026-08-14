@@ -2,10 +2,10 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Kings Jeweler",
-    short_name: "Kings Jeweler",
+    name: "King's Jeweler",
+    short_name: "King's Jeweler",
     description:
-      "Kings Jeweler is a family jewelry store at The Shoppes at Buckland Hills in Manchester, CT — fine jewelry, engagement rings, custom design, watch batteries, and expert repairs.",
+      "King's Jeweler is a family jewelry store at The Shoppes at Buckland Hills in Manchester, CT — fine jewelry, engagement rings, custom design, watch batteries, and expert repairs.",
     start_url: "/",
     display: "standalone",
     background_color: "#FBF9F4",

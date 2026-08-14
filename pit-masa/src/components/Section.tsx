@@ -16,7 +16,7 @@ const variantStyles: Record<SectionVariant, string> = {
   dark: "bg-[#FBF9F4] text-[#14141A]",
   light: "bg-[#E5E1D8] text-[#14141A]",
   green: "bg-[#14141A] text-white noise-texture",
-  accent: "bg-[#B08D3E] text-white",
+  accent: "bg-[#C68A17] text-white",
 };
 
 export function Section({ children, className = "", id, variant }: SectionProps) {
@@ -75,7 +75,7 @@ export function SectionHeader({
       className={`relative mb-10 max-w-3xl md:mb-12 ${center ? "mx-auto text-center" : ""}`}
     >
       {eyebrow && (
-        <p className={`mb-3 text-sm font-heading font-semibold uppercase tracking-[0.15em] sm:tracking-[0.2em] ${eyebrowColor ?? (onDarkBand ? "text-[#D4B36A]" : "text-[#B08D3E]")}`}>
+        <p className={`mb-3 text-sm font-heading font-semibold uppercase tracking-[0.15em] sm:tracking-[0.2em] ${eyebrowColor ?? (onDarkBand ? "text-[#F0A92D]" : "text-[#C68A17]")}`}>
           {eyebrow}
         </p>
       )}

@@ -8,7 +8,7 @@ import { CTASection } from "@/components/CTASection";
 const baseMetadata: Metadata = {
   title: "Jewelry Services | Repairs, Custom Design & Gold Buying",
   description:
-    "Explore Kings Jeweler services — engagement rings, custom jewelry design, ring sizing, chain repair, watch batteries while you wait, appraisals, and fair gold buying in Manchester, CT.",
+    "Explore King's Jeweler services — engagement rings, custom jewelry design, ring sizing, chain repair, watch batteries while you wait, appraisals, and fair gold buying in Manchester, CT.",
   alternates: {
     canonical: "https://www.kingsjewelerct.com/services",
   },
@@ -36,7 +36,7 @@ export default async function ServicesPage() {
       {/* ── Page header ─────────────────────────────────────── */}
       <section className="bg-[#14141A] pt-36 pb-16 text-white">
         <div className="mx-auto max-w-4xl px-6 text-center lg:px-8">
-          <p className="text-sm font-semibold uppercase tracking-[0.25em] text-[#D4B36A]">
+          <p className="text-sm font-semibold uppercase tracking-[0.25em] text-[#F0A92D]">
             Our Services
           </p>
           <h1 className="font-display! mt-4 text-4xl font-normal! uppercase md:text-5xl lg:text-6xl">
@@ -55,7 +55,7 @@ export default async function ServicesPage() {
         <div className="mx-auto max-w-5xl space-y-16 px-6 lg:px-8">
           {groups.map((group) => (
             <div key={group.label}>
-              <h2 className="font-display! text-2xl font-normal! uppercase text-[#B08D3E] md:text-3xl">
+              <h2 className="font-display! text-2xl font-normal! uppercase text-[#C68A17] md:text-3xl">
                 {group.label}
               </h2>
               <div className="mt-6 space-y-6">
@@ -73,14 +73,14 @@ export default async function ServicesPage() {
                     <ul className="mt-6 grid gap-5 sm:grid-cols-2">
                       {section.items.map((item) => (
                         <li key={item.name} className="flex items-start gap-3">
-                          <div className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#B08D3E]/10 text-[#B08D3E]">
+                          <div className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#C68A17]/10 text-[#C68A17]">
                             <Check size={13} />
                           </div>
                           <div>
                             <p className="font-semibold">
                               {item.name}
                               {item.price && (
-                                <span className="ml-2 text-xs font-medium text-[#B08D3E]">
+                                <span className="ml-2 text-xs font-medium text-[#C68A17]">
                                   {item.price}
                                 </span>
                               )}
@@ -113,7 +113,7 @@ export default async function ServicesPage() {
             </p>
             <Link
               href="/contact"
-              className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#B08D3E] px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-[#99782F]"
+              className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#C68A17] px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-[#A87310]"
             >
               Visit or Contact Us
               <ArrowRight size={16} />

@@ -1,6 +1,6 @@
 /**
  * Editorial content types for the Recipes and Blog sections of the admin CMS.
- * Kings Jeweler does not currently publish recipes or blog posts, so the
+ * King's Jeweler does not currently publish recipes or blog posts, so the
  * arrays are empty — the types remain for the admin content model.
  */
 

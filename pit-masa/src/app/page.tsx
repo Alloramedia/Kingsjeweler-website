@@ -6,10 +6,10 @@ import { FAQSchema, ReviewSchema } from "@/components/StructuredData";
 
 const baseMetadata: Metadata = {
   title: {
-    absolute: "Kings Jeweler | Jewelry Store at Buckland Hills in Manchester, CT",
+    absolute: "King's Jeweler | Jewelry Store at Buckland Hills in Manchester, CT",
   },
   description:
-    "Kings Jeweler is a family jewelry store at The Shoppes at Buckland Hills in Manchester, CT — fine jewelry, engagement rings, custom design, watch batteries, jewelry repair, and gold buying.",
+    "King's Jeweler is a family jewelry store at The Shoppes at Buckland Hills in Manchester, CT — fine jewelry, engagement rings, custom design, watch batteries, jewelry repair, and gold buying.",
   alternates: {
     canonical: "https://www.kingsjewelerct.com",
   },
@@ -17,15 +17,15 @@ const baseMetadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://www.kingsjewelerct.com",
-    siteName: "Kings Jeweler",
-    title: "Kings Jeweler | Jewelry Store at Buckland Hills in Manchester, CT",
+    siteName: "King's Jeweler",
+    title: "King's Jeweler | Jewelry Store at Buckland Hills in Manchester, CT",
     description:
       "Fine jewelry, engagement rings, custom design, watch batteries, and expert repairs — inside The Shoppes at Buckland Hills, Manchester, CT.",
     images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kings Jeweler | Jewelry Store in Manchester, CT",
+    title: "King's Jeweler | Jewelry Store in Manchester, CT",
     description:
       "Fine jewelry, engagement rings, custom design, watch batteries, and expert repairs — inside The Shoppes at Buckland Hills, Manchester, CT.",
     images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],

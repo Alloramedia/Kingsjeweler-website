@@ -117,7 +117,7 @@ export function ScrollSpy({ sections, showAfter = 600 }: ScrollSpyProps) {
               {/* Track line with green fill */}
               <div className="absolute right-[17px] top-2.5 bottom-2.5 w-px bg-white/6">
                 <div
-                  className="absolute top-0 left-0 w-full bg-[#B08D3E]/30 transition-all duration-500 ease-out rounded-full"
+                  className="absolute top-0 left-0 w-full bg-[#C68A17]/30 transition-all duration-500 ease-out rounded-full"
                   style={{
                     height: activeIndex >= 0 ? `${((activeIndex + 0.5) / sections.length) * 100}%` : "0%",
                   }}
@@ -148,7 +148,7 @@ export function ScrollSpy({ sections, showAfter = 600 }: ScrollSpyProps) {
                       style={{
                         fontSize,
                         fontWeight,
-                        color: isActive ? "#B08D3E" : "rgba(255,255,255,0.85)",
+                        color: isActive ? "#C68A17" : "rgba(255,255,255,0.85)",
                         textShadow: isActive ? "0 0 12px rgba(190,90,36,0.3)" : "none",
                       }}
                     >
@@ -159,7 +159,7 @@ export function ScrollSpy({ sections, showAfter = 600 }: ScrollSpyProps) {
                       style={{
                         width: isActive ? 7 : 4,
                         height: isActive ? 7 : 4,
-                        backgroundColor: isActive ? "#B08D3E" : isPast ? "rgba(190,90,36,0.35)" : "rgba(255,255,255,0.35)",
+                        backgroundColor: isActive ? "#C68A17" : isPast ? "rgba(190,90,36,0.35)" : "rgba(255,255,255,0.35)",
                         boxShadow: isActive ? "0 0 8px rgba(190,90,36,0.5)" : "none",
                       }}
                     />
@@ -192,9 +192,9 @@ export function ScrollSpy({ sections, showAfter = 600 }: ScrollSpyProps) {
                       <button
                         key={s.id}
                         onClick={() => scrollTo(s.id)}
-                        className={`flex w-full items-center gap-2 px-3 py-1.5 text-left whitespace-nowrap rounded-lg transition-all duration-200 text-[12px] ${isActive ? "text-[#B08D3E] font-semibold bg-[#B08D3E]/10" : "text-white/50 font-medium active:bg-white/5"}`}
+                        className={`flex w-full items-center gap-2 px-3 py-1.5 text-left whitespace-nowrap rounded-lg transition-all duration-200 text-[12px] ${isActive ? "text-[#C68A17] font-semibold bg-[#C68A17]/10" : "text-white/50 font-medium active:bg-white/5"}`}
                       >
-                        <span className={`shrink-0 rounded-full h-1 w-1 ${isActive ? "bg-[#B08D3E]" : "bg-white/25"}`} />
+                        <span className={`shrink-0 rounded-full h-1 w-1 ${isActive ? "bg-[#C68A17]" : "bg-white/25"}`} />
                         {s.label}
                       </button>
                     );
@@ -208,7 +208,7 @@ export function ScrollSpy({ sections, showAfter = 600 }: ScrollSpyProps) {
               className="flex items-center gap-1.5 rounded-full bg-black/60 backdrop-blur-xl border border-white/10 px-3.5 py-2 shadow-lg shadow-black/25 active:scale-95 transition-transform"
               aria-label="Toggle section navigation"
             >
-              <span className="h-1.5 w-1.5 rounded-full bg-[#B08D3E]" />
+              <span className="h-1.5 w-1.5 rounded-full bg-[#C68A17]" />
               <span className="text-[11px] font-semibold text-white/70">
                 {activeIndex >= 0 ? sections[activeIndex].label : "Sections"}
               </span>

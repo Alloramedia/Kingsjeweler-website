@@ -15,7 +15,7 @@ export function MeetingClient() {
           transition={{ duration: 0.5 }}
           className="text-center"
         >
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-[#B08D3E]/10 px-4 py-2 text-sm font-semibold text-[#B08D3E]">
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-[#C68A17]/10 px-4 py-2 text-sm font-semibold text-[#C68A17]">
             <MessageSquare size={16} />
             Let&apos;s Talk
           </div>
@@ -38,9 +38,9 @@ export function MeetingClient() {
         >
           <a
             href={`tel:${siteConfig.phone.replace(/\D/g, "")}`}
-            className="flex items-center gap-4 rounded-2xl border border-[#14141A]/10 bg-[#FFFDF8] p-6 shadow-sm transition-all hover:-translate-y-0.5 hover:border-[#B08D3E]/40"
+            className="flex items-center gap-4 rounded-2xl border border-[#14141A]/10 bg-[#FFFDF8] p-6 shadow-sm transition-all hover:-translate-y-0.5 hover:border-[#C68A17]/40"
           >
-            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#B08D3E]/10 text-[#B08D3E]">
+            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#C68A17]/10 text-[#C68A17]">
               <Phone size={20} />
             </span>
             <span>
@@ -50,9 +50,9 @@ export function MeetingClient() {
           </a>
           <a
             href={`mailto:${siteConfig.email}`}
-            className="flex items-center gap-4 rounded-2xl border border-[#14141A]/10 bg-[#FFFDF8] p-6 shadow-sm transition-all hover:-translate-y-0.5 hover:border-[#B08D3E]/40"
+            className="flex items-center gap-4 rounded-2xl border border-[#14141A]/10 bg-[#FFFDF8] p-6 shadow-sm transition-all hover:-translate-y-0.5 hover:border-[#C68A17]/40"
           >
-            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#B08D3E]/10 text-[#B08D3E]">
+            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#C68A17]/10 text-[#C68A17]">
               <Mail size={20} />
             </span>
             <span>
@@ -70,7 +70,7 @@ export function MeetingClient() {
         >
           <Link
             href="/contact"
-            className="inline-flex items-center rounded-full bg-[#1F3A5F] px-8 py-4 text-base font-bold text-white shadow-lg shadow-[#1F3A5F]/25 transition-all hover:scale-[1.03] hover:shadow-xl hover:shadow-[#B08D3E]/40"
+            className="inline-flex items-center rounded-full bg-[#1F3A5F] px-8 py-4 text-base font-bold text-white shadow-lg shadow-[#1F3A5F]/25 transition-all hover:scale-[1.03] hover:shadow-xl hover:shadow-[#C68A17]/40"
           >
             Use the contact form
           </Link>

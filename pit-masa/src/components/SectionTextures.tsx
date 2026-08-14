@@ -3,13 +3,13 @@
    
    Layered section overlays, wave dividers, edge accent stripes,
    and branded silhouettes — inspired by JP Carroll Roofing's
-   Elementor-based layered design system, adapted for Kings Jeweler.
+   Elementor-based layered design system, adapted for King's Jeweler.
    ═══════════════════════════════════════════════════════════ */
 
 /* eslint-disable @next/next/no-img-element */
 
 /* ──────── Emblem Watermark ────────
-   The Kings Jeweler badge emblem rendered very faintly as a large
+   The King's Jeweler badge emblem rendered very faintly as a large
    background watermark. Great on dark bands for a subtle, premium
    branded texture. Position with the `className`. */
 export function EmblemWatermark({
@@ -32,64 +32,6 @@ export function EmblemWatermark({
         alt=""
         width={520}
         height={520}
-        loading="lazy"
-        className="h-full w-full object-contain"
-      />
-    </div>
-  );
-}
-
-/* ──────── Taco Accent ────────
-   The hand-drawn taco-with-heart brand mark used as a small
-   decorative flourish beside headings or section eyebrows. */
-export function TacoAccent({
-  className = "",
-  size = 40,
-}: {
-  className?: string;
-  size?: number;
-}) {
-  return (
-    <img
-      src="/images/kings-jeweler-badge.webp"
-      alt=""
-      width={size}
-      height={size}
-      loading="lazy"
-      aria-hidden="true"
-      className={`pointer-events-none inline-block select-none object-contain ${className}`}
-      style={{ width: size, height: "auto" }}
-    />
-  );
-}
-
-/* ──────── Taco Watermark ────────
-   The taco-with-heart mark rendered faintly as a large background
-   symbol. Use one or two per section, positioned via `className`,
-   for a subtle, on-brand decorative texture. Add `rotate` for a
-   scattered, hand-placed feel. */
-export function TacoWatermark({
-  className = "",
-  opacity = 0.05,
-  size = "clamp(120px, 16vw, 260px)",
-  rotate = 0,
-}: {
-  className?: string;
-  opacity?: number;
-  size?: string;
-  rotate?: number;
-}) {
-  return (
-    <div
-      className={`pointer-events-none absolute z-0 ${className}`}
-      style={{ width: size, height: size, opacity, transform: `rotate(${rotate}deg)` }}
-      aria-hidden="true"
-    >
-      <img
-        src="/images/pit-masa-heart.webp"
-        alt=""
-        width={260}
-        height={260}
         loading="lazy"
         className="h-full w-full object-contain"
       />
@@ -148,7 +90,7 @@ export function AngleDivider({
    to create a hard vertical stripe on the side of sections. 
    On mobile it switches to a horizontal bottom stripe. */
 export function EdgeAccentStripe({
-  color = "#B08D3E",
+  color = "#C68A17",
   side = "left",
   width = "7%",
   className = "",
@@ -407,7 +349,7 @@ export function DotGridOverlay({ className = "" }: { className?: string }) {
    Positioned radial gradient glow for visual depth,
    like JP Carroll's motion effects layer color overlays. */
 export function RadialGlow({
-  color = "#B08D3E",
+  color = "#C68A17",
   position = "center",
   size = "600px",
   opacity = 0.06,

@@ -42,17 +42,17 @@ export function Footer() {
             <Link
               href="/"
               className="inline-flex items-center gap-3"
-              aria-label="Kings Jeweler — home"
+              aria-label="King's Jeweler — home"
             >
               <Image
                 src={logo}
-                alt="Kings Jeweler — Fine Jewelry"
-                width={1000}
-                height={1000}
-                className="h-28 w-28 shrink-0"
+                alt="King's Jeweler — Fine Jewelry"
+                width={1600}
+                height={533}
+                className="h-16 w-auto"
               />
             </Link>
-            <p className="mt-5 text-sm font-heading font-semibold uppercase tracking-[0.2em] text-[#D4B36A]">
+            <p className="mt-5 text-sm font-heading font-semibold uppercase tracking-[0.2em] text-[#F0A92D]">
               Fine Jewelry. Family Service.
             </p>
             <p className="mt-3 max-w-sm text-sm leading-relaxed text-white/60">
@@ -63,25 +63,25 @@ export function Footer() {
             <div className="mt-6 space-y-3">
               <a
                 href={`tel:${contact.phone.replace(/\D/g, "")}`}
-                className="flex items-center gap-3 text-sm text-white/60 transition-colors hover:text-[#B08D3E]"
+                className="flex items-center gap-3 text-sm text-white/60 transition-colors hover:text-[#C68A17]"
               >
-                <Phone size={16} className="text-[#B08D3E] shrink-0" />
+                <Phone size={16} className="text-[#C68A17] shrink-0" />
                 {contact.phone}
               </a>
               <a
                 href={`mailto:${contact.email}`}
-                className="flex items-center gap-3 text-sm text-white/60 transition-colors hover:text-[#B08D3E]"
+                className="flex items-center gap-3 text-sm text-white/60 transition-colors hover:text-[#C68A17]"
               >
-                <Mail size={16} className="text-[#B08D3E] shrink-0" />
+                <Mail size={16} className="text-[#C68A17] shrink-0" />
                 {contact.email}
               </a>
               <div className="flex items-center gap-3 text-sm text-white/60">
-                <MapPin size={16} className="text-[#B08D3E] shrink-0" />
+                <MapPin size={16} className="text-[#C68A17] shrink-0" />
                 The Shoppes at Buckland Hills · 194 Buckland Hills Dr, Manchester, CT
               </div>
               {hours.length > 0 && (
                 <div className="flex items-start gap-3 text-sm text-white/60">
-                  <Clock size={16} className="text-[#B08D3E] shrink-0 mt-0.5" />
+                  <Clock size={16} className="text-[#C68A17] shrink-0 mt-0.5" />
                   <ul className="space-y-0.5">
                     {hours.map((h, i) => (
                       <li key={i}>
@@ -99,7 +99,7 @@ export function Footer() {
                 href={socials.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-white/60 transition-all duration-400 hover:bg-[#B08D3E] hover:text-white hover:scale-110 hover:shadow-lg hover:shadow-[#B08D3E]/20"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-white/60 transition-all duration-400 hover:bg-[#C68A17] hover:text-white hover:scale-110 hover:shadow-lg hover:shadow-[#C68A17]/20"
                 aria-label="Facebook (opens in new window)"
               >
                 <Facebook size={18} />
@@ -108,7 +108,7 @@ export function Footer() {
                 href={socials.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-white/60 transition-all duration-400 hover:bg-[#B08D3E] hover:text-white hover:scale-110 hover:shadow-lg hover:shadow-[#B08D3E]/20"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-white/60 transition-all duration-400 hover:bg-[#C68A17] hover:text-white hover:scale-110 hover:shadow-lg hover:shadow-[#C68A17]/20"
                 aria-label="Instagram (opens in new window)"
               >
                 <Instagram size={18} />
@@ -117,7 +117,7 @@ export function Footer() {
                 href={socials.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-white/60 transition-all duration-400 hover:bg-[#B08D3E] hover:text-white hover:scale-110 hover:shadow-lg hover:shadow-[#B08D3E]/20"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-white/60 transition-all duration-400 hover:bg-[#C68A17] hover:text-white hover:scale-110 hover:shadow-lg hover:shadow-[#C68A17]/20"
                 aria-label="LinkedIn (opens in new window)"
               >
                 <Linkedin size={18} />
@@ -126,7 +126,7 @@ export function Footer() {
                 href={socials.youtube}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-white/60 transition-all duration-400 hover:bg-[#B08D3E] hover:text-white hover:scale-110 hover:shadow-lg hover:shadow-[#B08D3E]/20"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-white/60 transition-all duration-400 hover:bg-[#C68A17] hover:text-white hover:scale-110 hover:shadow-lg hover:shadow-[#C68A17]/20"
                 aria-label="YouTube (opens in new window)"
               >
                 <Youtube size={18} />
@@ -135,7 +135,7 @@ export function Footer() {
                 href={socials.tiktok}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-white/60 transition-all duration-400 hover:bg-[#B08D3E] hover:text-white hover:scale-110 hover:shadow-lg hover:shadow-[#B08D3E]/20"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-white/60 transition-all duration-400 hover:bg-[#C68A17] hover:text-white hover:scale-110 hover:shadow-lg hover:shadow-[#C68A17]/20"
                 aria-label="TikTok (opens in new window)"
               >
                 <Music size={18} />
@@ -145,7 +145,7 @@ export function Footer() {
 
           {/* Services */}
           <motion.div variants={staggerItem}>
-            <h3 className="mb-5 text-xs font-bold uppercase tracking-[0.2em] text-[#B08D3E]">
+            <h3 className="mb-5 text-xs font-bold uppercase tracking-[0.2em] text-[#C68A17]">
               Services
             </h3>
             <ul className="space-y-3">
@@ -164,7 +164,7 @@ export function Footer() {
 
           {/* Company */}
           <motion.div variants={staggerItem}>
-            <h3 className="mb-5 text-xs font-bold uppercase tracking-[0.2em] text-[#B08D3E]">
+            <h3 className="mb-5 text-xs font-bold uppercase tracking-[0.2em] text-[#C68A17]">
               Company
             </h3>
             <ul className="space-y-3">
@@ -183,7 +183,7 @@ export function Footer() {
 
           {/* Occasions */}
           <motion.div variants={staggerItem}>
-            <h3 className="mb-5 text-xs font-bold uppercase tracking-[0.2em] text-[#B08D3E]">
+            <h3 className="mb-5 text-xs font-bold uppercase tracking-[0.2em] text-[#C68A17]">
               Occasions
             </h3>
             <ul className="space-y-3">
@@ -216,7 +216,7 @@ export function Footer() {
             </div>
             <Link
               href="/contact"
-              className="flex shrink-0 items-center gap-2 rounded-full bg-[#1F3A5F] px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-[#1F3A5F]/20 transition-all hover:shadow-xl hover:shadow-[#B08D3E]/40"
+              className="flex shrink-0 items-center gap-2 rounded-full bg-[#1F3A5F] px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-[#1F3A5F]/20 transition-all hover:shadow-xl hover:shadow-[#C68A17]/40"
             >
               Visit or Contact Us
               <ArrowRight size={14} />
@@ -234,7 +234,7 @@ export function Footer() {
         >
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
           <p className="text-xs text-white/55">
-          &copy; {new Date().getFullYear()} Kings Jeweler. All rights reserved.
+          &copy; {new Date().getFullYear()} King's Jeweler. All rights reserved.
           </p>
           <div className="flex gap-6">
             <Link

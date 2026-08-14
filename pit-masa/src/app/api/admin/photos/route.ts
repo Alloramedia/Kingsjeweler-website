@@ -14,12 +14,12 @@ export async function GET() {
 
   let library: string[] = [];
   try {
-    const dir = path.join(process.cwd(), "public", "images", "food");
+    const dir = path.join(process.cwd(), "public", "images", "jewelry");
     const files = await fs.readdir(dir);
     library = files
       .filter((f) => /\.(webp|jpe?g|png|avif)$/i.test(f))
       .sort()
-      .map((f) => `/images/food/${f}`);
+      .map((f) => `/images/jewelry/${f}`);
   } catch {
     library = [];
   }

@@ -37,24 +37,24 @@ const cinzel = Cinzel({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.kingsjewelerct.com"),
   title: {
-    default: "Kings Jeweler | Jewelry Store at Buckland Hills in Manchester, CT",
-    template: "%s | Kings Jeweler",
+    default: "King's Jeweler | Jewelry Store at Buckland Hills in Manchester, CT",
+    template: "%s | King's Jeweler",
   },
   description:
-    "Kings Jeweler is a family jewelry store at The Shoppes at Buckland Hills in Manchester, CT — fine jewelry, engagement rings, custom design, watch batteries, jewelry repair, and gold buying.",
+    "King's Jeweler is a family jewelry store at The Shoppes at Buckland Hills in Manchester, CT — fine jewelry, engagement rings, custom design, watch batteries, jewelry repair, and gold buying.",
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://www.kingsjewelerct.com",
-    siteName: "Kings Jeweler",
-    title: "Kings Jeweler | Jewelry Store at Buckland Hills in Manchester, CT",
+    siteName: "King's Jeweler",
+    title: "King's Jeweler | Jewelry Store at Buckland Hills in Manchester, CT",
     description:
       "Fine jewelry, engagement rings, custom design, watch batteries, and expert repairs — inside The Shoppes at Buckland Hills, Manchester, CT.",
     images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kings Jeweler | Jewelry Store in Manchester, CT",
+    title: "King's Jeweler | Jewelry Store in Manchester, CT",
     description:
       "Fine jewelry, engagement rings, custom design, watch batteries, and expert repairs — inside The Shoppes at Buckland Hills, Manchester, CT.",
     images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
@@ -89,7 +89,7 @@ export default async function RootLayout({
         )}
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-100 focus:rounded-full focus:bg-[#B08D3E] focus:px-6 focus:py-3 focus:text-white focus:shadow-lg"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-100 focus:rounded-full focus:bg-[#C68A17] focus:px-6 focus:py-3 focus:text-white focus:shadow-lg"
         >
           Skip to main content
         </a>

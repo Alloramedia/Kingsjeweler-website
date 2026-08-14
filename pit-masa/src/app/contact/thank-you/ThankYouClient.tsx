@@ -32,7 +32,7 @@ export function ThankYouClient() {
             animate={{ scale: 1 }}
             transition={{ type: "spring", duration: 0.5 }}
           >
-            <CheckCircle size={56} className="mx-auto mb-6 text-[#B08D3E]" />
+            <CheckCircle size={56} className="mx-auto mb-6 text-[#C68A17]" />
           </motion.div>
           <h1 className="font-display! text-3xl font-normal! uppercase md:text-4xl lg:text-5xl">
             {headline}
@@ -56,7 +56,7 @@ export function ThankYouClient() {
             <div className="space-y-4">
               {steps.map((item) => (
                 <div key={item.step} className="flex items-start gap-4">
-                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#B08D3E]/10 text-sm font-bold text-[#B08D3E]">
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#C68A17]/10 text-sm font-bold text-[#C68A17]">
                     {item.step}
                   </div>
                   <p className="pt-1 text-sm text-[#14141A]/65">{item.text}</p>
@@ -95,7 +95,7 @@ export function ThankYouClient() {
             Need to talk now? Call us at{" "}
             <a
               href={`tel:${siteConfig.phone.replace(/\D/g, "")}`}
-              className="inline-flex items-center gap-1 font-medium text-[#B08D3E] hover:underline"
+              className="inline-flex items-center gap-1 font-medium text-[#C68A17] hover:underline"
             >
               <Phone size={14} />
               {siteConfig.phone}

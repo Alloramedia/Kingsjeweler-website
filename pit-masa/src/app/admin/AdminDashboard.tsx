@@ -481,7 +481,7 @@ function HeroEditor({ data }: { data: HeroOverride }) {
       <DraftBanner available={draftAvailable} onRestore={restoreDraft} onDiscard={discardDraft} />
       <p className="text-sm text-slate-500">This is the big headline and intro line on the home page.</p>
       <Field label="Headline" value={d.title ?? ""} onChange={(v) => setD({ ...d, title: v })} placeholder="Manchester's Family Jeweler" max={160} hint="Tip: press Enter inside this won't work — keep it to one line." />
-      <Area label="Intro line" value={d.subtitle ?? ""} onChange={(v) => setD({ ...d, subtitle: v })} rows={3} placeholder="Mobile smoke & taco catering…" max={400} />
+      <Area label="Intro line" value={d.subtitle ?? ""} onChange={(v) => setD({ ...d, subtitle: v })} rows={3} placeholder="Fine jewelry & expert repairs…" max={400} />
       <SaveBar status={status} dirty={dirty} onSave={() => save({ home: d })} viewUrl="/" />
     </div>
   );
@@ -758,7 +758,7 @@ function BundlesEditor({ data }: { data: Bundle[] }) {
 /* ── Recipes & Blog: list → edit one at a time ─────────────────── */
 
 const emptyRecipe = (): Recipe => ({
-  slug: "", title: "", excerpt: "", category: "From the Pit", image: "/images/food/food-015.webp",
+  slug: "", title: "", excerpt: "", category: "Jewelry Care", image: "/images/jewelry/jewel-01.webp",
   time: "", difficulty: "Easy", serves: "", date: new Date().toISOString().slice(0, 10),
   intro: [], ingredients: [], steps: [], tip: "",
 });
@@ -777,7 +777,7 @@ function RecipesEditor({ data }: { data: Recipe[] }) {
           <ChevronLeft size={18} /> Back to all recipes
         </button>
         <Field label="Title" value={r.title} onChange={(v) => set({ title: v })} max={160} />
-        <Field label="Web address (slug)" hint="Lowercase words with dashes — this becomes the page link." value={r.slug} onChange={(v) => set({ slug: v })} placeholder="smoked-brisket" max={120} />
+        <Field label="Web address (slug)" hint="Lowercase words with dashes — this becomes the page link." value={r.slug} onChange={(v) => set({ slug: v })} placeholder="engagement-rings" max={120} />
         <Area label="Short summary" value={r.excerpt} onChange={(v) => set({ excerpt: v })} rows={2} max={400} />
         <ImagePicker label="Photo" value={r.image} onChange={(v) => set({ image: v })} />
         <div className="grid gap-4 sm:grid-cols-2">
@@ -851,8 +851,8 @@ function RecipesEditor({ data }: { data: Recipe[] }) {
 }
 
 const emptyPost = (): BlogPost => ({
-  slug: "", title: "", excerpt: "", category: "Stories", image: "/images/food/food-008.webp",
-  author: "Kings Jeweler", date: new Date().toISOString().slice(0, 10), readTime: "4 min read", body: [],
+  slug: "", title: "", excerpt: "", category: "Stories", image: "/images/jewelry/jewel-02.webp",
+  author: "King's Jeweler", date: new Date().toISOString().slice(0, 10), readTime: "4 min read", body: [],
 });
 
 function BlogEditor({ data }: { data: BlogPost[] }) {
@@ -975,7 +975,7 @@ function PhotoList({
               {onAlt && url && (
                 <Field
                   label="Describe this photo"
-                  hint="A short description for visually-impaired visitors and Google — e.g. “Smoked brisket tacos on a wooden board.”"
+                  hint="A short description for visually-impaired visitors and Google — e.g. “Diamond engagement ring on a velvet display.”"
                   value={alt?.[url] ?? ""}
                   onChange={(v) => onAlt(url, v)}
                   max={160}
@@ -1138,7 +1138,7 @@ function AnnouncementEditor({ data }: { data: Announcement }) {
       {d.enabled && d.message.trim() && (
         <div>
           <p className="mb-1.5 text-xs font-semibold uppercase tracking-wide text-slate-400">Preview</p>
-          <div className="rounded-xl bg-[#B08D3E] px-4 py-2.5 text-center text-sm font-semibold text-[#14141A]">{d.message}</div>
+          <div className="rounded-xl bg-[#C68A17] px-4 py-2.5 text-center text-sm font-semibold text-[#14141A]">{d.message}</div>
         </div>
       )}
       <SaveBar status={status} dirty={dirty} onSave={() => save()} viewUrl="/" />
@@ -1199,7 +1199,7 @@ function TestimonialsEditor({ data }: { data: Testimonial[] }) {
             <div className="space-y-3">
               <Field label="Reviewer name" value={t.author} onChange={(v) => update(i, { author: v })} placeholder="Marisa T." max={80} />
               <Field label="Event & town" value={t.role} onChange={(v) => update(i, { role: v })} placeholder="Backyard birthday · West Hartford" max={120} />
-              <Area label="Review" value={t.body} onChange={(v) => update(i, { body: v })} rows={3} max={600} placeholder="The birria tacos were unreal…" />
+              <Area label="Review" value={t.body} onChange={(v) => update(i, { body: v })} rows={3} max={600} placeholder="They resized my ring while I waited…" />
             </div>
           </Collapsible>
         )}
@@ -1321,7 +1321,7 @@ function EventsEditor({ data }: { data: EventItem[] }) {
             removeLabel="Remove event"
           >
             <div className="space-y-3">
-              <Field label="Event name" value={ev.name} onChange={(v) => update(i, { name: v })} placeholder="Hartford Taco Festival" max={160} />
+              <Field label="Event name" value={ev.name} onChange={(v) => update(i, { name: v })} placeholder="Holiday Trunk Show" max={160} />
               <div className="grid gap-3 sm:grid-cols-2">
                 <Field label="Date" value={ev.date} onChange={(v) => update(i, { date: v })} placeholder="Sat, Jul 12" max={80} />
                 <Field label="Time" value={ev.time} onChange={(v) => update(i, { time: v })} placeholder="11am–7pm" max={80} />
@@ -1446,7 +1446,7 @@ function MessagesPanel({ onBack, onChanged }: { onBack: () => void; onChanged?: 
     const url = URL.createObjectURL(new Blob([csv], { type: "text/csv" }));
     const a = document.createElement("a");
     a.href = url;
-    a.download = `pit-masa-messages-${new Date().toISOString().slice(0, 10)}.csv`;
+    a.download = `kings-jeweler-messages-${new Date().toISOString().slice(0, 10)}.csv`;
     a.click();
     URL.revokeObjectURL(url);
   }
@@ -1556,7 +1556,7 @@ function MessagesPanel({ onBack, onChanged }: { onBack: () => void; onChanged?: 
                     </div>
                     <p className="text-xs text-slate-400">Received {new Date(m.ts).toLocaleString()}</p>
                     <div className="flex flex-wrap items-center gap-2 pt-1">
-                      <a href={`mailto:${m.email}?subject=${encodeURIComponent("Re: Your Kings Jeweler inquiry")}`} className="rounded-lg bg-orange-600 px-4 py-2 text-sm font-semibold text-white hover:bg-orange-700">Reply by email</a>
+                      <a href={`mailto:${m.email}?subject=${encodeURIComponent("Re: Your King's Jeweler inquiry")}`} className="rounded-lg bg-orange-600 px-4 py-2 text-sm font-semibold text-white hover:bg-orange-700">Reply by email</a>
                       <button
                         onClick={() => {
                           const detail = (label: string) => m.details.find((d) => d.label === label)?.value ?? "";
@@ -2333,7 +2333,7 @@ function QuotesPanel({
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = `pit-masa-quote-${(client.name || "client").toLowerCase().replace(/[^a-z0-9]+/g, "-")}.pdf`;
+      a.download = `kings-jeweler-quote-${(client.name || "client").toLowerCase().replace(/[^a-z0-9]+/g, "-")}.pdf`;
       a.click();
       URL.revokeObjectURL(url);
       toast({ kind: "success", text: "Quote PDF downloaded." });
@@ -2788,7 +2788,7 @@ function AdminInner({
       <header className="border-b border-slate-200 bg-white">
         <div className="mx-auto flex max-w-5xl items-center justify-between gap-3 px-4 py-2.5 sm:px-6">
           <button onClick={goHome} className="min-w-0 text-left">
-            <h1 className="truncate text-base font-bold text-slate-900">Kings Jeweler — Site Editor</h1>
+            <h1 className="truncate text-base font-bold text-slate-900">King's Jeweler — Site Editor</h1>
             <p className="hidden text-[11px] text-slate-500 sm:block">Edits save as a draft — preview, then publish to go live.</p>
           </button>
           <div className="flex items-center gap-0.5">

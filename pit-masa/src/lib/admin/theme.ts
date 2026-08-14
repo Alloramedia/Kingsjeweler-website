@@ -1,17 +1,17 @@
 import type { BrandColors } from "./types";
 
 /**
- * The site's components use literal hex Tailwind utilities (e.g. `bg-[#B08D3E]`)
+ * The site's components use literal hex Tailwind utilities (e.g. `bg-[#C68A17]`)
  * rather than CSS variables. To let the admin recolor the brand, we map each
  * editable token to the exact hex string used throughout the codebase, then
  * generate an override stylesheet that remaps those utility classes to the
  * chosen colors. Soft tints that bake in an opacity modifier (e.g.
- * `bg-[#B08D3E]/30`) are separate classes and keep their original hue.
+ * `bg-[#C68A17]/30`) are separate classes and keep their original hue.
  */
 const TOKEN_HEX: Record<keyof BrandColors, string> = {
-  primary: "#B08D3E",
-  primaryHover: "#99782F",
-  primaryLight: "#D4B36A",
+  primary: "#C68A17",
+  primaryHover: "#A87310",
+  primaryLight: "#F0A92D",
   secondary: "#1F3A5F",
   dark: "#14141A",
   cream: "#FBF9F4",
@@ -19,7 +19,7 @@ const TOKEN_HEX: Record<keyof BrandColors, string> = {
   sand: "#E5E1D8",
 };
 
-// Escaped arbitrary-value selector fragment, e.g. "#B08D3E" -> "\[\#B08D3E\]".
+// Escaped arbitrary-value selector fragment, e.g. "#C68A17" -> "\[\#C68A17\]".
 const sel = (hex: string) => `\\[\\#${hex.replace(/^#/, "")}\\]`;
 
 function rulesFor(hex: string, v: string): string {

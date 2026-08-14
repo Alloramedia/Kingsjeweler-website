@@ -13,7 +13,7 @@ interface FAQItem {
 export function FAQAccordion({
   items,
   variant = "dark",
-  accentColor = "#B08D3E",
+  accentColor = "#C68A17",
 }: {
   items: FAQItem[];
   variant?: "dark" | "light" | "green";
@@ -48,7 +48,7 @@ export function FAQAccordion({
                 id={buttonId}
                 onClick={() => setOpenIndex(isOpen ? null : i)}
                 className={cn(
-                  "flex w-full items-center justify-between gap-4 px-6 py-5 text-left transition-colors md:px-8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#B08D3E]",
+                  "flex w-full items-center justify-between gap-4 px-6 py-5 text-left transition-colors md:px-8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#C68A17]",
                   isLight
                     ? "text-[#1F3A5F] hover:bg-[#1F3A5F]/5"
                     : "text-white hover:bg-white/5"

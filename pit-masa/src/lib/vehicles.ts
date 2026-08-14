@@ -1,5 +1,5 @@
 /**
- * Legacy stub — the food-truck "vehicles" concept is not used by Kings
+ * Legacy stub — the food-truck "vehicles" concept is not used by King's Jeweler
  * Jeweler. Kept only so the admin bundle editor compiles; empty list means
  * the vehicle toggles simply don't render.
  */

@@ -58,7 +58,7 @@ export interface MenuSection {
 }
 
 /**
- * Legacy bundle concept from the previous site. Unused by Kings Jeweler but
+ * Legacy bundle concept from the previous site. Unused by King's Jeweler but
  * kept so stored overrides and the admin editor keep working.
  */
 export interface Bundle {
@@ -221,7 +221,7 @@ export interface Overrides {
   seo?: Partial<Record<SeoPageKey, Partial<SeoEntry>>>;
 }
 
-/* ── Defaults — Kings Jeweler ─────────────────────────────────────── */
+/* ── Defaults — King's Jeweler ─────────────────────────────────────── */
 
 // Hours from the Google Business Profile.
 export const defaultHours: HoursRow[] = [
@@ -281,7 +281,7 @@ export const defaultMenu: MenuSection[] = [
   },
 ];
 
-/** Bundles are a legacy concept — none by default for Kings Jeweler. */
+/** Bundles are a legacy concept — none by default for King's Jeweler. */
 export const defaultBundles: Bundle[] = [];
 
 export const defaultHeroHome: Required<HeroOverride> = {
@@ -291,7 +291,7 @@ export const defaultHeroHome: Required<HeroOverride> = {
 };
 
 export const defaultBrandImages: BrandImages = {
-  logo: "/images/kings-jeweler-badge.webp",
+  logo: "/images/kings-jeweler-logo.webp",
   heroHome: defaultBrand.heroHome,
   heroCatering: defaultBrand.heroCatering,
   heroEvents: defaultBrand.heroEvents,
@@ -304,9 +304,9 @@ export const defaultBrandImages: BrandImages = {
 
 /** Default brand colors — the literal hex values used across the site. */
 export const defaultBrandColors: BrandColors = {
-  primary: "#B08D3E",
-  primaryHover: "#99782F",
-  primaryLight: "#D4B36A",
+  primary: "#C68A17",
+  primaryHover: "#A87310",
+  primaryLight: "#F0A92D",
   secondary: "#1F3A5F",
   dark: "#14141A",
   cream: "#FBF9F4",
@@ -385,7 +385,7 @@ export const defaultFaqs: Faqs = {
   ],
   about: [
     {
-      question: "What makes Kings Jeweler different from chain jewelry stores?",
+      question: "What makes King's Jeweler different from chain jewelry stores?",
       answer:
         "We're family owned and operated — when you come in, you talk directly with the jeweler, not a salesperson working a quota. Repairs and custom work happen with us, not at a warehouse three states away.",
     },
@@ -419,29 +419,29 @@ function mergeFaqs(o?: Partial<Record<FaqPageKey, FaqItem[]>>): Faqs {
  */
 export const seoDefaults: Seo = {
   home: {
-    title: "Kings Jeweler | Jewelry Store at Buckland Hills in Manchester, CT",
+    title: "King's Jeweler | Jewelry Store at Buckland Hills in Manchester, CT",
     description:
-      "Kings Jeweler is a family jewelry store at The Shoppes at Buckland Hills in Manchester, CT — fine jewelry, engagement rings, custom design, watch batteries, jewelry repair, and gold buying.",
+      "King's Jeweler is a family jewelry store at The Shoppes at Buckland Hills in Manchester, CT — fine jewelry, engagement rings, custom design, watch batteries, jewelry repair, and gold buying.",
   },
   services: {
     title: "Jewelry Services — Repairs, Custom Design & Gold Buying",
     description:
-      "Explore Kings Jeweler services — engagement rings, custom jewelry design, ring sizing, chain repair, watch batteries while you wait, appraisals, and fair gold buying in Manchester, CT.",
+      "Explore King's Jeweler services — engagement rings, custom jewelry design, ring sizing, chain repair, watch batteries while you wait, appraisals, and fair gold buying in Manchester, CT.",
   },
   gallery: {
     title: "Gallery — Custom Jewelry & Work From Our Showcase",
     description:
-      "Browse custom pieces, restorations, and favorites from the Kings Jeweler showcase at The Shoppes at Buckland Hills in Manchester, CT.",
+      "Browse custom pieces, restorations, and favorites from the King's Jeweler showcase at The Shoppes at Buckland Hills in Manchester, CT.",
   },
   about: {
-    title: "About Kings Jeweler — Family Jewelers in Manchester, CT",
+    title: "About King's Jeweler — Family Jewelers in Manchester, CT",
     description:
-      "Meet Kings Jeweler, a family-run jewelry store inside The Shoppes at Buckland Hills in Manchester, Connecticut — where every customer is helped personally by a jeweler who cares.",
+      "Meet King's Jeweler, a family-run jewelry store inside The Shoppes at Buckland Hills in Manchester, Connecticut — where every customer is helped personally by a jeweler who cares.",
   },
   contact: {
-    title: "Visit or Contact Kings Jeweler",
+    title: "Visit or Contact King's Jeweler",
     description:
-      "Visit Kings Jeweler at The Shoppes at Buckland Hills in Manchester, CT, or send us a message about repairs, custom design, engagement rings, or gold buying.",
+      "Visit King's Jeweler at The Shoppes at Buckland Hills in Manchester, CT, or send us a message about repairs, custom design, engagement rings, or gold buying.",
   },
 };
 

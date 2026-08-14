@@ -131,8 +131,8 @@ export async function POST(request: NextRequest) {
   const email = content.contact?.email || siteConfig.email;
   const website = siteConfig.url.replace(/^https?:\/\//, "");
 
-  // Brand palette mirrors the website: cream page, dark espresso bands with
-  // a diamond-plate metal texture, and teal accents (matching the logo ring).
+  // Brand palette mirrors the website: cream page, dark ink bands with
+  // navy accents and gold highlights (matching the crown logo).
   const teal = hex(colors?.secondary, "#1F3A5F");
   const espresso = hex(colors?.dark, "#14141A");
   const ink = espresso;
@@ -190,13 +190,12 @@ export async function POST(request: NextRequest) {
   pdf.setCreator(siteConfig.name);
 
   pdf.registerFontkit(fontkit);
-  const [interReg, interSemi, zillaSemi, zillaBold, badgeBytes, steelBytes] = await Promise.all([
+  const [interReg, interSemi, zillaSemi, zillaBold, badgeBytes] = await Promise.all([
     loadPublicBytes("fonts", "Inter-Regular.ttf"),
     loadPublicBytes("fonts", "Inter-SemiBold.ttf"),
     loadPublicBytes("fonts", "ZillaSlab-SemiBold.ttf"),
     loadPublicBytes("fonts", "ZillaSlab-Bold.ttf"),
     loadPublicBytes("images", "kings-jeweler-badge.png"),
-    loadPublicBytes("images", "Steel_.png"),
   ]);
 
   // Body type = Inter, headings = Zilla Slab — matching the website. Falls back
@@ -211,7 +210,7 @@ export async function POST(request: NextRequest) {
   const serif = zillaBold ? await pdf.embedFont(zillaBold, { subset: true }) : bold;
 
   const badgeImg = badgeBytes ? await pdf.embedPng(badgeBytes).catch(() => null) : null;
-  const steelImg = steelBytes ? await pdf.embedPng(steelBytes).catch(() => null) : null;
+  const steelImg = null;
 
   const PAGE_W = 612;
   const PAGE_H = 792;
@@ -539,7 +538,7 @@ export async function POST(request: NextRequest) {
 
   /* Closing line + brand flourish anchored toward the bottom */
   if (y > 118) {
-    const msg = `Thank you for considering ${siteConfig.name} — we can't wait to cook for you!`;
+    const msg = `Thank you for considering ${siteConfig.name} — we look forward to serving you!`;
     const wMsg = serif.widthOfTextAtSize(msg, 12.5);
     const msgY = Math.min(y - 12, 240);
     if (wMsg <= CONTENT_W) {
@@ -547,7 +546,7 @@ export async function POST(request: NextRequest) {
     }
     const cx = PAGE_W / 2;
     page.drawRectangle({ x: cx - 26, y: 98, width: 52, height: 2.4, color: teal });
-    const tag = "WOOD-FIRED BBQ   ·   LIVE TACO BAR   ·   CONNECTICUT";
+    const tag = "FINE JEWELRY   ·   REPAIRS   ·   MANCHESTER, CT";
     const wTag = bold.widthOfTextAtSize(tag, 8);
     page.drawText(tag, { x: cx - wTag / 2, y: 82, size: 8, font: bold, color: muted });
   }
@@ -558,7 +557,7 @@ export async function POST(request: NextRequest) {
   }
 
   const bytes = await pdf.save();
-  const fileName = `pit-masa-quote-${quoteNumber}.pdf`;
+  const fileName = `kings-jeweler-quote-${quoteNumber}.pdf`;
   return new NextResponse(Buffer.from(bytes), {
     status: 200,
     headers: {

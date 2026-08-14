@@ -106,14 +106,14 @@ export function Header() {
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Mobile layout */}
         <div className="flex h-20 items-center justify-between xl:hidden">
-          <Link href="/" className="shrink-0" aria-label="Kings Jeweler — home">
+          <Link href="/" className="shrink-0" aria-label="King's Jeweler — home">
             <Image
               src={logo}
-              alt="Kings Jeweler"
-              width={1000}
-              height={1000}
+              alt="King's Jeweler"
+              width={1600}
+              height={533}
               priority
-              className="h-16 w-auto"
+              className="h-12 w-auto"
             />
           </Link>
           <button
@@ -135,7 +135,7 @@ export function Header() {
                 href={socials.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white/60 transition-colors hover:text-[#B08D3E]"
+                className="text-white/60 transition-colors hover:text-[#C68A17]"
                 aria-label="Facebook (opens in new window)"
               >
                 <Facebook size={18} />
@@ -144,21 +144,21 @@ export function Header() {
                 href={socials.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white/60 transition-colors hover:text-[#B08D3E]"
+                className="text-white/60 transition-colors hover:text-[#C68A17]"
                 aria-label="Instagram (opens in new window)"
               >
                 <Instagram size={18} />
               </a>
               <a
                 href={`mailto:${contact.email}`}
-                className="text-white/60 transition-colors hover:text-[#B08D3E]"
+                className="text-white/60 transition-colors hover:text-[#C68A17]"
                 aria-label="Email"
               >
                 <Mail size={18} />
               </a>
               <a
                 href={`tel:${contact.phone.replace(/\D/g, "")}`}
-                className="text-white/60 transition-colors hover:text-[#B08D3E]"
+                className="text-white/60 transition-colors hover:text-[#C68A17]"
                 aria-label="Phone"
               >
                 <Phone size={18} />
@@ -177,14 +177,14 @@ export function Header() {
           </div>
 
           {/* Center: Logo — centered in the navbar */}
-          <Link href="/" className="justify-self-center px-4" aria-label="Kings Jeweler — home">
+          <Link href="/" className="justify-self-center px-4" aria-label="King's Jeweler — home">
             <Image
               src={logo}
-              alt="Kings Jeweler"
-              width={1000}
-              height={1000}
+              alt="King's Jeweler"
+              width={1600}
+              height={533}
               priority
-              className="h-24 w-24"
+              className="h-16 w-auto"
             />
           </Link>
 
@@ -202,7 +202,7 @@ export function Header() {
             ))}
             <Link
               href="/contact"
-              className="inline-flex items-center rounded-full bg-[#1F3A5F] px-5 py-2.5 text-sm font-semibold text-white transition-all hover:scale-105 hover:shadow-xl hover:shadow-[#B08D3E]/40 shadow-lg shadow-[#1F3A5F]/20 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1F3A5F] focus-visible:ring-offset-2 focus-visible:ring-offset-[#14141A]"
+              className="inline-flex items-center rounded-full bg-[#1F3A5F] px-5 py-2.5 text-sm font-semibold text-white transition-all hover:scale-105 hover:shadow-xl hover:shadow-[#C68A17]/40 shadow-lg shadow-[#1F3A5F]/20 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1F3A5F] focus-visible:ring-offset-2 focus-visible:ring-offset-[#14141A]"
             >
               Visit or Contact Us
             </Link>
@@ -237,7 +237,7 @@ export function Header() {
                         mobileExpanded === link.href ? null : link.href
                       )
                     }
-                    className="flex w-full items-center justify-between rounded-lg px-4 py-3.5 text-lg font-medium text-white transition-colors hover:bg-white/5 hover:text-[#B08D3E]"
+                    className="flex w-full items-center justify-between rounded-lg px-4 py-3.5 text-lg font-medium text-white transition-colors hover:bg-white/5 hover:text-[#C68A17]"
                     aria-expanded={mobileExpanded === link.href}
                   >
                     {link.label}
@@ -257,7 +257,7 @@ export function Header() {
                             key={`header-${child.label}`}
                             href={child.href}
                             onClick={() => setMobileOpen(false)}
-                            className="mt-3 mb-1 px-4 text-xs font-semibold uppercase tracking-wider text-[#B08D3E]"
+                            className="mt-3 mb-1 px-4 text-xs font-semibold uppercase tracking-wider text-[#C68A17]"
                           >
                             {child.label}
                           </Link>
@@ -266,7 +266,7 @@ export function Header() {
                             key={child.href}
                             href={child.href}
                             onClick={() => setMobileOpen(false)}
-                            className="rounded-lg px-4 py-2.5 text-base text-white/70 transition-colors hover:bg-white/5 hover:text-[#B08D3E]"
+                            className="rounded-lg px-4 py-2.5 text-base text-white/70 transition-colors hover:bg-white/5 hover:text-[#C68A17]"
                           >
                             {child.label}
                           </Link>
@@ -280,7 +280,7 @@ export function Header() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className="rounded-lg px-4 py-3.5 text-lg font-medium text-white transition-colors hover:bg-white/5 hover:text-[#B08D3E]"
+                  className="rounded-lg px-4 py-3.5 text-lg font-medium text-white transition-colors hover:bg-white/5 hover:text-[#C68A17]"
                 >
                   {link.label}
                 </Link>
@@ -289,22 +289,22 @@ export function Header() {
             <Link
               href="/contact"
               onClick={() => setMobileOpen(false)}
-              className="mt-6 rounded-full bg-[#1F3A5F] px-6 py-4 text-center text-base font-semibold text-white shadow-lg shadow-[#1F3A5F]/20 transition-all hover:shadow-xl hover:shadow-[#B08D3E]/40"
+              className="mt-6 rounded-full bg-[#1F3A5F] px-6 py-4 text-center text-base font-semibold text-white shadow-lg shadow-[#1F3A5F]/20 transition-all hover:shadow-xl hover:shadow-[#C68A17]/40"
             >
               Visit or Contact Us
             </Link>
             {/* Social icons mobile */}
             <div className="mt-8 flex items-center justify-center gap-6">
-              <a href={socials.facebook} target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-[#B08D3E]" aria-label="Facebook (opens in new window)">
+              <a href={socials.facebook} target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-[#C68A17]" aria-label="Facebook (opens in new window)">
                 <Facebook size={22} />
               </a>
-              <a href={socials.instagram} target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-[#B08D3E]" aria-label="Instagram (opens in new window)">
+              <a href={socials.instagram} target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-[#C68A17]" aria-label="Instagram (opens in new window)">
                 <Instagram size={22} />
               </a>
-              <a href={`mailto:${contact.email}`} className="text-white/60 hover:text-[#B08D3E]" aria-label="Email">
+              <a href={`mailto:${contact.email}`} className="text-white/60 hover:text-[#C68A17]" aria-label="Email">
                 <Mail size={22} />
               </a>
-              <a href={`tel:${contact.phone.replace(/\D/g, "")}`} className="text-white/60 hover:text-[#B08D3E]" aria-label="Phone">
+              <a href={`tel:${contact.phone.replace(/\D/g, "")}`} className="text-white/60 hover:text-[#C68A17]" aria-label="Phone">
                 <Phone size={22} />
               </a>
             </div>
@@ -338,8 +338,8 @@ function NavItem({
       <Link
         href={link.href}
         className={cn(
-          "nav-link-animated text-sm font-medium transition-colors hover:text-[#B08D3E] uppercase tracking-wider whitespace-nowrap",
-          isActive ? "text-[#B08D3E]" : "text-white/80"
+          "nav-link-animated text-sm font-medium transition-colors hover:text-[#C68A17] uppercase tracking-wider whitespace-nowrap",
+          isActive ? "text-[#C68A17]" : "text-white/80"
         )}
         data-active={isActive}
       >
@@ -378,8 +378,8 @@ function NavItem({
         <Link
           href={link.href}
           className={cn(
-            "nav-link-animated text-sm font-medium transition-colors hover:text-[#B08D3E] uppercase tracking-wider whitespace-nowrap",
-            isActive ? "text-[#B08D3E]" : "text-white/80"
+            "nav-link-animated text-sm font-medium transition-colors hover:text-[#C68A17] uppercase tracking-wider whitespace-nowrap",
+            isActive ? "text-[#C68A17]" : "text-white/80"
           )}
           data-active={isActive}
         >
@@ -388,8 +388,8 @@ function NavItem({
         <button
           type="button"
           className={cn(
-            "transition-colors hover:text-[#B08D3E]",
-            isActive ? "text-[#B08D3E]" : "text-white/80"
+            "transition-colors hover:text-[#C68A17]",
+            isActive ? "text-[#C68A17]" : "text-white/80"
           )}
           aria-expanded={isOpen}
           aria-haspopup="true"
@@ -425,7 +425,7 @@ function NavItem({
                   <Link
                     href={child.href}
                     role="menuitem"
-                    className="text-xs font-semibold uppercase tracking-wider text-[#B08D3E] hover:text-[#99782F] transition-colors"
+                    className="text-xs font-semibold uppercase tracking-wider text-[#C68A17] hover:text-[#A87310] transition-colors"
                   >
                     {child.label}
                   </Link>
@@ -435,7 +435,7 @@ function NavItem({
                   key={child.href}
                   href={child.href}
                   role="menuitem"
-                  className="flex items-center px-5 py-2.5 text-sm text-white/70 transition-colors hover:bg-white/5 hover:text-[#B08D3E]"
+                  className="flex items-center px-5 py-2.5 text-sm text-white/70 transition-colors hover:bg-white/5 hover:text-[#C68A17]"
                 >
                   {child.label}
                 </Link>

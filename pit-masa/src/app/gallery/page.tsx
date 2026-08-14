@@ -9,12 +9,12 @@ import { getSiteContent } from "@/lib/admin/schema";
 export const metadata: Metadata = {
   title: "Gallery — Custom Jewelry & Work From Our Showcase",
   description:
-    "Browse custom pieces, restorations, and favorites from the Kings Jeweler showcase at The Shoppes at Buckland Hills in Manchester, CT.",
+    "Browse custom pieces, restorations, and favorites from the King's Jeweler showcase at The Shoppes at Buckland Hills in Manchester, CT.",
   alternates: { canonical: "https://www.kingsjewelerct.com/gallery" },
   openGraph: {
-    title: "Gallery | Kings Jeweler",
+    title: "Gallery | King's Jeweler",
     description:
-      "Custom pieces, restorations, and favorites from the Kings Jeweler showcase in Manchester, CT.",
+      "Custom pieces, restorations, and favorites from the King's Jeweler showcase in Manchester, CT.",
     images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
   },
 };
@@ -49,7 +49,7 @@ export default async function GalleryPage() {
       {/* Hero */}
       <section className="bg-[#14141A] text-white metal-texture">
         <div className="mx-auto max-w-6xl px-6 pb-12 pt-40 lg:px-8">
-          <p className="text-sm font-heading font-semibold uppercase tracking-[0.2em] text-[#D4B36A]">
+          <p className="text-sm font-heading font-semibold uppercase tracking-[0.2em] text-[#F0A92D]">
             Gallery
           </p>
           <h1 className="mt-4 font-display! text-4xl font-normal! uppercase leading-tight md:text-6xl">
@@ -57,7 +57,7 @@ export default async function GalleryPage() {
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-white/75">
             A look at the custom pieces, restorations, and fine jewelry we
-            craft and care for at Kings Jeweler in The Shoppes at Buckland
+            craft and care for at King's Jeweler in The Shoppes at Buckland
             Hills, Manchester, Connecticut.
           </p>
         </div>
@@ -66,7 +66,7 @@ export default async function GalleryPage() {
       {/* Grid */}
       <section className="bg-[#FBF9F4]">
         <div className="mx-auto max-w-6xl px-6 py-16 lg:px-8">
-          <div className="columns-2 gap-4 sm:columns-3 lg:columns-4 [&>*]:mb-4">
+          <div className="columns-2 gap-4 sm:columns-3 lg:columns-4 *:mb-4">
             {images.map((src, i) => (
               <div
                 key={src}
@@ -74,7 +74,7 @@ export default async function GalleryPage() {
               >
                 <Image
                   src={src}
-                  alt={imageAlt[src] || `Kings Jeweler jewelry photo ${i + 1}`}
+                  alt={imageAlt[src] || `King's Jeweler jewelry photo ${i + 1}`}
                   width={500}
                   height={625}
                   sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"

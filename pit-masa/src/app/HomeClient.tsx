@@ -110,7 +110,7 @@ export function HomeClient({
       <section className="relative flex min-h-[88vh] items-center justify-center overflow-hidden bg-[#14141A] text-white">
         <HeroSlideshow
           images={brandImages.heroSlides}
-          alt="Fine jewelry at Kings Jeweler in Manchester, Connecticut"
+          alt="Fine jewelry at King's Jeweler in Manchester, Connecticut"
           className="opacity-45"
         />
         <div className="absolute inset-0 bg-linear-to-b from-[#14141A]/60 via-transparent to-[#14141A]" />
@@ -120,7 +120,7 @@ export function HomeClient({
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-sm font-semibold uppercase tracking-[0.25em] text-[#D4B36A]"
+            className="text-sm font-semibold uppercase tracking-[0.25em] text-[#F0A92D]"
           >
             The Shoppes at Buckland Hills · Manchester, CT
           </motion.p>
@@ -148,7 +148,7 @@ export function HomeClient({
           >
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 rounded-full bg-[#B08D3E] px-8 py-4 text-base font-semibold text-white shadow-lg transition-all hover:bg-[#99782F] hover:shadow-xl"
+              className="inline-flex items-center gap-2 rounded-full bg-[#C68A17] px-8 py-4 text-base font-semibold text-white shadow-lg transition-all hover:bg-[#A87310] hover:shadow-xl"
             >
               Visit or Contact Us
               <ArrowRight size={18} />
@@ -174,7 +174,7 @@ export function HomeClient({
           {SERVICES.map((s) => (
             <StaggerItem key={s.title}>
               <div className="group h-full rounded-2xl border border-[#14141A]/10 bg-[#FFFDF8] p-7 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#B08D3E]/10 text-[#B08D3E] transition-colors group-hover:bg-[#B08D3E] group-hover:text-white">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#C68A17]/10 text-[#C68A17] transition-colors group-hover:bg-[#C68A17] group-hover:text-white">
                   <s.icon size={24} />
                 </div>
                 <h3 className="mt-5 text-lg font-bold">{s.title}</h3>
@@ -188,7 +188,7 @@ export function HomeClient({
         <FadeIn className="mt-10 text-center">
           <Link
             href="/services"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-[#B08D3E] hover:underline"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-[#C68A17] hover:underline"
           >
             See all services
             <ArrowRight size={16} />
@@ -201,7 +201,7 @@ export function HomeClient({
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <div>
             <SectionHeader
-              eyebrow="Why Kings Jeweler"
+              eyebrow="Why King's Jeweler"
               title="A jeweler you can actually talk to"
               description="Big-box chains sell boxes. We build relationships — one ring, one repair, one family at a time."
               center={false}
@@ -210,7 +210,7 @@ export function HomeClient({
               {WHY_US.map((item) => (
                 <FadeIn key={item.title}>
                   <div className="flex items-start gap-4">
-                    <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#D4B36A]/15 text-[#D4B36A]">
+                    <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#F0A92D]/15 text-[#F0A92D]">
                       <Star size={15} />
                     </div>
                     <div>
@@ -228,7 +228,7 @@ export function HomeClient({
             <div className="relative aspect-4/5 overflow-hidden rounded-2xl">
               <Image
                 src={brandImages.aboutFeature}
-                alt="Inside the Kings Jeweler showcase"
+                alt="Inside the King's Jeweler showcase"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 placeholder="blur"
@@ -253,7 +253,7 @@ export function HomeClient({
               <div className="relative aspect-square overflow-hidden rounded-xl">
                 <Image
                   src={src}
-                  alt={`Jewelry from the Kings Jeweler showcase ${i + 1}`}
+                  alt={`Jewelry from the King's Jeweler showcase ${i + 1}`}
                   fill
                   sizes="(max-width: 768px) 50vw, 33vw"
                   placeholder="blur"
@@ -267,7 +267,7 @@ export function HomeClient({
         <FadeIn className="mt-10 text-center">
           <Link
             href="/gallery"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-[#B08D3E] hover:underline"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-[#C68A17] hover:underline"
           >
             View the full gallery
             <ArrowRight size={16} />
@@ -285,7 +285,7 @@ export function HomeClient({
         <div className="mx-auto mt-12 grid max-w-4xl gap-6 md:grid-cols-3">
           <FadeIn>
             <div className="h-full rounded-2xl border border-[#14141A]/10 bg-white p-7 text-center shadow-sm">
-              <MapPin size={26} className="mx-auto text-[#B08D3E]" />
+              <MapPin size={26} className="mx-auto text-[#C68A17]" />
               <h3 className="mt-4 font-bold">Location</h3>
               <p className="mt-2 text-sm leading-relaxed text-[#14141A]/65">
                 {siteConfig.address.suite}
@@ -299,7 +299,7 @@ export function HomeClient({
                 href={siteConfig.gmb}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-[#B08D3E] hover:underline"
+                className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-[#C68A17] hover:underline"
               >
                 Get directions
                 <ArrowRight size={14} />
@@ -308,7 +308,7 @@ export function HomeClient({
           </FadeIn>
           <FadeIn>
             <div className="h-full rounded-2xl border border-[#14141A]/10 bg-white p-7 text-center shadow-sm">
-              <Clock size={26} className="mx-auto text-[#B08D3E]" />
+              <Clock size={26} className="mx-auto text-[#C68A17]" />
               <h3 className="mt-4 font-bold">Store Hours</h3>
               <ul className="mt-2 space-y-1 text-sm text-[#14141A]/65">
                 {hours.map((row) => (
@@ -321,7 +321,7 @@ export function HomeClient({
           </FadeIn>
           <FadeIn>
             <div className="h-full rounded-2xl border border-[#14141A]/10 bg-white p-7 text-center shadow-sm">
-              <Phone size={26} className="mx-auto text-[#B08D3E]" />
+              <Phone size={26} className="mx-auto text-[#C68A17]" />
               <h3 className="mt-4 font-bold">Get in Touch</h3>
               <p className="mt-2 text-sm leading-relaxed text-[#14141A]/65">
                 Questions about a repair, a stone, or a surprise proposal? We're
@@ -329,7 +329,7 @@ export function HomeClient({
               </p>
               <a
                 href={`tel:${siteConfig.phone.replace(/\D/g, "")}`}
-                className="mt-3 inline-block text-sm font-semibold text-[#B08D3E] hover:underline"
+                className="mt-3 inline-block text-sm font-semibold text-[#C68A17] hover:underline"
               >
                 {siteConfig.phone}
               </a>
@@ -357,7 +357,7 @@ export function HomeClient({
             {testimonials.slice(0, 3).map((t) => (
               <StaggerItem key={t.author}>
                 <figure className="flex h-full flex-col rounded-2xl border border-[#14141A]/10 bg-[#FFFDF8] p-7 shadow-sm">
-                  <div className="flex gap-1 text-[#B08D3E]">
+                  <div className="flex gap-1 text-[#C68A17]">
                     {Array.from({ length: 5 }).map((_, i) => (
                       <Star key={i} size={15} fill="currentColor" />
                     ))}
@@ -384,7 +384,7 @@ export function HomeClient({
             title="Frequently asked questions"
           />
           <div className="mx-auto mt-12 max-w-3xl">
-            <FAQAccordion items={faqs} variant="light" accentColor="#B08D3E" />
+            <FAQAccordion items={faqs} variant="light" accentColor="#C68A17" />
           </div>
         </Section>
       )}
