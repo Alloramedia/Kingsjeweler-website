@@ -19,8 +19,8 @@ interface CTASectionProps {
 }
 
 export function CTASection({
-  headline = "Ready to feed your crowd?",
-  subhead = "Tell us about your event — date, headcount, and vibe — and we'll put together a tailored menu and quote for you.",
+  headline = "Celebrating something special?",
+  subhead = "Stop by the store or send us a message — whether it's an engagement ring, a repair, or a piece designed just for you, we'll take care of it personally.",
   primaryLabel = CTA_PRIMARY.label,
   primaryHref = CTA_PRIMARY.href,
   secondaryLabel = CTA_SECONDARY_RESULTS.label,
@@ -41,12 +41,12 @@ export function CTASection({
       {/* Parallax background image */}
       <motion.div
         className="absolute inset-x-0 -inset-y-[30%] bg-cover bg-center will-change-transform"
-        style={{ y: bgY, backgroundImage: "url('/images/food/food-100.webp')" }}
+        style={{ y: bgY, backgroundImage: "url('/images/jewelry/jewel-02.webp')" }}
       />
       {/* Dark overlay for readability */}
       <div className="absolute inset-0 bg-black/70" />
       {/* Subtle teal tint overlay */}
-      <div className="absolute inset-0 bg-[#008080]/20" />
+      <div className="absolute inset-0 bg-[#1F3A5F]/20" />
 
       <div className="relative z-10 mx-auto max-w-3xl px-6 text-center lg:px-8">
         <motion.h2
@@ -76,7 +76,7 @@ export function CTASection({
         >
           <Link
             href={primaryHref}
-            className="inline-flex items-center rounded-full bg-[#008080] px-8 py-4 text-base font-bold text-white shadow-lg shadow-[#008080]/25 transition-all duration-300 hover:scale-[1.03] hover:shadow-xl hover:shadow-[#FF8C00]/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#008080] focus-visible:ring-offset-2 focus-visible:ring-offset-black/50"
+            className="inline-flex items-center rounded-full bg-[#1F3A5F] px-8 py-4 text-base font-bold text-white shadow-lg shadow-[#1F3A5F]/25 transition-all duration-300 hover:scale-[1.03] hover:shadow-xl hover:shadow-[#B08D3E]/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1F3A5F] focus-visible:ring-offset-2 focus-visible:ring-offset-black/50"
           >
             <Star size={18} className="mr-2" />
             {primaryLabel}
@@ -84,7 +84,7 @@ export function CTASection({
           {secondaryLabel && (
             <Link
               href={secondaryHref}
-              className="inline-flex items-center rounded-full border-2 border-white/30 px-8 py-4 text-base font-bold text-white transition-all duration-300 hover:border-[#FF8C00] hover:bg-[#FF8C00]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF8C00] focus-visible:ring-offset-2 focus-visible:ring-offset-black/50"
+              className="inline-flex items-center rounded-full border-2 border-white/30 px-8 py-4 text-base font-bold text-white transition-all duration-300 hover:border-[#B08D3E] hover:bg-[#B08D3E]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B08D3E] focus-visible:ring-offset-2 focus-visible:ring-offset-black/50"
             >
               {secondaryLabel}
               <ArrowRight size={18} className="ml-2" />

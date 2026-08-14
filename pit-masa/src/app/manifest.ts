@@ -2,14 +2,14 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Pit & Masa",
-    short_name: "Pit & Masa",
+    name: "Kings Jeweler",
+    short_name: "Kings Jeweler",
     description:
-      "Pit & Masa is a mobile BBQ & taco catering company for weddings, parties, corporate events, and holidays across Connecticut.",
+      "Kings Jeweler is a family jewelry store at The Shoppes at Buckland Hills in Manchester, CT — fine jewelry, engagement rings, custom design, watch batteries, and expert repairs.",
     start_url: "/",
     display: "standalone",
-    background_color: "#FEFCF5",
-    theme_color: "#1C1C1C",
+    background_color: "#FBF9F4",
+    theme_color: "#14141A",
     icons: [
       {
         src: "/icon.png",

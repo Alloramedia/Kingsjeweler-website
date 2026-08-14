@@ -17,7 +17,7 @@ import "server-only";
  *   GITHUB_TOKEN          Fine-grained PAT (or GitHub App token) scoped to
  *                         this repo with `Contents: read & write`.
  * Optional env vars:
- *   GITHUB_CONTENT_REPO   "owner/name"  (default "Alloramedia/Pit-Masa")
+ *   GITHUB_CONTENT_REPO   "owner/name"  (default "Alloramedia/Kingsjeweler-website")
  *   GITHUB_CONTENT_PATH   path in repo  (default "pit-masa/content/overrides.json")
  *   GITHUB_CONTENT_BRANCH branch        (default "main")
  */
@@ -36,7 +36,7 @@ function getConfig(): RepoSyncConfig | null {
   if (!token) return null;
   return {
     token,
-    repo: process.env.GITHUB_CONTENT_REPO || "Alloramedia/Pit-Masa",
+    repo: process.env.GITHUB_CONTENT_REPO || "Alloramedia/Kingsjeweler-website",
     // Path is relative to the REPO ROOT. The Next.js app lives in the
     // `pit-masa/` subdirectory, so the committed backup the app reads is at
     // `pit-masa/content/overrides.json` — not the repo root.

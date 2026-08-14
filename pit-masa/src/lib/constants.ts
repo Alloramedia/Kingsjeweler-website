@@ -1,100 +1,94 @@
 export const siteConfig = {
-  name: "Pit & Masa",
+  name: "Kings Jeweler",
   description:
-    "Pit & Masa is a mobile smoke & taco catering company serving all of Connecticut — wood-fired BBQ, birria tacos, and chef-prepared meal prep for events, parties, holidays, and everyday meals.",
-  url: "https://www.pitandmasa.com",
+    "Kings Jeweler is a family jewelry store at The Shoppes at Buckland Hills in Manchester, Connecticut — fine jewelry, engagement rings, custom designs, watch batteries, and expert jewelry repair while you shop.",
+  // TODO: replace with the real domain before launch.
+  url: "https://www.kingsjewelerct.com",
   ogImage: "/og-image.jpg",
   portalUrl: "/contact",
-  email: "info@pitandmasa.com",
-  // TODO: replace the placeholder with the real public phone number before launch.
-  phone: "(000) 000-0000",
-  // Mobile food business — no public storefront. Serves all of Connecticut.
-  serviceArea: "Connecticut",
+  // TODO: replace the placeholder email with the real public email before launch.
+  email: "info@kingsjewelerct.com",
+  phone: "(917) 596-6388",
+  address: {
+    street: "194 Buckland Hills Dr",
+    suite: "The Shoppes at Buckland Hills",
+    city: "Manchester",
+    region: "CT",
+    zip: "06042",
+  },
+  serviceArea: "Greater Hartford, Connecticut",
   region: "CT",
   socials: {
-    facebook: "https://facebook.com/pitandmasa",
-    instagram: "https://instagram.com/pitandmasa",
-    linkedin: "https://linkedin.com/company/pitandmasa",
-    youtube: "https://youtube.com/@pitandmasa",
-    tiktok: "https://www.tiktok.com/@pitandmasa",
+    facebook: "https://facebook.com/kingsjeweler",
+    instagram: "https://instagram.com/kingsjeweler",
+    linkedin: "https://linkedin.com/company/kingsjeweler",
+    youtube: "https://youtube.com/@kingsjeweler",
+    tiktok: "https://www.tiktok.com/@kingsjeweler",
   },
-  gmb: "https://www.pitandmasa.com",
-  foundingDate: "2020",
+  // TODO: replace with the real Google Business Profile share link.
+  gmb: "https://maps.google.com/?q=Kings+Jeweler+Buckland+Hills+Manchester+CT",
+  foundingDate: "2000",
   owner: {
-    name: 'Ryan "Buck" Buchanan',
-    title: "Owner & Pitmaster",
-    bio: "Buck is the owner and pitmaster behind Pit & Masa, a mobile BBQ and taco catering company serving events across Connecticut since 2020. He leads every cook personally — from dialing in wood-fired smoke on a brisket to pressing fresh masa for birria tacos — drawing on years of hands-on experience catering weddings, corporate events, festivals, and backyard parties throughout the state.",
+    name: "The Kings Jeweler Family",
+    title: "Owners & Master Jewelers",
+    bio: "Kings Jeweler is a family-run jewelry store inside The Shoppes at Buckland Hills in Manchester, Connecticut. From engagement rings and custom pieces to same-day watch batteries and expert repairs, every customer is helped personally by a jeweler who cares about getting it right.",
   },
 };
 
 /* ------------------------------------------------------------------ */
 /*  Brand imagery — swap these filenames to change site photography.   */
-/*  Photos live in /public/images/food/                                */
+/*  Placeholder art lives in /public/images/jewelry/                   */
 /* ------------------------------------------------------------------ */
 export const brandImages = {
-  heroHome: "/images/food/food-008.webp", // street tacos
-  heroCatering: "/images/food/food-111.webp", // birria tacos
-  heroEvents: "/images/food/food-028.webp", // catering taco spread
-  menuFeature: "/images/food/food-076.webp", // street tacos on board
-  aboutFeature: "/images/food/food-038.webp", // smoked pit BBQ ribs board
-  owner: "/images/food/food-070.webp", // pitmaster portrait
+  heroHome: "/images/jewelry/jewel-01.webp",
+  heroCatering: "/images/jewelry/jewel-02.webp",
+  heroEvents: "/images/jewelry/jewel-03.webp",
+  menuFeature: "/images/jewelry/jewel-04.webp",
+  aboutFeature: "/images/jewelry/jewel-05.webp",
+  owner: "/images/jewelry/jewel-06.webp",
   // Rotating hero/banner photos — used by the HeroSlideshow background.
   heroSlides: [
-    "/images/food/food-008.webp", // street tacos
-    "/images/food/food-111.webp", // birria tacos
-    "/images/food/food-028.webp", // catering taco spread
-    "/images/food/food-038.webp", // smoked pit BBQ ribs board
-    "/images/food/food-071.webp", // catering buffet spread
+    "/images/jewelry/jewel-01.webp",
+    "/images/jewelry/jewel-02.webp",
+    "/images/jewelry/jewel-03.webp",
+    "/images/jewelry/jewel-04.webp",
   ],
-  // Curated set reused across home offerings, events, and catering cards.
+  // Curated set reused across home offerings and feature cards.
   cards: [
-    "/images/food/food-025.webp", // taco bar spread — parties
-    "/images/food/food-086.webp", // grilled & smoked meats — holiday meats / weddings
-    "/images/food/food-115.webp", // ready-to-eat meal box — meal prep / corporate
-    "/images/food/food-071.webp", // catering buffet spread — gatherings
-    "/images/food/food-108.webp", // birria quesadilla — community
-    "/images/food/food-116.webp", // loaded meal box & fries — game day / casual
+    "/images/jewelry/jewel-07.webp",
+    "/images/jewelry/jewel-08.webp",
+    "/images/jewelry/jewel-09.webp",
+    "/images/jewelry/jewel-10.webp",
+    "/images/jewelry/jewel-11.webp",
+    "/images/jewelry/jewel-12.webp",
   ],
 } as const;
 
 /* ------------------------------------------------------------------ */
-/*  Shared blurred placeholder (warm dark) for next/image             */
-/*  Improves perceived load speed — shown while photos stream in.     */
+/*  Shared blurred placeholder (dark) for next/image                   */
+/*  Improves perceived load speed — shown while photos stream in.      */
 /* ------------------------------------------------------------------ */
 export const BLUR_DATA_URL =
   "data:image/webp;base64,UklGRigAAABXRUJQVlA4IBwAAABwAQCdASoIAAYAA4BaJZwCdAFAAAD+8qi1OKAA";
 
 /* ------------------------------------------------------------------ */
-/*  Local SEO — Connecticut service area                               */
+/*  Local SEO — Greater Hartford / North-Central Connecticut           */
 /* ------------------------------------------------------------------ */
 export const serviceAreas = {
-  counties: [
-    "Hartford County",
-    "New Haven County",
-    "Fairfield County",
-    "Middlesex County",
-    "Litchfield County",
-    "Tolland County",
-    "New London County",
-    "Windham County",
-  ],
+  counties: ["Hartford County", "Tolland County"],
   towns: [
-    "Hartford",
-    "New Haven",
-    "Stamford",
-    "Bridgeport",
-    "Waterbury",
-    "Danbury",
-    "New Britain",
-    "West Hartford",
     "Manchester",
-    "Meriden",
-    "Middletown",
-    "Bristol",
-    "Southington",
+    "South Windsor",
+    "East Hartford",
+    "Vernon",
     "Glastonbury",
-    "Farmington",
-    "Cheshire",
+    "Hartford",
+    "West Hartford",
+    "Bolton",
+    "Ellington",
+    "Windsor",
+    "Coventry",
+    "Tolland",
   ],
 } as const;
 
@@ -107,62 +101,30 @@ export interface NavLink {
 }
 
 export const navLinks: NavLink[] = [
-  { label: "Menu", href: "/menu" },
-  { label: "Festivals", href: "/festivals" },
-  {
-    label: "Catering",
-    href: "/catering",
-    children: [
-      { label: "Catering Overview", href: "/catering" },
-      { label: "The Pit Trailer", href: "/catering/trailer" },
-      { label: "The Food Truck", href: "/catering/truck" },
-      { label: "The Cocktail Cart", href: "/catering/cocktail-cart" },
-    ],
-  },
-  {
-    label: "Recipes",
-    href: "/recipes",
-    children: [
-      { label: "All Recipes", href: "/recipes" },
-      { label: "From the Blog", href: "/blog" },
-    ],
-  },
+  { label: "Services", href: "/services" },
   { label: "Gallery", href: "/gallery" },
-  {
-    label: "About",
-    href: "/about",
-    children: [
-      { label: "Our Story", href: "/about" },
-      { label: "Farm to Table", href: "/farm-to-table" },
-    ],
-  },
+  { label: "About", href: "/about" },
+  { label: "Visit Us", href: "/contact" },
 ];
 
 export const footerLinks = {
   services: [
-    { label: "Smoked BBQ Catering", href: "/menu" },
-    { label: "Festival & Street Menu", href: "/festivals" },
-    { label: "Taco Bar & Birria", href: "/catering" },
-    { label: "Holiday Meal Packs", href: "/catering" },
-    { label: "Meal Prep & Pre-Made Meals", href: "/menu" },
+    { label: "Engagement Rings", href: "/services" },
+    { label: "Custom Jewelry Design", href: "/services" },
+    { label: "Jewelry Repair", href: "/services" },
+    { label: "Watch Repair & Batteries", href: "/services" },
+    { label: "Gold Buying & Appraisals", href: "/services" },
   ],
   company: [
     { label: "About", href: "/about" },
-    { label: "Farm to Table", href: "/farm-to-table" },
-    { label: "Menu", href: "/menu" },
-    { label: "Catering", href: "/catering" },
-    { label: "Recipes", href: "/recipes" },
-    { label: "Blog", href: "/blog" },
+    { label: "Services", href: "/services" },
     { label: "Gallery", href: "/gallery" },
     { label: "Contact", href: "/contact" },
   ],
   industries: [
-    { label: "Party & Event Catering", href: "/catering" },
-    { label: "Holiday Catering", href: "/catering" },
-    { label: "Weekly Meal Prep", href: "/menu" },
-    { label: "Pre-Made Meals", href: "/menu" },
+    { label: "Engagements & Weddings", href: "/services" },
+    { label: "Anniversaries & Gifts", href: "/services" },
+    { label: "Ring Sizing & Restoration", href: "/services" },
   ],
-  personal: [
-    { label: "Get in Touch", href: "/contact" },
-  ],
+  personal: [{ label: "Get in Touch", href: "/contact" }],
 };

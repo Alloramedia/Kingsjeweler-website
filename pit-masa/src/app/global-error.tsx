@@ -9,7 +9,7 @@ export default function GlobalError({
 }) {
   return (
     <html lang="en">
-      <body style={{ backgroundColor: "#FEFCF5", color: "#1C1C1C", fontFamily: "system-ui, sans-serif", padding: "2rem" }}>
+      <body style={{ backgroundColor: "#FBF9F4", color: "#14141A", fontFamily: "system-ui, sans-serif", padding: "2rem" }}>
         <h1 style={{ color: "#ef4444" }}>Something went wrong</h1>
         <p style={{ color: "#fbbf24", fontSize: "0.875rem", marginTop: "1rem" }}>
           <strong>Error:</strong> {error?.message || "Unknown error"}
@@ -38,7 +38,7 @@ export default function GlobalError({
           style={{
             marginTop: "1.5rem",
             padding: "0.75rem 2rem",
-            backgroundColor: "#FF8C00",
+            backgroundColor: "#B08D3E",
             color: "#fff",
             border: "none",
             borderRadius: "9999px",

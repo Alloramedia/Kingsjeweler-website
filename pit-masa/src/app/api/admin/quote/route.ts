@@ -133,10 +133,10 @@ export async function POST(request: NextRequest) {
 
   // Brand palette mirrors the website: cream page, dark espresso bands with
   // a diamond-plate metal texture, and teal accents (matching the logo ring).
-  const teal = hex(colors?.secondary, "#008080");
-  const espresso = hex(colors?.dark, "#1C1C1C");
+  const teal = hex(colors?.secondary, "#1F3A5F");
+  const espresso = hex(colors?.dark, "#14141A");
   const ink = espresso;
-  const cream = rgb(0.996, 0.988, 0.961); // #FEFCF5
+  const cream = rgb(0.996, 0.988, 0.961); // #FBF9F4
   const creamSoft = rgb(0.972, 0.957, 0.925);
   const muted = rgb(0.42, 0.38, 0.33);
   const faint = rgb(0.58, 0.54, 0.49);
@@ -195,7 +195,7 @@ export async function POST(request: NextRequest) {
     loadPublicBytes("fonts", "Inter-SemiBold.ttf"),
     loadPublicBytes("fonts", "ZillaSlab-SemiBold.ttf"),
     loadPublicBytes("fonts", "ZillaSlab-Bold.ttf"),
-    loadPublicBytes("images", "pit-masa-badge.png"),
+    loadPublicBytes("images", "kings-jeweler-badge.png"),
     loadPublicBytes("images", "Steel_.png"),
   ]);
 
@@ -271,7 +271,7 @@ export async function POST(request: NextRequest) {
       textRight(p, "CATERING QUOTE  ·  continued", PAGE_W - MARGIN, yb + h / 2 - 4, 11, serif, onDark);
     } else {
       textRight(p, "CATERING QUOTE", PAGE_W - MARGIN, yb + h - 54, 17, serif, onDark);
-      textRight(p, "WOOD-FIRED BBQ  ·  LIVE TACO BAR  ·  CONNECTICUT", PAGE_W - MARGIN, yb + h - 70, 7.5, bold, teal);
+      textRight(p, "FINE JEWELRY  ·  REPAIRS  ·  MANCHESTER, CT", PAGE_W - MARGIN, yb + h - 70, 7.5, bold, teal);
       textRight(p, `Quote  ${quoteNumber}`, PAGE_W - MARGIN, yb + 42, 9.5, bold, onDark);
       textRight(p, dateStr, PAGE_W - MARGIN, yb + 27, 9, font, rgb(0.74, 0.72, 0.68));
     }
@@ -290,7 +290,7 @@ export async function POST(request: NextRequest) {
     const line1 = `${phone}    ·    ${email}    ·    ${website}`;
     const w1 = font.widthOfTextAtSize(line1, 8.5);
     p.drawText(line1, { x: (PAGE_W - w1) / 2, y: 20, size: 8.5, font, color: onDark });
-    const line2 = `${siteConfig.name}  ·  Mobile BBQ & Live Taco Catering  ·  Connecticut`;
+    const line2 = `${siteConfig.name}  ·  Fine Jewelry & Repairs  ·  Manchester, CT`;
     const w2 = bold.widthOfTextAtSize(line2, 7.5);
     p.drawText(line2, { x: (PAGE_W - w2) / 2, y: 9, size: 7.5, font: bold, color: teal });
   };

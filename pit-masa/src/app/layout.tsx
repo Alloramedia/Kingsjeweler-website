@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Zilla_Slab, Inter, Sancreek } from "next/font/google";
+import { Zilla_Slab, Inter, Cinzel } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { LocalBusinessSchema, OrganizationSchema } from "@/components/StructuredData";
@@ -26,37 +26,37 @@ const inter = Inter({
   weight: ["300", "400", "500", "600", "700"],
 });
 
-// Decorative Western display face from the brand logo — used for hero/accent
-// headlines via the `font-display` utility, not body or default headings.
-const sancreek = Sancreek({
+// Elegant engraved-style display face for hero/accent headlines via the
+// `font-display` utility — not body or default headings.
+const cinzel = Cinzel({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: "400",
+  weight: ["400", "600"],
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.pitandmasa.com"),
+  metadataBase: new URL("https://www.kingsjewelerct.com"),
   title: {
-    default: "Pit & Masa | Mobile Smoke & Taco Catering in Connecticut",
-    template: "%s | Pit & Masa",
+    default: "Kings Jeweler | Jewelry Store at Buckland Hills in Manchester, CT",
+    template: "%s | Kings Jeweler",
   },
   description:
-    "Pit & Masa is a mobile smoke & taco catering company serving all of Connecticut — wood-fired BBQ, birria tacos, holiday meal packs, and weekly meal prep for events, parties, and everyday meals.",
+    "Kings Jeweler is a family jewelry store at The Shoppes at Buckland Hills in Manchester, CT — fine jewelry, engagement rings, custom design, watch batteries, jewelry repair, and gold buying.",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://www.pitandmasa.com",
-    siteName: "Pit & Masa",
-    title: "Pit & Masa | Mobile Smoke & Taco Catering in Connecticut",
+    url: "https://www.kingsjewelerct.com",
+    siteName: "Kings Jeweler",
+    title: "Kings Jeweler | Jewelry Store at Buckland Hills in Manchester, CT",
     description:
-      "Wood-fired BBQ, birria tacos, holiday meal packs, and meal prep for events, parties, and everyday meals across Connecticut.",
+      "Fine jewelry, engagement rings, custom design, watch batteries, and expert repairs — inside The Shoppes at Buckland Hills, Manchester, CT.",
     images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Pit & Masa | Smoke & Taco Catering",
+    title: "Kings Jeweler | Jewelry Store in Manchester, CT",
     description:
-      "Wood-fired BBQ, birria tacos, holiday meal packs, and meal prep for events, parties, and everyday meals across Connecticut.",
+      "Fine jewelry, engagement rings, custom design, watch batteries, and expert repairs — inside The Shoppes at Buckland Hills, Manchester, CT.",
     images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
   },
   robots: {
@@ -79,7 +79,7 @@ export default async function RootLayout({
   return (
     <html lang="en" data-scroll-behavior="smooth">
       <body
-        className={`${zillaSlab.variable} ${inter.variable} ${sancreek.variable} antialiased`}
+        className={`${zillaSlab.variable} ${inter.variable} ${cinzel.variable} antialiased`}
         // Suppress body-level hydration warnings caused by browser extensions
         // injecting attributes (e.g. Grammarly, password managers, dark-mode).
         suppressHydrationWarning
@@ -89,7 +89,7 @@ export default async function RootLayout({
         )}
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-100 focus:rounded-full focus:bg-[#FF8C00] focus:px-6 focus:py-3 focus:text-white focus:shadow-lg"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-100 focus:rounded-full focus:bg-[#B08D3E] focus:px-6 focus:py-3 focus:text-white focus:shadow-lg"
         >
           Skip to main content
         </a>

@@ -4,80 +4,44 @@
  */
 
 export const CTA_PRIMARY = {
-  label: "Book Catering",
+  label: "Visit or Contact Us",
   href: "/contact",
 } as const;
 
 export const CTA_SECONDARY_RESULTS = {
-  label: "View Event Gallery",
+  label: "View Our Work",
   href: "/gallery",
 } as const;
 
 /**
- * Catering inquiry service options shown in the contact form. These mirror the
- * real booking model: the three mobile setups (Pit Trailer, Food Truck,
- * Cocktail Cart), the Trailer + Truck bundle ("The Full Spread"), and the
- * off-event meal programs.
+ * Service options shown in the contact form — mirrors what the store
+ * actually does day to day.
  */
 export const CATERING_HELP_OPTIONS = [
-  "Pit Trailer (Wood-Fired BBQ)",
-  "Food Truck (Live Taco Bar)",
-  "The Full Spread (Trailer + Truck)",
-  "Holiday Meal Pack",
-  "Weekly Meal Prep",
-  "Pre-Made Meals",
-  "Not Sure Yet",
+  "Engagement Rings & Bridal",
+  "Custom Jewelry Design",
+  "Jewelry Repair",
+  "Watch Repair & Batteries",
+  "Ring Sizing",
+  "Gold Buying / Trade-In",
+  "Appraisal",
+  "Something Else / Not Sure",
 ] as const;
 
 /**
- * Off-event offerings that are delivered or picked up rather than catered
- * on-site. The contact wizard adapts its event-specific questions for these.
+ * Requests that are typically handled same-day at the counter rather than
+ * as a longer project. The contact wizard tones down project questions for these.
  */
 export const MEAL_PROGRAM_OPTIONS = [
-  "Holiday Meal Pack",
-  "Weekly Meal Prep",
-  "Pre-Made Meals",
-] as const;
-
-/** Estimated guest-count ranges shown in the contact form. */
-export const GUEST_COUNT_OPTIONS = [
-  "Under 25 guests",
-  "25–50 guests",
-  "50–100 guests",
-  "100–200 guests",
-  "200+ guests",
-  "Not sure yet",
-] as const;
-
-/** Occasion / event-type options shown in the contact form. */
-export const EVENT_TYPE_OPTIONS = [
-  "Wedding",
-  "Birthday party",
-  "Anniversary",
-  "Graduation",
-  "Family reunion",
-  "Corporate / office event",
-  "Holiday party",
-  "Backyard BBQ / cookout",
-  "Game day / tailgate",
-  "Baby / bridal shower",
-  "Memorial / celebration of life",
-  "Fundraiser / community event",
-  "Other / not sure yet",
-] as const;
-
-/** How the food is served — drives staffing, setup, and pricing. */
-export const SERVICE_STYLE_OPTIONS = [
-  "Drop-off (we deliver, you serve)",
-  "Buffet / self-serve setup",
-  "On-site cooking / live station",
-  "Full-service (staff, setup & cleanup)",
-  "Not sure yet",
+  "Watch Repair & Batteries",
+  "Ring Sizing",
+  "Gold Buying / Trade-In",
 ] as const;
 
 /** Ballpark budget ranges shown in the contact form. */
-export const BUDGET_OPTIONS = [
-  "Under $500",
+export const GUEST_COUNT_OPTIONS = [
+  "Under $250",
+  "$250 – $500",
   "$500 – $1,000",
   "$1,000 – $2,500",
   "$2,500 – $5,000",
@@ -85,25 +49,60 @@ export const BUDGET_OPTIONS = [
   "Not sure yet",
 ] as const;
 
-/** On-site setup needs — multi-select. Helps us scope staffing & equipment. */
-export const SETUP_NEEDS_OPTIONS = [
-  "Tables & linens",
-  "Plates, utensils & napkins",
-  "Serving / wait staff",
-  "Tent or shade cover",
-  "Power / generator access on-site",
-  "Add a Cocktail Cart / bar (coming soon)",
-  "We've got setup covered",
+/** Occasion options shown in the contact form. */
+export const EVENT_TYPE_OPTIONS = [
+  "Engagement / proposal",
+  "Wedding bands",
+  "Anniversary",
+  "Birthday gift",
+  "Holiday gift",
+  "Graduation",
+  "Just because",
+  "Repair or restoration",
+  "Other / not sure yet",
 ] as const;
 
-/** How the guest heard about Pit & Masa — helps us focus our outreach. */
+/** Type of piece the visit is about. */
+export const SERVICE_STYLE_OPTIONS = [
+  "Ring",
+  "Necklace / pendant",
+  "Bracelet",
+  "Earrings",
+  "Watch",
+  "Chain",
+  "Other / multiple pieces",
+] as const;
+
+/** Ballpark budget ranges shown in the contact form. */
+export const BUDGET_OPTIONS = [
+  "Under $250",
+  "$250 – $500",
+  "$500 – $1,000",
+  "$1,000 – $2,500",
+  "$2,500 – $5,000",
+  "$5,000+",
+  "Not sure yet",
+] as const;
+
+/** Metal / material preferences — multi-select. */
+export const SETUP_NEEDS_OPTIONS = [
+  "Yellow gold",
+  "White gold",
+  "Rose gold",
+  "Platinum",
+  "Sterling silver",
+  "Diamonds",
+  "Colored gemstones",
+  "Not sure yet",
+] as const;
+
+/** How the customer heard about Kings Jeweler. */
 export const HOW_HEARD_OPTIONS = [
   "Google search",
+  "Walked by in the mall",
   "Instagram",
   "Facebook",
-  "TikTok",
   "Friend or family referral",
-  "Tasted us at a festival or pop-up",
-  "Past Pit & Masa customer",
+  "Past Kings Jeweler customer",
   "Other",
 ] as const;

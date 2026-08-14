@@ -423,7 +423,7 @@ function ContactEditor({ data }: { data: SiteContent["contact"] }) {
     <div className="space-y-5">
       <DraftBanner available={draftAvailable} onRestore={restoreDraft} onDiscard={discardDraft} />
       <Field label="Phone number" value={d.phone} onChange={(v) => setD({ ...d, phone: v })} placeholder="(203) 555-0199" max={40} />
-      <Field label="Email address" type="email" value={d.email} onChange={(v) => setD({ ...d, email: v })} placeholder="info@pitandmasa.com" max={120} />
+      <Field label="Email address" type="email" value={d.email} onChange={(v) => setD({ ...d, email: v })} placeholder="info@kingsjewelerct.com" max={120} />
       <SaveBar status={status} dirty={dirty} onSave={() => save()} viewUrl="/contact" />
     </div>
   );
@@ -443,7 +443,7 @@ function SocialsEditor({ data }: { data: SocialLinks }) {
       <DraftBanner available={draftAvailable} onRestore={restoreDraft} onDiscard={discardDraft} />
       <p className="text-sm text-slate-500">Paste the full web address of each page (starts with https://). Leave blank to hide one.</p>
       {rows.map((r) => (
-        <Field key={r.key} label={r.label} value={d[r.key]} onChange={(v) => setD({ ...d, [r.key]: v })} placeholder={`https://${r.key}.com/pitandmasa`} max={300} />
+        <Field key={r.key} label={r.label} value={d[r.key]} onChange={(v) => setD({ ...d, [r.key]: v })} placeholder={`https://${r.key}.com/kingsjeweler`} max={300} />
       ))}
       <SaveBar status={status} dirty={dirty} onSave={() => save()} viewUrl="/" />
     </div>
@@ -480,7 +480,7 @@ function HeroEditor({ data }: { data: HeroOverride }) {
     <div className="space-y-5">
       <DraftBanner available={draftAvailable} onRestore={restoreDraft} onDiscard={discardDraft} />
       <p className="text-sm text-slate-500">This is the big headline and intro line on the home page.</p>
-      <Field label="Headline" value={d.title ?? ""} onChange={(v) => setD({ ...d, title: v })} placeholder="Smoke. Masa. Repeat." max={160} hint="Tip: press Enter inside this won't work — keep it to one line." />
+      <Field label="Headline" value={d.title ?? ""} onChange={(v) => setD({ ...d, title: v })} placeholder="Manchester's Family Jeweler" max={160} hint="Tip: press Enter inside this won't work — keep it to one line." />
       <Area label="Intro line" value={d.subtitle ?? ""} onChange={(v) => setD({ ...d, subtitle: v })} rows={3} placeholder="Mobile smoke & taco catering…" max={400} />
       <SaveBar status={status} dirty={dirty} onSave={() => save({ home: d })} viewUrl="/" />
     </div>
@@ -852,7 +852,7 @@ function RecipesEditor({ data }: { data: Recipe[] }) {
 
 const emptyPost = (): BlogPost => ({
   slug: "", title: "", excerpt: "", category: "Stories", image: "/images/food/food-008.webp",
-  author: "Pit & Masa", date: new Date().toISOString().slice(0, 10), readTime: "4 min read", body: [],
+  author: "Kings Jeweler", date: new Date().toISOString().slice(0, 10), readTime: "4 min read", body: [],
 });
 
 function BlogEditor({ data }: { data: BlogPost[] }) {
@@ -1138,7 +1138,7 @@ function AnnouncementEditor({ data }: { data: Announcement }) {
       {d.enabled && d.message.trim() && (
         <div>
           <p className="mb-1.5 text-xs font-semibold uppercase tracking-wide text-slate-400">Preview</p>
-          <div className="rounded-xl bg-[#FF8C00] px-4 py-2.5 text-center text-sm font-semibold text-[#1C1C1C]">{d.message}</div>
+          <div className="rounded-xl bg-[#B08D3E] px-4 py-2.5 text-center text-sm font-semibold text-[#14141A]">{d.message}</div>
         </div>
       )}
       <SaveBar status={status} dirty={dirty} onSave={() => save()} viewUrl="/" />
@@ -1556,7 +1556,7 @@ function MessagesPanel({ onBack, onChanged }: { onBack: () => void; onChanged?: 
                     </div>
                     <p className="text-xs text-slate-400">Received {new Date(m.ts).toLocaleString()}</p>
                     <div className="flex flex-wrap items-center gap-2 pt-1">
-                      <a href={`mailto:${m.email}?subject=${encodeURIComponent("Re: Your Pit & Masa inquiry")}`} className="rounded-lg bg-orange-600 px-4 py-2 text-sm font-semibold text-white hover:bg-orange-700">Reply by email</a>
+                      <a href={`mailto:${m.email}?subject=${encodeURIComponent("Re: Your Kings Jeweler inquiry")}`} className="rounded-lg bg-orange-600 px-4 py-2 text-sm font-semibold text-white hover:bg-orange-700">Reply by email</a>
                       <button
                         onClick={() => {
                           const detail = (label: string) => m.details.find((d) => d.label === label)?.value ?? "";
@@ -2788,7 +2788,7 @@ function AdminInner({
       <header className="border-b border-slate-200 bg-white">
         <div className="mx-auto flex max-w-5xl items-center justify-between gap-3 px-4 py-2.5 sm:px-6">
           <button onClick={goHome} className="min-w-0 text-left">
-            <h1 className="truncate text-base font-bold text-slate-900">Pit &amp; Masa — Site Editor</h1>
+            <h1 className="truncate text-base font-bold text-slate-900">Kings Jeweler — Site Editor</h1>
             <p className="hidden text-[11px] text-slate-500 sm:block">Edits save as a draft — preview, then publish to go live.</p>
           </button>
           <div className="flex items-center gap-0.5">

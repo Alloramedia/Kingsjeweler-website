@@ -6,28 +6,28 @@ import { FAQSchema, ReviewSchema } from "@/components/StructuredData";
 
 const baseMetadata: Metadata = {
   title: {
-    absolute: "Pit & Masa | Mobile Smoke & Taco Catering in Connecticut",
+    absolute: "Kings Jeweler | Jewelry Store at Buckland Hills in Manchester, CT",
   },
   description:
-    "Pit & Masa is a Connecticut mobile BBQ & taco catering company — wood-fired smoked brisket, birria tacos, build-your-own taco bars, holiday meal packs, and weekly meal prep for parties, weddings, and corporate events.",
+    "Kings Jeweler is a family jewelry store at The Shoppes at Buckland Hills in Manchester, CT — fine jewelry, engagement rings, custom design, watch batteries, jewelry repair, and gold buying.",
   alternates: {
-    canonical: "https://www.pitandmasa.com",
+    canonical: "https://www.kingsjewelerct.com",
   },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://www.pitandmasa.com",
-    siteName: "Pit & Masa",
-    title: "Pit & Masa | Mobile Smoke & Taco Catering in Connecticut",
+    url: "https://www.kingsjewelerct.com",
+    siteName: "Kings Jeweler",
+    title: "Kings Jeweler | Jewelry Store at Buckland Hills in Manchester, CT",
     description:
-      "Wood-fired BBQ, birria tacos, taco bars, holiday meal packs, and weekly meal prep — mobile catering across Connecticut.",
+      "Fine jewelry, engagement rings, custom design, watch batteries, and expert repairs — inside The Shoppes at Buckland Hills, Manchester, CT.",
     images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Pit & Masa | Smoke & Taco Catering in Connecticut",
+    title: "Kings Jeweler | Jewelry Store in Manchester, CT",
     description:
-      "Wood-fired BBQ, birria tacos, taco bars, holiday meal packs, and weekly meal prep — mobile catering across Connecticut.",
+      "Fine jewelry, engagement rings, custom design, watch batteries, and expert repairs — inside The Shoppes at Buckland Hills, Manchester, CT.",
     images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
   },
 };
@@ -38,7 +38,8 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function HomePage() {
-  const { hero, recipes, blog, brandImages, testimonials, faqs, serviceTowns } = await getSiteContent();
+  const { hero, brandImages, testimonials, faqs, serviceTowns, hours } =
+    await getSiteContent();
   ReactDOM.preload(brandImages.heroHome, { as: "image" });
   return (
     <>
@@ -46,7 +47,14 @@ export default async function HomePage() {
       <ReviewSchema
         reviews={testimonials.map((t) => ({ author: t.author, body: t.body, rating: 5 }))}
       />
-      <HomeClient hero={hero.home} recipes={recipes} blogPosts={blog} brandImages={brandImages} testimonials={testimonials} faqs={faqs.home} serviceTowns={serviceTowns} />
+      <HomeClient
+        hero={hero.home}
+        brandImages={brandImages}
+        testimonials={testimonials}
+        faqs={faqs.home}
+        serviceTowns={serviceTowns}
+        hours={hours}
+      />
     </>
   );
 }

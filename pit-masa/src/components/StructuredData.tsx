@@ -5,7 +5,7 @@ export async function LocalBusinessSchema() {
   const { contact, socials } = await getSiteContent();
   const schema = {
     "@context": "https://schema.org",
-    "@type": "FoodEstablishment",
+    "@type": "JewelryStore",
     "@id": `${siteConfig.url}/#business`,
     name: siteConfig.name,
     description: siteConfig.description,
@@ -13,11 +13,12 @@ export async function LocalBusinessSchema() {
     telephone: contact.phone,
     email: contact.email,
     foundingDate: siteConfig.foundingDate,
-    servesCuisine: ["Barbecue", "Mexican", "Tacos", "American"],
-    // Mobile food business — serves clients across Connecticut, no public storefront.
     address: {
       "@type": "PostalAddress",
-      addressRegion: siteConfig.region,
+      streetAddress: siteConfig.address.street,
+      addressLocality: siteConfig.address.city,
+      addressRegion: siteConfig.address.region,
+      postalCode: siteConfig.address.zip,
       addressCountry: "US",
     },
     hasMap: siteConfig.gmb,
@@ -33,38 +34,37 @@ export async function LocalBusinessSchema() {
       jobTitle: siteConfig.owner.title,
     },
     knowsAbout: [
-      "Barbecue Catering",
-      "Smoked Meats",
-      "Brisket",
-      "Pulled Pork",
-      "Tacos",
-      "Birria Tacos",
-      "Taco Bar Catering",
-      "Mobile Food Catering",
-      "Event Catering",
-      "Party Catering",
-      "Holiday Catering",
-      "Meal Prep",
-      "Pre-Made Meals",
+      "Fine Jewelry",
+      "Engagement Rings",
+      "Wedding Bands",
+      "Custom Jewelry Design",
+      "Jewelry Repair",
+      "Ring Sizing",
+      "Watch Repair",
+      "Watch Batteries",
+      "Gold Buying",
+      "Jewelry Appraisals",
+      "Diamonds",
+      "Gemstones",
     ],
     hasOfferCatalog: {
       "@type": "OfferCatalog",
-      name: "Catering Services",
+      name: "Jewelry Services",
       itemListElement: [
         {
           "@type": "OfferCatalog",
-          name: "Event & Party Catering",
-          description: "Mobile smoked BBQ and taco bar catering for parties, weddings, birthdays, and corporate events across Connecticut.",
+          name: "Engagement Rings & Fine Jewelry",
+          description: "Diamond engagement rings, wedding bands, and fine jewelry in gold, silver, and platinum.",
         },
         {
           "@type": "OfferCatalog",
-          name: "Holiday Catering & Meal Packs",
-          description: "Smoked meats, taco spreads, and ready-to-serve holiday meal packages for family gatherings and celebrations.",
+          name: "Jewelry & Watch Repair",
+          description: "Ring sizing, chain soldering, stone setting, watch repair, and same-day watch batteries.",
         },
         {
           "@type": "OfferCatalog",
-          name: "Meal Prep & Pre-Made Meals",
-          description: "Weekly meal-prep plans and chef-prepared pre-made meals ready to heat and eat.",
+          name: "Gold Buying & Appraisals",
+          description: "Fair offers on gold, silver, and diamonds, plus written appraisals for insurance and estates.",
         },
       ],
     },
@@ -85,7 +85,7 @@ export async function OrganizationSchema() {
     "@type": "Organization",
     name: siteConfig.name,
     url: siteConfig.url,
-    logo: `${siteConfig.url}/images/pit-masa-badge.png`,
+    logo: `${siteConfig.url}/images/kings-jeweler-badge.png`,
     description: siteConfig.description,
     foundingDate: siteConfig.foundingDate,
     founder: {
@@ -103,16 +103,14 @@ export async function OrganizationSchema() {
     },
     sameAs: [...Object.values(socials), siteConfig.gmb],
     knowsAbout: [
-      "Barbecue Catering",
-      "Smoked Meats",
-      "Tacos",
-      "Birria Tacos",
-      "Mobile Food Catering",
-      "Event Catering",
-      "Party Catering",
-      "Holiday Catering",
-      "Meal Prep",
-      "Pre-Made Meals",
+      "Fine Jewelry",
+      "Engagement Rings",
+      "Custom Jewelry Design",
+      "Jewelry Repair",
+      "Watch Repair",
+      "Watch Batteries",
+      "Gold Buying",
+      "Jewelry Appraisals",
     ],
   };
 
@@ -302,7 +300,7 @@ export function ArticleSchema({
       name: siteConfig.name,
       logo: {
         "@type": "ImageObject",
-        url: `${siteConfig.url}/images/pit-masa-badge.png`,
+        url: `${siteConfig.url}/images/kings-jeweler-badge.png`,
       },
     },
     mainEntityOfPage: {
@@ -472,7 +470,7 @@ export function VideoObjectSchema({
       name: siteConfig.name,
       logo: {
         "@type": "ImageObject",
-        url: `${siteConfig.url}/images/pit-masa-badge.png`,
+        url: `${siteConfig.url}/images/kings-jeweler-badge.png`,
       },
     },
   };
@@ -524,7 +522,7 @@ export function CaseStudySchema({
       name: siteConfig.name,
       logo: {
         "@type": "ImageObject",
-        url: `${siteConfig.url}/images/pit-masa-badge.png`,
+        url: `${siteConfig.url}/images/kings-jeweler-badge.png`,
       },
     },
     mainEntityOfPage: {

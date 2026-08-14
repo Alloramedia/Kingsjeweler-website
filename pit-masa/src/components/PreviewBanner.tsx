@@ -12,12 +12,12 @@ export function PreviewBanner() {
   const pathname = usePathname() || "/";
   const off = `/api/admin/preview/off?to=${encodeURIComponent(pathname)}`;
   return (
-    <div className="fixed inset-x-0 bottom-0 z-100 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 bg-[#1C1C1C] px-4 py-2.5 text-center text-sm font-semibold text-white">
+    <div className="fixed inset-x-0 bottom-0 z-100 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 bg-[#14141A] px-4 py-2.5 text-center text-sm font-semibold text-white">
       <span className="flex items-center gap-2">
-        <Eye size={16} className="text-[#FFA733]" />
+        <Eye size={16} className="text-[#D4B36A]" />
         Preview — this is how your draft will look. Visitors still see the published site.
       </span>
-      <a href={off} className="rounded-full bg-[#FF8C00] px-4 py-1 font-bold text-[#1C1C1C] hover:bg-[#FFA733]">
+      <a href={off} className="rounded-full bg-[#B08D3E] px-4 py-1 font-bold text-[#14141A] hover:bg-[#D4B36A]">
         Exit preview
       </a>
     </div>

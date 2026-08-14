@@ -5,24 +5,24 @@ import { BreadcrumbSchema } from "@/components/StructuredData";
 export const metadata: Metadata = {
   title: "Website Policies",
   description:
-    "Privacy policy and terms of service for Pit & Masa. Learn how we collect, use, and protect your information.",
+    "Privacy policy and terms of service for Kings Jeweler. Learn how we collect, use, and protect your information.",
   alternates: {
-    canonical: "https://www.pitandmasa.com/website-policies",
+    canonical: "https://www.kingsjewelerct.com/website-policies",
   },
   openGraph: {
-    title: "Website Policies | Pit & Masa",
+    title: "Website Policies | Kings Jeweler",
     description:
-      "Privacy policy and terms of service for Pit & Masa. Learn how we collect, use, and protect your information.",
-    url: "https://www.pitandmasa.com/website-policies",
-    siteName: "Pit & Masa",
+      "Privacy policy and terms of service for Kings Jeweler. Learn how we collect, use, and protect your information.",
+    url: "https://www.kingsjewelerct.com/website-policies",
+    siteName: "Kings Jeweler",
     type: "website",
     images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Website Policies | Pit & Masa",
+    title: "Website Policies | Kings Jeweler",
     description:
-      "Privacy policy and terms of service for Pit & Masa.",
+      "Privacy policy and terms of service for Kings Jeweler.",
     images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
   },
 };
@@ -36,9 +36,9 @@ export default function WebsitePoliciesPage() {
           { name: "Website Policies", href: "/website-policies" },
         ]}
       />
-      <section className="bg-[#1C1C1C] pt-32 pb-16 md:pt-40 md:pb-20">
+      <section className="bg-[#14141A] pt-32 pb-16 md:pt-40 md:pb-20">
         <div className="mx-auto max-w-4xl px-6 lg:px-8">
-          <p className="mb-3 text-sm font-heading font-semibold uppercase tracking-[0.2em] text-[#FF8C00]">
+          <p className="mb-3 text-sm font-heading font-semibold uppercase tracking-[0.2em] text-[#B08D3E]">
             Legal
           </p>
           <h1 className="font-display! text-4xl font-normal! uppercase text-white md:text-5xl">
@@ -50,21 +50,21 @@ export default function WebsitePoliciesPage() {
         </div>
       </section>
 
-      <section className="bg-[#FEFCF5] py-16 md:py-20">
+      <section className="bg-[#FBF9F4] py-16 md:py-20">
         <div className="mx-auto max-w-4xl px-6 lg:px-8">
-          <div className="prose max-w-none space-y-12 text-[#1C1C1C]/75 [&_h2]:font-heading [&_h2]:text-2xl [&_h2]:font-black [&_h2]:text-[#1C1C1C] [&_h2]:mt-12 [&_h2]:mb-4 [&_h3]:font-heading [&_h3]:text-lg [&_h3]:font-bold [&_h3]:text-[#1C1C1C] [&_h3]:mt-8 [&_h3]:mb-3 [&_p]:leading-relaxed [&_ul]:space-y-2 [&_li]:text-[#1C1C1C]/75">
+          <div className="prose max-w-none space-y-12 text-[#14141A]/75 [&_h2]:font-heading [&_h2]:text-2xl [&_h2]:font-black [&_h2]:text-[#14141A] [&_h2]:mt-12 [&_h2]:mb-4 [&_h3]:font-heading [&_h3]:text-lg [&_h3]:font-bold [&_h3]:text-[#14141A] [&_h3]:mt-8 [&_h3]:mb-3 [&_p]:leading-relaxed [&_ul]:space-y-2 [&_li]:text-[#14141A]/75">
             {/* PRIVACY POLICY */}
             <div id="privacy-policy">
               <h2>Privacy Policy</h2>
               <p>
-                Pit &amp; Masa (&ldquo;we,&rdquo; &ldquo;us,&rdquo; or
+                Kings Jeweler (&ldquo;we,&rdquo; &ldquo;us,&rdquo; or
                 &ldquo;our&rdquo;) respects your privacy and is committed to
                 protecting the personal information you share with us. This
                 Privacy Policy explains how we collect, use, and safeguard your
                 information when you visit our website at{" "}
                 <a
                   href={siteConfig.url}
-                  className="text-[#FF8C00] hover:underline"
+                  className="text-[#B08D3E] hover:underline"
                 >
                   {siteConfig.url}
                 </a>
@@ -75,19 +75,19 @@ export default function WebsitePoliciesPage() {
               <p>We may collect the following types of information:</p>
               <ul>
                 <li>
-                  <strong className="text-[#1C1C1C]">Personal Information:</strong>{" "}
+                  <strong className="text-[#14141A]">Personal Information:</strong>{" "}
                   Name, email address, phone number, business name, and any
                   other information you voluntarily provide through our contact
                   form.
                 </li>
                 <li>
-                  <strong className="text-[#1C1C1C]">Usage Data:</strong> We use
+                  <strong className="text-[#14141A]">Usage Data:</strong> We use
                   Google Analytics to collect anonymous data about how visitors
                   interact with our website, including pages visited, time
                   spent, and traffic sources.
                 </li>
                 <li>
-                  <strong className="text-[#1C1C1C]">Cookies:</strong> Our website
+                  <strong className="text-[#14141A]">Cookies:</strong> Our website
                   uses cookies to improve your browsing experience and for
                   analytics purposes.
                 </li>
@@ -124,7 +124,7 @@ export default function WebsitePoliciesPage() {
                 information. To exercise these rights, please contact us at{" "}
                 <a
                   href={`mailto:${siteConfig.email}`}
-                  className="text-[#FF8C00] hover:underline"
+                  className="text-[#B08D3E] hover:underline"
                 >
                   {siteConfig.email}
                 </a>
@@ -136,7 +136,7 @@ export default function WebsitePoliciesPage() {
             <div id="terms-of-service" className="pt-8 border-t border-white/10">
               <h2>Terms of Service</h2>
               <p>
-                By accessing and using the Pit &amp; Masa website, you accept and
+                By accessing and using the Kings Jeweler website, you accept and
                 agree to be bound by these Terms of Service.
               </p>
 
@@ -151,7 +151,7 @@ export default function WebsitePoliciesPage() {
               <h3>Intellectual Property</h3>
               <p>
                 All content on this website — including text, graphics, logos,
-                images, videos, and software — is the property of Pit &amp; Masa
+                images, videos, and software — is the property of Kings Jeweler
                 and is protected by copyright and intellectual property laws.
                 You may not reproduce, distribute, or create derivative works
                 without our express written permission.
@@ -168,7 +168,7 @@ export default function WebsitePoliciesPage() {
 
               <h3>Limitation of Liability</h3>
               <p>
-                Pit &amp; Masa shall not be liable for any indirect, incidental,
+                Kings Jeweler shall not be liable for any indirect, incidental,
                 special, or consequential damages arising from your use of this
                 website or our services.
               </p>
@@ -178,14 +178,14 @@ export default function WebsitePoliciesPage() {
                 For questions about these policies, please contact us at{" "}
                 <a
                   href={`mailto:${siteConfig.email}`}
-                  className="text-[#FF8C00] hover:underline"
+                  className="text-[#B08D3E] hover:underline"
                 >
                   {siteConfig.email}
                 </a>{" "}
                 or call{" "}
                 <a
                   href={`tel:${siteConfig.phone.replace(/\D/g, "")}`}
-                  className="text-[#FF8C00] hover:underline"
+                  className="text-[#B08D3E] hover:underline"
                 >
                   {siteConfig.phone}
                 </a>

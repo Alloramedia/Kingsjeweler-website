@@ -4,23 +4,23 @@ import { BreadcrumbSchema } from "@/components/StructuredData";
 import { getSiteContent, applySeo } from "@/lib/admin/schema";
 
 const baseMetadata: Metadata = {
-  title: "Contact Pit & Masa",
+  title: "Visit or Contact Kings Jeweler",
   description:
-    "Contact Pit & Masa to request a catering proposal, schedule a tasting, or ask about event menu options.",
+    "Visit Kings Jeweler at The Shoppes at Buckland Hills in Manchester, CT, or send us a message about repairs, custom design, engagement rings, or gold buying.",
   alternates: {
-    canonical: "https://www.pitandmasa.com/contact",
+    canonical: "https://www.kingsjewelerct.com/contact",
   },
   openGraph: {
-    title: "Contact Pit & Masa",
+    title: "Visit or Contact Kings Jeweler",
     description:
-      "Tell us about your date, guest count, and event style. We'll build a tailored catering proposal.",
+      "Stop by our store at Buckland Hills or send us a message — repairs, custom design, engagement rings, and gold buying.",
     images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Contact Pit & Masa",
+    title: "Visit or Contact Kings Jeweler",
     description:
-      "Tell us about your date, guest count, and event style. We'll build a tailored catering proposal.",
+      "Stop by our store at Buckland Hills or send us a message — repairs, custom design, engagement rings, and gold buying.",
     images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
   },
 };

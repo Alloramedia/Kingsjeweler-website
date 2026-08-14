@@ -7,48 +7,47 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <section className="flex min-h-screen items-center justify-center bg-[#FEFCF5]">
+    <section className="flex min-h-screen items-center justify-center bg-[#FBF9F4]">
       <div className="mx-auto max-w-lg px-6 text-center">
-        <p className="font-heading text-8xl font-black text-[#FF8C00] md:text-9xl">
+        <p className="font-heading text-8xl font-black text-[#B08D3E] md:text-9xl">
           404
         </p>
-        <h1 className="mt-4 font-display! text-3xl font-normal! uppercase text-[#1C1C1C] md:text-4xl">
+        <h1 className="mt-4 font-display! text-3xl font-normal! uppercase text-[#14141A] md:text-4xl">
           Page not found
         </h1>
-        <p className="mt-4 text-lg leading-relaxed text-[#1C1C1C]/65">
+        <p className="mt-4 text-lg leading-relaxed text-[#14141A]/65">
           The page you&apos;re looking for doesn&apos;t exist or has been moved.
           Let&apos;s get you back on track.
         </p>
         <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
           <Link
             href="/"
-            className="inline-flex items-center rounded-full bg-[#008080] px-8 py-4 text-base font-bold text-white shadow-lg shadow-[#008080]/25 transition-all duration-300 hover:scale-[1.03] hover:shadow-xl hover:shadow-[#FF8C00]/40"
+            className="inline-flex items-center rounded-full bg-[#1F3A5F] px-8 py-4 text-base font-bold text-white shadow-lg shadow-[#1F3A5F]/25 transition-all duration-300 hover:scale-[1.03] hover:shadow-xl hover:shadow-[#B08D3E]/40"
           >
             Back to Home
           </Link>
           <Link
             href="/contact"
-            className="inline-flex items-center rounded-full border-2 border-[#1C1C1C]/20 px-8 py-4 text-base font-bold text-[#1C1C1C] transition-all duration-300 hover:border-[#FF8C00] hover:bg-[#FF8C00]/10"
+            className="inline-flex items-center rounded-full border-2 border-[#14141A]/20 px-8 py-4 text-base font-bold text-[#14141A] transition-all duration-300 hover:border-[#B08D3E] hover:bg-[#B08D3E]/10"
           >
             Contact Us
           </Link>
         </div>
-        <div className="mt-12 border-t border-[#1C1C1C]/10 pt-8">
-          <p className="mb-4 text-sm font-medium uppercase tracking-widest text-[#1C1C1C]/40">
+        <div className="mt-12 border-t border-[#14141A]/10 pt-8">
+          <p className="mb-4 text-sm font-medium uppercase tracking-widest text-[#14141A]/40">
             Popular pages
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             {[
-              { label: "Menu", href: "/menu" },
-              { label: "Catering", href: "/catering" },
-              { label: "Festivals", href: "/festivals" },
+              { label: "Services", href: "/services" },
               { label: "Gallery", href: "/gallery" },
               { label: "About Us", href: "/about" },
+              { label: "Contact", href: "/contact" },
             ].map((page) => (
               <Link
                 key={page.href}
                 href={page.href}
-                className="rounded-full border border-[#1C1C1C]/15 px-4 py-2 text-sm text-[#1C1C1C]/65 transition-all hover:border-[#FF8C00] hover:text-[#FF8C00]"
+                className="rounded-full border border-[#14141A]/15 px-4 py-2 text-sm text-[#14141A]/65 transition-all hover:border-[#B08D3E] hover:text-[#B08D3E]"
               >
                 {page.label}
               </Link>

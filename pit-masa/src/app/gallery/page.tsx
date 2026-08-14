@@ -7,26 +7,26 @@ import { CTASection } from "@/components/CTASection";
 import { getSiteContent } from "@/lib/admin/schema";
 
 export const metadata: Metadata = {
-  title: "Gallery — BBQ & Taco Catering Photos",
+  title: "Gallery — Custom Jewelry & Work From Our Showcase",
   description:
-    "Browse photos of Pit & Masa's wood-fired smoked meats, loaded tacos, taco bars, and catered events across Connecticut.",
-  alternates: { canonical: "https://www.pitandmasa.com/gallery" },
+    "Browse custom pieces, restorations, and favorites from the Kings Jeweler showcase at The Shoppes at Buckland Hills in Manchester, CT.",
+  alternates: { canonical: "https://www.kingsjewelerct.com/gallery" },
   openGraph: {
-    title: "Gallery | Pit & Masa",
+    title: "Gallery | Kings Jeweler",
     description:
-      "Photos of Pit & Masa's smoked BBQ, tacos, and catered events across Connecticut.",
+      "Custom pieces, restorations, and favorites from the Kings Jeweler showcase in Manchester, CT.",
     images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
   },
 };
 
 function getGalleryImages(): string[] {
   try {
-    const dir = path.join(process.cwd(), "public/images/food");
+    const dir = path.join(process.cwd(), "public/images/jewelry");
     return fs
       .readdirSync(dir)
       .filter((f) => /\.(jpe?g|png|webp)$/i.test(f))
       .sort()
-      .map((f) => `/images/food/${f}`);
+      .map((f) => `/images/jewelry/${f}`);
   } catch {
     return [];
   }
@@ -34,7 +34,7 @@ function getGalleryImages(): string[] {
 
 export default async function GalleryPage() {
   const { gallery, imageAlt } = await getSiteContent();
-  // Use the admin-curated list when set; otherwise show every food photo.
+  // Use the admin-curated list when set; otherwise show every jewelry photo.
   const images = gallery.length > 0 ? gallery : getGalleryImages();
 
   return (
@@ -47,34 +47,34 @@ export default async function GalleryPage() {
       />
 
       {/* Hero */}
-      <section className="bg-[#1C1C1C] text-white metal-texture">
+      <section className="bg-[#14141A] text-white metal-texture">
         <div className="mx-auto max-w-6xl px-6 pb-12 pt-40 lg:px-8">
-          <p className="text-sm font-heading font-semibold uppercase tracking-[0.2em] text-[#FFA733]">
+          <p className="text-sm font-heading font-semibold uppercase tracking-[0.2em] text-[#D4B36A]">
             Gallery
           </p>
           <h1 className="mt-4 font-display! text-4xl font-normal! uppercase leading-tight md:text-6xl">
-            Real smoke. Real flavor.
+            From our showcase.
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-white/75">
-            A look at the wood-fired BBQ, loaded tacos, and build-your-own taco
-            bars Pit &amp; Masa has catered for weddings, parties, and corporate
-            events across Connecticut.
+            A look at the custom pieces, restorations, and fine jewelry we
+            craft and care for at Kings Jeweler in The Shoppes at Buckland
+            Hills, Manchester, Connecticut.
           </p>
         </div>
       </section>
 
       {/* Grid */}
-      <section className="bg-[#FEFCF5]">
+      <section className="bg-[#FBF9F4]">
         <div className="mx-auto max-w-6xl px-6 py-16 lg:px-8">
           <div className="columns-2 gap-4 sm:columns-3 lg:columns-4 [&>*]:mb-4">
             {images.map((src, i) => (
               <div
                 key={src}
-                className="overflow-hidden rounded-xl border border-[#1C1C1C]/10 bg-[#FFFCF7] shadow-sm break-inside-avoid"
+                className="overflow-hidden rounded-xl border border-[#14141A]/10 bg-[#FFFDF8] shadow-sm break-inside-avoid"
               >
                 <Image
                   src={src}
-                  alt={imageAlt[src] || `Pit & Masa catering photo ${i + 1}`}
+                  alt={imageAlt[src] || `Kings Jeweler jewelry photo ${i + 1}`}
                   width={500}
                   height={625}
                   sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"

@@ -99,17 +99,17 @@ export function Header() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
         scrolled
-          ? "bg-[#1C1C1C]/95 backdrop-blur-xl shadow-lg shadow-black/30"
-          : "bg-[#1C1C1C]/85 backdrop-blur-md"
+          ? "bg-[#14141A]/95 backdrop-blur-xl shadow-lg shadow-black/30"
+          : "bg-[#14141A]/85 backdrop-blur-md"
       )}
     >
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Mobile layout */}
         <div className="flex h-20 items-center justify-between xl:hidden">
-          <Link href="/" className="shrink-0" aria-label="Pit & Masa — home">
+          <Link href="/" className="shrink-0" aria-label="Kings Jeweler — home">
             <Image
               src={logo}
-              alt="Pit & Masa"
+              alt="Kings Jeweler"
               width={1000}
               height={1000}
               priority
@@ -135,7 +135,7 @@ export function Header() {
                 href={socials.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white/60 transition-colors hover:text-[#FF8C00]"
+                className="text-white/60 transition-colors hover:text-[#B08D3E]"
                 aria-label="Facebook (opens in new window)"
               >
                 <Facebook size={18} />
@@ -144,21 +144,21 @@ export function Header() {
                 href={socials.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white/60 transition-colors hover:text-[#FF8C00]"
+                className="text-white/60 transition-colors hover:text-[#B08D3E]"
                 aria-label="Instagram (opens in new window)"
               >
                 <Instagram size={18} />
               </a>
               <a
                 href={`mailto:${contact.email}`}
-                className="text-white/60 transition-colors hover:text-[#FF8C00]"
+                className="text-white/60 transition-colors hover:text-[#B08D3E]"
                 aria-label="Email"
               >
                 <Mail size={18} />
               </a>
               <a
                 href={`tel:${contact.phone.replace(/\D/g, "")}`}
-                className="text-white/60 transition-colors hover:text-[#FF8C00]"
+                className="text-white/60 transition-colors hover:text-[#B08D3E]"
                 aria-label="Phone"
               >
                 <Phone size={18} />
@@ -177,10 +177,10 @@ export function Header() {
           </div>
 
           {/* Center: Logo — centered in the navbar */}
-          <Link href="/" className="justify-self-center px-4" aria-label="Pit & Masa — home">
+          <Link href="/" className="justify-self-center px-4" aria-label="Kings Jeweler — home">
             <Image
               src={logo}
-              alt="Pit & Masa"
+              alt="Kings Jeweler"
               width={1000}
               height={1000}
               priority
@@ -202,9 +202,9 @@ export function Header() {
             ))}
             <Link
               href="/contact"
-              className="inline-flex items-center rounded-full bg-[#008080] px-5 py-2.5 text-sm font-semibold text-white transition-all hover:scale-105 hover:shadow-xl hover:shadow-[#FF8C00]/40 shadow-lg shadow-[#008080]/20 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#008080] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1C1C1C]"
+              className="inline-flex items-center rounded-full bg-[#1F3A5F] px-5 py-2.5 text-sm font-semibold text-white transition-all hover:scale-105 hover:shadow-xl hover:shadow-[#B08D3E]/40 shadow-lg shadow-[#1F3A5F]/20 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1F3A5F] focus-visible:ring-offset-2 focus-visible:ring-offset-[#14141A]"
             >
-              Book Catering
+              Visit or Contact Us
             </Link>
           </div>
         </div>
@@ -222,7 +222,7 @@ export function Header() {
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             ref={mobileNavRef}
-            className="fixed inset-0 top-20 bg-[#1C1C1C]/98 backdrop-blur-xl xl:hidden z-40 overflow-y-auto"
+            className="fixed inset-0 top-20 bg-[#14141A]/98 backdrop-blur-xl xl:hidden z-40 overflow-y-auto"
             role="dialog"
             aria-modal="true"
             aria-label="Navigation menu"
@@ -237,7 +237,7 @@ export function Header() {
                         mobileExpanded === link.href ? null : link.href
                       )
                     }
-                    className="flex w-full items-center justify-between rounded-lg px-4 py-3.5 text-lg font-medium text-white transition-colors hover:bg-white/5 hover:text-[#FF8C00]"
+                    className="flex w-full items-center justify-between rounded-lg px-4 py-3.5 text-lg font-medium text-white transition-colors hover:bg-white/5 hover:text-[#B08D3E]"
                     aria-expanded={mobileExpanded === link.href}
                   >
                     {link.label}
@@ -257,7 +257,7 @@ export function Header() {
                             key={`header-${child.label}`}
                             href={child.href}
                             onClick={() => setMobileOpen(false)}
-                            className="mt-3 mb-1 px-4 text-xs font-semibold uppercase tracking-wider text-[#FF8C00]"
+                            className="mt-3 mb-1 px-4 text-xs font-semibold uppercase tracking-wider text-[#B08D3E]"
                           >
                             {child.label}
                           </Link>
@@ -266,7 +266,7 @@ export function Header() {
                             key={child.href}
                             href={child.href}
                             onClick={() => setMobileOpen(false)}
-                            className="rounded-lg px-4 py-2.5 text-base text-white/70 transition-colors hover:bg-white/5 hover:text-[#FF8C00]"
+                            className="rounded-lg px-4 py-2.5 text-base text-white/70 transition-colors hover:bg-white/5 hover:text-[#B08D3E]"
                           >
                             {child.label}
                           </Link>
@@ -280,7 +280,7 @@ export function Header() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className="rounded-lg px-4 py-3.5 text-lg font-medium text-white transition-colors hover:bg-white/5 hover:text-[#FF8C00]"
+                  className="rounded-lg px-4 py-3.5 text-lg font-medium text-white transition-colors hover:bg-white/5 hover:text-[#B08D3E]"
                 >
                   {link.label}
                 </Link>
@@ -289,22 +289,22 @@ export function Header() {
             <Link
               href="/contact"
               onClick={() => setMobileOpen(false)}
-              className="mt-6 rounded-full bg-[#008080] px-6 py-4 text-center text-base font-semibold text-white shadow-lg shadow-[#008080]/20 transition-all hover:shadow-xl hover:shadow-[#FF8C00]/40"
+              className="mt-6 rounded-full bg-[#1F3A5F] px-6 py-4 text-center text-base font-semibold text-white shadow-lg shadow-[#1F3A5F]/20 transition-all hover:shadow-xl hover:shadow-[#B08D3E]/40"
             >
-              Book Catering
+              Visit or Contact Us
             </Link>
             {/* Social icons mobile */}
             <div className="mt-8 flex items-center justify-center gap-6">
-              <a href={socials.facebook} target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-[#FF8C00]" aria-label="Facebook (opens in new window)">
+              <a href={socials.facebook} target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-[#B08D3E]" aria-label="Facebook (opens in new window)">
                 <Facebook size={22} />
               </a>
-              <a href={socials.instagram} target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-[#FF8C00]" aria-label="Instagram (opens in new window)">
+              <a href={socials.instagram} target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-[#B08D3E]" aria-label="Instagram (opens in new window)">
                 <Instagram size={22} />
               </a>
-              <a href={`mailto:${contact.email}`} className="text-white/60 hover:text-[#FF8C00]" aria-label="Email">
+              <a href={`mailto:${contact.email}`} className="text-white/60 hover:text-[#B08D3E]" aria-label="Email">
                 <Mail size={22} />
               </a>
-              <a href={`tel:${contact.phone.replace(/\D/g, "")}`} className="text-white/60 hover:text-[#FF8C00]" aria-label="Phone">
+              <a href={`tel:${contact.phone.replace(/\D/g, "")}`} className="text-white/60 hover:text-[#B08D3E]" aria-label="Phone">
                 <Phone size={22} />
               </a>
             </div>
@@ -338,8 +338,8 @@ function NavItem({
       <Link
         href={link.href}
         className={cn(
-          "nav-link-animated text-sm font-medium transition-colors hover:text-[#FF8C00] uppercase tracking-wider whitespace-nowrap",
-          isActive ? "text-[#FF8C00]" : "text-white/80"
+          "nav-link-animated text-sm font-medium transition-colors hover:text-[#B08D3E] uppercase tracking-wider whitespace-nowrap",
+          isActive ? "text-[#B08D3E]" : "text-white/80"
         )}
         data-active={isActive}
       >
@@ -378,8 +378,8 @@ function NavItem({
         <Link
           href={link.href}
           className={cn(
-            "nav-link-animated text-sm font-medium transition-colors hover:text-[#FF8C00] uppercase tracking-wider whitespace-nowrap",
-            isActive ? "text-[#FF8C00]" : "text-white/80"
+            "nav-link-animated text-sm font-medium transition-colors hover:text-[#B08D3E] uppercase tracking-wider whitespace-nowrap",
+            isActive ? "text-[#B08D3E]" : "text-white/80"
           )}
           data-active={isActive}
         >
@@ -388,8 +388,8 @@ function NavItem({
         <button
           type="button"
           className={cn(
-            "transition-colors hover:text-[#FF8C00]",
-            isActive ? "text-[#FF8C00]" : "text-white/80"
+            "transition-colors hover:text-[#B08D3E]",
+            isActive ? "text-[#B08D3E]" : "text-white/80"
           )}
           aria-expanded={isOpen}
           aria-haspopup="true"
@@ -425,7 +425,7 @@ function NavItem({
                   <Link
                     href={child.href}
                     role="menuitem"
-                    className="text-xs font-semibold uppercase tracking-wider text-[#FF8C00] hover:text-[#E67E00] transition-colors"
+                    className="text-xs font-semibold uppercase tracking-wider text-[#B08D3E] hover:text-[#99782F] transition-colors"
                   >
                     {child.label}
                   </Link>
@@ -435,7 +435,7 @@ function NavItem({
                   key={child.href}
                   href={child.href}
                   role="menuitem"
-                  className="flex items-center px-5 py-2.5 text-sm text-white/70 transition-colors hover:bg-white/5 hover:text-[#FF8C00]"
+                  className="flex items-center px-5 py-2.5 text-sm text-white/70 transition-colors hover:bg-white/5 hover:text-[#B08D3E]"
                 >
                   {child.label}
                 </Link>

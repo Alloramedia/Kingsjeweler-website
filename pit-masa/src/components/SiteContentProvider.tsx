@@ -17,7 +17,7 @@ const fallback: SiteChrome = {
   socials: { ...siteConfig.socials },
   hours: defaultHours,
   announcement: defaultAnnouncement,
-  logo: "/images/pit-masa-badge.webp",
+  logo: "/images/kings-jeweler-badge.webp",
 };
 
 const SiteChromeContext = createContext<SiteChrome>(fallback);

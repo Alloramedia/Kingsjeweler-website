@@ -15,7 +15,7 @@ export default function Error({
   }, [error]);
 
   return (
-    <section className="flex min-h-screen items-center justify-center bg-[#FEFCF5]">
+    <section className="flex min-h-screen items-center justify-center bg-[#FBF9F4]">
       <div className="mx-auto max-w-lg px-6 text-center">
         <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-2xl bg-red-500/10">
           <svg
@@ -34,10 +34,10 @@ export default function Error({
             />
           </svg>
         </div>
-        <h1 className="font-display! text-3xl font-normal! uppercase text-[#1C1C1C] md:text-4xl">
+        <h1 className="font-display! text-3xl font-normal! uppercase text-[#14141A] md:text-4xl">
           Something went wrong
         </h1>
-        <p className="mt-4 text-lg leading-relaxed text-[#1C1C1C]/65">
+        <p className="mt-4 text-lg leading-relaxed text-[#14141A]/65">
           We ran into an unexpected error. Please try again, or get in touch if
           the problem persists.
         </p>
@@ -49,13 +49,13 @@ export default function Error({
         <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
           <button
             onClick={reset}
-            className="inline-flex items-center rounded-full bg-[#008080] px-8 py-4 text-base font-bold text-white shadow-lg shadow-[#008080]/25 transition-all duration-300 hover:scale-[1.03] hover:shadow-xl hover:shadow-[#FF8C00]/40"
+            className="inline-flex items-center rounded-full bg-[#1F3A5F] px-8 py-4 text-base font-bold text-white shadow-lg shadow-[#1F3A5F]/25 transition-all duration-300 hover:scale-[1.03] hover:shadow-xl hover:shadow-[#B08D3E]/40"
           >
             Try Again
           </button>
           <Link
             href="/"
-            className="inline-flex items-center rounded-full border-2 border-[#1C1C1C]/20 px-8 py-4 text-base font-bold text-[#1C1C1C] transition-all duration-300 hover:border-[#FF8C00] hover:bg-[#FF8C00]/10"
+            className="inline-flex items-center rounded-full border-2 border-[#14141A]/20 px-8 py-4 text-base font-bold text-[#14141A] transition-all duration-300 hover:border-[#B08D3E] hover:bg-[#B08D3E]/10"
           >
             Back to Home
           </Link>

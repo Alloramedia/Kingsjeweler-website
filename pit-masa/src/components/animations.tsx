@@ -327,7 +327,7 @@ export function GlowCard({
       transition={{ type: "spring", stiffness: 200, damping: 22, mass: 0.8 }}
       className={`relative group ${className}`}
     >
-      <div className="absolute -inset-0.5 rounded-2xl bg-linear-to-r from-[#FF8C00]/0 via-[#FF8C00]/0 to-[#FF8C00]/0 group-hover:from-[#FF8C00]/25 group-hover:via-[#FF8C00]/15 group-hover:to-[#FF8C00]/0 transition-all duration-600 blur-md opacity-0 group-hover:opacity-100" />
+      <div className="absolute -inset-0.5 rounded-2xl bg-linear-to-r from-[#B08D3E]/0 via-[#B08D3E]/0 to-[#B08D3E]/0 group-hover:from-[#B08D3E]/25 group-hover:via-[#B08D3E]/15 group-hover:to-[#B08D3E]/0 transition-all duration-600 blur-md opacity-0 group-hover:opacity-100" />
       <div className="relative">
         {children}
       </div>
@@ -345,7 +345,7 @@ export function RevealLine({ className = "" }: { className?: string }) {
       whileInView={{ scaleX: 1, opacity: 1 }}
       viewport={{ once: true, margin: "0px 0px -20px 0px" }}
       transition={{ duration: 0.7, ease: smoothOut }}
-      className={`h-px origin-left bg-linear-to-r from-[#FF8C00] to-[#FF8C00]/0 ${className}`}
+      className={`h-px origin-left bg-linear-to-r from-[#B08D3E] to-[#B08D3E]/0 ${className}`}
     />
   );
 }
@@ -522,7 +522,7 @@ export function AnimatedProgressBar({
           whileInView={{ width: `${value}%` }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay, ease: smoothOut }}
-          className="h-full rounded-full bg-linear-to-r from-[#FF8C00] to-[#E67E00]"
+          className="h-full rounded-full bg-linear-to-r from-[#B08D3E] to-[#99782F]"
         />
       </div>
     </div>
@@ -530,7 +530,7 @@ export function AnimatedProgressBar({
 }
 
 /* ─────────────────────────────────────────────
-   DRIVING TRUCK  — Pit & Masa truck rolls across a
+   DRIVING TRUCK  — Kings Jeweler truck rolls across a
    full-width band on a loop (CSS-driven, so it
    honours prefers-reduced-motion automatically).
    ───────────────────────────────────────────── */
@@ -544,13 +544,13 @@ export function DrivingTruck({
   return (
     <div
       aria-hidden="true"
-      className={`relative w-full overflow-hidden bg-linear-to-b from-[#FEFCF5] to-[#FBF5E9] ${className}`}
+      className={`relative w-full overflow-hidden bg-linear-to-b from-[#FBF9F4] to-[#FBF5E9] ${className}`}
     >
       <div className="relative h-24 sm:h-32 lg:h-40">
         <div className="animate-drive absolute bottom-4 left-0 flex w-max items-end gap-72 sm:gap-96 lg:gap-[36rem]">
           {/* cocktail-cart tender, trailing behind the rig */}
           <div className="animate-cart-bob relative aspect-[906/513] h-9 sm:h-12 lg:h-16">
-            <span className="absolute -top-8 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-full bg-[#FF8C00] px-2 py-0.5 text-[8px] font-bold uppercase tracking-wide text-white shadow-md sm:-top-10 sm:text-[9px] lg:-top-12 lg:text-[10px]">
+            <span className="absolute -top-8 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-full bg-[#B08D3E] px-2 py-0.5 text-[8px] font-bold uppercase tracking-wide text-white shadow-md sm:-top-10 sm:text-[9px] lg:-top-12 lg:text-[10px]">
               Coming Soon
             </span>
             <Image

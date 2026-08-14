@@ -18,40 +18,40 @@
   --font-heading: var(--font-heading), 'Zilla Slab', serif;
   --font-body: var(--font-body), 'Inter', sans-serif;
   --font-sans: var(--font-body), 'Inter', sans-serif;
-  --font-display: var(--font-display), 'Sancreek', cursive;
+  --font-display: var(--font-display), 'Cinzel', serif;
 }
 
 :root {
   /* Warm cream / earthtone palette */
-  --background: #FEFCF5;
-  --foreground: #1C1C1C;
-  --primary: #FF8C00;
+  --background: #FBF9F4;
+  --foreground: #14141A;
+  --primary: #B08D3E;
   --primary-foreground: #ffffff;
-  --secondary: #008080;
+  --secondary: #1F3A5F;
   --secondary-foreground: #ffffff;
-  --muted: #DEDEDE;
+  --muted: #E5E1D8;
   --muted-foreground: #6B6157;
-  --accent: #008080;
+  --accent: #1F3A5F;
   --accent-foreground: #ffffff;
   --border: rgba(36, 27, 22, 0.12);
-  --ring: #FF8C00;
-  --card: #FFFCF7;
-  --card-foreground: #1C1C1C;
+  --ring: #B08D3E;
+  --card: #FFFDF8;
+  --card-foreground: #14141A;
 
-  /* Brand tokens — official Pit & Masa teals + warm accents */
-  --cream: #FEFCF5;
-  --espresso: #1C1C1C;
-  --espresso-band: #1C1C1C;
-  --orange: #FF8C00;
-  --teal: #008080;
+  /* Brand tokens — official Kings Jeweler teals + warm accents */
+  --cream: #FBF9F4;
+  --espresso: #14141A;
+  --espresso-band: #14141A;
+  --orange: #B08D3E;
+  --teal: #1F3A5F;
   --teal-bright: #33a8a8;
-  --teal-dark: #1C1C1C;
-  --tan: #DEDEDE;
+  --teal-dark: #14141A;
+  --tan: #E5E1D8;
 
-  --color-1: #1C1C1C;
-  --color-2: #FEFCF5;
-  --color-3: #FF8C00;
-  --color-4: #008080;
+  --color-1: #14141A;
+  --color-2: #FBF9F4;
+  --color-3: #B08D3E;
+  --color-4: #1F3A5F;
 }
 
 /* Tailwind v4 preflight handles resets — no manual * reset needed */
@@ -245,7 +245,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .animate-text-gradient {
-  background: linear-gradient(90deg, #FF8C00, #E67E00, #FFA733, #FF8C00);
+  background: linear-gradient(90deg, #B08D3E, #99782F, #D4B36A, #B08D3E);
   background-size: 300% 100%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -310,7 +310,7 @@ html {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #E67E00;
+  background: #99782F;
 }
 
 /* ═══════ SCROLL PROGRESS INDICATOR ═══════ */
@@ -319,7 +319,7 @@ html {
   top: 0;
   left: 0;
   height: 2px;
-  background: linear-gradient(90deg, #FF8C00, #E67E00, #FFA733);
+  background: linear-gradient(90deg, #B08D3E, #99782F, #D4B36A);
   z-index: 9999;
   transform-origin: left;
   will-change: transform;
@@ -336,7 +336,7 @@ html {
   bottom: -4px;
   width: 100%;
   height: 2px;
-  background: linear-gradient(90deg, #FF8C00, #E67E00);
+  background: linear-gradient(90deg, #B08D3E, #99782F);
   border-radius: 1px;
   transform: scaleX(0);
   transform-origin: right;
@@ -350,7 +350,7 @@ html {
 
 /* Active nav indicator dot */
 .nav-link-animated[data-active="true"] {
-  color: #FF8C00 !important;
+  color: #B08D3E !important;
 }
 
 /* ═══════ FOOTER / BODY LINK UNDERLINE ═══════ */
@@ -364,7 +364,7 @@ html {
   bottom: -2px;
   width: 0;
   height: 1px;
-  background: #FF8C00;
+  background: #B08D3E;
   transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .link-hover-underline:hover::after {
@@ -529,7 +529,7 @@ html {
   transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .social-icon-hover:hover {
-  color: #FF8C00;
+  color: #B08D3E;
   transform: translateY(-2px) scale(1.15);
   filter: drop-shadow(0 0 6px rgba(190, 90, 36, 0.3));
 }
@@ -670,7 +670,7 @@ html {
   inset: 0;
   border-radius: inherit;
   padding: 1px;
-  background: conic-gradient(from var(--border-angle), transparent 25%, #FF8C00 50%, transparent 75%);
+  background: conic-gradient(from var(--border-angle), transparent 25%, #B08D3E 50%, transparent 75%);
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -737,7 +737,7 @@ html {
   appearance: none;
   height: 6px;
   border-radius: 999px;
-  background: linear-gradient(to right, #1C1C1C, #FF8C00);
+  background: linear-gradient(to right, #14141A, #B08D3E);
   outline: none;
 }
 .shoot-slider::-webkit-slider-thumb {
@@ -746,7 +746,7 @@ html {
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background: #FF8C00;
+  background: #B08D3E;
   cursor: pointer;
   box-shadow: 0 0 12px rgba(190, 90, 36, 0.4), 0 0 0 4px rgba(190, 90, 36, 0.15);
   transition: box-shadow 0.2s, transform 0.2s;
@@ -759,7 +759,7 @@ html {
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background: #FF8C00;
+  background: #B08D3E;
   cursor: pointer;
   border: none;
   box-shadow: 0 0 12px rgba(190, 90, 36, 0.4), 0 0 0 4px rgba(190, 90, 36, 0.15);
@@ -767,5 +767,5 @@ html {
 .shoot-slider::-moz-range-track {
   height: 6px;
   border-radius: 999px;
-  background: linear-gradient(to right, #1C1C1C, #FF8C00);
+  background: linear-gradient(to right, #14141A, #B08D3E);
 }

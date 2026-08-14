@@ -11,7 +11,7 @@ import Link from "next/link";
 const LINK_PATTERN = /\[([^\]]+)\]\(([^)]+)\)/g;
 
 const linkClass =
-  "font-semibold text-[#E67E00] underline decoration-[#FF8C00]/40 underline-offset-2 transition hover:decoration-[#FF8C00] hover:text-[#FF8C00]";
+  "font-semibold text-[#99782F] underline decoration-[#B08D3E]/40 underline-offset-2 transition hover:decoration-[#B08D3E] hover:text-[#B08D3E]";
 
 export function RichText({ text }: { text: string }) {
   const nodes: React.ReactNode[] = [];

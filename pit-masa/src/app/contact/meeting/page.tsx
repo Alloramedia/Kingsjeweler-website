@@ -2,9 +2,9 @@ import { Metadata } from "next";
 import { MeetingClient } from "./MeetingClient";
 
 export const metadata: Metadata = {
-  title: "Schedule a Consultation — Pit & Masa",
+  title: "Schedule a Consultation — Kings Jeweler",
   description:
-    "Schedule a consultation with Pit & Masa. Pick a time that works for you and we'll connect to discuss your event and menu.",
+    "Schedule a consultation with Kings Jeweler. Give us a call or send a message and we'll help with your jewelry, repair, or custom design.",
   robots: {
     index: false,
     follow: false,

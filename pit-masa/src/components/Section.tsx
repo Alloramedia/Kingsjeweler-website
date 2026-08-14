@@ -13,10 +13,10 @@ interface SectionProps {
 }
 
 const variantStyles: Record<SectionVariant, string> = {
-  dark: "bg-[#FEFCF5] text-[#1C1C1C]",
-  light: "bg-[#DEDEDE] text-[#1C1C1C]",
-  green: "bg-[#1C1C1C] text-white noise-texture",
-  accent: "bg-[#FF8C00] text-white",
+  dark: "bg-[#FBF9F4] text-[#14141A]",
+  light: "bg-[#E5E1D8] text-[#14141A]",
+  green: "bg-[#14141A] text-white noise-texture",
+  accent: "bg-[#B08D3E] text-white",
 };
 
 export function Section({ children, className = "", id, variant }: SectionProps) {
@@ -65,8 +65,8 @@ export function SectionHeader({
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
 
   const onDarkBand = variant === "green" || variant === "accent";
-  const titleColor = onDarkBand ? "text-white" : "text-[#1C1C1C]";
-  const descColor = onDarkBand ? "text-white/75" : "text-[#1C1C1C]/65";
+  const titleColor = onDarkBand ? "text-white" : "text-[#14141A]";
+  const descColor = onDarkBand ? "text-white/75" : "text-[#14141A]/65";
 
   return (
     <motion.div
@@ -75,7 +75,7 @@ export function SectionHeader({
       className={`relative mb-10 max-w-3xl md:mb-12 ${center ? "mx-auto text-center" : ""}`}
     >
       {eyebrow && (
-        <p className={`mb-3 text-sm font-heading font-semibold uppercase tracking-[0.15em] sm:tracking-[0.2em] ${eyebrowColor ?? (onDarkBand ? "text-[#FFA733]" : "text-[#FF8C00]")}`}>
+        <p className={`mb-3 text-sm font-heading font-semibold uppercase tracking-[0.15em] sm:tracking-[0.2em] ${eyebrowColor ?? (onDarkBand ? "text-[#D4B36A]" : "text-[#B08D3E]")}`}>
           {eyebrow}
         </p>
       )}
