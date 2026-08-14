@@ -1,13 +1,10 @@
-# Pit & Masa Website
+# King's Jeweler Website
 
-**Bold cuisine. Refined event service.**
+**Fine Jewelry. Family Service.**
 
-This is the source code for the [Pit & Masa](https://www.pitandmasa.com) website — a
-full-service catering and cuisine company serving weddings, private events, and
-corporate dining in Connecticut.
-
-The site is a Next.js skeleton trimmed down to a lean set of catering-focused
-pages.
+This is the source code for the [King's Jeweler](https://www.kingsjewelerct.com) website — a
+family jewelry store inside The Shoppes at Buckland Hills in Manchester, Connecticut.
+Engagement rings, custom design, watch batteries, expert repairs, and fair gold buying.
 
 ---
 
@@ -26,8 +23,10 @@ pages.
 ## Project Structure
 
 ```
-pit-masa/
+kings-jeweler/
 ├── public/                   # Images and static assets
+├── content/
+│   └── overrides.json        # Published admin content (repo backup)
 ├── src/
 │   ├── app/
 │   │   ├── layout.tsx        # Root layout (Header, Footer, GA4, structured data)
@@ -36,25 +35,25 @@ pit-masa/
 │   │   ├── sitemap.ts        # Sitemap
 │   │   ├── robots.ts         # Robots.txt
 │   │   ├── manifest.ts       # PWA manifest
-│   │   ├── menu/             # Menu page
-│   │   ├── catering/         # Catering page
-│   │   ├── events/           # Events page
+│   │   ├── services/         # Services page
 │   │   ├── gallery/          # Gallery page
 │   │   ├── about/            # About page
-│   │   ├── contact/          # Contact form + booking + thank-you
+│   │   ├── contact/          # Contact form + meeting + thank-you
 │   │   ├── website-policies/ # Privacy policy + terms of service
-│   │   └── api/contact/      # Contact form API route
+│   │   ├── admin/            # Protected admin dashboard
+│   │   └── api/              # Contact + admin API routes
 │   ├── components/           # Header, Footer, CTA, sections, structured data, etc.
 │   └── lib/
 │       ├── constants.ts      # Site config, nav links, footer links
 │       ├── cta.ts            # Shared CTA content
+│       ├── admin/            # Admin auth, storage, content schema
 │       └── utils.ts          # cn() utility
-├── redirects.json            # Legacy URL → new URL mapping (currently empty)
+├── redirects.json            # Legacy URL → new URL mapping
 ├── next.config.ts            # Next.js config
 └── package.json
 ```
 
-> The application lives in the `pit-masa/` directory.
+> The application lives in the `kings-jeweler/` directory.
 
 ## Getting Started
 
@@ -65,7 +64,7 @@ pit-masa/
 ### Installation
 
 ```bash
-cd pit-masa
+cd kings-jeweler
 npm install
 ```
 
@@ -77,6 +76,8 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
+Or from the repo root: `make dev`
+
 ### Build
 
 ```bash
@@ -86,46 +87,45 @@ npm start
 
 ## Environment Variables
 
-Create a `.env.local` file in `pit-masa/` with:
+Create a `.env.local` file in `kings-jeweler/` with:
 
 | Variable | Description |
 |----------|-------------|
 | `NEXT_PUBLIC_GA_ID` | Google Analytics 4 Measurement ID (e.g., `G-XXXXXXXXXX`) |
 | `CONTACT_EMAIL` | Email address for contact form submissions |
+| `ADMIN_PASSWORD` | Password for the `/admin` dashboard |
+| `GITHUB_CONTENT_PATH` | Optional — repo path for the published-content backup (default `kings-jeweler/content/overrides.json`) |
 
 ## Pages
 
 | Route | Purpose |
 |-------|---------|
-| `/` | Home — hero, catering highlights, primary CTAs |
-| `/menu` | Menu offerings |
-| `/catering` | Catering services |
-| `/events` | Events and private dining |
-| `/gallery` | Photo gallery |
-| `/about` | Company story |
-| `/contact` | Lead intake form, booking, and thank-you flow |
+| `/` | Home — hero, services highlights, gold buying, FAQs |
+| `/services` | Services — rings, custom design, repairs, watch batteries, appraisals |
+| `/gallery` | Photo gallery of custom work and showcase pieces |
+| `/about` | Store story |
+| `/contact` | Visit info, lead intake form, and thank-you flow |
 | `/website-policies` | Privacy policy and terms of service |
+| `/admin` | Protected content-management dashboard |
 
 ## SEO Features
 
 - **Per-page metadata** — Title, description, OpenGraph, Twitter cards
 - **Sitemap + robots.txt** — Generated from the static routes
-- **Structured data** — LocalBusiness and Organization schema
+- **Structured data** — JewelryStore, Organization, and FAQPage schema
 - **Image optimization** — AVIF/WebP via `next/image`
 
 ## Deployment
 
-Optimized for deployment on:
-- **Vercel** (recommended) — zero-config with Next.js
-- **Netlify** — with `@netlify/plugin-nextjs`
+Deployed on **Netlify** with `@netlify/plugin-nextjs` (build base: `kings-jeweler/`,
+see `netlify.toml`). Also compatible with Vercel.
 
 ## Contact Form
 
-The contact form submits to `/api/contact`, which currently logs submissions to the
-console. To integrate with an email service, update
+The contact form submits to `/api/contact`. To integrate with an email service, update
 `src/app/api/contact/route.ts` with the provider's send logic and supply credentials
 via environment variables.
 
 ## License
 
-Private — Pit & Masa. All rights reserved.
+Private — King's Jeweler. All rights reserved.

@@ -18,7 +18,7 @@ import "server-only";
  *                         this repo with `Contents: read & write`.
  * Optional env vars:
  *   GITHUB_CONTENT_REPO   "owner/name"  (default "Alloramedia/Kingsjeweler-website")
- *   GITHUB_CONTENT_PATH   path in repo  (default "pit-masa/content/overrides.json")
+ *   GITHUB_CONTENT_PATH   path in repo  (default "kings-jeweler/content/overrides.json")
  *   GITHUB_CONTENT_BRANCH branch        (default "main")
  */
 
@@ -38,9 +38,9 @@ function getConfig(): RepoSyncConfig | null {
     token,
     repo: process.env.GITHUB_CONTENT_REPO || "Alloramedia/Kingsjeweler-website",
     // Path is relative to the REPO ROOT. The Next.js app lives in the
-    // `pit-masa/` subdirectory, so the committed backup the app reads is at
-    // `pit-masa/content/overrides.json` — not the repo root.
-    path: process.env.GITHUB_CONTENT_PATH || "pit-masa/content/overrides.json",
+    // `kings-jeweler/` subdirectory, so the committed backup the app reads is at
+    // `kings-jeweler/content/overrides.json` — not the repo root.
+    path: process.env.GITHUB_CONTENT_PATH || "kings-jeweler/content/overrides.json",
     branch: process.env.GITHUB_CONTENT_BRANCH || "main",
   };
 }
