@@ -37,9 +37,8 @@ function cleanSocials(v: unknown): Overrides["socials"] {
   return {
     facebook: str(o.facebook, 300),
     instagram: str(o.instagram, 300),
-    linkedin: str(o.linkedin, 300),
-    youtube: str(o.youtube, 300),
     tiktok: str(o.tiktok, 300),
+    gmb: str(o.gmb, 300),
   };
 }
 

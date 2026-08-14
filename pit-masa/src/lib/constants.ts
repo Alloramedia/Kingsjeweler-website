@@ -21,12 +21,10 @@ export const siteConfig = {
   socials: {
     facebook: "https://facebook.com/kingsjeweler",
     instagram: "https://instagram.com/kingsjeweler",
-    linkedin: "https://linkedin.com/company/kingsjeweler",
-    youtube: "https://youtube.com/@kingsjeweler",
     tiktok: "https://www.tiktok.com/@kingsjeweler",
+    // TODO: replace with the real Google Business Profile share link.
+    gmb: "https://maps.google.com/?q=Kings+Jeweler+Buckland+Hills+Manchester+CT",
   },
-  // TODO: replace with the real Google Business Profile share link.
-  gmb: "https://maps.google.com/?q=Kings+Jeweler+Buckland+Hills+Manchester+CT",
   foundingDate: "2000",
   owner: {
     name: "The King's Jeweler Family",

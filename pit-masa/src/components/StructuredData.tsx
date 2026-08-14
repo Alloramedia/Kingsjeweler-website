@@ -21,8 +21,8 @@ export async function LocalBusinessSchema() {
       postalCode: siteConfig.address.zip,
       addressCountry: "US",
     },
-    hasMap: siteConfig.gmb,
-    sameAs: [...Object.values(socials), siteConfig.gmb],
+    hasMap: socials.gmb,
+    sameAs: Object.values(socials),
     areaServed: {
       "@type": "State",
       name: siteConfig.serviceArea,
@@ -101,7 +101,7 @@ export async function OrganizationSchema() {
       areaServed: "US",
       availableLanguage: ["English"],
     },
-    sameAs: [...Object.values(socials), siteConfig.gmb],
+    sameAs: Object.values(socials),
     knowsAbout: [
       "Fine Jewelry",
       "Engagement Rings",

@@ -11,9 +11,9 @@ import type { Recipe, BlogPost } from "@/lib/content";
 export interface SocialLinks {
   facebook: string;
   instagram: string;
-  linkedin: string;
-  youtube: string;
   tiktok: string;
+  /** Google Business Profile link. */
+  gmb: string;
 }
 
 export interface HoursRow {
@@ -495,9 +495,8 @@ export function mergeContent(o: Overrides): SiteContent {
     socials: {
       facebook: o.socials?.facebook ?? siteConfig.socials.facebook,
       instagram: o.socials?.instagram ?? siteConfig.socials.instagram,
-      linkedin: o.socials?.linkedin ?? siteConfig.socials.linkedin,
-      youtube: o.socials?.youtube ?? siteConfig.socials.youtube,
       tiktok: o.socials?.tiktok ?? siteConfig.socials.tiktok,
+      gmb: o.socials?.gmb ?? siteConfig.socials.gmb,
     },
     hours: o.hours && o.hours.length > 0 ? o.hours : defaultHours,
     menu: o.menu && o.menu.length > 0 ? o.menu : defaultMenu,

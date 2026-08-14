@@ -432,11 +432,10 @@ function ContactEditor({ data }: { data: SiteContent["contact"] }) {
 function SocialsEditor({ data }: { data: SocialLinks }) {
   const { data: d, setData: setD, status, dirty, save, draftAvailable, restoreDraft, discardDraft } = useEditor("socials", data);
   const rows: { key: keyof SocialLinks; label: string }[] = [
-    { key: "facebook", label: "Facebook" },
+    { key: "gmb", label: "Google Business Profile" },
     { key: "instagram", label: "Instagram" },
+    { key: "facebook", label: "Facebook" },
     { key: "tiktok", label: "TikTok" },
-    { key: "youtube", label: "YouTube" },
-    { key: "linkedin", label: "LinkedIn" },
   ];
   return (
     <div className="space-y-5">

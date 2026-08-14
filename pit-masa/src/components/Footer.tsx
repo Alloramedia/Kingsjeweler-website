@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
-import { Facebook, Instagram, Linkedin, Youtube, Music, Mail, Phone, MapPin, Clock, ArrowRight } from "lucide-react";
+import { Facebook, Instagram, Music, Mail, Phone, MapPin, Clock, ArrowRight } from "lucide-react";
 import { footerLinks } from "@/lib/constants";
 import { useSiteChrome } from "@/components/SiteContentProvider";
 
@@ -96,13 +96,13 @@ export function Footer() {
             {/* Social icons */}
             <div className="mt-6 flex gap-3">
               <a
-                href={socials.facebook}
+                href={socials.gmb}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-white/60 transition-all duration-400 hover:bg-[#C68A17] hover:text-white hover:scale-110 hover:shadow-lg hover:shadow-[#C68A17]/20"
-                aria-label="Facebook (opens in new window)"
+                aria-label="Google Business Profile (opens in new window)"
               >
-                <Facebook size={18} />
+                <MapPin size={18} />
               </a>
               <a
                 href={socials.instagram}
@@ -114,22 +114,13 @@ export function Footer() {
                 <Instagram size={18} />
               </a>
               <a
-                href={socials.linkedin}
+                href={socials.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-white/60 transition-all duration-400 hover:bg-[#C68A17] hover:text-white hover:scale-110 hover:shadow-lg hover:shadow-[#C68A17]/20"
-                aria-label="LinkedIn (opens in new window)"
+                aria-label="Facebook (opens in new window)"
               >
-                <Linkedin size={18} />
-              </a>
-              <a
-                href={socials.youtube}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-white/60 transition-all duration-400 hover:bg-[#C68A17] hover:text-white hover:scale-110 hover:shadow-lg hover:shadow-[#C68A17]/20"
-                aria-label="YouTube (opens in new window)"
-              >
-                <Youtube size={18} />
+                <Facebook size={18} />
               </a>
               <a
                 href={socials.tiktok}

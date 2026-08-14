@@ -4,7 +4,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Menu, X, Facebook, Instagram, Mail, Phone, ChevronDown, Coins, CreditCard } from "lucide-react";
+import { Menu, X, Facebook, Instagram, Mail, Phone, MapPin, Music, ChevronDown, Coins, CreditCard } from "lucide-react";
 import { AnimatePresence, motion, useScroll, useSpring } from "framer-motion";
 import { navLinks, type NavLink } from "@/lib/constants";
 import { useSiteChrome } from "@/components/SiteContentProvider";
@@ -168,13 +168,13 @@ export function Header() {
           <div className="flex items-center gap-6">
             <div className="flex items-center gap-3">
               <a
-                href={socials.facebook}
+                href={socials.gmb}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white/60 transition-colors hover:text-[#C68A17]"
-                aria-label="Facebook (opens in new window)"
+                aria-label="Google Business Profile (opens in new window)"
               >
-                <Facebook size={18} />
+                <MapPin size={18} />
               </a>
               <a
                 href={socials.instagram}
@@ -184,6 +184,24 @@ export function Header() {
                 aria-label="Instagram (opens in new window)"
               >
                 <Instagram size={18} />
+              </a>
+              <a
+                href={socials.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/60 transition-colors hover:text-[#C68A17]"
+                aria-label="Facebook (opens in new window)"
+              >
+                <Facebook size={18} />
+              </a>
+              <a
+                href={socials.tiktok}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/60 transition-colors hover:text-[#C68A17]"
+                aria-label="TikTok (opens in new window)"
+              >
+                <Music size={18} />
               </a>
               <a
                 href={`mailto:${contact.email}`}
@@ -346,11 +364,17 @@ export function Header() {
             </p>
             {/* Social icons mobile */}
             <div className="mt-8 flex items-center justify-center gap-6">
-              <a href={socials.facebook} target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-[#C68A17]" aria-label="Facebook (opens in new window)">
-                <Facebook size={22} />
+              <a href={socials.gmb} target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-[#C68A17]" aria-label="Google Business Profile (opens in new window)">
+                <MapPin size={22} />
               </a>
               <a href={socials.instagram} target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-[#C68A17]" aria-label="Instagram (opens in new window)">
                 <Instagram size={22} />
+              </a>
+              <a href={socials.facebook} target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-[#C68A17]" aria-label="Facebook (opens in new window)">
+                <Facebook size={22} />
+              </a>
+              <a href={socials.tiktok} target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-[#C68A17]" aria-label="TikTok (opens in new window)">
+                <Music size={22} />
               </a>
               <a href={`mailto:${contact.email}`} className="text-white/60 hover:text-[#C68A17]" aria-label="Email">
                 <Mail size={22} />

@@ -114,7 +114,7 @@ export function ContactClient({ heroSlides }: ContactClientProps) {
                     {siteConfig.address.zip}
                   </p>
                   <a
-                    href={siteConfig.gmb}
+                    href={siteConfig.socials.gmb}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="mt-2 inline-flex items-center gap-1 text-sm font-semibold text-[#C68A17] hover:underline"
