@@ -15,6 +15,9 @@ import {
   Clock,
   Phone,
   Star,
+  Coins,
+  CreditCard,
+  BadgeCheck,
 } from "lucide-react";
 import { siteConfig, BLUR_DATA_URL } from "@/lib/constants";
 import { Section, SectionHeader } from "@/components/Section";
@@ -157,14 +160,14 @@ export function HomeClient({
           >
             <Link
               href="/contact"
-              className="btn-gold inline-flex items-center gap-2 rounded-full px-8 py-4 text-base font-semibold text-white"
+              className="btn-gold inline-flex items-center gap-2 px-8 py-4 text-base font-semibold text-white"
             >
               Visit or Contact Us
               <ArrowRight size={18} />
             </Link>
             <Link
               href="/services"
-              className="inline-flex items-center gap-2 rounded-full border border-white/30 px-8 py-4 text-base font-medium text-white backdrop-blur-sm transition-all hover:border-[#C68A17] hover:bg-[#C68A17]/10"
+              className="btn-outline-gold inline-flex items-center gap-2 px-8 py-4 text-base font-medium text-white backdrop-blur-sm"
             >
               Explore Our Services
             </Link>
@@ -289,6 +292,80 @@ export function HomeClient({
         </div>
       </Section>
 
+      {/* ── We Buy Gold ──────────────────────────────────────── */}
+      <section
+        id="we-buy-gold"
+        className="relative overflow-hidden bg-linear-to-br from-[#D89B22] via-[#C68A17] to-[#A87310] py-16 text-[#14141A] md:py-24"
+      >
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_90%_70%_at_50%_-20%,rgba(255,255,255,0.28),transparent_60%)]" />
+        <div className="absolute inset-x-0 top-0 h-px bg-white/40" />
+        <div className="absolute inset-x-0 bottom-0 h-px bg-[#14141A]/25" />
+
+        <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="grid items-center gap-10 lg:grid-cols-2">
+            <FadeIn>
+              <p className="inline-flex items-center gap-2 rounded-full bg-[#14141A] px-4 py-1.5 text-xs font-heading font-bold uppercase tracking-[0.18em] text-[#F0A92D]">
+                <Coins size={14} />
+                Top Prices Paid
+              </p>
+              <h2 className="font-display! mt-5 text-4xl font-normal! uppercase leading-tight md:text-5xl lg:text-6xl">
+                We Buy Gold
+              </h2>
+              <p className="mt-4 max-w-xl text-lg leading-relaxed text-[#14141A]/80">
+                Bring in gold, silver, diamonds, or jewelry you no longer wear.
+                We weigh it right in front of you and make a fair offer on the
+                spot — sell outright or trade toward anything in the case.
+              </p>
+              <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center gap-2 rounded-sm bg-[#14141A] px-8 py-4 text-base font-semibold uppercase tracking-wider text-white shadow-lg shadow-black/25 transition-all hover:scale-[1.03] hover:bg-black"
+                >
+                  Get an Offer
+                  <ArrowRight size={18} />
+                </Link>
+                <p className="text-sm font-semibold text-[#14141A]/70">
+                  No appointment needed — walk in any day.
+                </p>
+              </div>
+            </FadeIn>
+            <StaggerContainer className="grid gap-4">
+              {[
+                {
+                  icon: Scale,
+                  title: "Watch the weigh-in",
+                  body: "Everything is weighed and evaluated in front of you — no back rooms, no games.",
+                },
+                {
+                  icon: BadgeCheck,
+                  title: "Fair, transparent offers",
+                  body: "Honest market-based pricing on gold, silver, diamonds, and estate jewelry.",
+                },
+                {
+                  icon: CreditCard,
+                  title: "Flexible ways to pay & trade",
+                  body: "Take cash, trade toward something new — and when you buy, we accept all major credit cards and offer no-credit-needed financing.",
+                },
+              ].map((item) => (
+                <StaggerItem key={item.title}>
+                  <div className="flex items-start gap-4 rounded-2xl border border-[#14141A]/15 bg-white/25 p-5 backdrop-blur-sm">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#14141A] text-[#F0A92D]">
+                      <item.icon size={20} />
+                    </div>
+                    <div>
+                      <h3 className="font-bold">{item.title}</h3>
+                      <p className="mt-1 text-sm leading-relaxed text-[#14141A]/75">
+                        {item.body}
+                      </p>
+                    </div>
+                  </div>
+                </StaggerItem>
+              ))}
+            </StaggerContainer>
+          </div>
+        </div>
+      </section>
+
       {/* ── Gallery strip ────────────────────────────────────── */}
       <Section variant="dark" id="gallery">
         <SectionHeader
@@ -386,6 +463,10 @@ export function HomeClient({
               >
                 {siteConfig.phone}
               </a>
+              <p className="mt-3 inline-flex items-center justify-center gap-1.5 text-xs text-[#14141A]/55">
+                <CreditCard size={13} className="text-[#C68A17]" />
+                All major cards accepted · No credit needed financing
+              </p>
             </div>
           </FadeIn>
         </div>

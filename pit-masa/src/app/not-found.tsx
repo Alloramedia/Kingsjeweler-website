@@ -22,13 +22,13 @@ export default function NotFound() {
         <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
           <Link
             href="/"
-            className="btn-gold inline-flex items-center rounded-full px-8 py-4 text-base font-bold text-white hover:scale-[1.03]"
+            className="btn-gold inline-flex items-center px-8 py-4 text-base font-bold text-white hover:scale-[1.03]"
           >
             Back to Home
           </Link>
           <Link
             href="/contact"
-            className="inline-flex items-center rounded-full border-2 border-[#14141A]/20 px-8 py-4 text-base font-bold text-[#14141A] transition-all duration-300 hover:border-[#C68A17] hover:bg-[#C68A17]/10"
+            className="inline-flex items-center rounded-sm border-2 border-[#14141A]/20 px-8 py-4 text-base font-bold text-[#14141A] transition-all duration-300 hover:border-[#C68A17] hover:bg-[#C68A17]/10"
           >
             Contact Us
           </Link>
@@ -47,7 +47,7 @@ export default function NotFound() {
               <Link
                 key={page.href}
                 href={page.href}
-                className="rounded-full border border-[#14141A]/15 px-4 py-2 text-sm text-[#14141A]/65 transition-all hover:border-[#C68A17] hover:text-[#C68A17]"
+                className="rounded-sm border border-[#14141A]/15 px-4 py-2 text-sm text-[#14141A]/65 transition-all hover:border-[#C68A17] hover:text-[#C68A17]"
               >
                 {page.label}
               </Link>

@@ -4,7 +4,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Menu, X, Facebook, Instagram, Mail, Phone, ChevronDown } from "lucide-react";
+import { Menu, X, Facebook, Instagram, Mail, Phone, ChevronDown, Coins, CreditCard } from "lucide-react";
 import { AnimatePresence, motion, useScroll, useSpring } from "framer-motion";
 import { navLinks, type NavLink } from "@/lib/constants";
 import { useSiteChrome } from "@/components/SiteContentProvider";
@@ -103,6 +103,42 @@ export function Header() {
           : "bg-[#14141A]/85 backdrop-blur-md"
       )}
     >
+      {/* Utility bar — collapses away once scrolled */}
+      <div
+        className={cn(
+          "hidden overflow-hidden border-b border-white/8 transition-all duration-500 lg:block",
+          scrolled ? "max-h-0 opacity-0" : "max-h-10 opacity-100"
+        )}
+      >
+        <div className="mx-auto flex h-10 max-w-7xl items-center justify-between px-4 text-xs sm:px-6 lg:px-8">
+          <div className="flex items-center gap-5 text-white/60">
+            <a
+              href={`tel:${contact.phone.replace(/\D/g, "")}`}
+              className="inline-flex items-center gap-1.5 transition-colors hover:text-[#F0A92D]"
+            >
+              <Phone size={12} />
+              {contact.phone}
+            </a>
+            <span className="h-3 w-px bg-white/15" />
+            <span>The Shoppes at Buckland Hills · Manchester, CT</span>
+          </div>
+          <div className="flex items-center gap-5">
+            <Link
+              href="/#we-buy-gold"
+              className="inline-flex items-center gap-1.5 font-heading font-bold uppercase tracking-[0.14em] text-[#F0A92D] transition-colors hover:text-[#F7DFA8]"
+            >
+              <Coins size={13} />
+              We Buy Gold — Top Prices Paid
+            </Link>
+            <span className="h-3 w-px bg-white/15" />
+            <span className="inline-flex items-center gap-1.5 text-white/60">
+              <CreditCard size={12} />
+              No credit needed financing · All major cards accepted
+            </span>
+          </div>
+        </div>
+      </div>
+
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Mobile layout */}
         <div className="flex h-20 items-center justify-between xl:hidden">
@@ -127,7 +163,7 @@ export function Header() {
         </div>
 
         {/* Desktop layout — 3-column grid: left | centered logo | right */}
-        <div className="hidden xl:grid h-28 items-center" style={{ gridTemplateColumns: "1fr auto 1fr" }}>
+        <div className="hidden xl:grid h-24 items-center" style={{ gridTemplateColumns: "1fr auto 1fr" }}>
           {/* Left: Social icons + nav links */}
           <div className="flex items-center gap-6">
             <div className="flex items-center gap-3">
@@ -202,13 +238,16 @@ export function Header() {
             ))}
             <Link
               href="/contact"
-              className="btn-gold inline-flex items-center rounded-full px-5 py-2.5 text-sm font-semibold text-white transition-all hover:scale-105 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C68A17] focus-visible:ring-offset-2 focus-visible:ring-offset-[#14141A]"
+              className="btn-gold inline-flex items-center px-5 py-2.5 text-sm font-semibold text-white transition-all hover:scale-105 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C68A17] focus-visible:ring-offset-2 focus-visible:ring-offset-[#14141A]"
             >
               Visit or Contact Us
             </Link>
           </div>
         </div>
       </div>
+
+      {/* Bottom gold hairline */}
+      <div className="absolute inset-x-0 bottom-0 h-px bg-linear-to-r from-transparent via-[#C68A17]/45 to-transparent" />
 
     </header>
 
@@ -287,12 +326,24 @@ export function Header() {
               )
             )}
             <Link
+              href="/#we-buy-gold"
+              onClick={() => setMobileOpen(false)}
+              className="mt-4 flex items-center justify-center gap-2 rounded-sm border border-[#C68A17]/50 bg-[#C68A17]/10 px-6 py-3.5 text-center text-base font-heading font-bold uppercase tracking-[0.12em] text-[#F0A92D]"
+            >
+              <Coins size={17} />
+              We Buy Gold — Top Prices Paid
+            </Link>
+            <Link
               href="/contact"
               onClick={() => setMobileOpen(false)}
-              className="btn-gold mt-6 rounded-full px-6 py-4 text-center text-base font-semibold text-white"
+              className="btn-gold mt-3 px-6 py-4 text-center text-base font-semibold text-white"
             >
               Visit or Contact Us
             </Link>
+            <p className="mt-4 flex items-center justify-center gap-1.5 text-center text-xs text-white/50">
+              <CreditCard size={13} />
+              No credit needed financing · All major cards accepted
+            </p>
             {/* Social icons mobile */}
             <div className="mt-8 flex items-center justify-center gap-6">
               <a href={socials.facebook} target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-[#C68A17]" aria-label="Facebook (opens in new window)">

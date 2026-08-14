@@ -293,7 +293,7 @@ export function ContactClient({ heroSlides }: ContactClientProps) {
               <button
                 type="submit"
                 disabled={submitting}
-                className="btn-gold mt-6 inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-semibold text-white disabled:opacity-60"
+                className="btn-gold mt-6 inline-flex items-center gap-2 px-8 py-3.5 text-sm font-semibold text-white disabled:opacity-60"
               >
                 {submitting ? (
                   <>

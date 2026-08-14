@@ -70,7 +70,7 @@ export function MeetingClient() {
         >
           <Link
             href="/contact"
-            className="btn-gold inline-flex items-center rounded-full px-8 py-4 text-base font-bold text-white hover:scale-[1.03]"
+            className="btn-gold inline-flex items-center px-8 py-4 text-base font-bold text-white hover:scale-[1.03]"
           >
             Use the contact form
           </Link>

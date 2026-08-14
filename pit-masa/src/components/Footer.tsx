@@ -216,7 +216,7 @@ export function Footer() {
             </div>
             <Link
               href="/contact"
-              className="btn-gold flex shrink-0 items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white"
+              className="btn-gold flex shrink-0 items-center gap-2 px-6 py-3 text-sm font-semibold text-white"
             >
               Visit or Contact Us
               <ArrowRight size={14} />
@@ -232,6 +232,15 @@ export function Footer() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="mt-16 border-t border-white/5 pt-8 space-y-4"
         >
+          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-xs text-white/55">
+            <span className="inline-flex items-center gap-1.5 font-semibold uppercase tracking-[0.14em] text-[#F0A92D]">
+              We Buy Gold — Top Prices Paid
+            </span>
+            <span className="hidden h-3 w-px bg-white/15 sm:block" />
+            <span>All major credit cards accepted</span>
+            <span className="hidden h-3 w-px bg-white/15 sm:block" />
+            <span>Financing with no credit needed</span>
+          </div>
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
           <p className="text-xs text-white/55">
           &copy; {new Date().getFullYear()} King's Jeweler. All rights reserved.

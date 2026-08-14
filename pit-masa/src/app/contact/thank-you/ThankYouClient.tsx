@@ -75,14 +75,14 @@ export function ThankYouClient() {
         >
           <Link
             href="/gallery"
-            className="inline-flex items-center gap-2 rounded-full border border-[#14141A]/15 px-6 py-3 text-sm font-medium transition-all hover:bg-[#14141A]/5"
+            className="inline-flex items-center gap-2 rounded-sm border border-[#14141A]/15 px-6 py-3 text-sm font-medium transition-all hover:bg-[#14141A]/5"
           >
             View Our Gallery
             <ArrowRight size={16} />
           </Link>
           <Link
             href="/services"
-            className="inline-flex items-center gap-2 rounded-full border border-[#14141A]/15 px-6 py-3 text-sm font-medium transition-all hover:bg-[#14141A]/5"
+            className="inline-flex items-center gap-2 rounded-sm border border-[#14141A]/15 px-6 py-3 text-sm font-medium transition-all hover:bg-[#14141A]/5"
           >
             Explore Our Services
             <ArrowRight size={16} />

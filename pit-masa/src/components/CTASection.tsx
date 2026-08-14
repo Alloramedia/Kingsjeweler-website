@@ -85,7 +85,7 @@ export function CTASection({
         >
           <Link
             href={primaryHref}
-            className="btn-gold inline-flex items-center rounded-full px-8 py-4 text-base font-bold text-white hover:scale-[1.03] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C68A17] focus-visible:ring-offset-2 focus-visible:ring-offset-black/50"
+            className="btn-gold inline-flex items-center px-8 py-4 text-base font-bold text-white hover:scale-[1.03] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C68A17] focus-visible:ring-offset-2 focus-visible:ring-offset-black/50"
           >
             <Star size={18} className="mr-2" />
             {primaryLabel}
@@ -93,7 +93,7 @@ export function CTASection({
           {secondaryLabel && (
             <Link
               href={secondaryHref}
-              className="inline-flex items-center rounded-full border-2 border-white/30 px-8 py-4 text-base font-bold text-white transition-all duration-300 hover:border-[#C68A17] hover:bg-[#C68A17]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C68A17] focus-visible:ring-offset-2 focus-visible:ring-offset-black/50"
+              className="btn-outline-gold inline-flex items-center px-8 py-4 text-base font-bold text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C68A17] focus-visible:ring-offset-2 focus-visible:ring-offset-black/50"
             >
               {secondaryLabel}
               <ArrowRight size={18} className="ml-2" />

@@ -113,7 +113,7 @@ export default async function ServicesPage() {
             </p>
             <Link
               href="/contact"
-              className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#C68A17] px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-[#A87310]"
+              className="btn-gold mt-6 inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold text-white"
             >
               Visit or Contact Us
               <ArrowRight size={16} />
