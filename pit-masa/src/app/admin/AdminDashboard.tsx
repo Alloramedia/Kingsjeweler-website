@@ -758,7 +758,7 @@ function BundlesEditor({ data }: { data: Bundle[] }) {
 /* ── Recipes & Blog: list → edit one at a time ─────────────────── */
 
 const emptyRecipe = (): Recipe => ({
-  slug: "", title: "", excerpt: "", category: "Jewelry Care", image: "/images/jewelry/jewel-01.webp",
+  slug: "", title: "", excerpt: "", category: "Jewelry Care", image: "/images/jewelry/kings-01.webp",
   time: "", difficulty: "Easy", serves: "", date: new Date().toISOString().slice(0, 10),
   intro: [], ingredients: [], steps: [], tip: "",
 });
@@ -851,7 +851,7 @@ function RecipesEditor({ data }: { data: Recipe[] }) {
 }
 
 const emptyPost = (): BlogPost => ({
-  slug: "", title: "", excerpt: "", category: "Stories", image: "/images/jewelry/jewel-02.webp",
+  slug: "", title: "", excerpt: "", category: "Stories", image: "/images/jewelry/kings-02.webp",
   author: "King's Jeweler", date: new Date().toISOString().slice(0, 10), readTime: "4 min read", body: [],
 });
 

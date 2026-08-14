@@ -41,7 +41,7 @@ export function CTASection({
       {/* Parallax background image */}
       <motion.div
         className="absolute inset-x-0 -inset-y-[30%] bg-cover bg-center will-change-transform"
-        style={{ y: bgY, backgroundImage: "url('/images/jewelry/jewel-02.webp')" }}
+        style={{ y: bgY, backgroundImage: "url('/images/jewelry/kings-02.webp')" }}
       />
       {/* Dark overlay for readability */}
       <div className="absolute inset-0 bg-black/70" />

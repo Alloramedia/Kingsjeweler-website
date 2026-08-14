@@ -37,30 +37,30 @@ export const siteConfig = {
 
 /* ------------------------------------------------------------------ */
 /*  Brand imagery — swap these filenames to change site photography.   */
-/*  Placeholder art lives in /public/images/jewelry/                   */
+/*  Real store photos live in /public/images/jewelry/                  */
 /* ------------------------------------------------------------------ */
 export const brandImages = {
-  heroHome: "/images/jewelry/jewel-01.webp",
-  heroCatering: "/images/jewelry/jewel-02.webp",
-  heroEvents: "/images/jewelry/jewel-03.webp",
-  menuFeature: "/images/jewelry/jewel-04.webp",
-  aboutFeature: "/images/jewelry/jewel-05.webp",
-  owner: "/images/jewelry/jewel-06.webp",
+  heroHome: "/images/jewelry/kings-01.webp", // gold chains tray
+  heroCatering: "/images/jewelry/kings-02.webp", // gold watch bracelets
+  heroEvents: "/images/jewelry/kings-06.webp", // engagement ring in store
+  menuFeature: "/images/jewelry/kings-09.webp", // diamond-set watches
+  aboutFeature: "/images/jewelry/kings-07.webp", // storefront at Buckland Hills
+  owner: "/images/jewelry/kings-06.webp",
   // Rotating hero/banner photos — used by the HeroSlideshow background.
   heroSlides: [
-    "/images/jewelry/jewel-01.webp",
-    "/images/jewelry/jewel-02.webp",
-    "/images/jewelry/jewel-03.webp",
-    "/images/jewelry/jewel-04.webp",
+    "/images/jewelry/kings-01.webp",
+    "/images/jewelry/kings-02.webp",
+    "/images/jewelry/kings-08.webp",
+    "/images/jewelry/kings-10.webp",
   ],
   // Curated set reused across home offerings and feature cards.
   cards: [
-    "/images/jewelry/jewel-07.webp",
-    "/images/jewelry/jewel-08.webp",
-    "/images/jewelry/jewel-09.webp",
-    "/images/jewelry/jewel-10.webp",
-    "/images/jewelry/jewel-11.webp",
-    "/images/jewelry/jewel-12.webp",
+    "/images/jewelry/kings-03.webp",
+    "/images/jewelry/kings-04.webp",
+    "/images/jewelry/kings-05.webp",
+    "/images/jewelry/kings-09.webp",
+    "/images/jewelry/kings-10.webp",
+    "/images/jewelry/kings-11.webp",
   ],
 } as const;
 
