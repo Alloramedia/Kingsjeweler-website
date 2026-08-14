@@ -36,17 +36,26 @@ export function CTASection({
   return (
     <section
       ref={sectionRef}
-      className="relative py-20 md:py-28 overflow-hidden"
+      className="relative py-20 md:py-28 overflow-hidden bg-[#14141A]"
     >
-      {/* Parallax background image */}
+      {/* Gold glow + navy depth */}
+      <div className="absolute inset-0 metal-texture" />
+      {/* Faint crown watermark, drifting slightly with scroll */}
       <motion.div
-        className="absolute inset-x-0 -inset-y-[30%] bg-cover bg-center will-change-transform"
-        style={{ y: bgY, backgroundImage: "url('/images/jewelry/kings-02.webp')" }}
-      />
-      {/* Dark overlay for readability */}
-      <div className="absolute inset-0 bg-black/70" />
-      {/* Subtle teal tint overlay */}
-      <div className="absolute inset-0 bg-[#1F3A5F]/20" />
+        aria-hidden="true"
+        style={{ y: bgY }}
+        className="absolute left-1/2 top-1/2 h-105 w-105 -translate-x-1/2 -translate-y-1/2 opacity-[0.06]"
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/images/kings-jeweler-badge.webp"
+          alt=""
+          className="h-full w-full object-contain"
+        />
+      </motion.div>
+      {/* Gold hairlines top & bottom */}
+      <div className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-[#C68A17]/50 to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 h-px bg-linear-to-r from-transparent via-[#C68A17]/50 to-transparent" />
 
       <div className="relative z-10 mx-auto max-w-3xl px-6 text-center lg:px-8">
         <motion.h2
@@ -76,7 +85,7 @@ export function CTASection({
         >
           <Link
             href={primaryHref}
-            className="inline-flex items-center rounded-full bg-[#1F3A5F] px-8 py-4 text-base font-bold text-white shadow-lg shadow-[#1F3A5F]/25 transition-all duration-300 hover:scale-[1.03] hover:shadow-xl hover:shadow-[#C68A17]/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1F3A5F] focus-visible:ring-offset-2 focus-visible:ring-offset-black/50"
+            className="btn-gold inline-flex items-center rounded-full px-8 py-4 text-base font-bold text-white hover:scale-[1.03] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C68A17] focus-visible:ring-offset-2 focus-visible:ring-offset-black/50"
           >
             <Star size={18} className="mr-2" />
             {primaryLabel}

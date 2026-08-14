@@ -132,6 +132,15 @@ export function HomeClient({
           >
             {heroTitle}
           </motion.h1>
+          <motion.div
+            initial={{ opacity: 0, scaleX: 0 }}
+            animate={{ opacity: 1, scaleX: 1 }}
+            transition={{ duration: 0.7, delay: 0.35 }}
+            className="ornament-divider mt-6"
+            aria-hidden="true"
+          >
+            <span />
+          </motion.div>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -148,19 +157,43 @@ export function HomeClient({
           >
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 rounded-full bg-[#C68A17] px-8 py-4 text-base font-semibold text-white shadow-lg transition-all hover:bg-[#A87310] hover:shadow-xl"
+              className="btn-gold inline-flex items-center gap-2 rounded-full px-8 py-4 text-base font-semibold text-white"
             >
               Visit or Contact Us
               <ArrowRight size={18} />
             </Link>
             <Link
               href="/services"
-              className="inline-flex items-center gap-2 rounded-full border border-white/30 px-8 py-4 text-base font-medium text-white transition-all hover:bg-white/10"
+              className="inline-flex items-center gap-2 rounded-full border border-white/30 px-8 py-4 text-base font-medium text-white backdrop-blur-sm transition-all hover:border-[#C68A17] hover:bg-[#C68A17]/10"
             >
               Explore Our Services
             </Link>
           </motion.div>
+
+          {/* Trust strip */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.55 }}
+            className="mx-auto mt-12 flex max-w-2xl flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-white/70"
+          >
+            <span className="inline-flex items-center gap-2">
+              <span className="flex text-[#F0A92D]">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star key={i} size={13} fill={i < 4 ? "currentColor" : "none"} />
+                ))}
+              </span>
+              4.5 on Google
+            </span>
+            <span className="hidden h-3 w-px bg-white/25 sm:block" />
+            <span>Family owned &amp; operated</span>
+            <span className="hidden h-3 w-px bg-white/25 sm:block" />
+            <span>Watch batteries while you wait</span>
+          </motion.div>
         </div>
+
+        {/* Bottom gold hairline */}
+        <div className="absolute inset-x-0 bottom-0 h-px bg-linear-to-r from-transparent via-[#C68A17]/60 to-transparent" />
       </section>
 
       {/* ── Services ─────────────────────────────────────────── */}
@@ -173,9 +206,10 @@ export function HomeClient({
         <StaggerContainer className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {SERVICES.map((s) => (
             <StaggerItem key={s.title}>
-              <div className="group h-full rounded-2xl border border-[#14141A]/10 bg-[#FFFDF8] p-7 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#C68A17]/10 text-[#C68A17] transition-colors group-hover:bg-[#C68A17] group-hover:text-white">
-                  <s.icon size={24} />
+              <div className="group relative h-full overflow-hidden rounded-2xl border border-[#14141A]/8 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-[#C68A17]/35 hover:shadow-lg hover:shadow-[#C68A17]/10">
+                <div className="absolute inset-x-0 top-0 h-0.5 bg-linear-to-r from-transparent via-[#C68A17] to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                <div className="flex h-12 w-12 items-center justify-center rounded-full border border-[#C68A17]/25 bg-[#C68A17]/8 text-[#C68A17] transition-colors duration-300 group-hover:bg-[#C68A17] group-hover:text-white">
+                  <s.icon size={22} />
                 </div>
                 <h3 className="mt-5 text-lg font-bold">{s.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-[#14141A]/65">
@@ -225,7 +259,12 @@ export function HomeClient({
             </div>
           </div>
           <FadeIn className="relative">
-            <div className="relative aspect-4/5 overflow-hidden rounded-2xl">
+            {/* Offset gold frame */}
+            <div
+              aria-hidden="true"
+              className="absolute -right-3 -top-3 hidden h-full w-full rounded-2xl border border-[#C68A17]/40 lg:block"
+            />
+            <div className="relative aspect-4/5 overflow-hidden rounded-2xl ring-1 ring-white/10">
               <Image
                 src={brandImages.aboutFeature}
                 alt="Inside the King's Jeweler showcase"
@@ -235,6 +274,16 @@ export function HomeClient({
                 blurDataURL={BLUR_DATA_URL}
                 className="object-cover"
               />
+            </div>
+            {/* Floating review card */}
+            <div className="absolute -bottom-5 -left-3 rounded-xl border border-[#C68A17]/30 bg-[#14141A]/90 px-5 py-4 shadow-xl backdrop-blur-sm sm:-left-6">
+              <div className="flex items-center gap-1 text-[#F0A92D]">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star key={i} size={14} fill={i < 4 ? "currentColor" : "none"} />
+                ))}
+              </div>
+              <p className="mt-1.5 text-sm font-semibold text-white">4.5 stars on Google</p>
+              <p className="text-xs text-white/55">from real local customers</p>
             </div>
           </FadeIn>
         </div>
@@ -250,7 +299,7 @@ export function HomeClient({
         <StaggerContainer className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-3">
           {brandImages.cards.slice(0, 6).map((src, i) => (
             <StaggerItem key={src}>
-              <div className="relative aspect-square overflow-hidden rounded-xl">
+              <div className="group relative aspect-square overflow-hidden rounded-xl ring-1 ring-[#14141A]/10 transition-all duration-300 hover:ring-2 hover:ring-[#C68A17]/60">
                 <Image
                   src={src}
                   alt={`Jewelry from the King's Jeweler showcase ${i + 1}`}
@@ -258,8 +307,9 @@ export function HomeClient({
                   sizes="(max-width: 768px) 50vw, 33vw"
                   placeholder="blur"
                   blurDataURL={BLUR_DATA_URL}
-                  className="object-cover transition-transform duration-500 hover:scale-105"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
+                <div className="absolute inset-0 bg-linear-to-t from-[#14141A]/30 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
               </div>
             </StaggerItem>
           ))}
@@ -284,7 +334,8 @@ export function HomeClient({
         />
         <div className="mx-auto mt-12 grid max-w-4xl gap-6 md:grid-cols-3">
           <FadeIn>
-            <div className="h-full rounded-2xl border border-[#14141A]/10 bg-white p-7 text-center shadow-sm">
+            <div className="relative h-full overflow-hidden rounded-2xl border border-[#14141A]/8 bg-white p-7 text-center shadow-sm">
+              <div className="absolute inset-x-0 top-0 h-0.5 bg-linear-to-r from-transparent via-[#C68A17]/70 to-transparent" />
               <MapPin size={26} className="mx-auto text-[#C68A17]" />
               <h3 className="mt-4 font-bold">Location</h3>
               <p className="mt-2 text-sm leading-relaxed text-[#14141A]/65">
@@ -307,7 +358,8 @@ export function HomeClient({
             </div>
           </FadeIn>
           <FadeIn>
-            <div className="h-full rounded-2xl border border-[#14141A]/10 bg-white p-7 text-center shadow-sm">
+            <div className="relative h-full overflow-hidden rounded-2xl border border-[#14141A]/8 bg-white p-7 text-center shadow-sm">
+              <div className="absolute inset-x-0 top-0 h-0.5 bg-linear-to-r from-transparent via-[#C68A17]/70 to-transparent" />
               <Clock size={26} className="mx-auto text-[#C68A17]" />
               <h3 className="mt-4 font-bold">Store Hours</h3>
               <ul className="mt-2 space-y-1 text-sm text-[#14141A]/65">
@@ -320,7 +372,8 @@ export function HomeClient({
             </div>
           </FadeIn>
           <FadeIn>
-            <div className="h-full rounded-2xl border border-[#14141A]/10 bg-white p-7 text-center shadow-sm">
+            <div className="relative h-full overflow-hidden rounded-2xl border border-[#14141A]/8 bg-white p-7 text-center shadow-sm">
+              <div className="absolute inset-x-0 top-0 h-0.5 bg-linear-to-r from-transparent via-[#C68A17]/70 to-transparent" />
               <Phone size={26} className="mx-auto text-[#C68A17]" />
               <h3 className="mt-4 font-bold">Get in Touch</h3>
               <p className="mt-2 text-sm leading-relaxed text-[#14141A]/65">
@@ -356,7 +409,13 @@ export function HomeClient({
           <StaggerContainer className="mt-12 grid gap-6 md:grid-cols-3">
             {testimonials.slice(0, 3).map((t) => (
               <StaggerItem key={t.author}>
-                <figure className="flex h-full flex-col rounded-2xl border border-[#14141A]/10 bg-[#FFFDF8] p-7 shadow-sm">
+                <figure className="relative flex h-full flex-col rounded-2xl border border-[#14141A]/8 bg-white p-7 shadow-sm">
+                  <span
+                    aria-hidden="true"
+                    className="font-display absolute right-6 top-3 text-6xl leading-none text-[#C68A17]/15"
+                  >
+                    ”
+                  </span>
                   <div className="flex gap-1 text-[#C68A17]">
                     {Array.from({ length: 5 }).map((_, i) => (
                       <Star key={i} size={15} fill="currentColor" />
@@ -365,9 +424,14 @@ export function HomeClient({
                   <blockquote className="mt-4 flex-1 text-sm leading-relaxed text-[#14141A]/75">
                     &ldquo;{t.body}&rdquo;
                   </blockquote>
-                  <figcaption className="mt-5">
-                    <p className="font-bold">{t.author}</p>
-                    <p className="text-xs text-[#14141A]/55">{t.role}</p>
+                  <figcaption className="mt-5 flex items-center gap-3 border-t border-[#14141A]/8 pt-4">
+                    <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#C68A17]/12 text-sm font-bold text-[#C68A17]">
+                      {t.author.charAt(0)}
+                    </span>
+                    <span>
+                      <p className="text-sm font-bold">{t.author}</p>
+                      <p className="text-xs text-[#14141A]/55">{t.role}</p>
+                    </span>
                   </figcaption>
                 </figure>
               </StaggerItem>

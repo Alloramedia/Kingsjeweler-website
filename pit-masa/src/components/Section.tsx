@@ -82,6 +82,11 @@ export function SectionHeader({
       <h2 className={`font-display! text-3xl font-normal! uppercase md:text-4xl lg:text-5xl ${titleColor}`}>
         {title}
       </h2>
+      {center && (
+        <div className="ornament-divider mt-5" aria-hidden="true">
+          <span />
+        </div>
+      )}
       {description && (
         <p className={`mt-4 text-lg leading-relaxed md:text-xl ${descColor}`}>
           {description}

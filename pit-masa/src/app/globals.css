@@ -131,6 +131,42 @@ h1, h2, h3, h4, h5, h6 {
   background-repeat: no-repeat;
 }
 
+/* ═══════ GOLD UI ACCENTS ═══════ */
+/* Primary button — polished gold gradient with a soft press feel. */
+.btn-gold {
+  background-image: linear-gradient(to bottom, #d89b22, #b37b10);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.25) inset, 0 8px 24px rgba(198, 138, 23, 0.35);
+  transition: filter 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+.btn-gold:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.25) inset, 0 10px 30px rgba(198, 138, 23, 0.5);
+}
+
+/* Ornamental divider — hairlines meeting a small rotated gem. */
+.ornament-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+.ornament-divider::before,
+.ornament-divider::after {
+  content: "";
+  height: 1px;
+  width: 3.5rem;
+  background: linear-gradient(to right, transparent, rgba(198, 138, 23, 0.65));
+}
+.ornament-divider::after {
+  background: linear-gradient(to left, transparent, rgba(198, 138, 23, 0.65));
+}
+.ornament-divider > span {
+  width: 0.4rem;
+  height: 0.4rem;
+  transform: rotate(45deg);
+  background: #c68a17;
+}
+
 /* Counter animation */
 @keyframes countUp {
   from { opacity: 0; transform: translateY(20px); }

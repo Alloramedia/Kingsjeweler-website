@@ -202,7 +202,7 @@ export function Header() {
             ))}
             <Link
               href="/contact"
-              className="inline-flex items-center rounded-full bg-[#1F3A5F] px-5 py-2.5 text-sm font-semibold text-white transition-all hover:scale-105 hover:shadow-xl hover:shadow-[#C68A17]/40 shadow-lg shadow-[#1F3A5F]/20 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1F3A5F] focus-visible:ring-offset-2 focus-visible:ring-offset-[#14141A]"
+              className="btn-gold inline-flex items-center rounded-full px-5 py-2.5 text-sm font-semibold text-white transition-all hover:scale-105 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C68A17] focus-visible:ring-offset-2 focus-visible:ring-offset-[#14141A]"
             >
               Visit or Contact Us
             </Link>
@@ -289,7 +289,7 @@ export function Header() {
             <Link
               href="/contact"
               onClick={() => setMobileOpen(false)}
-              className="mt-6 rounded-full bg-[#1F3A5F] px-6 py-4 text-center text-base font-semibold text-white shadow-lg shadow-[#1F3A5F]/20 transition-all hover:shadow-xl hover:shadow-[#C68A17]/40"
+              className="btn-gold mt-6 rounded-full px-6 py-4 text-center text-base font-semibold text-white"
             >
               Visit or Contact Us
             </Link>

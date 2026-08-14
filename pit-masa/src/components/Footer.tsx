@@ -216,7 +216,7 @@ export function Footer() {
             </div>
             <Link
               href="/contact"
-              className="flex shrink-0 items-center gap-2 rounded-full bg-[#1F3A5F] px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-[#1F3A5F]/20 transition-all hover:shadow-xl hover:shadow-[#C68A17]/40"
+              className="btn-gold flex shrink-0 items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white"
             >
               Visit or Contact Us
               <ArrowRight size={14} />

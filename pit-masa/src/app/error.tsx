@@ -49,7 +49,7 @@ export default function Error({
         <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
           <button
             onClick={reset}
-            className="inline-flex items-center rounded-full bg-[#1F3A5F] px-8 py-4 text-base font-bold text-white shadow-lg shadow-[#1F3A5F]/25 transition-all duration-300 hover:scale-[1.03] hover:shadow-xl hover:shadow-[#C68A17]/40"
+            className="btn-gold inline-flex items-center rounded-full px-8 py-4 text-base font-bold text-white hover:scale-[1.03]"
           >
             Try Again
           </button>
