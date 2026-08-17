@@ -142,14 +142,22 @@ export function Header() {
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Mobile layout */}
         <div className="flex h-20 items-center justify-between xl:hidden">
-          <Link href="/" className="shrink-0" aria-label="King's Jeweler — home">
+          <Link href="/" className="flex shrink-0 items-center gap-2.5" aria-label="King's Jeweler — home">
+            <Image
+              src="/images/kings-jeweler-crest.webp"
+              alt=""
+              width={879}
+              height={1224}
+              priority
+              className="h-14 w-auto"
+            />
             <Image
               src={logo}
               alt="King's Jeweler"
               width={1600}
               height={533}
               priority
-              className="h-12 w-auto"
+              className="h-10 w-auto"
             />
           </Link>
           <button
@@ -230,15 +238,23 @@ export function Header() {
             ))}
           </div>
 
-          {/* Center: Logo — centered in the navbar */}
-          <Link href="/" className="justify-self-center px-4" aria-label="King's Jeweler — home">
+          {/* Center: Crest + wordmark lockup — centered in the navbar */}
+          <Link href="/" className="flex items-center gap-3 justify-self-center px-4" aria-label="King's Jeweler — home">
+            <Image
+              src="/images/kings-jeweler-crest.webp"
+              alt=""
+              width={879}
+              height={1224}
+              priority
+              className="h-17 w-auto"
+            />
             <Image
               src={logo}
               alt="King's Jeweler"
               width={1600}
               height={533}
               priority
-              className="h-16 w-auto"
+              className="h-12 w-auto"
             />
           </Link>
 

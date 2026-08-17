@@ -101,6 +101,7 @@ export interface NavLink {
 export const navLinks: NavLink[] = [
   { label: "Services", href: "/services" },
   { label: "Gallery", href: "/gallery" },
+  { label: "Blog", href: "/blog" },
   { label: "About", href: "/about" },
   { label: "Visit Us", href: "/contact" },
 ];
@@ -117,12 +118,13 @@ export const footerLinks = {
     { label: "About", href: "/about" },
     { label: "Services", href: "/services" },
     { label: "Gallery", href: "/gallery" },
+    { label: "Blog", href: "/blog" },
     { label: "Contact", href: "/contact" },
   ],
   industries: [
-    { label: "Engagements & Weddings", href: "/services" },
-    { label: "Anniversaries & Gifts", href: "/services" },
-    { label: "Ring Sizing & Restoration", href: "/services" },
+    { label: "Engagement Ring Buying Guide", href: "/blog/engagement-ring-buying-guide" },
+    { label: "Ring Resizing Cost Guide", href: "/blog/how-much-does-ring-resizing-cost" },
+    { label: "How to Sell Gold Jewelry", href: "/blog/how-to-sell-gold-jewelry" },
   ],
   personal: [{ label: "Get in Touch", href: "/contact" }],
 };

@@ -4,6 +4,5 @@
   { "source": "/catering", "destination": "/services", "permanent": true },
   { "source": "/festivals", "destination": "/", "permanent": true },
   { "source": "/recipes", "destination": "/", "permanent": true },
-  { "source": "/blog", "destination": "/", "permanent": true },
   { "source": "/farm-to-table", "destination": "/about", "permanent": true }
 ]

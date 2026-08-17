@@ -45,11 +45,18 @@ export function Footer() {
               aria-label="King's Jeweler — home"
             >
               <Image
+                src="/images/kings-jeweler-crest.webp"
+                alt=""
+                width={879}
+                height={1224}
+                className="h-20 w-auto"
+              />
+              <Image
                 src={logo}
                 alt="King's Jeweler — Fine Jewelry"
                 width={1600}
                 height={533}
-                className="h-16 w-auto"
+                className="h-14 w-auto"
               />
             </Link>
             <p className="mt-5 text-sm font-heading font-semibold uppercase tracking-[0.2em] text-[#F0A92D]">
@@ -172,10 +179,10 @@ export function Footer() {
             </ul>
           </motion.div>
 
-          {/* Occasions */}
+          {/* Guides */}
           <motion.div variants={staggerItem}>
             <h3 className="mb-5 text-xs font-bold uppercase tracking-[0.2em] text-[#C68A17]">
-              Occasions
+              Guides
             </h3>
             <ul className="space-y-3">
               {footerLinks.industries.map((link) => (
