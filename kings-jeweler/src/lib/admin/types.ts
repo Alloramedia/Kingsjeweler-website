@@ -124,6 +124,7 @@ export interface SeoEntry {
 export const SEO_PAGES = [
   { key: "home", label: "Home page", path: "/" },
   { key: "services", label: "Services page", path: "/services" },
+  { key: "sellGold", label: "We Buy Gold page", path: "/sell-gold" },
   { key: "gallery", label: "Gallery page", path: "/gallery" },
   { key: "about", label: "About page", path: "/about" },
   { key: "contact", label: "Contact page", path: "/contact" },
@@ -428,6 +429,11 @@ export const seoDefaults: Seo = {
     description:
       "Explore King's Jeweler services — engagement rings, custom jewelry design, ring sizing, chain repair, watch batteries while you wait, appraisals, and fair gold buying in Manchester, CT.",
   },
+  sellGold: {
+    title: "We Buy Gold in Manchester, CT",
+    description:
+      "Sell gold, silver, diamonds, and estate jewelry at King's Jeweler in The Shoppes at Buckland Hills. We weigh everything in front of you and pay 70–90% of melt value — no appointment needed.",
+  },
   gallery: {
     title: "Gallery — Custom Jewelry & Work From Our Showcase",
     description:
@@ -448,6 +454,7 @@ export const seoDefaults: Seo = {
 export const defaultSeo: Seo = {
   home: { title: "", description: "" },
   services: { title: "", description: "" },
+  sellGold: { title: "", description: "" },
   gallery: { title: "", description: "" },
   about: { title: "", description: "" },
   contact: { title: "", description: "" },

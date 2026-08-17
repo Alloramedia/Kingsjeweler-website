@@ -20,8 +20,8 @@ import committedOverrides from "../../../content/overrides.json";
  * end-to-end while developing.
  */
 
-const STORE_NAME = "pitmasa-site-admin";
-const MEDIA_STORE_NAME = "pitmasa-media";
+const STORE_NAME = "kings-jeweler-site-admin";
+const MEDIA_STORE_NAME = "kings-jeweler-media";
 const KEY = "overrides";
 const DRAFT_KEY = "draft";
 const HISTORY_KEY = "history";

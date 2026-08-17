@@ -118,6 +118,7 @@ export interface NavLink {
 
 export const navLinks: NavLink[] = [
   { label: "Services", href: "/services" },
+  { label: "We Buy Gold", href: "/sell-gold" },
   { label: "Gallery", href: "/gallery" },
   { label: "Blog", href: "/blog" },
   { label: "About", href: "/about" },
@@ -129,11 +130,12 @@ export const footerLinks = {
     { label: "Custom Jewelry Design", href: "/services" },
     { label: "Jewelry Repair", href: "/services" },
     { label: "Watch Repair & Batteries", href: "/services" },
-    { label: "Gold Buying & Appraisals", href: "/services" },
+    { label: "We Buy Gold", href: "/sell-gold" },
   ],
   company: [
     { label: "About", href: "/about" },
     { label: "Services", href: "/services" },
+    { label: "We Buy Gold", href: "/sell-gold" },
     { label: "Gallery", href: "/gallery" },
     { label: "Blog", href: "/blog" },
     { label: "Contact", href: "/contact" },

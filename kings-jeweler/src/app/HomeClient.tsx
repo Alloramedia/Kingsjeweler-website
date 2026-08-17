@@ -340,10 +340,16 @@ export function HomeClient({
                   Get an Offer
                   <ArrowRight size={18} />
                 </Link>
-                <p className="text-sm font-semibold text-[#14141A]/70">
-                  No appointment needed — walk in any day.
-                </p>
+                <Link
+                  href="/sell-gold"
+                  className="text-sm font-semibold text-[#14141A]/70 underline decoration-[#14141A]/30 underline-offset-2 transition-colors hover:text-[#14141A]"
+                >
+                  See what we buy & how it works
+                </Link>
               </div>
+              <p className="mt-4 text-sm font-semibold text-[#14141A]/70">
+                No appointment needed — walk in any day.
+              </p>
             </FadeIn>
             <StaggerContainer className="grid gap-4">
               {[

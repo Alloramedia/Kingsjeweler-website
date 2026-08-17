@@ -124,7 +124,7 @@ export function Header() {
           </div>
           <div className="flex items-center gap-5">
             <Link
-              href="/#we-buy-gold"
+              href="/sell-gold"
               className="inline-flex items-center gap-1.5 font-heading font-bold uppercase tracking-[0.14em] text-[#F0A92D] transition-colors hover:text-[#F7DFA8]"
             >
               <Coins size={13} />
@@ -226,7 +226,7 @@ export function Header() {
                 <Phone size={18} />
               </a>
             </div>
-            {navLinks.slice(0, 2).map((link) => (
+            {navLinks.slice(0, 3).map((link) => (
               <NavItem
                 key={link.href}
                 link={link}
@@ -260,7 +260,7 @@ export function Header() {
 
           {/* Right: nav links + Client Portal + CTA */}
           <div className="flex items-center gap-6 justify-self-end">
-            {navLinks.slice(2).map((link) => (
+            {navLinks.slice(3).map((link) => (
               <NavItem
                 key={link.href}
                 link={link}
@@ -301,7 +301,9 @@ export function Header() {
             aria-label="Navigation menu"
           >
           <nav className="flex flex-col gap-1 px-6 py-8">
-            {navLinks.map((link) =>
+            {navLinks
+              .filter((link) => link.href !== "/sell-gold")
+              .map((link) =>
               link.children ? (
                 <div key={link.href}>
                   <button
@@ -360,7 +362,7 @@ export function Header() {
               )
             )}
             <Link
-              href="/#we-buy-gold"
+              href="/sell-gold"
               onClick={() => setMobileOpen(false)}
               className="mt-4 flex items-center justify-center gap-2 rounded-sm border border-[#C68A17]/50 bg-[#C68A17]/10 px-6 py-3.5 text-center text-base font-heading font-bold uppercase tracking-[0.12em] text-[#F0A92D]"
             >

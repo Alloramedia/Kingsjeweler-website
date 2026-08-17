@@ -16,6 +16,3 @@ out/
 # OS files
 .DS_Store
 Thumbs.db
-
-# Generated SEO reports (Moz API output)
-pit-masa/seo-data/

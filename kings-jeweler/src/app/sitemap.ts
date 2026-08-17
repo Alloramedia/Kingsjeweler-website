@@ -10,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages = [
     "",
     "/services",
+    "/sell-gold",
     "/gallery",
     "/about",
     "/blog",
@@ -21,7 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${baseUrl}${path}`,
     lastModified,
     changeFrequency: "weekly" as const,
-    priority: path === "" ? 1 : ["/services", "/gallery", "/blog"].includes(path) ? 0.9 : 0.8,
+    priority: path === "" ? 1 : ["/services", "/sell-gold", "/gallery", "/blog"].includes(path) ? 0.9 : 0.8,
   }));
 
   const blogEntries = blogPosts.map((post) => ({
