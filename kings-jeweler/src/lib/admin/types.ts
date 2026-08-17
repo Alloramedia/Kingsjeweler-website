@@ -5,8 +5,8 @@
  */
 import type { Metadata } from "next";
 import { siteConfig, brandImages as defaultBrand, serviceAreas, defaultImageAlt } from "@/lib/constants";
-import { recipes as defaultRecipes, blogPosts as defaultBlogPosts } from "@/lib/content";
-import type { Recipe, BlogPost } from "@/lib/content";
+import { blogPosts as defaultBlogPosts } from "@/lib/content";
+import type { BlogPost } from "@/lib/content";
 
 export interface SocialLinks {
   facebook: string;
@@ -36,11 +36,6 @@ export interface MenuItem {
    * renderer shows these as a bulleted list instead of `desc`.
    */
   options?: string[];
-  /**
-   * Optional links to back-office recipe ids (see lib/admin/kitchen.ts).
-   * Legacy field from the previous site — never rendered publicly.
-   */
-  recipeIds?: string[];
 }
 
 export interface MenuSection {
@@ -52,21 +47,7 @@ export interface MenuSection {
    * heading. Blank groups fall under a generic heading.
    */
   group?: string;
-  /** Optional service tag. Legacy field — safe to leave blank. */
-  service?: string;
   items: MenuItem[];
-}
-
-/**
- * Legacy bundle concept from the previous site. Unused by King's Jeweler but
- * kept so stored overrides and the admin editor keep working.
- */
-export interface Bundle {
-  name: string;
-  blurb: string;
-  vehicles: string[];
-  /** Short "what's included" lines. */
-  highlights: string[];
 }
 
 export interface HeroOverride {
@@ -94,15 +75,6 @@ export interface Testimonial {
 export interface FaqItem {
   question: string;
   answer: string;
-}
-
-/** An upcoming event / trunk show appearance. */
-export interface EventItem {
-  name: string;
-  date: string;
-  location: string;
-  time: string;
-  url: string;
 }
 
 /** The pages whose FAQ list the client can edit. */
@@ -183,8 +155,6 @@ export interface SiteContent {
   socials: SocialLinks;
   hours: HoursRow[];
   menu: MenuSection[];
-  bundles: Bundle[];
-  recipes: Recipe[];
   blog: BlogPost[];
   hero: { home: HeroOverride };
   brandImages: BrandImages;
@@ -194,7 +164,6 @@ export interface SiteContent {
   faqs: Faqs;
   serviceTowns: string[];
   gallery: string[];
-  events: EventItem[];
   /** Per-photo alt text, keyed by image URL (accessibility + SEO). */
   imageAlt: Record<string, string>;
   seo: Seo;
@@ -206,8 +175,6 @@ export interface Overrides {
   socials?: Partial<SocialLinks>;
   hours?: HoursRow[];
   menu?: MenuSection[];
-  bundles?: Bundle[];
-  recipes?: Recipe[];
   blog?: BlogPost[];
   hero?: { home?: HeroOverride };
   brandImages?: Partial<BrandImages>;
@@ -217,7 +184,6 @@ export interface Overrides {
   faqs?: Partial<Record<FaqPageKey, FaqItem[]>>;
   serviceTowns?: string[];
   gallery?: string[];
-  events?: EventItem[];
   imageAlt?: Record<string, string>;
   seo?: Partial<Record<SeoPageKey, Partial<SeoEntry>>>;
 }
@@ -230,9 +196,6 @@ export const defaultHours: HoursRow[] = [
   { day: "Saturday", hours: "11:00 AM – 8:00 PM" },
   { day: "Sunday", hours: "11:00 AM – 6:00 PM" },
 ];
-
-/** No scheduled events by default — admin-editable via the `events` content. */
-export const defaultEvents: EventItem[] = [];
 
 export const defaultMenu: MenuSection[] = [
   {
@@ -281,9 +244,6 @@ export const defaultMenu: MenuSection[] = [
     ],
   },
 ];
-
-/** Bundles are a legacy concept — none by default for King's Jeweler. */
-export const defaultBundles: Bundle[] = [];
 
 export const defaultHeroHome: Required<HeroOverride> = {
   title: "Manchester's Family Jeweler",
@@ -507,8 +467,6 @@ export function mergeContent(o: Overrides): SiteContent {
     },
     hours: o.hours && o.hours.length > 0 ? o.hours : defaultHours,
     menu: o.menu && o.menu.length > 0 ? o.menu : defaultMenu,
-    bundles: o.bundles && o.bundles.length > 0 ? o.bundles : defaultBundles,
-    recipes: o.recipes && o.recipes.length > 0 ? o.recipes : defaultRecipes,
     blog: o.blog && o.blog.length > 0 ? o.blog : defaultBlogPosts,
     hero: {
       home: {
@@ -559,7 +517,6 @@ export function mergeContent(o: Overrides): SiteContent {
         ? o.serviceTowns
         : defaultServiceTowns,
     gallery: o.gallery && o.gallery.length > 0 ? o.gallery : [],
-    events: o.events ?? defaultEvents,
     imageAlt: { ...defaultImageAlt, ...(o.imageAlt ?? {}) },
     seo: mergeSeo(o.seo),
   };

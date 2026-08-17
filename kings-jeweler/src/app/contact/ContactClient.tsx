@@ -7,7 +7,7 @@ import { MapPin, Clock, Phone, Mail, ArrowRight, Loader2 } from "lucide-react";
 import { siteConfig } from "@/lib/constants";
 import { HeroSlideshow } from "@/components/HeroSlideshow";
 import {
-  CATERING_HELP_OPTIONS,
+  SERVICE_HELP_OPTIONS,
   EVENT_TYPE_OPTIONS,
   BUDGET_OPTIONS,
   HOW_HEARD_OPTIONS,
@@ -224,7 +224,7 @@ export function ContactClient({ heroSlides }: ContactClientProps) {
                     <option value="" disabled>
                       Choose one…
                     </option>
-                    {CATERING_HELP_OPTIONS.map((o) => (
+                    {SERVICE_HELP_OPTIONS.map((o) => (
                       <option key={o} value={o}>
                         {o}
                       </option>

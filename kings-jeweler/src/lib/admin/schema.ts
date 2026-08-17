@@ -1,6 +1,6 @@
 import "server-only";
 import { draftMode, headers } from "next/headers";
-import type { Recipe, BlogPost } from "@/lib/content";
+import type { BlogPost } from "@/lib/content";
 import { readRawOverrides, readRawDraft, hasDraft } from "./store";
 import { mergeContent, type Overrides, type SiteContent } from "./types";
 
@@ -66,11 +66,6 @@ export async function getEditableContent(): Promise<SiteContent> {
 /** Read the raw saved overrides (for pre-filling the admin forms). */
 export async function getOverrides(): Promise<Overrides> {
   return (await readRawOverrides()) as Overrides;
-}
-
-export async function getRecipeBySlug(slug: string): Promise<Recipe | undefined> {
-  const { recipes } = await getSiteContent();
-  return recipes.find((r) => r.slug === slug);
 }
 
 export async function getBlogPostBySlug(slug: string): Promise<BlogPost | undefined> {

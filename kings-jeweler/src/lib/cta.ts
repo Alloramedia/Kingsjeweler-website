@@ -17,7 +17,7 @@ export const CTA_SECONDARY_RESULTS = {
  * Service options shown in the contact form — mirrors what the store
  * actually does day to day.
  */
-export const CATERING_HELP_OPTIONS = [
+export const SERVICE_HELP_OPTIONS = [
   "Engagement Rings & Bridal",
   "Custom Jewelry Design",
   "Jewelry Repair",
@@ -26,27 +26,6 @@ export const CATERING_HELP_OPTIONS = [
   "Gold Buying / Trade-In",
   "Appraisal",
   "Something Else / Not Sure",
-] as const;
-
-/**
- * Requests that are typically handled same-day at the counter rather than
- * as a longer project. The contact wizard tones down project questions for these.
- */
-export const MEAL_PROGRAM_OPTIONS = [
-  "Watch Repair & Batteries",
-  "Ring Sizing",
-  "Gold Buying / Trade-In",
-] as const;
-
-/** Ballpark budget ranges shown in the contact form. */
-export const GUEST_COUNT_OPTIONS = [
-  "Under $250",
-  "$250 – $500",
-  "$500 – $1,000",
-  "$1,000 – $2,500",
-  "$2,500 – $5,000",
-  "$5,000+",
-  "Not sure yet",
 ] as const;
 
 /** Occasion options shown in the contact form. */
@@ -85,7 +64,7 @@ export const BUDGET_OPTIONS = [
 ] as const;
 
 /** Metal / material preferences — multi-select. */
-export const SETUP_NEEDS_OPTIONS = [
+export const MATERIAL_OPTIONS = [
   "Yellow gold",
   "White gold",
   "Rose gold",

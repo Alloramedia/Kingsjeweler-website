@@ -2,27 +2,7 @@
  * Editorial content for King's Jeweler.
  * Blog posts target high-intent local + informational jewelry keywords
  * (repairs, engagement rings, gold buying, watch batteries, appraisals).
- * Recipes are unused for this brand — the type remains for the admin model.
  */
-
-export interface Recipe {
-  slug: string;
-  title: string;
-  excerpt: string;
-  category: string;
-  image: string;
-  /** Hands-on + total time, e.g. "8 hours". */
-  time: string;
-  difficulty: "Easy" | "Intermediate" | "Advanced";
-  /** How many it serves. */
-  serves: string;
-  intro: string[];
-  ingredients: string[];
-  steps: { title: string; body: string }[];
-  tip: string;
-  /** ISO date used for sitemap lastModified + ordering. */
-  date: string;
-}
 
 export interface BlogPost {
   slug: string;
@@ -39,8 +19,6 @@ export interface BlogPost {
   /** Q&A pairs rendered as an accordion and emitted as FAQPage schema. */
   faqs?: { question: string; answer: string }[];
 }
-
-export const recipes: Recipe[] = [];
 
 const AUTHOR = "The King's Jeweler Family";
 

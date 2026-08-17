@@ -5,35 +5,34 @@ import {
   createContext, useContext,
 } from "react";
 import {
-  Phone, Share2, Clock, Megaphone, UtensilsCrossed, BookOpen, FileText,
+  Phone, Share2, Clock, Megaphone, Gem, FileText,
   Plus, Trash2, Check, LogOut, ChevronLeft, ChevronRight, Loader2, ExternalLink,
   History, RotateCcw, AlertTriangle, Copy, Images,
   Inbox, Search, Bell, GripVertical, Mail, Phone as PhoneIcon,
-  Quote, HelpCircle, Download, MapPin, CalendarDays, Boxes, Palette,
+  Quote, HelpCircle, Download, MapPin, Palette,
   Eye, Columns2, ChevronDown, Home,
-  ShoppingCart, Receipt, ChefHat, FileDown, DollarSign, Package,
-  Activity, Flame, Beef, Truck as TruckIcon, Caravan, Martini,
+  Receipt, FileDown, DollarSign,
 } from "lucide-react";
 import type {
-  SiteContent, HoursRow, MenuSection, Bundle, HeroOverride, SocialLinks, BrandImages, BrandColors,
+  SiteContent, HoursRow, MenuSection, HeroOverride, SocialLinks, BrandImages, BrandColors,
   Announcement, Seo, ContactMessage, Testimonial, Faqs, FaqItem, MessageStatus,
-  EventItem,
 } from "@/lib/admin/types";
 import { SEO_PAGES, seoDefaults, FAQ_PAGES, defaultBrandColors } from "@/lib/admin/types";
-import {
-  INVENTORY_CATEGORIES, UNITS, PRICE_AS_OF, money,
-  buildGroceryList, dishCostPerServing, inventoryById,
-  dishNutritionPerServing, aggregateNutrition, emptyNutrition,
-  NUTRITION_FIELDS, fmtNutrient, estimateMenuItem, packageDishWeights,
-  type InventoryItem, type DishRecipe, type InventoryCategory, type Unit,
-  type NutritionFacts,
-} from "@/lib/admin/kitchen";
-import { VEHICLES } from "@/lib/vehicles";
-import type { Recipe, BlogPost } from "@/lib/content";
+import type { BlogPost } from "@/lib/content";
 import type { LucideIcon } from "lucide-react";
 import Link from "next/link";
 import { ImagePicker } from "./ImagePicker";
 import { PreviewPanel } from "./PreviewPanel";
+
+/** Format a dollar amount as USD, e.g. 1234.5 → "$1,234.50". */
+function money(n: number): string {
+  return n.toLocaleString("en-US", {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
+}
 
 /* ── Toast (friendly confirmation) ─────────────────────────────── */
 
@@ -57,7 +56,7 @@ const usePreview = () => useContext(PreviewCtx);
 type QuotePrefill = {
   client?: {
     name?: string; email?: string; phone?: string;
-    eventType?: string; guestCount?: string; eventDate?: string; eventLocation?: string;
+    itemType?: string; dueDate?: string;
   };
 };
 const QuoteCtx = createContext<(prefill?: QuotePrefill) => void>(() => {});
@@ -486,65 +485,7 @@ function HeroEditor({ data }: { data: HeroOverride }) {
   );
 }
 
-/** Loads back-office inventory + recipes once, for cost/nutrition estimates. */
-function useKitchen() {
-  const [data, setData] = useState<{ inventory: InventoryItem[]; recipes: DishRecipe[] } | null>(null);
-  useEffect(() => {
-    fetch("/api/admin/kitchen")
-      .then((r) => r.json())
-      .then((d) => setData({ inventory: d.inventory ?? [], recipes: d.recipes ?? [] }))
-      .catch(() => setData({ inventory: [], recipes: [] }));
-  }, []);
-  return data;
-}
-
-/** Auto-matches a menu item's dishes/options to kitchen recipes by name and
- *  surfaces the ingredient cost & nutrition that get accounted for — no manual
- *  linking required. */
-function MenuItemAutoCost({
-  item, recipes, map,
-}: {
-  item: MenuSection["items"][number];
-  recipes: DishRecipe[];
-  map: Record<string, InventoryItem>;
-}) {
-  const est = useMemo(() => estimateMenuItem(item, recipes, map), [item, recipes, map]);
-  const hasOptions = !!(item.options && item.options.length);
-  // Option-based items: always show (surface any gaps). Single-name items:
-  // only show when they actually match a dish, so descriptor/service rows
-  // (e.g. "Full chef-led service") don't get nagged as a missing recipe.
-  const show = hasOptions ? (est.matched.length > 0 || est.unmatched.length > 0) : est.matched.length > 0;
-  if (!show) return null;
-  return (
-    <div className="rounded-lg border border-dashed border-slate-300 bg-slate-50/70 p-3">
-      <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
-        <span className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wide text-slate-500"><ChefHat size={13} /> Ingredients accounted automatically</span>
-        {est.matched.length > 0 && (
-          <span className="rounded-full bg-orange-100 px-2 py-0.5 text-xs font-semibold text-orange-700">~{money(est.perGuestCost)}/guest · {Math.round(est.perGuestNutrition.calories)} kcal</span>
-        )}
-      </div>
-      {est.matched.length > 0 && (
-        <div className="mb-2 flex flex-wrap gap-1.5">
-          {est.matched.map((r) => (
-            <span key={r.id} className="inline-flex items-center gap-1 rounded-full bg-white px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-green-200">
-              <Check size={11} /> {r.dish}
-            </span>
-          ))}
-        </div>
-      )}
-      {est.unmatched.length > 0 && (
-        <p className="text-xs text-amber-600">No recipe yet for: <strong>{est.unmatched.join(", ")}</strong>. Add it under Grocery → Dish recipes to count its cost.</p>
-      )}
-      {est.matched.length > 0 && est.perGuestCost > 0 && (
-        <p className="mt-1.5 text-xs text-slate-400">Suggested price at 30% food cost: <strong className="text-slate-600">{money(est.perGuestCost / 0.3)}</strong>/guest</p>
-      )}
-    </div>
-  );
-}
-
 function MenuEditor({ data }: { data: MenuSection[] }) {
-  const kitchen = useKitchen();
-  const recipeMap = useMemo(() => inventoryById(kitchen?.inventory ?? []), [kitchen]);
   const { data: sections, setData: setSections, status, dirty, save, draftAvailable, restoreDraft, discardDraft } = useEditor<MenuSection[]>("menu", data);
   const [editing, setEditing] = useState<number | null>(null);
   const updateSection = (si: number, patch: Partial<MenuSection>) =>
@@ -565,17 +506,7 @@ function MenuEditor({ data }: { data: MenuSection[] }) {
         </button>
         <div className="space-y-3">
           <Field label="Package / section name" value={sec.title} onChange={(v) => updateSection(si, { title: v })} max={120} />
-          <Field label="Event type" hint="Groups packages on the menu page, e.g. Weddings, Corporate & Private Parties, Brunch & Daytime, Add-On Stations." value={sec.group ?? ""} onChange={(v) => updateSection(si, { group: v })} placeholder="Weddings" max={120} />
-          <label className="block">
-            <span className="text-sm font-semibold text-slate-700">Served from</span>
-            <span className="ml-1 text-xs font-normal text-slate-400">Powers the truck/trailer filter on the menu page.</span>
-            <select value={sec.service ?? "Both"} onChange={(e) => updateSection(si, { service: e.target.value })} className="mt-1.5 w-full rounded-xl border border-slate-300 px-4 py-2.5 text-slate-900 outline-none focus:border-orange-500">
-              <option value="Both">Both (truck &amp; trailer)</option>
-              <option value="Food Truck">Food Truck</option>
-              <option value="Pit Trailer">Pit Trailer</option>
-              <option value="Cocktail Cart">Cocktail Cart</option>
-            </select>
-          </label>
+          <Field label="Category" hint="Groups services on the page, e.g. Jewelry Services, Watch Services, Buying & Appraisals." value={sec.group ?? ""} onChange={(v) => updateSection(si, { group: v })} placeholder="Jewelry Services" max={120} />
           <Area label="Short description" value={sec.blurb} onChange={(v) => updateSection(si, { blurb: v })} rows={2} max={400} />
         </div>
         <div className="space-y-3 border-t border-slate-100 pt-4">
@@ -607,9 +538,6 @@ function MenuEditor({ data }: { data: MenuSection[] }) {
                     max={2000}
                   />
                   <Area label="Description" hint="Optional blurb shown above the options list." value={it.desc} onChange={(v) => updateItem(si, ii, { desc: v })} rows={2} max={400} />
-                  {kitchen && kitchen.recipes.length > 0 && (
-                    <MenuItemAutoCost item={it} recipes={kitchen.recipes} map={recipeMap} />
-                  )}
                 </div>
               </Collapsible>
             )}
@@ -618,12 +546,12 @@ function MenuEditor({ data }: { data: MenuSection[] }) {
             <Plus size={16} /> Add item
           </button>
         </div>
-        <SaveBar status={status} dirty={dirty} onSave={() => save()} viewUrl="/menu" />
+        <SaveBar status={status} dirty={dirty} onSave={() => save()} viewUrl="/services" />
       </div>
     );
   }
 
-  /* ── list view: packages grouped by event type ── */
+  /* ── list view: services grouped by category ── */
   const groupOrder: string[] = [];
   const groups = new Map<string, { sec: MenuSection; idx: number }[]>();
   sections.forEach((sec, idx) => {
@@ -642,13 +570,13 @@ function MenuEditor({ data }: { data: MenuSection[] }) {
   };
   const duplicate = (idx: number) => {
     const orig = sections[idx];
-    const copy: MenuSection = { ...orig, title: orig.title ? `${orig.title} (copy)` : "New package", items: orig.items.map((it) => ({ ...it })) };
+    const copy: MenuSection = { ...orig, title: orig.title ? `${orig.title} (copy)` : "New section", items: orig.items.map((it) => ({ ...it })) };
     setSections([...sections.slice(0, idx + 1), copy, ...sections.slice(idx + 1)]);
     setEditing(idx + 1);
   };
   const remove = (idx: number) => {
     const sec = sections[idx];
-    if (!confirm(`Delete "${sec.title || "this package"}"? You can undo this from History.`)) return;
+    if (!confirm(`Delete "${sec.title || "this section"}"? You can undo this from History.`)) return;
     const next = sections.filter((_, i) => i !== idx);
     setSections(next); save(next, next);
   };
@@ -656,7 +584,7 @@ function MenuEditor({ data }: { data: MenuSection[] }) {
   return (
     <div className="space-y-6">
       <DraftBanner available={draftAvailable} onRestore={restoreDraft} onDiscard={discardDraft} />
-      <p className="text-sm text-slate-500">Packages are grouped by <strong>event type</strong>. Click <em>Edit</em> to open a package&apos;s details, items and prices. Drag the <GripVertical size={14} className="inline align-text-bottom" /> handle to reorder packages within a group.</p>
+      <p className="text-sm text-slate-500">Services are grouped by <strong>category</strong>. Click <em>Edit</em> to open a section&apos;s details, items and prices. Drag the <GripVertical size={14} className="inline align-text-bottom" /> handle to reorder sections within a group.</p>
       {groupOrder.map((group) => {
         const members = groups.get(group)!;
         return (
@@ -673,7 +601,7 @@ function MenuEditor({ data }: { data: MenuSection[] }) {
                       {handle}
                       <div className="min-w-0">
                         <p className="truncate font-semibold text-slate-900">{sec.title || "(untitled)"}</p>
-                        <p className="text-sm text-slate-500">{[sec.service && sec.service !== "Both" ? sec.service : "Truck & Trailer", `${itemCount} item${itemCount === 1 ? "" : "s"}`, priced > 0 ? `${priced} priced` : null].filter(Boolean).join(" · ")}</p>
+                        <p className="text-sm text-slate-500">{[`${itemCount} item${itemCount === 1 ? "" : "s"}`, priced > 0 ? `${priced} priced` : null].filter(Boolean).join(" · ")}</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-1">
@@ -688,163 +616,10 @@ function MenuEditor({ data }: { data: MenuSection[] }) {
           </div>
         );
       })}
-      <button onClick={() => { setSections([...sections, { title: "New package", group: "", service: "Both", blurb: "", items: [] }]); setEditing(sections.length); }} className="flex items-center gap-2 rounded-xl border-2 border-dashed border-slate-300 px-4 py-2.5 text-sm font-semibold text-slate-600 hover:border-orange-400 hover:text-orange-600">
-        <Plus size={18} /> Add a package or section
+      <button onClick={() => { setSections([...sections, { title: "New section", group: "", blurb: "", items: [] }]); setEditing(sections.length); }} className="flex items-center gap-2 rounded-xl border-2 border-dashed border-slate-300 px-4 py-2.5 text-sm font-semibold text-slate-600 hover:border-orange-400 hover:text-orange-600">
+        <Plus size={18} /> Add a service section
       </button>
-      {(dirty || status !== "idle") && <div className="pt-2"><SaveBar status={status} dirty={dirty} onSave={() => save()} viewUrl="/menu" /></div>}
-    </div>
-  );
-}
-
-/* ── Bundles: multi-vehicle deal packages ──────────────────────── */
-
-function BundlesEditor({ data }: { data: Bundle[] }) {
-  const { data: bundles, setData: setBundles, status, dirty, save, draftAvailable, restoreDraft, discardDraft } = useEditor<Bundle[]>("bundles", data);
-  const update = (bi: number, patch: Partial<Bundle>) =>
-    setBundles(bundles.map((b, i) => (i === bi ? { ...b, ...patch } : b)));
-  const toggleVehicle = (bi: number, slug: string) => {
-    const b = bundles[bi];
-    const has = b.vehicles.includes(slug);
-    update(bi, { vehicles: has ? b.vehicles.filter((s) => s !== slug) : [...b.vehicles, slug] });
-  };
-  return (
-    <div className="space-y-6">
-      <DraftBanner available={draftAvailable} onRestore={restoreDraft} onDiscard={discardDraft} />
-      <p className="text-sm text-slate-500">Bundles combine two or more setups (Trailer, Truck, Cocktail Cart) into one deal. Drag the <GripVertical size={14} className="inline align-text-bottom" /> handle to reorder.</p>
-      <ReorderList items={bundles} onReorder={setBundles} getKey={(_, i) => i} gap="gap-6">
-        {(bundle, bi, handle) => (
-          <Collapsible
-            handle={handle}
-            title={bundle.name || "Untitled bundle"}
-            onRemove={() => setBundles(bundles.filter((_, i) => i !== bi))}
-            removeLabel="Remove bundle"
-          >
-            <div className="space-y-3">
-              <Field label="Bundle name" value={bundle.name} onChange={(v) => update(bi, { name: v })} max={120} />
-              <div>
-                <span className="text-sm font-semibold text-slate-700">Setups included</span>
-                <div className="mt-2 flex flex-wrap gap-2">
-                  {VEHICLES.map((v) => {
-                    const on = bundle.vehicles.includes(v.slug);
-                    return (
-                      <button
-                        key={v.slug}
-                        type="button"
-                        onClick={() => toggleVehicle(bi, v.slug)}
-                        className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm font-semibold transition ${on ? "border-orange-500 bg-orange-50 text-orange-700" : "border-slate-300 bg-white text-slate-500 hover:border-orange-300"}`}
-                      >
-                        {on ? <Check size={14} /> : <Plus size={14} />}
-                        {v.name.replace(/^The\s+/, "")}
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-              <Area label="Short description" value={bundle.blurb} onChange={(v) => update(bi, { blurb: v })} rows={3} max={600} />
-              <Area label="What's included" hint="One highlight per line." value={toLines(bundle.highlights)} onChange={(v) => update(bi, { highlights: fromLines(v) })} rows={4} />
-            </div>
-          </Collapsible>
-        )}
-      </ReorderList>
-      <button onClick={() => setBundles([...bundles, { name: "New bundle", blurb: "", vehicles: [], highlights: [] }])} className="flex items-center gap-2 rounded-xl border-2 border-dashed border-slate-300 px-4 py-2.5 text-sm font-semibold text-slate-600 hover:border-orange-400 hover:text-orange-600">
-        <Plus size={18} /> Add a bundle
-      </button>
-      <SaveBar status={status} dirty={dirty} onSave={() => save()} viewUrl="/catering" />
-    </div>
-  );
-}
-
-/* ── Recipes & Blog: list → edit one at a time ─────────────────── */
-
-const emptyRecipe = (): Recipe => ({
-  slug: "", title: "", excerpt: "", category: "Jewelry Care", image: "/images/jewelry/kings-01.webp",
-  time: "", difficulty: "Easy", serves: "", date: new Date().toISOString().slice(0, 10),
-  intro: [], ingredients: [], steps: [], tip: "",
-});
-
-function RecipesEditor({ data }: { data: Recipe[] }) {
-  const { data: list, setData: setList, status, dirty, save, draftAvailable, restoreDraft, discardDraft } = useEditor<Recipe[]>("recipes", data);
-  const [editing, setEditing] = useState<number | null>(null);
-
-  if (editing !== null) {
-    const r = list[editing];
-    const set = (patch: Partial<Recipe>) =>
-      setList(list.map((x, i) => (i === editing ? { ...x, ...patch } : x)));
-    return (
-      <div className="space-y-5">
-        <button onClick={() => setEditing(null)} className="flex items-center gap-1.5 text-sm font-semibold text-slate-600 hover:text-slate-900">
-          <ChevronLeft size={18} /> Back to all recipes
-        </button>
-        <Field label="Title" value={r.title} onChange={(v) => set({ title: v })} max={160} />
-        <Field label="Web address (slug)" hint="Lowercase words with dashes — this becomes the page link." value={r.slug} onChange={(v) => set({ slug: v })} placeholder="engagement-rings" max={120} />
-        <Area label="Short summary" value={r.excerpt} onChange={(v) => set({ excerpt: v })} rows={2} max={400} />
-        <ImagePicker label="Photo" value={r.image} onChange={(v) => set({ image: v })} />
-        <div className="grid gap-4 sm:grid-cols-2">
-          <Field label="Category" value={r.category} onChange={(v) => set({ category: v })} max={80} />
-          <Field label="Time" value={r.time} onChange={(v) => set({ time: v })} placeholder="12 hours" max={80} />
-          <Field label="Serves" value={r.serves} onChange={(v) => set({ serves: v })} placeholder="10–12" max={80} />
-          <label className="block">
-            <span className="text-sm font-semibold text-slate-700">Difficulty</span>
-            <select value={r.difficulty} onChange={(e) => set({ difficulty: e.target.value as Recipe["difficulty"] })} className="mt-1.5 w-full rounded-xl border border-slate-300 px-4 py-2.5 text-slate-900 outline-none focus:border-orange-500">
-              <option>Easy</option><option>Intermediate</option><option>Advanced</option>
-            </select>
-          </label>
-          <Field label="Date" type="date" value={r.date} onChange={(v) => set({ date: v })} />
-        </div>
-        <Area label="Intro paragraphs" hint="One paragraph per line." value={toLines(r.intro)} onChange={(v) => set({ intro: fromLines(v) })} rows={4} />
-        <Area label="Ingredients" hint="One ingredient per line." value={toLines(r.ingredients)} onChange={(v) => set({ ingredients: fromLines(v) })} rows={6} />
-        <Area
-          label="Steps"
-          hint="One step per line, format: Title | What to do"
-          value={r.steps.map((s) => `${s.title} | ${s.body}`).join("\n")}
-          onChange={(v) => set({ steps: fromLines(v).map((line) => { const [t, ...rest] = line.split("|"); return { title: t.trim(), body: rest.join("|").trim() }; }) })}
-          rows={6}
-        />
-        <Area label="Pitmaster tip" value={r.tip} onChange={(v) => set({ tip: v })} rows={2} max={600} />
-        <SaveBar status={status} dirty={dirty} onSave={() => save()} viewUrl={r.slug ? `/recipes/${r.slug}` : "/recipes"} />
-      </div>
-    );
-  }
-
-  return (
-    <div className="space-y-3">
-      <DraftBanner available={draftAvailable} onRestore={restoreDraft} onDiscard={discardDraft} />
-      <ReorderList items={list} onReorder={setList} getKey={(_, i) => i} gap="gap-2">
-        {(r, i, handle) => (
-          <div className="flex items-center justify-between rounded-xl border border-slate-200 p-4">
-            <div className="flex min-w-0 items-center gap-2">
-              {handle}
-              <div className="min-w-0">
-                <p className="truncate font-semibold text-slate-900">{r.title || "(untitled)"}</p>
-                <p className="text-sm text-slate-500">{r.category}</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-1">
-              <button onClick={() => setEditing(i)} className="rounded-lg bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-200">Edit</button>
-              <button
-                onClick={() => {
-                  const copy = { ...r, slug: r.slug ? `${r.slug}-copy` : "", title: r.title ? `${r.title} (copy)` : "" };
-                  const next = [...list.slice(0, i + 1), copy, ...list.slice(i + 1)];
-                  setList(next);
-                  setEditing(i + 1);
-                }}
-                className="rounded-lg p-2 text-slate-400 hover:bg-slate-100 hover:text-slate-700"
-                aria-label="Duplicate"
-                title="Make a copy"
-              >
-                <Copy size={18} />
-              </button>
-              <button onClick={() => { if (confirm(`Delete "${r.title}"? You can undo this from History.`)) { const next = list.filter((_, idx) => idx !== i); setList(next); save(next, next); } }} className="rounded-lg p-2 text-slate-400 hover:bg-red-50 hover:text-red-600" aria-label="Delete">
-                <Trash2 size={18} />
-              </button>
-            </div>
-          </div>
-        )}
-      </ReorderList>
-      <button onClick={() => { setList([...list, emptyRecipe()]); setEditing(list.length); }} className="flex items-center gap-2 rounded-xl border-2 border-dashed border-slate-300 px-4 py-2.5 text-sm font-semibold text-slate-600 hover:border-orange-400 hover:text-orange-600">
-        <Plus size={18} /> Add a recipe
-      </button>
-      {(dirty || status !== "idle") && <div className="pt-2"><SaveBar status={status} dirty={dirty} onSave={() => save()} viewUrl="/recipes" /></div>}
+      {(dirty || status !== "idle") && <div className="pt-2"><SaveBar status={status} dirty={dirty} onSave={() => save()} viewUrl="/services" /></div>}
     </div>
   );
 }
@@ -1300,45 +1075,6 @@ function GalleryEditor({ data, alt }: { data: string[]; alt: Record<string, stri
   );
 }
 
-/* ── Upcoming events ───────────────────────────────────────────── */
-
-function EventsEditor({ data }: { data: EventItem[] }) {
-  const { data: list, setData, status, dirty, save, draftAvailable, restoreDraft, discardDraft } = useEditor<EventItem[]>("events", data);
-  const update = (i: number, patch: Partial<EventItem>) =>
-    setData(list.map((e, idx) => (idx === i ? { ...e, ...patch } : e)));
-  return (
-    <div className="space-y-4">
-      <DraftBanner available={draftAvailable} onRestore={restoreDraft} onDiscard={discardDraft} />
-      <p className="text-sm text-slate-500">Festivals and pop-ups shown on your Festivals page. Drag the <GripVertical size={13} className="inline" /> handle to reorder. Leave empty to hide the list.</p>
-      <ReorderList items={list} onReorder={setData} getKey={(_, i) => i} gap="gap-4">
-        {(ev, i, handle) => (
-          <Collapsible
-            handle={handle}
-            title={ev.name || "New event"}
-            meta={ev.date || undefined}
-            onRemove={() => setData(list.filter((_, j) => j !== i))}
-            removeLabel="Remove event"
-          >
-            <div className="space-y-3">
-              <Field label="Event name" value={ev.name} onChange={(v) => update(i, { name: v })} placeholder="Holiday Trunk Show" max={160} />
-              <div className="grid gap-3 sm:grid-cols-2">
-                <Field label="Date" value={ev.date} onChange={(v) => update(i, { date: v })} placeholder="Sat, Jul 12" max={80} />
-                <Field label="Time" value={ev.time} onChange={(v) => update(i, { time: v })} placeholder="11am–7pm" max={80} />
-              </div>
-              <Field label="Location" value={ev.location} onChange={(v) => update(i, { location: v })} placeholder="Bushnell Park, Hartford" max={160} />
-              <Field label="Link (optional)" value={ev.url} onChange={(v) => update(i, { url: v })} placeholder="https://…" max={300} hint="Must start with https:// to show a button." />
-            </div>
-          </Collapsible>
-        )}
-      </ReorderList>
-      <button onClick={() => setData([...list, { name: "", date: "", location: "", time: "", url: "" }])} className="flex items-center gap-2 rounded-xl border border-dashed border-slate-300 px-4 py-3 text-sm font-semibold text-slate-600 hover:border-orange-400 hover:text-orange-600">
-        <Plus size={18} /> Add an event
-      </button>
-      <SaveBar status={status} dirty={dirty} onSave={() => save()} viewUrl="/festivals" />
-    </div>
-  );
-}
-
 /* ── Messages inbox (contact-form submissions) ─────────────────── */
 
 const STATUS_META: Record<MessageStatus, { label: string; cls: string; ring: string }> = {
@@ -1562,10 +1298,7 @@ function MessagesPanel({ onBack, onChanged }: { onBack: () => void; onChanged?: 
                           startQuote({
                             client: {
                               name: m.name, email: m.email, phone: m.phone,
-                              eventType: detail("Occasion") || m.service,
-                              guestCount: detail("Guest count"),
-                              eventDate: detail("Event date"),
-                              eventLocation: detail("Location"),
+                              itemType: detail("Occasion") || m.service,
                             },
                           });
                           if (m.status === "new") act(m.id, "status", "quoted");
@@ -1668,8 +1401,6 @@ function HistoryPanel({ onBack }: { onBack: () => void }) {
   );
 }
 
-/* ── Kitchen tools: shared bits ─────────────────────────────────── */
-
 /** Number input that keeps a tidy local string while editing. */
 function NumInput({
   value, onChange, className, placeholder,
@@ -1691,532 +1422,9 @@ function NumInput({
   );
 }
 
-/* ── Inventory tool ─────────────────────────────────────────────── */
-
-function InventoryPanel({ onBack }: { onBack: () => void }) {
-  const [items, setItems] = useState<InventoryItem[] | null>(null);
-  const [saving, setSaving] = useState(false);
-  const [query, setQuery] = useState("");
-  const [cat, setCat] = useState<"all" | InventoryCategory>("all");
-  const [openMacros, setOpenMacros] = useState<Set<string>>(() => new Set());
-  const toast = useToast();
-
-  useEffect(() => {
-    fetch("/api/admin/kitchen")
-      .then((r) => r.json())
-      .then((d) => setItems(d.inventory ?? []))
-      .catch(() => setItems([]));
-  }, []);
-
-  function patch(id: string, p: Partial<InventoryItem>) {
-    setItems((cur) => (cur ? cur.map((it) => (it.id === id ? { ...it, ...p } : it)) : cur));
-  }
-  function patchNutrition(id: string, key: keyof NutritionFacts, value: number) {
-    setItems((cur) =>
-      cur
-        ? cur.map((it) =>
-            it.id === id
-              ? { ...it, nutrition: { ...(it.nutrition ?? emptyNutrition()), [key]: value } }
-              : it,
-          )
-        : cur,
-    );
-  }
-  function toggleMacros(id: string) {
-    setOpenMacros((cur) => {
-      const next = new Set(cur);
-      if (next.has(id)) next.delete(id);
-      else next.add(id);
-      return next;
-    });
-  }
-  function add() {
-    const id = `item-${Date.now().toString(36)}`;
-    setItems((cur) => [
-      { id, name: "New ingredient", category: "Other" as InventoryCategory, unit: "lb" as Unit, unitPrice: 0, nutrition: emptyNutrition() },
-      ...(cur ?? []),
-    ]);
-  }
-  function remove(id: string) {
-    setItems((cur) => (cur ? cur.filter((it) => it.id !== id) : cur));
-  }
-
-  async function save() {
-    if (!items) return;
-    setSaving(true);
-    try {
-      const res = await fetch("/api/admin/kitchen", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ kind: "inventory", items }),
-      });
-      if (!res.ok) throw new Error();
-      const d = await res.json();
-      if (Array.isArray(d.inventory)) setItems(d.inventory);
-      toast({ kind: "success", text: "Inventory saved." });
-    } catch {
-      toast({ kind: "error", text: "Couldn't save — please try again." });
-    } finally {
-      setSaving(false);
-    }
-  }
-
-  const shown = useMemo(() => {
-    if (!items) return [];
-    const q = query.trim().toLowerCase();
-    return items.filter((it) => {
-      if (cat !== "all" && it.category !== cat) return false;
-      if (!q) return true;
-      return `${it.name} ${it.category} ${it.notes ?? ""}`.toLowerCase().includes(q);
-    });
-  }, [items, query, cat]);
-
-  return (
-    <div className="space-y-4">
-      <button onClick={onBack} className="flex items-center gap-1.5 text-sm font-semibold text-slate-600 hover:text-slate-900">
-        <ChevronLeft size={18} /> Back to home
-      </button>
-      <div className="flex flex-wrap items-end justify-between gap-3">
-        <div>
-          <h2 className="text-lg font-bold text-slate-900">Inventory &amp; prices</h2>
-          <p className="text-sm text-slate-500">Ingredient unit prices &amp; nutrition feed the grocery list, dish costs and quote stats. Tap <Activity size={13} className="inline align-text-bottom text-orange-500" /> to edit a food&apos;s nutrition. {PRICE_AS_OF} — keep them current.</p>
-        </div>
-        <button onClick={save} disabled={saving || !items} className="flex items-center gap-2 rounded-lg bg-green-600 px-4 py-2 text-sm font-semibold text-white hover:bg-green-700 disabled:opacity-60">
-          {saving ? <Loader2 size={16} className="animate-spin" /> : <Check size={16} />} Save prices
-        </button>
-      </div>
-
-      {items === null ? (
-        <div className="flex items-center justify-center py-12 text-slate-400"><Loader2 size={24} className="animate-spin" /></div>
-      ) : (
-        <>
-          <div className="space-y-3">
-            <div className="relative">
-              <Search size={16} className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
-              <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search ingredients…" className="w-full rounded-xl border border-slate-300 py-2.5 pl-9 pr-4 text-slate-900 outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200" />
-            </div>
-            <div className="flex flex-wrap gap-2">
-              {(["all", ...INVENTORY_CATEGORIES] as const).map((c) => (
-                <button key={c} onClick={() => setCat(c)} className={`rounded-full px-3 py-1.5 text-sm font-semibold transition ${cat === c ? "bg-orange-600 text-white" : "bg-slate-100 text-slate-600 hover:bg-slate-200"}`}>
-                  {c === "all" ? "All" : c}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div className="overflow-hidden rounded-xl border border-slate-200">
-            <div className="hidden grid-cols-[2fr_1.2fr_0.8fr_1fr_1.4fr_auto] gap-2 bg-slate-50 px-3 py-2 text-xs font-bold uppercase tracking-wide text-slate-500 sm:grid">
-              <span>Ingredient</span><span>Category</span><span>Unit</span><span>Price / unit</span><span>Notes</span><span></span>
-            </div>
-            <ul className="divide-y divide-slate-100">
-              {shown.map((it) => {
-                const macrosOpen = openMacros.has(it.id);
-                const nut = it.nutrition ?? emptyNutrition();
-                return (
-                <li key={it.id} className="px-3 py-2.5">
-                  <div className="grid grid-cols-2 gap-2 sm:grid-cols-[2fr_1.2fr_0.8fr_1fr_1.4fr_auto] sm:items-center">
-                    <input value={it.name} onChange={(e) => patch(it.id, { name: e.target.value })} className="col-span-2 rounded-lg border border-slate-300 px-2.5 py-1.5 text-sm text-slate-900 outline-none focus:border-orange-500 sm:col-span-1" />
-                    <select value={it.category} onChange={(e) => patch(it.id, { category: e.target.value as InventoryCategory })} className="rounded-lg border border-slate-300 px-2 py-1.5 text-sm text-slate-900 outline-none focus:border-orange-500">
-                      {INVENTORY_CATEGORIES.map((c) => <option key={c} value={c}>{c}</option>)}
-                    </select>
-                    <select value={it.unit} onChange={(e) => patch(it.id, { unit: e.target.value as Unit })} className="rounded-lg border border-slate-300 px-2 py-1.5 text-sm text-slate-900 outline-none focus:border-orange-500">
-                      {UNITS.map((u) => <option key={u} value={u}>{u}</option>)}
-                    </select>
-                    <div className="flex items-center gap-1 rounded-lg border border-slate-300 px-2 py-1.5 focus-within:border-orange-500">
-                      <span className="text-sm text-slate-400">$</span>
-                      <NumInput value={it.unitPrice} onChange={(n) => patch(it.id, { unitPrice: n })} className="w-full text-sm text-slate-900 outline-none" placeholder="0.00" />
-                    </div>
-                    <input value={it.notes ?? ""} onChange={(e) => patch(it.id, { notes: e.target.value })} placeholder="optional" className="rounded-lg border border-slate-300 px-2.5 py-1.5 text-sm text-slate-900 outline-none focus:border-orange-500" />
-                    <div className="flex items-center justify-self-end gap-1">
-                      <button onClick={() => toggleMacros(it.id)} className={`flex items-center gap-1 rounded-lg px-2 py-2 text-xs font-semibold ${macrosOpen ? "bg-orange-100 text-orange-700" : "text-slate-400 hover:bg-slate-100 hover:text-slate-600"}`} aria-expanded={macrosOpen} aria-label="Nutrition facts">
-                        <Activity size={15} /><span className="hidden sm:inline">{Math.round(nut.calories)} kcal</span>
-                      </button>
-                      <button onClick={() => remove(it.id)} className="rounded-lg p-2 text-slate-400 hover:bg-red-50 hover:text-red-600" aria-label="Remove ingredient"><Trash2 size={16} /></button>
-                    </div>
-                  </div>
-                  {macrosOpen && (
-                    <div className="mt-2 rounded-lg bg-slate-50 p-3">
-                      <p className="mb-2 flex items-center gap-1.5 text-xs font-semibold text-slate-500"><Flame size={13} className="text-orange-500" /> Nutrition per <strong className="text-slate-700">1 {it.unit}</strong> · editable estimate</p>
-                      <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-6">
-                        {NUTRITION_FIELDS.map((f) => (
-                          <label key={f.key} className="text-[11px] font-semibold text-slate-500">
-                            {f.label} <span className="font-normal text-slate-400">({f.unit})</span>
-                            <NumInput value={nut[f.key]} onChange={(v) => patchNutrition(it.id, f.key, v)} className="mt-1 w-full rounded-lg border border-slate-300 px-2 py-1.5 text-sm text-slate-900 outline-none focus:border-orange-500" placeholder="0" />
-                          </label>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </li>
-                );
-              })}
-            </ul>
-          </div>
-          <button onClick={add} className="flex items-center gap-2 rounded-xl border-2 border-dashed border-slate-300 px-4 py-2.5 text-sm font-semibold text-slate-600 hover:border-orange-400 hover:text-orange-600">
-            <Plus size={16} /> Add ingredient
-          </button>
-        </>
-      )}
-    </div>
-  );
-}
-
-/* ── Grocery list + dish recipes tool ───────────────────────────── */
-
-/** Small macro chips for a NutritionFacts record. */
-function NutritionChips({ data, dense }: { data: NutritionFacts; dense?: boolean }) {
-  return (
-    <div className="flex flex-wrap gap-1.5">
-      {NUTRITION_FIELDS.map((f) => (
-        <span key={f.key} className={`rounded-md bg-slate-100 px-2 py-0.5 ${dense ? "text-[10px]" : "text-[11px]"} font-medium text-slate-600`}>
-          <span className="font-bold text-slate-800">{fmtNutrient(f.key, data[f.key])}{f.unit === "kcal" ? "" : f.unit}</span>
-          {" "}{f.key === "calories" ? "kcal" : f.label.toLowerCase()}
-        </span>
-      ))}
-    </div>
-  );
-}
-
-function GroceryPanel({ onBack, menu }: { onBack: () => void; menu: MenuSection[] }) {
-  const [inventory, setInventory] = useState<InventoryItem[] | null>(null);
-  const [recipes, setRecipes] = useState<DishRecipe[] | null>(null);
-  const [tab, setTab] = useState<"list" | "recipes">("list");
-  const [guests, setGuests] = useState(50);
-  const [sel, setSel] = useState<Record<string, number>>({});
-  const [saving, setSaving] = useState(false);
-  const toast = useToast();
-
-  useEffect(() => {
-    fetch("/api/admin/kitchen")
-      .then((r) => r.json())
-      .then((d) => { setInventory(d.inventory ?? []); setRecipes(d.recipes ?? []); })
-      .catch(() => { setInventory([]); setRecipes([]); });
-  }, []);
-
-  const map = useMemo(() => inventoryById(inventory ?? []), [inventory]);
-
-  const grocery = useMemo(() => {
-    if (!inventory || !recipes) return null;
-    const selections = Object.entries(sel)
-      .filter(([, n]) => n > 0)
-      .map(([recipeId, servings]) => ({ recipeId, servings }));
-    return buildGroceryList(selections, recipes, inventory);
-  }, [sel, inventory, recipes]);
-
-  const nutrition = useMemo(() => {
-    if (!inventory || !recipes) return null;
-    const selections = Object.entries(sel)
-      .filter(([, n]) => n > 0)
-      .map(([recipeId, servings]) => ({ recipeId, servings }));
-    if (selections.length === 0) return null;
-    return aggregateNutrition(selections, recipes, inventory);
-  }, [sel, inventory, recipes]);
-
-  function toggle(id: string) {
-    setSel((cur) => {
-      const next = { ...cur };
-      if (next[id] != null) delete next[id];
-      else next[id] = guests;
-      return next;
-    });
-  }
-
-  /** Load every dish in a package, scaled to the current guest count. */
-  function loadPackage(sec: MenuSection | null) {
-    if (!sec || !recipes) return;
-    const weights = packageDishWeights(sec.items, recipes);
-    if (weights.size === 0) {
-      toast({ kind: "error", text: `No matching recipes found for ${sec.title}.` });
-      return;
-    }
-    const next: Record<string, number> = {};
-    for (const [id, w] of weights) next[id] = Math.max(1, Math.round(w * guests));
-    setSel(next);
-    toast({ kind: "success", text: `Loaded ${sec.title} for ${guests} guests.` });
-  }
-
-  function copyList() {
-    if (!grocery) return;
-    const lines = grocery.byCategory.flatMap((g) => [
-      `# ${g.category}`,
-      ...g.lines.map((l) => `- ${l.name}: ${Math.round(l.qty * 100) / 100} ${l.unit}  (${money(l.cost)})`),
-    ]);
-    lines.push("", `TOTAL FOOD COST: ${money(grocery.total)}`);
-    navigator.clipboard.writeText(lines.join("\n")).then(
-      () => toast({ kind: "success", text: "Grocery list copied." }),
-      () => toast({ kind: "error", text: "Couldn't copy." }),
-    );
-  }
-
-  /* recipe editing */
-  function patchRecipe(id: string, p: Partial<DishRecipe>) {
-    setRecipes((cur) => (cur ? cur.map((r) => (r.id === id ? { ...r, ...p } : r)) : cur));
-  }
-  function addRecipe() {
-    const id = `dish-${Date.now().toString(36)}`;
-    setRecipes((cur) => [{ id, dish: "New dish", category: "Other", ingredients: [] }, ...(cur ?? [])]);
-  }
-  function removeRecipe(id: string) {
-    setRecipes((cur) => (cur ? cur.filter((r) => r.id !== id) : cur));
-    setSel((cur) => { const n = { ...cur }; delete n[id]; return n; });
-  }
-  function addIngredient(rid: string) {
-    const firstId = inventory?.[0]?.id ?? "";
-    patchRecipe(rid, {
-      ingredients: [...(recipes?.find((r) => r.id === rid)?.ingredients ?? []), { inventoryId: firstId, qtyPerServing: 0 }],
-    });
-  }
-
-  async function saveRecipes() {
-    if (!recipes) return;
-    setSaving(true);
-    try {
-      const res = await fetch("/api/admin/kitchen", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ kind: "recipes", recipes }),
-      });
-      if (!res.ok) throw new Error();
-      const d = await res.json();
-      if (Array.isArray(d.recipes)) setRecipes(d.recipes);
-      toast({ kind: "success", text: "Dish recipes saved." });
-    } catch {
-      toast({ kind: "error", text: "Couldn't save — please try again." });
-    } finally {
-      setSaving(false);
-    }
-  }
-
-  const loading = inventory === null || recipes === null;
-
-  return (
-    <div className="space-y-4">
-      <button onClick={onBack} className="flex items-center gap-1.5 text-sm font-semibold text-slate-600 hover:text-slate-900">
-        <ChevronLeft size={18} /> Back to home
-      </button>
-      <div>
-        <h2 className="text-lg font-bold text-slate-900">Grocery list</h2>
-        <p className="text-sm text-slate-500">Pick the dishes you&apos;re cooking and we&apos;ll roll up everything you need to buy — with a running food cost from your Inventory prices.</p>
-      </div>
-
-      <div className="flex gap-2">
-        <button onClick={() => setTab("list")} className={`flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-semibold ${tab === "list" ? "bg-orange-600 text-white" : "bg-slate-100 text-slate-600 hover:bg-slate-200"}`}>
-          <ShoppingCart size={16} /> Build shopping list
-        </button>
-        <button onClick={() => setTab("recipes")} className={`flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-semibold ${tab === "recipes" ? "bg-orange-600 text-white" : "bg-slate-100 text-slate-600 hover:bg-slate-200"}`}>
-          <ChefHat size={16} /> Dish recipes
-        </button>
-      </div>
-
-      {loading ? (
-        <div className="flex items-center justify-center py-12 text-slate-400"><Loader2 size={24} className="animate-spin" /></div>
-      ) : tab === "list" ? (
-        <div className="grid gap-5 lg:grid-cols-[1fr_320px]">
-          {/* dish picker */}
-          <div className="space-y-4">
-            <label className="flex items-center gap-2 text-sm font-semibold text-slate-700">
-              Default guests
-              <input type="number" min={1} value={guests} onChange={(e) => setGuests(Math.max(1, Number(e.target.value) || 1))} className="w-24 rounded-lg border border-slate-300 px-3 py-1.5 text-slate-900 outline-none focus:border-orange-500" />
-              <span className="font-normal text-slate-400">applied when you add a dish</span>
-            </label>
-            {menu.length > 0 && (
-              <div className="rounded-xl border border-orange-200 bg-orange-50/50 p-3">
-                <label className="flex flex-col gap-1.5 text-sm font-semibold text-slate-700 sm:flex-row sm:items-center">
-                  <span className="flex items-center gap-1.5"><ShoppingCart size={15} className="text-orange-600" /> Start from a package</span>
-                  <select
-                    value=""
-                    onChange={(e) => { loadPackage(menu.find((s) => s.title === e.target.value) ?? null); e.target.value = ""; }}
-                    className="flex-1 rounded-lg border border-slate-300 bg-white px-3 py-1.5 font-normal text-slate-900 outline-none focus:border-orange-500"
-                  >
-                    <option value="">Load a package’s dishes…</option>
-                    {Object.entries(
-                      menu.reduce<Record<string, MenuSection[]>>((acc, s) => {
-                        (acc[s.group ?? "Packages"] ??= []).push(s); return acc;
-                      }, {}),
-                    ).map(([group, list]) => (
-                      <optgroup key={group} label={group}>
-                        {list.map((s) => <option key={s.title} value={s.title}>{s.title}</option>)}
-                      </optgroup>
-                    ))}
-                  </select>
-                </label>
-                <p className="mt-1.5 text-xs text-slate-500">Auto-selects the package’s dishes scaled to your guest count. You can fine-tune each below.</p>
-              </div>
-            )}
-            {Object.entries(
-              (recipes ?? []).reduce<Record<string, DishRecipe[]>>((acc, r) => {
-                (acc[r.category] ??= []).push(r); return acc;
-              }, {}),
-            ).map(([category, list]) => (
-              <div key={category}>
-                <h3 className="mb-2 text-xs font-bold uppercase tracking-wider text-slate-400">{category}</h3>
-                <ul className="space-y-2">
-                  {list.map((r) => {
-                    const on = sel[r.id] != null;
-                    const cost = dishCostPerServing(r, map);
-                    const cal = dishNutritionPerServing(r, map).calories;
-                    return (
-                      <li key={r.id} className={`flex items-center gap-3 rounded-xl border px-3 py-2.5 ${on ? "border-orange-300 bg-orange-50/40" : "border-slate-200"}`}>
-                        <button onClick={() => toggle(r.id)} className={`flex h-5 w-5 shrink-0 items-center justify-center rounded border ${on ? "border-orange-500 bg-orange-500 text-white" : "border-slate-300"}`} aria-pressed={on}>
-                          {on && <Check size={13} />}
-                        </button>
-                        <div className="min-w-0 flex-1">
-                          <p className="truncate text-sm font-semibold text-slate-800">{r.dish}</p>
-                          <p className="truncate text-xs text-slate-500">{money(cost)}/serving · {Math.round(cal)} kcal{r.yieldNote ? ` · ${r.yieldNote}` : ""}</p>
-                        </div>
-                        {on && (
-                          <input type="number" min={0} value={sel[r.id]} onChange={(e) => setSel((c) => ({ ...c, [r.id]: Math.max(0, Number(e.target.value) || 0) }))} className="w-20 rounded-lg border border-slate-300 px-2 py-1.5 text-sm text-slate-900 outline-none focus:border-orange-500" />
-                        )}
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
-            ))}
-          </div>
-
-          {/* rolled-up list */}
-          <div className="lg:sticky lg:top-4 lg:self-start">
-            <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-              <div className="mb-3 flex items-center justify-between">
-                <h3 className="font-bold text-slate-900">Shopping list</h3>
-                {grocery && grocery.lines.length > 0 && (
-                  <button onClick={copyList} className="flex items-center gap-1.5 rounded-lg bg-white px-2.5 py-1.5 text-xs font-semibold text-slate-600 ring-1 ring-slate-200 hover:bg-slate-100"><Copy size={13} /> Copy</button>
-                )}
-              </div>
-              {!grocery || grocery.lines.length === 0 ? (
-                <p className="py-6 text-center text-sm text-slate-500">Pick some dishes to build your list.</p>
-              ) : (
-                <div className="space-y-3">
-                  {grocery.byCategory.map((g) => (
-                    <div key={g.category}>
-                      <p className="mb-1 text-xs font-bold uppercase tracking-wide text-slate-400">{g.category}</p>
-                      <ul className="space-y-1">
-                        {g.lines.map((l) => (
-                          <li key={l.inventoryId} className="flex items-baseline justify-between gap-2 text-sm">
-                            <span className="text-slate-700">{l.name} <span className="text-slate-400">· {Math.round(l.qty * 100) / 100} {l.unit}</span></span>
-                            <span className="shrink-0 font-medium text-slate-600">{money(l.cost)}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
-                  <div className="mt-2 flex items-center justify-between border-t border-slate-200 pt-3">
-                    <span className="font-bold text-slate-900">Total food cost</span>
-                    <span className="text-lg font-bold text-orange-600">{money(grocery.total)}</span>
-                  </div>
-                  <p className="text-xs text-slate-400">Per guest: {money(grocery.total / Math.max(1, Object.values(sel).reduce((a, b) => Math.max(a, b), 0)))} at your largest dish count.</p>
-                </div>
-              )}
-            </div>
-
-            {nutrition && nutrition.servings > 0 && (
-              <div className="mt-4 rounded-2xl border border-slate-200 bg-white p-4">
-                <h3 className="mb-1 flex items-center gap-2 font-bold text-slate-900"><Flame size={16} className="text-orange-600" /> Nutrition & stats</h3>
-                <p className="mb-3 text-xs text-slate-400">Estimated from your ingredient nutrition.</p>
-                <p className="mb-1 text-xs font-bold uppercase tracking-wide text-slate-400">Per guest serving</p>
-                <NutritionChips data={nutrition.perServing} dense />
-                <dl className="mt-3 space-y-1.5 border-t border-slate-100 pt-3 text-sm">
-                  <div className="flex justify-between"><dt className="text-slate-500">Total calories cooked</dt><dd className="font-semibold text-slate-800">{Math.round(nutrition.total.calories).toLocaleString("en-US")} kcal</dd></div>
-                  <div className="flex justify-between"><dt className="text-slate-500">Total protein served</dt><dd className="font-semibold text-slate-800">{(Math.round(nutrition.total.protein / 453.6 * 10) / 10).toLocaleString("en-US")} lb</dd></div>
-                </dl>
-              </div>
-            )}
-          </div>
-        </div>
-      ) : (
-        /* dish recipes editor */
-        <div className="space-y-4">
-          <div className="flex items-center justify-between">
-            <p className="text-sm text-slate-500">Each dish lists what goes into one guest serving. Quantities are in the ingredient&apos;s purchase unit.</p>
-            <button onClick={saveRecipes} disabled={saving} className="flex items-center gap-2 rounded-lg bg-green-600 px-4 py-2 text-sm font-semibold text-white hover:bg-green-700 disabled:opacity-60">
-              {saving ? <Loader2 size={16} className="animate-spin" /> : <Check size={16} />} Save recipes
-            </button>
-          </div>
-          <ul className="space-y-3">
-            {(recipes ?? []).map((r) => {
-              const cost = dishCostPerServing(r, map);
-              const nut = dishNutritionPerServing(r, map);
-              return (
-                <li key={r.id} className="rounded-xl border border-slate-200 p-4">
-                  <div className="flex flex-wrap items-center gap-2">
-                    <input value={r.dish} onChange={(e) => patchRecipe(r.id, { dish: e.target.value })} className="min-w-40 flex-1 rounded-lg border border-slate-300 px-2.5 py-1.5 text-sm font-semibold text-slate-900 outline-none focus:border-orange-500" />
-                    <input value={r.category} onChange={(e) => patchRecipe(r.id, { category: e.target.value })} placeholder="Category" className="w-36 rounded-lg border border-slate-300 px-2.5 py-1.5 text-sm text-slate-900 outline-none focus:border-orange-500" />
-                    <span className="rounded-full bg-orange-100 px-2.5 py-1 text-xs font-semibold text-orange-700">{money(cost)}/serving</span>
-                    <button onClick={() => removeRecipe(r.id)} className="rounded-lg p-2 text-slate-400 hover:bg-red-50 hover:text-red-600" aria-label="Remove dish"><Trash2 size={16} /></button>
-                  </div>
-                  <input value={r.yieldNote ?? ""} onChange={(e) => patchRecipe(r.id, { yieldNote: e.target.value })} placeholder="Portion note, e.g. ~6 oz cooked (optional)" className="mt-2 w-full rounded-lg border border-slate-200 px-2.5 py-1.5 text-xs text-slate-600 outline-none focus:border-orange-500" />
-                  <div className="mt-2"><NutritionChips data={nut} dense /></div>
-                  <ul className="mt-3 space-y-2">
-                    {r.ingredients.map((ing, gi) => {
-                      const item = map[ing.inventoryId];
-                      return (
-                        <li key={gi} className="flex items-center gap-2">
-                          <select
-                            value={ing.inventoryId}
-                            onChange={(e) => patchRecipe(r.id, { ingredients: r.ingredients.map((x, i) => (i === gi ? { ...x, inventoryId: e.target.value } : x)) })}
-                            className="flex-1 rounded-lg border border-slate-300 px-2 py-1.5 text-sm text-slate-900 outline-none focus:border-orange-500"
-                          >
-                            {(inventory ?? []).map((it) => <option key={it.id} value={it.id}>{it.name}</option>)}
-                          </select>
-                          <div className="flex items-center gap-1 rounded-lg border border-slate-300 px-2 py-1.5 focus-within:border-orange-500">
-                            <NumInput value={ing.qtyPerServing} onChange={(n) => patchRecipe(r.id, { ingredients: r.ingredients.map((x, i) => (i === gi ? { ...x, qtyPerServing: n } : x)) })} className="w-16 text-sm text-slate-900 outline-none" placeholder="0" />
-                            <span className="text-xs text-slate-400">{item?.unit ?? ""}/serv</span>
-                          </div>
-                          <button onClick={() => patchRecipe(r.id, { ingredients: r.ingredients.filter((_, i) => i !== gi) })} className="rounded-lg p-1.5 text-slate-400 hover:bg-red-50 hover:text-red-600" aria-label="Remove ingredient"><Trash2 size={15} /></button>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                  <button onClick={() => addIngredient(r.id)} className="mt-2 flex items-center gap-1.5 text-sm font-semibold text-orange-600 hover:text-orange-700"><Plus size={15} /> Add ingredient</button>
-                </li>
-              );
-            })}
-          </ul>
-          <button onClick={addRecipe} className="flex items-center gap-2 rounded-xl border-2 border-dashed border-slate-300 px-4 py-2.5 text-sm font-semibold text-slate-600 hover:border-orange-400 hover:text-orange-600">
-            <Plus size={16} /> Add dish
-          </button>
-        </div>
-      )}
-    </div>
-  );
-}
-
 /* ── Quotes tool (branded PDF) ──────────────────────────────────── */
 
 type QuoteLine = { label: string; detail: string; qty: number; unitPrice: number };
-
-/** Which rig a package is served from — label, icon and color for its badge. */
-function vehicleMeta(service?: string) {
-  switch (service || "Both") {
-    case "Food Truck": return { label: "Food Truck", Icon: TruckIcon, cls: "bg-amber-100 text-amber-800" };
-    case "Pit Trailer": return { label: "Pit Trailer", Icon: Caravan, cls: "bg-orange-100 text-orange-800" };
-    case "Cocktail Cart": return { label: "Cocktail Cart", Icon: Martini, cls: "bg-teal-100 text-teal-800" };
-    default: return { label: "Truck & Trailer", Icon: Boxes, cls: "bg-slate-200 text-slate-700" };
-  }
-}
-
-function VehicleBadge({ service }: { service?: string }) {
-  const { label, Icon, cls } = vehicleMeta(service);
-  return (
-    <span className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-semibold ${cls}`}>
-      <Icon size={12} /> {label}
-    </span>
-  );
-}
-
-/** Flatten a package's items + options into one readable description string. */
-function packageDetail(sec: MenuSection): string {
-  return sec.items
-    .map((it) => {
-      const opts = it.options && it.options.length
-        ? `: ${it.options.join(", ")}`
-        : it.desc ? `: ${it.desc}` : "";
-      return `${it.name}${it.choose ? ` (${it.choose})` : ""}${opts}`;
-    })
-    .filter(Boolean)
-    .join("  •  ");
-}
 
 function QuotesPanel({
   onBack, content, prefill,
@@ -2226,10 +1434,8 @@ function QuotesPanel({
     name: prefill?.client?.name ?? "",
     email: prefill?.client?.email ?? "",
     phone: prefill?.client?.phone ?? "",
-    eventType: prefill?.client?.eventType ?? "",
-    guestCount: prefill?.client?.guestCount ?? "",
-    eventDate: prefill?.client?.eventDate ?? "",
-    eventLocation: prefill?.client?.eventLocation ?? "",
+    itemType: prefill?.client?.itemType ?? "",
+    dueDate: prefill?.client?.dueDate ?? "",
   });
   const [lines, setLines] = useState<QuoteLine[]>([
     { label: "", detail: "", qty: 0, unitPrice: 0 },
@@ -2240,76 +1446,25 @@ function QuotesPanel({
   const [notes, setNotes] = useState("");
   const [busy, setBusy] = useState(false);
 
-  const kitchen = useKitchen();
-  const recipeMap = useMemo(() => inventoryById(kitchen?.inventory ?? []), [kitchen]);
-  const recipeById = useMemo(() => {
-    const m: Record<string, DishRecipe> = {};
-    for (const r of kitchen?.recipes ?? []) m[r.id] = r;
-    return m;
-  }, [kitchen]);
-  /** Internal dish servings driving food-cost & nutrition (not shown to client). */
-  const [dishSel, setDishSel] = useState<Record<string, number>>({});
-  const [showDishes, setShowDishes] = useState(false);
-  const [includeNutrition, setIncludeNutrition] = useState(true);
-
-  const guestNum = parseInt(client.guestCount.match(/\d+/)?.[0] ?? "", 10) || 0;
-
   const subtotal = lines.reduce((s, l) => s + l.qty * l.unitPrice, 0);
   const tax = (subtotal * taxPct) / 100;
   const total = subtotal + tax;
   const deposit = (total * depositPct) / 100;
-
-  // Food cost + nutrition derived from the internally-selected dishes.
-  const foodStats = useMemo(() => {
-    const selections = Object.entries(dishSel)
-      .filter(([, n]) => n > 0)
-      .map(([recipeId, servings]) => ({ recipeId, servings }));
-    if (!kitchen || selections.length === 0) return null;
-    const foodCost = selections.reduce((s, sel) => {
-      const r = recipeById[sel.recipeId];
-      return r ? s + dishCostPerServing(r, recipeMap) * sel.servings : s;
-    }, 0);
-    const nut = aggregateNutrition(selections, kitchen.recipes, kitchen.inventory);
-    return { foodCost, nut };
-  }, [dishSel, kitchen, recipeById, recipeMap]);
-
-  const margin = foodStats ? subtotal - foodStats.foodCost : null;
-  const marginPct = margin !== null && subtotal > 0 ? (margin / subtotal) * 100 : null;
 
   function setLine(i: number, p: Partial<QuoteLine>) {
     setLines((cur) => cur.map((l, idx) => (idx === i ? { ...l, ...p } : l)));
   }
   function addLine() { setLines((cur) => [...cur, { label: "", detail: "", qty: 0, unitPrice: 0 }]); }
 
-  /**
-   * Add a whole menu package: a charged line carrying the full item/option
-   * breakdown and the rig it's served from, plus auto-select the dishes it
-   * offers (matched by name) for the food-cost & nutrition estimate.
-   */
-  function addPackage(sec: MenuSection) {
-    const guests = guestNum || 0;
-    const weights = packageDishWeights(sec.items, kitchen?.recipes ?? []);
-    const costPerGuest = Array.from(weights).reduce((s, [id, w]) => {
-      const r = recipeById[id];
-      return r ? s + dishCostPerServing(r, recipeMap) * w : s;
-    }, 0);
-    const suggested = costPerGuest > 0 ? Math.round((costPerGuest / 0.3) * 100) / 100 : 0;
-    const detailBody = packageDetail(sec);
-    const detail = `${vehicleMeta(sec.service).label}${detailBody ? " — " + detailBody : ""}`;
-    const line: QuoteLine = { label: sec.title || "Package", detail, qty: guests, unitPrice: suggested };
+  /** Add a service as a charged line, carrying its item names as the detail. */
+  function addService(sec: MenuSection) {
+    const names = sec.items.map((it) => it.name).filter(Boolean).join(", ");
+    const line: QuoteLine = { label: sec.title || "Service", detail: names, qty: 1, unitPrice: 0 };
     setLines((cur) => {
       const blank = cur.findIndex((l) => !l.label && !l.qty && !l.unitPrice);
       if (blank >= 0) return cur.map((l, i) => (i === blank ? line : l));
       return [...cur, line];
     });
-    if (weights.size > 0 && guests > 0) {
-      setDishSel((cur) => {
-        const next = { ...cur };
-        for (const [id, w] of weights) next[id] = Math.max(1, Math.round(guests * w));
-        return next;
-      });
-      setShowDishes(true);
-    }
   }
 
   async function download() {
@@ -2322,9 +1477,6 @@ function QuotesPanel({
           client,
           lines: lines.filter((l) => l.label || l.qty || l.unitPrice),
           taxPct, depositPct, validUntil, notes,
-          nutrition: includeNutrition && foodStats && foodStats.nut.servings > 0
-            ? { perServing: foodStats.nut.perServing, total: foodStats.nut.total, servings: foodStats.nut.servings }
-            : undefined,
         }),
       });
       if (!res.ok) throw new Error();
@@ -2352,7 +1504,7 @@ function QuotesPanel({
       </button>
       <div>
         <h2 className="text-lg font-bold text-slate-900">Branded quote</h2>
-        <p className="text-sm text-slate-500">Build a catering quote and download a polished, on-brand PDF to send the client.</p>
+        <p className="text-sm text-slate-500">Build a repair, custom design, or appraisal quote and download a polished, on-brand PDF to send the client.</p>
       </div>
 
       <div className="grid gap-5 lg:grid-cols-[1fr_300px]">
@@ -2364,36 +1516,27 @@ function QuotesPanel({
               <input value={client.name} onChange={(e) => setClient({ ...client, name: e.target.value })} placeholder="Client name" className={inputCls} />
               <input value={client.email} onChange={(e) => setClient({ ...client, email: e.target.value })} placeholder="Email" className={inputCls} />
               <input value={client.phone} onChange={(e) => setClient({ ...client, phone: e.target.value })} placeholder="Phone" className={inputCls} />
-              <input value={client.eventType} onChange={(e) => setClient({ ...client, eventType: e.target.value })} placeholder="Occasion (e.g. Wedding)" className={inputCls} />
-              <input value={client.guestCount} onChange={(e) => setClient({ ...client, guestCount: e.target.value })} placeholder="Guest count" className={inputCls} />
-              <input value={client.eventDate} onChange={(e) => setClient({ ...client, eventDate: e.target.value })} placeholder="Event date" className={inputCls} />
-              <input value={client.eventLocation} onChange={(e) => setClient({ ...client, eventLocation: e.target.value })} placeholder="Location" className="sm:col-span-2 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200" />
+              <input value={client.itemType} onChange={(e) => setClient({ ...client, itemType: e.target.value })} placeholder="Item (e.g. Ring, Watch, Chain)" className={inputCls} />
+              <input value={client.dueDate} onChange={(e) => setClient({ ...client, dueDate: e.target.value })} placeholder="Pickup / completion date" className="sm:col-span-2 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200" />
             </div>
           </div>
 
-          {/* add from menu */}
+          {/* add from services */}
           {content.menu.length > 0 && (
             <div className="rounded-xl border border-slate-200 p-4">
-              <h3 className="mb-1 text-sm font-bold text-slate-700">Add from your menu</h3>
-              <p className="mb-3 text-xs text-slate-500">Each package drops in as a line with all its items, options and the rig it&apos;s served from. The dishes it lists are matched to your recipes automatically to feed the food-cost &amp; nutrition estimate below.</p>
+              <h3 className="mb-1 text-sm font-bold text-slate-700">Add from your services</h3>
+              <p className="mb-3 text-xs text-slate-500">Drop a service in as a line item, then fill in the price.</p>
               <ul className="space-y-2">
                 {content.menu.map((sec, i) => {
-                  const weights = packageDishWeights(sec.items, kitchen?.recipes ?? []);
-                  const cpg = Array.from(weights).reduce((s, [id, w]) => {
-                    const r = recipeById[id];
-                    return r ? s + dishCostPerServing(r, recipeMap) * w : s;
-                  }, 0);
                   const names = sec.items.map((it) => it.name).filter(Boolean).join(" · ");
                   return (
                     <li key={i} className="rounded-lg border border-slate-200 p-3">
                       <div className="flex flex-wrap items-center gap-2">
-                        <span className="font-semibold text-slate-800">{sec.title || "Untitled package"}</span>
-                        <VehicleBadge service={sec.service} />
+                        <span className="font-semibold text-slate-800">{sec.title || "Untitled service"}</span>
                         {sec.group && <span className="text-xs text-slate-400">{sec.group}</span>}
-                        <button onClick={() => addPackage(sec)} className="ml-auto flex items-center gap-1 rounded-lg bg-orange-600 px-2.5 py-1.5 text-xs font-semibold text-white hover:bg-orange-700"><Plus size={13} /> Add</button>
+                        <button onClick={() => addService(sec)} className="ml-auto flex items-center gap-1 rounded-lg bg-orange-600 px-2.5 py-1.5 text-xs font-semibold text-white hover:bg-orange-700"><Plus size={13} /> Add</button>
                       </div>
                       {names && <p className="mt-1.5 text-xs text-slate-500">{names}</p>}
-                      {cpg > 0 && <p className="mt-1 text-xs text-slate-400">Est. food cost {money(cpg)}/guest · suggested {money(cpg / 0.3)}/guest</p>}
                     </li>
                   );
                 })}
@@ -2411,7 +1554,7 @@ function QuotesPanel({
               {lines.map((l, i) => (
                 <li key={i} className="rounded-lg bg-slate-50 p-3">
                   <div className="flex items-center gap-2">
-                    <input value={l.label} onChange={(e) => setLine(i, { label: e.target.value })} placeholder="Item / package" className="flex-1 rounded-lg border border-slate-300 px-2.5 py-1.5 text-sm font-semibold text-slate-900 outline-none focus:border-orange-500" />
+                    <input value={l.label} onChange={(e) => setLine(i, { label: e.target.value })} placeholder="Item / service" className="flex-1 rounded-lg border border-slate-300 px-2.5 py-1.5 text-sm font-semibold text-slate-900 outline-none focus:border-orange-500" />
                     <button onClick={() => setLines((cur) => cur.filter((_, idx) => idx !== i))} className="rounded-lg p-1.5 text-slate-400 hover:bg-red-50 hover:text-red-600" aria-label="Remove line"><Trash2 size={15} /></button>
                   </div>
                   <input value={l.detail} onChange={(e) => setLine(i, { detail: e.target.value })} placeholder="Description (optional)" className="mt-2 w-full rounded-lg border border-slate-200 px-2.5 py-1.5 text-xs text-slate-600 outline-none focus:border-orange-500" />
@@ -2431,45 +1574,6 @@ function QuotesPanel({
             </ul>
             <button onClick={addLine} className="mt-3 flex items-center gap-1.5 text-sm font-semibold text-orange-600 hover:text-orange-700"><Plus size={15} /> Add line item</button>
           </div>
-
-          {/* internal food cost + nutrition dishes */}
-          {kitchen && kitchen.recipes.length > 0 && (
-            <div className="rounded-xl border border-slate-200 p-4">
-              <button onClick={() => setShowDishes((v) => !v)} className="flex w-full items-center justify-between">
-                <h3 className="flex items-center gap-2 text-sm font-bold text-slate-700"><ChefHat size={15} className="text-orange-600" /> Food cost &amp; nutrition <span className="font-normal text-slate-400">(internal)</span></h3>
-                <ChevronDown size={16} className={`text-slate-400 transition ${showDishes ? "rotate-180" : ""}`} />
-              </button>
-              {showDishes && (
-                <div className="mt-3 space-y-3">
-                  <p className="text-xs text-slate-500">These dishes drive the food-cost &amp; nutrition estimate only — they aren&apos;t printed on the client quote. Adding a package fills these in automatically.</p>
-                  <label className="flex items-center gap-1.5 text-xs text-slate-500">
-                    Add a dish
-                    <select value="" onChange={(e) => { if (e.target.value) { setDishSel((c) => ({ ...c, [e.target.value]: guestNum || c[e.target.value] || 1 })); e.target.value = ""; } }} className="rounded-lg border border-slate-300 px-2 py-1.5 text-xs text-slate-900 outline-none focus:border-orange-500">
-                      <option value="">Choose…</option>
-                      {kitchen.recipes.filter((r) => dishSel[r.id] == null).map((r) => <option key={r.id} value={r.id}>{r.category} · {r.dish}</option>)}
-                    </select>
-                  </label>
-                  {Object.keys(dishSel).length === 0 ? (
-                    <p className="text-xs text-slate-400">No dishes yet — add a package above or pick dishes here.</p>
-                  ) : (
-                    <ul className="space-y-1.5">
-                      {Object.entries(dishSel).map(([id, servings]) => {
-                        const r = recipeById[id];
-                        if (!r) return null;
-                        return (
-                          <li key={id} className="flex items-center gap-2 text-sm">
-                            <span className="flex-1 truncate text-slate-700">{r.dish} <span className="text-slate-400">· {money(dishCostPerServing(r, recipeMap))}/serv</span></span>
-                            <NumInput value={servings} onChange={(n) => setDishSel((c) => ({ ...c, [id]: n }))} className="w-20 rounded-lg border border-slate-300 px-2 py-1 text-sm text-slate-900 outline-none focus:border-orange-500" placeholder="0" />
-                            <button onClick={() => setDishSel((c) => { const n = { ...c }; delete n[id]; return n; })} className="rounded-lg p-1.5 text-slate-400 hover:bg-red-50 hover:text-red-600" aria-label="Remove dish"><Trash2 size={14} /></button>
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  )}
-                </div>
-              )}
-            </div>
-          )}
 
           {/* terms */}
           <div className="rounded-xl border border-slate-200 p-4">
@@ -2506,34 +1610,6 @@ function QuotesPanel({
             </button>
             <p className="mt-2 text-center text-xs text-slate-400">Branded with your site colors &amp; contact details.</p>
           </div>
-
-          {foodStats && (
-            <div className="mt-4 rounded-2xl border border-slate-200 bg-white p-4">
-              <h3 className="mb-3 flex items-center gap-2 font-bold text-slate-900"><Beef size={16} className="text-orange-600" /> Food cost &amp; margin</h3>
-              <dl className="space-y-1.5 text-sm">
-                <div className="flex justify-between"><dt className="text-slate-500">Est. food cost</dt><dd className="font-semibold text-slate-800">{money(foodStats.foodCost)}</dd></div>
-                {margin !== null && (
-                  <div className="flex justify-between"><dt className="text-slate-500">Gross margin</dt><dd className={`font-semibold ${margin >= 0 ? "text-green-600" : "text-red-600"}`}>{money(margin)}{marginPct !== null ? ` · ${Math.round(marginPct)}%` : ""}</dd></div>
-                )}
-              </dl>
-              <p className="mt-2 text-xs text-slate-400">Internal only — not shown on the client PDF.</p>
-            </div>
-          )}
-
-          {foodStats && foodStats.nut.servings > 0 && (
-            <div className="mt-4 rounded-2xl border border-slate-200 bg-white p-4">
-              <h3 className="mb-1 flex items-center gap-2 font-bold text-slate-900"><Flame size={16} className="text-orange-600" /> Nutrition &amp; stats</h3>
-              <p className="mb-3 text-xs text-slate-400">Per guest, estimated from your ingredients.</p>
-              <NutritionChips data={foodStats.nut.perServing} dense />
-              <dl className="mt-3 space-y-1.5 border-t border-slate-100 pt-3 text-sm">
-                <div className="flex justify-between"><dt className="text-slate-500">Total protein served</dt><dd className="font-semibold text-slate-800">{(Math.round(foodStats.nut.total.protein / 453.6 * 10) / 10).toLocaleString("en-US")} lb</dd></div>
-                <div className="flex justify-between"><dt className="text-slate-500">Total calories</dt><dd className="font-semibold text-slate-800">{Math.round(foodStats.nut.total.calories).toLocaleString("en-US")} kcal</dd></div>
-              </dl>
-              <label className="mt-3 flex items-center gap-2 text-xs font-semibold text-slate-600">
-                <input type="checkbox" checked={includeNutrition} onChange={(e) => setIncludeNutrition(e.target.checked)} className="h-4 w-4 rounded border-slate-300 text-orange-600 focus:ring-orange-500" /> Include nutrition on the client PDF
-              </label>
-            </div>
-          )}
         </div>
       </div>
     </div>
@@ -2548,28 +1624,25 @@ const SECTIONS = [
   { key: "hours", label: "Hours", desc: "When you're open", icon: Clock, path: "/" },
   { key: "announcement", label: "Announcement", desc: "Holiday hours & alert banner", icon: Bell, path: "/" },
   { key: "hero", label: "Home Headline", desc: "Big text on the home page", icon: Megaphone, path: "/" },
-  { key: "menu", label: "Menu & Prices", desc: "Food, descriptions & prices", icon: UtensilsCrossed, path: "/menu" },
-  { key: "bundles", label: "Bundles", desc: "Multi-setup deal packages", icon: Boxes, path: "/catering" },
+  { key: "menu", label: "Services & Prices", desc: "Services, descriptions & prices", icon: Gem, path: "/services" },
   { key: "images", label: "Photos", desc: "Swap the main site photos", icon: Images, path: "/" },
   { key: "colors", label: "Colors", desc: "Brand colors across the site", icon: Palette, path: "/" },
-  { key: "recipes", label: "Recipes", desc: "Add, edit & remove recipes", icon: BookOpen, path: "/recipes" },
   { key: "blog", label: "Blog Posts", desc: "Add, edit & remove posts", icon: FileText, path: "/blog" },
   { key: "testimonials", label: "Reviews", desc: "Guest reviews on the home page", icon: Quote, path: "/" },
   { key: "faqs", label: "FAQs", desc: "Common questions & answers", icon: HelpCircle, path: "/" },
-  { key: "events", label: "Events", desc: "Festival & pop-up schedule", icon: CalendarDays, path: "/festivals" },
   { key: "gallery", label: "Gallery", desc: "Photos on the gallery page", icon: Images, path: "/gallery" },
   { key: "serviceTowns", label: "Service Area", desc: "Towns you cover", icon: MapPin, path: "/about" },
   { key: "seo", label: "Search Engine", desc: "Page titles & Google summaries", icon: Search, path: "/" },
 ] as const;
 
 type SectionKey = (typeof SECTIONS)[number]["key"];
-type View = "home" | "history" | "messages" | "inventory" | "groceries" | "quotes" | SectionKey;
+type View = "home" | "history" | "messages" | "quotes" | SectionKey;
 
 /** Sub-groups of website-content sections, shown under "Website Content". */
 const CONTENT_GROUPS: { title: string; keys: SectionKey[] }[] = [
-  { title: "Menu & Catering", keys: ["menu", "bundles"] },
-  { title: "Home & Branding", keys: ["hero", "images", "colors"] },
-  { title: "Pages & Stories", keys: ["recipes", "blog", "testimonials", "faqs", "gallery"] },
+  { title: "Services", keys: ["menu"] },
+  { title: "Home & Branding", keys: ["hero", "images", "colors", "announcement"] },
+  { title: "Pages & Stories", keys: ["blog", "testimonials", "faqs", "gallery"] },
   { title: "Business Info", keys: ["contact", "socials", "hours", "serviceTowns"] },
   { title: "Search Engine", keys: ["seo"] },
 ];
@@ -2615,12 +1688,10 @@ function DashZone({
 }
 
 /** Top-level "gate" topics shown first on the home screen. */
-type CategoryKey = "customers" | "content" | "announcements" | "kitchen";
+type CategoryKey = "customers" | "content";
 const CATEGORIES: { key: CategoryKey; label: string; desc: string; icon: LucideIcon }[] = [
-  { key: "customers", label: "Customers", desc: "Inbox messages & catering quotes", icon: Inbox },
-  { key: "content", label: "Website Content", desc: "Menu, pages, photos, branding & SEO", icon: FileText },
-  { key: "announcements", label: "Announcements & Events", desc: "Site banners & your event schedule", icon: Megaphone },
-  { key: "kitchen", label: "Kitchen & Planning", desc: "Grocery lists & ingredient costs", icon: ChefHat },
+  { key: "customers", label: "Customers", desc: "Inbox messages & quotes", icon: Inbox },
+  { key: "content", label: "Website Content", desc: "Services, pages, photos, branding & SEO", icon: FileText },
 ];
 
 /** A large entry tile on the gate screen. */
@@ -2858,27 +1929,6 @@ function AdminInner({
               </DashZone>
             )}
 
-            {category === "announcements" && (
-              <DashZone title="Announcements & Events" desc="Time-sensitive updates on the site">
-                <div className="grid gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
-                  {(["announcement", "events"] as SectionKey[]).map((key) => {
-                    const s = SECTIONS.find((x) => x.key === key);
-                    if (!s) return null;
-                    return <DashCard key={s.key} label={s.label} desc={s.desc} icon={s.icon} onClick={() => setView(s.key)} />;
-                  })}
-                </div>
-              </DashZone>
-            )}
-
-            {category === "kitchen" && (
-              <DashZone title="Kitchen & Planning" desc="Back-office cost tools">
-                <div className="grid gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
-                  <DashCard label="Grocery List" desc="Dishes → shopping list & cost" icon={ShoppingCart} onClick={() => setView("groceries")} />
-                  <DashCard label="Inventory" desc="Ingredient prices & portions" icon={Package} onClick={() => setView("inventory")} />
-                </div>
-              </DashZone>
-            )}
-
             {category === "content" && (
               <div className="space-y-5">
                 {CONTENT_GROUPS.map((group) => (
@@ -2907,18 +1957,6 @@ function AdminInner({
         {view === "history" && (
           <section className="rounded-2xl bg-white p-4 shadow-sm sm:p-6">
             <HistoryPanel onBack={() => setView("home")} />
-          </section>
-        )}
-
-        {view === "inventory" && (
-          <section className="rounded-2xl bg-white p-4 shadow-sm sm:p-6">
-            <InventoryPanel onBack={() => setView("home")} />
-          </section>
-        )}
-
-        {view === "groceries" && (
-          <section className="rounded-2xl bg-white p-4 shadow-sm sm:p-6">
-            <GroceryPanel onBack={() => setView("home")} menu={initialContent.menu} />
           </section>
         )}
 
@@ -2954,14 +1992,11 @@ function AdminInner({
             {view === "announcement" && <AnnouncementEditor data={initialContent.announcement} />}
             {view === "hero" && <HeroEditor data={initialContent.hero.home} />}
             {view === "menu" && <MenuEditor data={initialContent.menu} />}
-            {view === "bundles" && <BundlesEditor data={initialContent.bundles} />}
             {view === "images" && <PhotosEditor data={initialContent.brandImages} />}
             {view === "colors" && <ColorsEditor data={initialContent.colors} />}
-            {view === "recipes" && <RecipesEditor data={initialContent.recipes} />}
             {view === "blog" && <BlogEditor data={initialContent.blog} />}
             {view === "testimonials" && <TestimonialsEditor data={initialContent.testimonials} />}
             {view === "faqs" && <FaqEditor data={initialContent.faqs} />}
-            {view === "events" && <EventsEditor data={initialContent.events} />}
             {view === "gallery" && <GalleryEditor data={initialContent.gallery} alt={initialContent.imageAlt} />}
             {view === "serviceTowns" && <ServiceAreaEditor data={initialContent.serviceTowns} />}
             {view === "seo" && <SeoEditor data={initialContent.seo} />}

@@ -2,8 +2,6 @@ import "server-only";
 import { promises as fs } from "fs";
 import path from "path";
 import type { ContactMessage, MessageStatus } from "./types";
-import type { InventoryItem, DishRecipe } from "./kitchen";
-import { seedInventory, seedRecipes } from "./kitchen";
 // Last-published overrides committed to the repo on Publish (Model A backup).
 // Bundled into every deploy so published edits survive even if Netlify Blobs
 // is empty or reset. It's `{}` until the first successful publish + repo sync.
@@ -26,15 +24,11 @@ const KEY = "overrides";
 const DRAFT_KEY = "draft";
 const HISTORY_KEY = "history";
 const MESSAGES_KEY = "messages";
-const INVENTORY_KEY = "inventory";
-const RECIPES_KEY = "dish-recipes";
 const DATA_DIR = path.join(process.cwd(), ".admin-data");
 const DEV_FILE = path.join(DATA_DIR, "overrides.json");
 const DEV_DRAFT_FILE = path.join(DATA_DIR, "draft.json");
 const DEV_HISTORY_FILE = path.join(DATA_DIR, "history.json");
 const DEV_MESSAGES_FILE = path.join(DATA_DIR, "messages.json");
-const DEV_INVENTORY_FILE = path.join(DATA_DIR, "inventory.json");
-const DEV_RECIPES_FILE = path.join(DATA_DIR, "dish-recipes.json");
 const DEV_MEDIA_DIR = path.join(DATA_DIR, "media");
 
 /** How many previous versions to keep for one-click undo. */
@@ -225,9 +219,7 @@ const SECTION_LABELS: Record<string, string> = {
   contact: "Contact info",
   socials: "Social links",
   hours: "Hours",
-  menu: "Menu & prices",
-  bundles: "Catering packages",
-  recipes: "Recipes",
+  menu: "Services & prices",
   blog: "Blog posts",
   hero: "Homepage hero",
   brandImages: "Brand images",
@@ -237,7 +229,6 @@ const SECTION_LABELS: Record<string, string> = {
   faqs: "FAQs",
   serviceTowns: "Service area",
   gallery: "Photo gallery",
-  events: "Festivals & events",
   imageAlt: "Image descriptions",
   seo: "Search-engine text",
 };
@@ -445,83 +436,3 @@ export async function deleteMessage(id: string): Promise<void> {
   await writeMessages(all.filter((m) => m.id !== id));
 }
 
-/* ── Kitchen: ingredient inventory ──────────────────────────────
- * Back-office data (NOT public site content), so it lives in its own store
- * keys and is saved immediately — it never goes through the draft/publish
- * flow. Reads fall back to the seed data the first time, before anything has
- * been customised, so the tools are useful out of the box.
- */
-
-/** Read the saved inventory, or the seed list when nothing is saved yet. */
-export async function readInventory(): Promise<InventoryItem[]> {
-  const store = await getBlobStore();
-  if (store) {
-    try {
-      const data = await store.get(INVENTORY_KEY, { type: "json" });
-      if (Array.isArray(data)) return data as InventoryItem[];
-    } catch {
-      // Blobs unavailable (e.g. local `next dev`) — fall back to disk.
-    }
-  }
-  try {
-    const raw = await fs.readFile(DEV_INVENTORY_FILE, "utf8");
-    const data = JSON.parse(raw);
-    if (Array.isArray(data)) return data as InventoryItem[];
-  } catch {
-    // No saved inventory — fall back to the seed list.
-  }
-  return seedInventory;
-}
-
-/** Persist the full inventory list. */
-export async function writeInventory(items: InventoryItem[]): Promise<void> {
-  const store = await getBlobStore();
-  if (store) {
-    try {
-      await store.setJSON(INVENTORY_KEY, items);
-      return;
-    } catch {
-      // Blobs unavailable (e.g. local `next dev`) — fall back to disk.
-    }
-  }
-  await fs.mkdir(DATA_DIR, { recursive: true });
-  await fs.writeFile(DEV_INVENTORY_FILE, JSON.stringify(items, null, 2), "utf8");
-}
-
-/* ── Kitchen: per-serving dish recipes ──────────────────────────── */
-
-/** Read the saved dish recipes, or the seed list when nothing is saved yet. */
-export async function readDishRecipes(): Promise<DishRecipe[]> {
-  const store = await getBlobStore();
-  if (store) {
-    try {
-      const data = await store.get(RECIPES_KEY, { type: "json" });
-      if (Array.isArray(data)) return data as DishRecipe[];
-    } catch {
-      // Blobs unavailable (e.g. local `next dev`) — fall back to disk.
-    }
-  }
-  try {
-    const raw = await fs.readFile(DEV_RECIPES_FILE, "utf8");
-    const data = JSON.parse(raw);
-    if (Array.isArray(data)) return data as DishRecipe[];
-  } catch {
-    // No saved recipes — fall back to the seed list.
-  }
-  return seedRecipes;
-}
-
-/** Persist the full dish-recipe list. */
-export async function writeDishRecipes(recipes: DishRecipe[]): Promise<void> {
-  const store = await getBlobStore();
-  if (store) {
-    try {
-      await store.setJSON(RECIPES_KEY, recipes);
-      return;
-    } catch {
-      // Blobs unavailable (e.g. local `next dev`) — fall back to disk.
-    }
-  }
-  await fs.mkdir(DATA_DIR, { recursive: true });
-  await fs.writeFile(DEV_RECIPES_FILE, JSON.stringify(recipes, null, 2), "utf8");
-}

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { appendMessage } from "@/lib/admin/store";
-import { CATERING_HELP_OPTIONS } from "@/lib/cta";
+import { SERVICE_HELP_OPTIONS } from "@/lib/cta";
 
 interface ContactFormData {
   name: string;
@@ -132,8 +132,8 @@ export async function POST(request: NextRequest) {
     }
 
     // Validate help option matches allowed values (kept in sync with the
-    // contact form via the shared CATERING_HELP_OPTIONS source of truth).
-    if (!(CATERING_HELP_OPTIONS as readonly string[]).includes(sanitized.help)) {
+    // contact form via the shared SERVICE_HELP_OPTIONS source of truth).
+    if (!(SERVICE_HELP_OPTIONS as readonly string[]).includes(sanitized.help)) {
       return NextResponse.json(
         { error: "Invalid service selection" },
         { status: 400 }

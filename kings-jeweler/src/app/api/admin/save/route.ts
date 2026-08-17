@@ -5,20 +5,18 @@ import {
   type Overrides,
   type HoursRow,
   type MenuSection,
-  type Bundle,
   type Announcement,
   type Testimonial,
   type FaqItem,
   type FaqPageKey,
-  type EventItem,
   type SeoPageKey,
   type SeoEntry,
   SEO_PAGES,
   FAQ_PAGES,
 } from "@/lib/admin/schema";
-import type { Recipe, BlogPost } from "@/lib/content";
+import type { BlogPost } from "@/lib/content";
 
-const SECTIONS = ["contact", "socials", "hours", "menu", "bundles", "recipes", "blog", "hero", "images", "colors", "announcement", "testimonials", "faqs", "serviceTowns", "gallery", "events", "seo"] as const;
+const SECTIONS = ["contact", "socials", "hours", "menu", "blog", "hero", "images", "colors", "announcement", "testimonials", "faqs", "serviceTowns", "gallery", "seo"] as const;
 type Section = (typeof SECTIONS)[number];
 
 const str = (v: unknown, max = 400): string =>
@@ -56,7 +54,6 @@ function cleanMenu(v: unknown): MenuSection[] {
     return {
       title: str(sec?.title, 120),
       group: str(sec?.group, 120),
-      service: str(sec?.service, 60),
       blurb: str(sec?.blurb, 400),
       items: Array.isArray(sec?.items)
         ? sec.items.map((i) => ({
@@ -67,52 +64,8 @@ function cleanMenu(v: unknown): MenuSection[] {
             options: Array.isArray(i?.options)
               ? i.options.map((o) => str(o, 160)).filter(Boolean).slice(0, 30)
               : [],
-            recipeIds: Array.isArray(i?.recipeIds)
-              ? i.recipeIds.map((r) => str(r, 60)).filter(Boolean).slice(0, 30)
-              : [],
           }))
         : [],
-    };
-  });
-}
-
-function cleanBundles(v: unknown): Bundle[] {
-  if (!Array.isArray(v)) return [];
-  return v
-    .map((b) => {
-      const bundle = b as Bundle;
-      return {
-        name: str(bundle?.name, 120),
-        blurb: str(bundle?.blurb, 600),
-        vehicles: strArr(bundle?.vehicles, 60),
-        highlights: strArr(bundle?.highlights, 200),
-      };
-    })
-    .filter((b) => b.name || b.blurb);
-}
-
-function cleanRecipes(v: unknown): Recipe[] {
-  if (!Array.isArray(v)) return [];
-  const allowed = ["Easy", "Intermediate", "Advanced"];
-  return v.map((r) => {
-    const rec = r as Recipe;
-    const difficulty = allowed.includes(rec?.difficulty) ? rec.difficulty : "Easy";
-    return {
-      slug: str(rec?.slug, 120).toLowerCase().replace(/[^a-z0-9-]/g, "-").replace(/-+/g, "-").replace(/^-|-$/g, ""),
-      title: str(rec?.title, 160),
-      excerpt: str(rec?.excerpt, 400),
-      category: str(rec?.category, 80),
-      image: str(rec?.image, 300),
-      time: str(rec?.time, 80),
-      difficulty: difficulty as Recipe["difficulty"],
-      serves: str(rec?.serves, 80),
-      date: str(rec?.date, 40),
-      intro: strArr(rec?.intro, 1200),
-      ingredients: strArr(rec?.ingredients, 300),
-      steps: Array.isArray(rec?.steps)
-        ? rec.steps.map((s) => ({ title: str(s?.title, 160), body: str(s?.body, 1200) }))
-        : [],
-      tip: str(rec?.tip, 600),
     };
   });
 }
@@ -205,22 +158,6 @@ function cleanTestimonials(v: unknown): Testimonial[] {
     .filter((t) => t.author || t.body);
 }
 
-function cleanEvents(v: unknown): EventItem[] {
-  if (!Array.isArray(v)) return [];
-  return v
-    .map((e) => {
-      const r = e as EventItem;
-      return {
-        name: str(r?.name, 160),
-        date: str(r?.date, 80),
-        location: str(r?.location, 160),
-        time: str(r?.time, 80),
-        url: str(r?.url, 300),
-      };
-    })
-    .filter((e) => e.name || e.date || e.location);
-}
-
 function cleanFaqs(v: unknown): Overrides["faqs"] {
   const o = (v ?? {}) as Record<string, unknown>;
   const out: Partial<Record<FaqPageKey, FaqItem[]>> = {};
@@ -294,12 +231,6 @@ export async function POST(request: NextRequest) {
     case "menu":
       next.menu = cleanMenu(value);
       break;
-    case "bundles":
-      next.bundles = cleanBundles(value);
-      break;
-    case "recipes":
-      next.recipes = cleanRecipes(value);
-      break;
     case "blog":
       next.blog = cleanBlog(value);
       break;
@@ -332,9 +263,6 @@ export async function POST(request: NextRequest) {
         next.gallery = strArr(g.images, 300);
         next.imageAlt = cleanAltMap(g.alt);
       }
-      break;
-    case "events":
-      next.events = cleanEvents(value);
       break;
     case "seo":
       next.seo = cleanSeo(value);

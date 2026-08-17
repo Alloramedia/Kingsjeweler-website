@@ -14,15 +14,6 @@ interface QuoteLineInput {
   unitPrice: number;
 }
 
-interface NutritionInput {
-  calories: number;
-  protein: number;
-  carbs: number;
-  fat: number;
-  fiber: number;
-  sodium: number;
-}
-
 interface QuotePayload {
   quoteNumber?: string;
   date?: string;
@@ -31,20 +22,13 @@ interface QuotePayload {
     name?: string;
     email?: string;
     phone?: string;
-    eventType?: string;
-    eventDate?: string;
-    eventLocation?: string;
-    guestCount?: string;
+    itemType?: string;
+    dueDate?: string;
   };
   lines?: QuoteLineInput[];
   notes?: string;
   depositPct?: number;
   taxPct?: number;
-  nutrition?: {
-    perServing?: Partial<NutritionInput>;
-    total?: Partial<NutritionInput>;
-    servings?: number;
-  };
 }
 
 /** Convert a "#RRGGBB" string to a pdf-lib rgb() color, with a fallback. */
@@ -169,23 +153,9 @@ export async function POST(request: NextRequest) {
   const validUntil = clampStr(payload.validUntil, 40);
   const notes = clampStr(payload.notes, 1200);
 
-  /* Optional per-guest nutrition stats (estimated in the admin). */
-  const cleanFacts = (raw: Partial<NutritionInput> | undefined) => ({
-    calories: clampNum(raw?.calories),
-    protein: clampNum(raw?.protein),
-    carbs: clampNum(raw?.carbs),
-    fat: clampNum(raw?.fat),
-    fiber: clampNum(raw?.fiber),
-    sodium: clampNum(raw?.sodium),
-  });
-  const nutritionServings = clampNum(payload.nutrition?.servings);
-  const nutrition = payload.nutrition && nutritionServings > 0
-    ? { perServing: cleanFacts(payload.nutrition.perServing), total: cleanFacts(payload.nutrition.total), servings: nutritionServings }
-    : null;
-
   /* ── Build the document ── */
   const pdf = await PDFDocument.create();
-  pdf.setTitle(`${siteConfig.name} Catering Quote ${quoteNumber}`);
+  pdf.setTitle(`${siteConfig.name} Quote ${quoteNumber}`);
   pdf.setAuthor(siteConfig.name);
   pdf.setCreator(siteConfig.name);
 
@@ -267,9 +237,9 @@ export async function POST(request: NextRequest) {
     }
 
     if (compact) {
-      textRight(p, "CATERING QUOTE  ·  continued", PAGE_W - MARGIN, yb + h / 2 - 4, 11, serif, onDark);
+      textRight(p, "QUOTE  ·  continued", PAGE_W - MARGIN, yb + h / 2 - 4, 11, serif, onDark);
     } else {
-      textRight(p, "CATERING QUOTE", PAGE_W - MARGIN, yb + h - 54, 17, serif, onDark);
+      textRight(p, "QUOTE", PAGE_W - MARGIN, yb + h - 54, 17, serif, onDark);
       textRight(p, "FINE JEWELRY  ·  REPAIRS  ·  MANCHESTER, CT", PAGE_W - MARGIN, yb + h - 70, 7.5, bold, teal);
       textRight(p, `Quote  ${quoteNumber}`, PAGE_W - MARGIN, yb + 42, 9.5, bold, onDark);
       textRight(p, dateStr, PAGE_W - MARGIN, yb + 27, 9, font, rgb(0.74, 0.72, 0.68));
@@ -305,7 +275,7 @@ export async function POST(request: NextRequest) {
   const rcolX = MARGIN + colW + colGap;
 
   text(page, "PREPARED FOR", leftX, y, 8.5, serifSemi, teal);
-  text(page, "EVENT DETAILS", rcolX, y, 8.5, serifSemi, teal);
+  text(page, "QUOTE DETAILS", rcolX, y, 8.5, serifSemi, teal);
   page.drawLine({ start: { x: leftX, y: y - 6 }, end: { x: leftX + colW, y: y - 6 }, thickness: 1, color: teal });
   page.drawLine({ start: { x: rcolX, y: y - 6 }, end: { x: rcolX + colW, y: y - 6 }, thickness: 1, color: teal });
   y -= 20;
@@ -317,10 +287,8 @@ export async function POST(request: NextRequest) {
   ].filter(Boolean) as string[];
 
   const rightRows = [
-    client.eventType && `Occasion:  ${clampStr(client.eventType, 60)}`,
-    client.guestCount && `Guests:  ${clampStr(client.guestCount, 40)}`,
-    client.eventDate && `Date:  ${clampStr(client.eventDate, 60)}`,
-    client.eventLocation && `Location:  ${clampStr(client.eventLocation, 120)}`,
+    client.itemType && `Item:  ${clampStr(client.itemType, 60)}`,
+    client.dueDate && `Pickup / completion:  ${clampStr(client.dueDate, 60)}`,
   ].filter(Boolean) as string[];
 
   const blockRows = Math.max(leftRows.length, rightRows.length, 1);
@@ -446,16 +414,14 @@ export async function POST(request: NextRequest) {
     cy -= 22;
   }
 
-  /* Booking terms fill the left column so the page reads balanced */
+  /* Terms fill the left column so the page reads balanced */
   const leftBlockW = cardX - MARGIN - 28;
   let ly = blockTop;
-  text(page, "WHAT'S INCLUDED & NEXT STEPS", MARGIN, ly, 8.5, serifSemi, teal);
+  text(page, "TERMS & NEXT STEPS", MARGIN, ly, 8.5, serifSemi, teal);
   page.drawLine({ start: { x: MARGIN, y: ly - 6 }, end: { x: MARGIN + leftBlockW, y: ly - 6 }, thickness: 1, color: teal });
   ly -= 20;
   const terms = [
-    `A ${hasDeposit ? depositPct : 50}% deposit reserves your date; the balance is due the week of your event.`,
-    "Pricing covers setup, on-site cooking, serving, and full breakdown of our station.",
-    "Final headcount and menu selections are locked 14 days before the event.",
+    `A ${hasDeposit ? depositPct : 50}% deposit begins the work; the balance is due at pickup or completion.`,
     validUntil
       ? `This quote is valid through ${validUntil}.`
       : "Pricing is held for 14 days from the date above.",
@@ -472,52 +438,6 @@ export async function POST(request: NextRequest) {
   }
 
   y = Math.min(ly, blockTop - cardH) - 22;
-
-  /* Estimated per-guest nutrition stats (optional) */
-  if (nutrition) {
-    const blockH = 96;
-    if (y < 120 + blockH) {
-      page = pdf.addPage([PAGE_W, PAGE_H]);
-      paintBg(page);
-      y = drawHeaderBand(page, true) - 28;
-    }
-    text(page, "ESTIMATED NUTRITION PER GUEST", MARGIN, y, 8.5, serifSemi, teal);
-    page.drawLine({ start: { x: MARGIN, y: y - 6 }, end: { x: PAGE_W - MARGIN, y: y - 6 }, thickness: 1, color: teal });
-    y -= 18;
-
-    const g1 = (v: number) => `${Math.round(v * 10) / 10} g`;
-    const cells: [string, string][] = [
-      [`${Math.round(nutrition.perServing.calories)}`, "Calories"],
-      [g1(nutrition.perServing.protein), "Protein"],
-      [g1(nutrition.perServing.carbs), "Carbs"],
-      [g1(nutrition.perServing.fat), "Fat"],
-      [g1(nutrition.perServing.fiber), "Fiber"],
-      [`${Math.round(nutrition.perServing.sodium)} mg`, "Sodium"],
-    ];
-    const cellGap = 8;
-    const cellW = (CONTENT_W - cellGap * (cells.length - 1)) / cells.length;
-    const cellH = 42;
-    const cellTop = y;
-    cells.forEach(([val, lab], i) => {
-      const cx = MARGIN + i * (cellW + cellGap);
-      page.drawRectangle({ x: cx, y: cellTop - cellH, width: cellW, height: cellH, color: creamSoft });
-      page.drawRectangle({ x: cx, y: cellTop - cellH, width: cellW, height: 3, color: teal });
-      const vw = serif.widthOfTextAtSize(val, 14);
-      page.drawText(val, { x: cx + (cellW - vw) / 2, y: cellTop - 22, size: 14, font: serif, color: ink });
-      const lw = bold.widthOfTextAtSize(lab.toUpperCase(), 7);
-      page.drawText(lab.toUpperCase(), { x: cx + (cellW - lw) / 2, y: cellTop - 34, size: 7, font: bold, color: muted });
-    });
-    y = cellTop - cellH - 16;
-
-    const protLb = Math.round((nutrition.total.protein / 453.6) * 10) / 10;
-    const statLine = `Across ~${Math.round(nutrition.servings)} guests: ${nutrition.total.calories.toLocaleString("en-US", { maximumFractionDigits: 0 })} total calories cooked  ·  about ${protLb} lb of protein served.`;
-    for (const sl of wrap(statLine, font, 9, CONTENT_W)) {
-      text(page, sl, MARGIN, y, 9, font, faint);
-      y -= 12;
-    }
-    text(page, "Estimated from typical recipes; not a certified nutrition label.", MARGIN, y, 7.5, font, faint);
-    y -= 24;
-  }
 
   /* Optional custom note from the team */
   if (notes) {
@@ -538,7 +458,7 @@ export async function POST(request: NextRequest) {
 
   /* Closing line + brand flourish anchored toward the bottom */
   if (y > 118) {
-    const msg = `Thank you for considering ${siteConfig.name} — we look forward to serving you!`;
+    const msg = `Thank you for choosing ${siteConfig.name}!`;
     const wMsg = serif.widthOfTextAtSize(msg, 12.5);
     const msgY = Math.min(y - 12, 240);
     if (wMsg <= CONTENT_W) {
