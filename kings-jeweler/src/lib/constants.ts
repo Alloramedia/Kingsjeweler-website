@@ -70,6 +70,24 @@ export const BLUR_DATA_URL =
   "data:image/webp;base64,UklGRigAAABXRUJQVlA4IBwAAABwAQCdASoIAAYAA4BaJZwCdAFAAAD+8qi1OKAA";
 
 /* ------------------------------------------------------------------ */
+/*  Default gallery captions, keyed by image path — shown on hover in  */
+/*  the gallery grid. Editable from the admin dashboard.               */
+/* ------------------------------------------------------------------ */
+export const defaultImageAlt: Record<string, string> = {
+  "/images/jewelry/kings-01.webp": "Gold chains ready for pickup",
+  "/images/jewelry/kings-02.webp": "Gold bracelets in the case",
+  "/images/jewelry/kings-03.webp": "Cartier-style Love bracelets",
+  "/images/jewelry/kings-04.webp": "Gold coin bangles",
+  "/images/jewelry/kings-05.webp": "Rolex Submariner on a customer's wrist",
+  "/images/jewelry/kings-06.webp": "A diamond engagement ring, freshly set",
+  "/images/jewelry/kings-07.webp": "Our storefront at The Shoppes at Buckland Hills",
+  "/images/jewelry/kings-08.webp": "Chain bracelets in for repair",
+  "/images/jewelry/kings-09.webp": "A luxury chronograph in for service",
+  "/images/jewelry/kings-10.webp": "Gold Cuban link chains",
+  "/images/jewelry/kings-11.webp": "A Rolex Datejust, boxed and ready",
+};
+
+/* ------------------------------------------------------------------ */
 /*  Local SEO — Greater Hartford / North-Central Connecticut           */
 /* ------------------------------------------------------------------ */
 export const serviceAreas = {
@@ -103,7 +121,6 @@ export const navLinks: NavLink[] = [
   { label: "Gallery", href: "/gallery" },
   { label: "Blog", href: "/blog" },
   { label: "About", href: "/about" },
-  { label: "Visit Us", href: "/contact" },
 ];
 
 export const footerLinks = {

@@ -4,7 +4,7 @@
  * client components (e.g. the content provider and admin dashboard).
  */
 import type { Metadata } from "next";
-import { siteConfig, brandImages as defaultBrand, serviceAreas } from "@/lib/constants";
+import { siteConfig, brandImages as defaultBrand, serviceAreas, defaultImageAlt } from "@/lib/constants";
 import { recipes as defaultRecipes, blogPosts as defaultBlogPosts } from "@/lib/content";
 import type { Recipe, BlogPost } from "@/lib/content";
 
@@ -553,7 +553,7 @@ export function mergeContent(o: Overrides): SiteContent {
         : defaultServiceTowns,
     gallery: o.gallery && o.gallery.length > 0 ? o.gallery : [],
     events: o.events ?? defaultEvents,
-    imageAlt: o.imageAlt ?? {},
+    imageAlt: { ...defaultImageAlt, ...(o.imageAlt ?? {}) },
     seo: mergeSeo(o.seo),
   };
 }

@@ -226,7 +226,7 @@ export function Header() {
                 <Phone size={18} />
               </a>
             </div>
-            {navLinks.slice(0, 3).map((link) => (
+            {navLinks.slice(0, 2).map((link) => (
               <NavItem
                 key={link.href}
                 link={link}
@@ -260,7 +260,7 @@ export function Header() {
 
           {/* Right: nav links + Client Portal + CTA */}
           <div className="flex items-center gap-6 justify-self-end">
-            {navLinks.slice(3).map((link) => (
+            {navLinks.slice(2).map((link) => (
               <NavItem
                 key={link.href}
                 link={link}

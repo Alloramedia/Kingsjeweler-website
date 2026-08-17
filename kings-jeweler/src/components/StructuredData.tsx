@@ -137,7 +137,7 @@ export function ServiceSchema({
     name,
     description,
     provider: {
-      "@type": "FoodEstablishment",
+      "@type": "JewelryStore",
       name: siteConfig.name,
       url: siteConfig.url,
     },
@@ -289,7 +289,7 @@ export function ArticleSchema({
       "@type": "Person",
       name: author,
       url: `${siteConfig.url}/about`,
-      jobTitle: "Owner & Chef",
+      jobTitle: siteConfig.owner.title,
       worksFor: {
         "@type": "Organization",
         name: siteConfig.name,

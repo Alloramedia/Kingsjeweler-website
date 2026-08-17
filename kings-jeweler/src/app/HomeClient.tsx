@@ -77,6 +77,10 @@ const SERVICES = [
 
 const WHY_US = [
   {
+    title: `Serving Manchester since ${siteConfig.foundingDate}`,
+    body: "Decades in the same community, not a chain that opened last quarter.",
+  },
+  {
     title: "Family owned & operated",
     body: "You deal directly with the jeweler — not a salesperson working a quota.",
   },
@@ -180,14 +184,21 @@ export function HomeClient({
             transition={{ duration: 0.8, delay: 0.55 }}
             className="mx-auto mt-12 flex max-w-2xl flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-white/70"
           >
-            <span className="inline-flex items-center gap-2">
+            <a
+              href={siteConfig.socials.gmb}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 transition hover:text-white"
+            >
               <span className="flex text-[#F0A92D]">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star key={i} size={13} fill={i < 4 ? "currentColor" : "none"} />
                 ))}
               </span>
               4.5 on Google
-            </span>
+            </a>
+            <span className="hidden h-3 w-px bg-white/25 sm:block" />
+            <span>Serving Manchester since {siteConfig.foundingDate}</span>
             <span className="hidden h-3 w-px bg-white/25 sm:block" />
             <span>Family owned &amp; operated</span>
             <span className="hidden h-3 w-px bg-white/25 sm:block" />
@@ -279,7 +290,12 @@ export function HomeClient({
               />
             </div>
             {/* Floating review card */}
-            <div className="absolute -bottom-5 -left-3 rounded-xl border border-[#C68A17]/30 bg-[#14141A]/90 px-5 py-4 shadow-xl backdrop-blur-sm sm:-left-6">
+            <a
+              href={siteConfig.socials.gmb}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="absolute -bottom-5 -left-3 rounded-xl border border-[#C68A17]/30 bg-[#14141A]/90 px-5 py-4 shadow-xl backdrop-blur-sm transition hover:border-[#C68A17]/60 sm:-left-6"
+            >
               <div className="flex items-center gap-1 text-[#F0A92D]">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star key={i} size={14} fill={i < 4 ? "currentColor" : "none"} />
@@ -287,7 +303,7 @@ export function HomeClient({
               </div>
               <p className="mt-1.5 text-sm font-semibold text-white">4.5 stars on Google</p>
               <p className="text-xs text-white/55">from real local customers</p>
-            </div>
+            </a>
           </FadeIn>
         </div>
       </Section>

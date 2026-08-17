@@ -53,7 +53,7 @@ export default async function GalleryPage() {
             Gallery
           </p>
           <h1 className="mt-4 font-display! text-4xl font-normal! uppercase leading-tight md:text-6xl">
-            From our showcase.
+            From our showcase
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-white/75">
             A look at the custom pieces, restorations, and fine jewelry we
@@ -67,23 +67,40 @@ export default async function GalleryPage() {
       <section className="bg-[#FBF9F4]">
         <div className="mx-auto max-w-6xl px-6 py-16 lg:px-8">
           <div className="columns-2 gap-4 sm:columns-3 lg:columns-4 *:mb-4">
-            {images.map((src, i) => (
-              <div
-                key={src}
-                className="overflow-hidden rounded-xl border border-[#14141A]/10 bg-[#FFFDF8] shadow-sm break-inside-avoid"
-              >
-                <Image
-                  src={src}
-                  alt={imageAlt[src] || `King's Jeweler jewelry photo ${i + 1}`}
-                  width={500}
-                  height={625}
-                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                  className="h-auto w-full object-cover"
-                  loading={i < 8 ? "eager" : "lazy"}
-                />
-              </div>
-            ))}
+            {images.map((src, i) => {
+              const caption = imageAlt[src];
+              return (
+                <div
+                  key={src}
+                  className="group overflow-hidden rounded-xl border border-[#14141A]/10 bg-[#FFFDF8] shadow-sm break-inside-avoid"
+                >
+                  <div className="relative overflow-hidden">
+                    <Image
+                      src={src}
+                      alt={caption || `King's Jeweler jewelry photo ${i + 1}`}
+                      width={500}
+                      height={625}
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                      className="h-auto w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      loading={i < 8 ? "eager" : "lazy"}
+                    />
+                    {caption && (
+                      <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-[#14141A]/85 via-[#14141A]/40 to-transparent px-4 pb-3 pt-8 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                        <p className="text-sm font-medium text-white">
+                          {caption}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
           </div>
+          <p className="mx-auto mt-10 max-w-2xl text-center text-sm text-[#14141A]/55">
+            Have a repair or custom piece of your own? Bring it by The
+            Shoppes at Buckland Hills — we&apos;re happy to talk through
+            options in person, no appointment needed.
+          </p>
         </div>
       </section>
 
