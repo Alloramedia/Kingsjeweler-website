@@ -93,15 +93,7 @@ h1, h2, h3, h4, h5, h6 {
   html {
     scroll-behavior: auto;
   }
-  .animate-pulse-glow,
-  .animate-gradient,
-  .animate-shimmer,
-  .animate-shimmer::after,
-  .animate-line-reveal,
-  .animate-slow-spin,
-  .animate-text-gradient,
-  .animate-kenburns,
-  .animate-breathe {
+  .animate-kenburns {
     animation: none !important;
   }
 }
@@ -132,93 +124,76 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ═══════ GOLD UI ACCENTS ═══════ */
-/* Primary button — polished gold gradient with a shine sweep on hover. */
+/* Primary button — flat gold, square corners, quiet hover. */
 .btn-gold {
-  position: relative;
-  overflow: hidden;
   border-radius: 2px;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  background-image: linear-gradient(to bottom, #d89b22, #b37b10);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.25) inset, 0 8px 24px rgba(198, 138, 23, 0.35);
-  transition: filter 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
-}
-.btn-gold::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    105deg,
-    transparent 40%,
-    rgba(255, 255, 255, 0.35) 50%,
-    transparent 60%
-  );
-  transform: translateX(-120%);
-  transition: transform 0.6s ease;
-  pointer-events: none;
+  letter-spacing: 0.01em;
+  background-color: #B37B10;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16);
+  transition: background-color 0.2s ease;
 }
 .btn-gold:hover {
-  filter: brightness(1.08);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.25) inset, 0 10px 30px rgba(198, 138, 23, 0.5);
-}
-.btn-gold:hover::after {
-  transform: translateX(120%);
+  background-color: #9c6b0c;
 }
 
-/* Secondary button — thin gold border, glass fill on hover. */
+/* Secondary button — hairline border, faint fill on hover. */
 .btn-outline-gold {
   border-radius: 2px;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  border: 1px solid rgba(198, 138, 23, 0.55);
-  transition: border-color 0.25s ease, background-color 0.25s ease, color 0.25s ease;
+  letter-spacing: 0.01em;
+  border: 1px solid rgba(198, 138, 23, 0.5);
+  transition: border-color 0.2s ease, background-color 0.2s ease;
 }
 .btn-outline-gold:hover {
   border-color: #c68a17;
-  background-color: rgba(198, 138, 23, 0.12);
+  background-color: rgba(198, 138, 23, 0.1);
 }
 
-/* Ornamental divider — hairlines meeting a trio of gems. */
+/* Small-caps eyebrow with a short leading rule — set left-aligned. */
+.eyebrow-rule {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+.eyebrow-rule::before {
+  content: "";
+  width: 2rem;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.5;
+}
+
+/* Dotted leader between a label and value — like a printed hours card. */
+.dotted-leader {
+  flex: 1;
+  margin: 0 0.5rem;
+  border-bottom: 1px dotted currentColor;
+  opacity: 0.3;
+  transform: translateY(-0.28em);
+}
+
+/* Ornamental divider — two hairlines meeting a single small diamond. */
 .ornament-divider {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.6rem;
+  gap: 0.75rem;
 }
 .ornament-divider::before,
 .ornament-divider::after {
   content: "";
   height: 1px;
-  width: 5rem;
-  background: linear-gradient(to right, transparent, rgba(198, 138, 23, 0.7));
-}
-.ornament-divider::after {
-  background: linear-gradient(to left, transparent, rgba(198, 138, 23, 0.7));
+  width: 3.5rem;
+  background: rgba(198, 138, 23, 0.5);
 }
 .ornament-divider > span {
-  position: relative;
-  width: 0.45rem;
-  height: 0.45rem;
+  width: 0.35rem;
+  height: 0.35rem;
   transform: rotate(45deg);
   background: #c68a17;
-  box-shadow: 0 0 8px rgba(198, 138, 23, 0.55);
-}
-.ornament-divider > span::before,
-.ornament-divider > span::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  width: 0.28rem;
-  height: 0.28rem;
-  background: rgba(198, 138, 23, 0.55);
-}
-.ornament-divider > span::before {
-  left: -0.75rem;
-  transform: translateY(-50%);
-}
-.ornament-divider > span::after {
-  right: -0.75rem;
-  transform: translateY(-50%);
 }
 
 /* Counter animation */
@@ -239,48 +214,6 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ═══════ AMBIENT ANIMATIONS ═══════ */
 
-/* Pulse glow on brand elements */
-@keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(190, 90, 36, 0); }
-  40% { box-shadow: 0 0 24px 6px rgba(190, 90, 36, 0.18); }
-  70% { box-shadow: 0 0 12px 2px rgba(190, 90, 36, 0.08); }
-}
-
-.animate-pulse-glow {
-  animation: pulse-glow 3.5s cubic-bezier(0.45, 0, 0.55, 1) infinite;
-}
-
-/* Gradient shift for backgrounds */
-@keyframes gradient-shift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-.animate-gradient {
-  background-size: 200% 200%;
-  animation: gradient-shift 8s ease infinite;
-}
-
-/* Shimmer effect for loading/decorative */
-@keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
-
-.animate-shimmer {
-  overflow: hidden;
-  position: relative;
-}
-
-.animate-shimmer::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, transparent, rgba(190, 90, 36, 0.06), transparent);
-  animation: shimmer 3.5s cubic-bezier(0.45, 0, 0.55, 1) infinite;
-}
-
 /* Subtle scale animation on hover for cards */
 .hover-lift {
   transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
@@ -292,8 +225,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hover-lift:hover {
-  transform: translateY(-6px) scale(1.01);
-  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(190, 90, 36, 0.08);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
 }
 
 /* Green line reveal animation */
@@ -305,56 +238,6 @@ h1, h2, h3, h4, h5, h6 {
 .animate-line-reveal {
   transform-origin: left;
   animation: line-reveal 0.8s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
-}
-
-/* Spin animation for decorative elements */
-@keyframes slow-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-.animate-slow-spin {
-  animation: slow-spin 20s linear infinite;
-}
-
-/* Border glow on hover */
-.border-glow {
-  transition: border-color 0.5s cubic-bezier(0.22, 1, 0.36, 1),
-              box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.border-glow:hover {
-  border-color: rgba(190, 90, 36, 0.5);
-  box-shadow: 0 0 24px rgba(190, 90, 36, 0.12), 0 0 8px rgba(190, 90, 36, 0.06), inset 0 0 16px rgba(190, 90, 36, 0.04);
-}
-
-/* Text gradient animation */
-@keyframes text-gradient {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
-
-.animate-text-gradient {
-  background: linear-gradient(90deg, #C68A17, #A87310, #F0A92D, #C68A17);
-  background-size: 300% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: text-gradient 5s ease infinite;
-  padding-bottom: 0.15em;
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone;
-  line-height: 1.3;
-}
-
-/* Gentle scale breathing for accent elements */
-@keyframes breathe {
-  0%, 100% { transform: scale(1); opacity: 0.7; }
-  50% { transform: scale(1.04); opacity: 1; }
-}
-
-.animate-breathe {
-  animation: breathe 4s cubic-bezier(0.45, 0, 0.55, 1) infinite;
 }
 
 /* Slow Ken Burns drift for hero slideshow backgrounds */
@@ -380,41 +263,6 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* Custom scrollbar */
-html {
-  scrollbar-width: thin;
-  scrollbar-color: var(--primary) var(--background);
-}
-
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--background);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--primary);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #A87310;
-}
-
-/* ═══════ SCROLL PROGRESS INDICATOR ═══════ */
-.scroll-progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 2px;
-  background: linear-gradient(90deg, #C68A17, #A87310, #F0A92D);
-  z-index: 9999;
-  transform-origin: left;
-  will-change: transform;
-}
-
 /* ═══════ NAV LINK UNDERLINE ANIMATION ═══════ */
 .nav-link-animated {
   position: relative;
@@ -425,12 +273,11 @@ html {
   left: 0;
   bottom: -4px;
   width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, #C68A17, #A87310);
-  border-radius: 1px;
+  height: 1px;
+  background: #C68A17;
   transform: scaleX(0);
   transform-origin: right;
-  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .nav-link-animated:hover::after,
 .nav-link-animated[data-active="true"]::after {
@@ -504,10 +351,10 @@ html {
   pointer-events: none;
 }
 
-/* ═══════ SECTION GLOW DIVIDER ═══════ */
+/* ═══════ SECTION DIVIDER ═══════ */
 .section-glow-divider {
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(190, 90, 36, 0.5), transparent);
+  background: rgba(198, 138, 23, 0.35);
 }
 
 /* ═══════ BRIGHT ACCENT SECTIONS ═══════ */

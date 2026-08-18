@@ -83,11 +83,12 @@ export default async function AboutPage() {
         <div className="absolute inset-0 bg-linear-to-b from-[#14141A]/60 via-[#14141A]/70 to-[#14141A]" />
         <EmblemWatermark className="-right-16 top-24 hidden md:block" opacity={0.06} size="clamp(260px, 32vw, 460px)" />
         <div className="relative mx-auto max-w-5xl px-6 pb-20 pt-40 lg:px-8">
-          <p className="text-sm font-heading font-semibold uppercase tracking-[0.2em] text-[#F0A92D]">
+          <p className="eyebrow-rule font-heading text-[#F0A92D]">
             Our Story
           </p>
-          <h1 className="mt-4 max-w-3xl font-display! text-4xl font-normal! uppercase leading-tight md:text-6xl">
-            A family jeweler, in the heart of Buckland Hills.
+          <h1 className="mt-5 max-w-3xl text-4xl leading-[1.06] tracking-tight md:text-6xl">
+            A family jeweler, in the heart of{" "}
+            <em className="font-medium italic text-[#F0A92D]">Buckland Hills</em>.
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-white/75">
             We&apos;re a family-run jewelry store inside The Shoppes at Buckland
@@ -131,7 +132,7 @@ export default async function AboutPage() {
             <p className="text-sm font-heading font-semibold uppercase tracking-[0.2em] text-[#F0A92D]">
               What We Stand For
             </p>
-            <h2 className="mt-3 font-display! text-3xl font-normal! uppercase md:text-4xl">
+            <h2 className="mt-3 text-3xl tracking-tight md:text-4xl">
               The standards behind every piece.
             </h2>
             <p className="mt-4 text-lg text-white/75">
@@ -139,18 +140,16 @@ export default async function AboutPage() {
               by, every single day.
             </p>
           </div>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-12 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
             {values.map((v) => {
               const Icon = v.icon;
               return (
                 <div
                   key={v.title}
-                  className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm"
+                  className="border-t border-white/15 pt-6"
                 >
-                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-[#C68A17]/15 text-[#F0A92D]">
-                    <Icon size={20} />
-                  </span>
-                  <h3 className="mt-4 font-heading text-lg font-bold">
+                  <h3 className="flex items-center gap-2.5 font-heading text-lg font-bold">
+                    <Icon size={18} className="shrink-0 text-[#F0A92D]" />
                     {v.title}
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-white/65">
@@ -166,20 +165,22 @@ export default async function AboutPage() {
       {/* Owner */}
       <section className="relative overflow-hidden bg-[#E5E1D8] text-[#14141A]">
         <div className="relative z-10 mx-auto grid max-w-5xl items-center gap-12 px-6 py-20 lg:grid-cols-[2fr_3fr] lg:px-8 lg:py-28">
-          <div className="relative aspect-square overflow-hidden rounded-3xl shadow-xl">
-            <Image
-              src={brandImages.owner}
-              alt={`${siteConfig.owner.name}, ${siteConfig.owner.title} at King's Jeweler`}
-              fill
-              sizes="(max-width: 1024px) 100vw, 40vw"
-              className="object-cover"
-            />
+          <div className="relative aspect-square overflow-hidden border border-[#14141A]/20 p-2">
+            <div className="relative h-full w-full">
+              <Image
+                src={brandImages.owner}
+                alt={`${siteConfig.owner.name}, ${siteConfig.owner.title} at King's Jeweler`}
+                fill
+                sizes="(max-width: 1024px) 100vw, 40vw"
+                className="object-cover"
+              />
+            </div>
           </div>
           <div>
             <p className="text-sm font-heading font-semibold uppercase tracking-[0.2em] text-[#C68A17]">
               Meet the Family
             </p>
-            <h2 className="mt-3 font-display! text-3xl font-normal! uppercase md:text-4xl">
+            <h2 className="mt-3 text-3xl tracking-tight md:text-4xl">
               {siteConfig.owner.name}
             </h2>
             <p className="mt-1 font-semibold text-[#C68A17]">
@@ -193,7 +194,7 @@ export default async function AboutPage() {
                 (tag) => (
                   <span
                     key={tag}
-                    className="rounded-full border border-[#14141A]/15 bg-[#FBF9F4] px-4 py-2 text-sm font-medium text-[#14141A]/75"
+                    className="border border-[#14141A]/15 bg-[#FBF9F4] px-3 py-1.5 text-xs font-medium tracking-wide text-[#14141A]/75"
                   >
                     {tag}
                   </span>
@@ -211,7 +212,7 @@ export default async function AboutPage() {
             <p className="text-sm font-heading font-semibold uppercase tracking-[0.2em] text-[#C68A17]">
               Good to Know
             </p>
-            <h2 className="mt-3 font-display! text-3xl font-normal! uppercase text-[#14141A] md:text-4xl">
+            <h2 className="mt-3 text-3xl tracking-tight text-[#14141A] md:text-4xl">
               A few things people ask.
             </h2>
           </div>
@@ -224,7 +225,7 @@ export default async function AboutPage() {
       {/* Service area */}
       <section className="bg-[#FBF9F4] text-[#14141A]">
         <div className="mx-auto max-w-4xl px-6 py-16 text-center lg:px-8">
-          <h2 className="font-display! text-2xl font-normal! uppercase md:text-3xl">
+          <h2 className="text-2xl tracking-tight md:text-3xl">
             Proudly serving Greater Hartford
           </h2>
           <p className="mt-4 text-[#14141A]/65">

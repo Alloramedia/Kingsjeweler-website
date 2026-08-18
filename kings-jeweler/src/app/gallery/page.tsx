@@ -49,11 +49,11 @@ export default async function GalleryPage() {
       {/* Hero */}
       <section className="bg-[#14141A] text-white metal-texture">
         <div className="mx-auto max-w-6xl px-6 pb-12 pt-40 lg:px-8">
-          <p className="text-sm font-heading font-semibold uppercase tracking-[0.2em] text-[#F0A92D]">
+          <p className="eyebrow-rule font-heading text-[#F0A92D]">
             Gallery
           </p>
-          <h1 className="mt-4 font-display! text-4xl font-normal! uppercase leading-tight md:text-6xl">
-            From our showcase
+          <h1 className="mt-5 text-4xl leading-[1.06] tracking-tight md:text-6xl">
+            From our <em className="font-medium italic text-[#F0A92D]">showcase</em>
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-white/75">
             A look at the custom pieces, restorations, and fine jewelry we

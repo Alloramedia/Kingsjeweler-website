@@ -15,6 +15,7 @@ import { buildThemeCss } from "@/lib/admin/theme";
 import "./globals.css";
 
 const zillaSlab = Zilla_Slab({
+  style: ["normal", "italic"],
   variable: "--font-heading",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],

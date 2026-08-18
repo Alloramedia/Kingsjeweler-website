@@ -1,30 +1,16 @@
 "use client";
 
+import { useSyncExternalStore } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import {
-  ArrowRight,
-  Gem,
-  Heart,
-  Wrench,
-  Watch,
-  Scale,
-  Sparkles,
-  MapPin,
-  Clock,
-  Phone,
-  Star,
-  Coins,
-  CreditCard,
-  BadgeCheck,
-} from "lucide-react";
+import { ArrowRight, Star } from "lucide-react";
 import { siteConfig, BLUR_DATA_URL } from "@/lib/constants";
 import { Section, SectionHeader } from "@/components/Section";
 import { CTASection } from "@/components/CTASection";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { HeroSlideshow } from "@/components/HeroSlideshow";
-import { FadeIn, StaggerContainer, StaggerItem } from "@/components/animations";
+import { FadeIn } from "@/components/animations";
 import type {
   HeroOverride,
   BrandImages,
@@ -44,34 +30,34 @@ interface HomeClientProps {
 
 const SERVICES = [
   {
-    icon: Heart,
     title: "Engagement Rings & Bridal",
     body: "Diamond engagement rings and wedding bands for every style and budget — with honest, pressure-free guidance from a real jeweler.",
+    note: "Ask about financing",
   },
   {
-    icon: Sparkles,
     title: "Custom Jewelry Design",
     body: "Bring us an idea, a photo, or an heirloom stone. We design and craft one-of-a-kind pieces you won't find anywhere else.",
+    note: "By consultation",
   },
   {
-    icon: Wrench,
     title: "Jewelry Repair",
     body: "Ring sizing, chain soldering, prong re-tipping, stone setting, and restoration — done with care, often while you shop the mall.",
+    note: "Many done same day",
   },
   {
-    icon: Watch,
     title: "Watch Repair & Batteries",
     body: "Watch batteries replaced on the spot, plus band adjustments and repairs for everyday and luxury watches.",
+    note: "While you wait",
   },
   {
-    icon: Scale,
     title: "Gold Buying & Appraisals",
     body: "Fair, transparent offers on gold, silver, and diamonds — sell outright or trade toward something new. Appraisals available.",
+    note: "Walk-ins welcome",
   },
   {
-    icon: Gem,
     title: "Fine Jewelry & Gifts",
     body: "Necklaces, bracelets, earrings, and chains in gold, silver, and platinum — for anniversaries, birthdays, and just because.",
+    note: "In the case daily",
   },
 ] as const;
 
@@ -98,6 +84,30 @@ const WHY_US = [
   },
 ] as const;
 
+const DAY_NAMES = [
+  "sunday",
+  "monday",
+  "tuesday",
+  "wednesday",
+  "thursday",
+  "friday",
+  "saturday",
+];
+
+/** Matches a printed hours label ("Monday – Friday", "Saturday") to a weekday index. */
+function rowMatchesDay(label: string, dayIndex: number): boolean {
+  const lower = label.toLowerCase();
+  const found = DAY_NAMES.map((d, i) => (lower.includes(d.slice(0, 3)) ? i : -1)).filter(
+    (i) => i >= 0
+  );
+  if (found.length === 0) return false;
+  if (found.length === 1) return found[0] === dayIndex;
+  const [start, end] = [found[0], found[found.length - 1]];
+  return start <= end
+    ? dayIndex >= start && dayIndex <= end
+    : dayIndex >= start || dayIndex <= end;
+}
+
 export function HomeClient({
   hero,
   brandImages,
@@ -111,199 +121,221 @@ export function HomeClient({
     hero.subtitle ||
     "Fine jewelry, engagement rings, custom design, and expert repairs — inside The Shoppes at Buckland Hills.";
 
+  // Resolves on the client only, so SSR and hydration markup agree.
+  const todayIndex = useSyncExternalStore(
+    () => () => {},
+    () => new Date().getDay(),
+    () => null
+  );
+
+  const heroWords = heroTitle.trim().split(/\s+/);
+  const heroLead = heroWords.slice(0, -1).join(" ");
+  const heroLast = heroWords[heroWords.length - 1];
+
   return (
     <>
       {/* ── Hero ─────────────────────────────────────────────── */}
-      <section className="relative flex min-h-[88vh] items-center justify-center overflow-hidden bg-[#14141A] text-white">
+      <section className="relative flex min-h-[82vh] items-end overflow-hidden bg-[#14141A] text-white">
         <HeroSlideshow
           images={brandImages.heroSlides}
           alt="Fine jewelry at King's Jeweler in Manchester, Connecticut"
           className="opacity-45"
         />
-        <div className="absolute inset-0 bg-linear-to-b from-[#14141A]/60 via-transparent to-[#14141A]" />
+        <div className="absolute inset-0 bg-linear-to-b from-[#14141A]/55 via-transparent to-[#14141A]" />
 
-        <div className="relative z-10 mx-auto max-w-4xl px-6 pt-28 pb-20 text-center lg:px-8">
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-sm font-semibold uppercase tracking-[0.25em] text-[#F0A92D]"
-          >
-            The Shoppes at Buckland Hills · Manchester, CT
-          </motion.p>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-display! mt-5 text-4xl font-normal! uppercase leading-tight text-shadow-hero md:text-6xl lg:text-7xl"
-          >
-            {heroTitle}
-          </motion.h1>
-          <motion.div
-            initial={{ opacity: 0, scaleX: 0 }}
-            animate={{ opacity: 1, scaleX: 1 }}
-            transition={{ duration: 0.7, delay: 0.35 }}
-            className="ornament-divider mt-6"
-            aria-hidden="true"
-          >
-            <span />
-          </motion.div>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/80 md:text-xl"
-          >
-            {heroSubtitle}
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
-          >
-            <Link
-              href="/contact"
-              className="btn-gold inline-flex items-center gap-2 px-8 py-4 text-base font-semibold text-white"
+        <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pt-44 pb-16 lg:px-8 lg:pb-20">
+          <div className="max-w-2xl">
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="eyebrow-rule font-heading text-[#F0A92D]"
             >
-              Visit or Contact Us
-              <ArrowRight size={18} />
-            </Link>
-            <Link
-              href="/services"
-              className="btn-outline-gold inline-flex items-center gap-2 px-8 py-4 text-base font-medium text-white backdrop-blur-sm"
+              The Shoppes at Buckland Hills · Manchester, CT
+            </motion.p>
+            <motion.h1
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="mt-5 font-heading text-5xl font-bold leading-[1.04] tracking-tight text-shadow-hero md:text-6xl lg:text-7xl"
             >
-              Explore Our Services
-            </Link>
-          </motion.div>
+              {heroLead && <>{heroLead} </>}
+              <em className="font-medium italic text-[#F0A92D]">{heroLast}</em>
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="mt-5 max-w-xl text-lg leading-relaxed text-white/80 md:text-xl"
+            >
+              {heroSubtitle}
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="mt-9 flex flex-wrap items-center gap-4"
+            >
+              <Link
+                href="/contact"
+                className="btn-gold inline-flex items-center gap-2 px-7 py-3.5 text-base font-semibold text-white"
+              >
+                Visit or Contact Us
+                <ArrowRight size={17} />
+              </Link>
+              <Link
+                href="/services"
+                className="btn-outline-gold inline-flex items-center gap-2 px-7 py-3.5 text-base font-medium text-white backdrop-blur-sm"
+              >
+                See What We Do
+              </Link>
+            </motion.div>
 
-          {/* Trust strip */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.55 }}
-            className="mx-auto mt-12 flex max-w-2xl flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-white/70"
-          >
-            <a
-              href={siteConfig.socials.gmb}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 transition hover:text-white"
+            {/* Trust line — one plain sentence, no badge row */}
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.55 }}
+              className="mt-10 border-t border-white/15 pt-5 text-sm leading-relaxed text-white/65"
             >
-              <span className="flex text-[#F0A92D]">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} size={13} fill={i < 4 ? "currentColor" : "none"} />
-                ))}
-              </span>
-              4.5 on Google
-            </a>
-            <span className="hidden h-3 w-px bg-white/25 sm:block" />
-            <span>Serving Manchester since {siteConfig.foundingDate}</span>
-            <span className="hidden h-3 w-px bg-white/25 sm:block" />
-            <span>Family owned &amp; operated</span>
-            <span className="hidden h-3 w-px bg-white/25 sm:block" />
-            <span>Watch batteries while you wait</span>
-          </motion.div>
+              Family owned and in the mall since {siteConfig.foundingDate}.{" "}
+              <a
+                href={siteConfig.socials.gmb}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-baseline gap-1 text-white/85 underline decoration-white/30 underline-offset-2 transition hover:text-white"
+              >
+                <Star size={12} className="translate-y-px text-[#F0A92D]" fill="currentColor" />
+                4.5 on Google
+              </a>{" "}
+              — and yes, we still do watch batteries while you wait.
+            </motion.p>
+          </div>
+        </div>
+
+        {/* Vertical marginalia — a printed-page flourish */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute right-8 top-1/2 z-10 hidden -translate-y-1/2 xl:block"
+        >
+          <p
+            className="font-heading text-[0.65rem] font-semibold uppercase tracking-[0.32em] text-white/35"
+            style={{ writingMode: "vertical-rl" }}
+          >
+            Est. {siteConfig.foundingDate} · The Shoppes at Buckland Hills · Manchester, Connecticut
+          </p>
         </div>
 
         {/* Bottom gold hairline */}
-        <div className="absolute inset-x-0 bottom-0 h-px bg-linear-to-r from-transparent via-[#C68A17]/60 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-px bg-[#C68A17]/50" />
       </section>
 
       {/* ── Services ─────────────────────────────────────────── */}
       <Section variant="dark" id="services">
-        <SectionHeader
-          eyebrow="What We Do"
-          title="Everything a jeweler should be"
-          description="From once-in-a-lifetime engagement rings to a five-minute watch battery — we handle it all, in person, with care."
-        />
-        <StaggerContainer className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {SERVICES.map((s) => (
-            <StaggerItem key={s.title}>
-              <div className="group relative h-full overflow-hidden rounded-2xl border border-[#14141A]/8 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-[#C68A17]/35 hover:shadow-lg hover:shadow-[#C68A17]/10">
-                <div className="absolute inset-x-0 top-0 h-0.5 bg-linear-to-r from-transparent via-[#C68A17] to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                <div className="flex h-12 w-12 items-center justify-center rounded-full border border-[#C68A17]/25 bg-[#C68A17]/8 text-[#C68A17] transition-colors duration-300 group-hover:bg-[#C68A17] group-hover:text-white">
-                  <s.icon size={22} />
-                </div>
-                <h3 className="mt-5 text-lg font-bold">{s.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-[#14141A]/65">
-                  {s.body}
-                </p>
-              </div>
-            </StaggerItem>
-          ))}
-        </StaggerContainer>
-        <FadeIn className="mt-10 text-center">
-          <Link
-            href="/services"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-[#C68A17] hover:underline"
-          >
-            See all services
-            <ArrowRight size={16} />
-          </Link>
-        </FadeIn>
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
+          <div>
+            <SectionHeader
+              eyebrow="What We Do"
+              title={
+                <>
+                  The six things people <em className="text-[#A87310]">come in for</em>
+                </>
+              }
+              description="From a once-in-a-lifetime engagement ring to a five-minute watch battery — it's all handled here, in person, by us."
+            />
+            <FadeIn>
+              <Link
+                href="/services"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-[#C68A17] hover:underline"
+              >
+                See the full list of services
+                <ArrowRight size={16} />
+              </Link>
+            </FadeIn>
+          </div>
+          <FadeIn>
+            <ol className="border-t border-[#14141A]/15">
+              {SERVICES.map((s, i) => (
+                <li
+                  key={s.title}
+                  className="grid gap-x-6 gap-y-1 border-b border-[#14141A]/15 py-5 sm:grid-cols-[2.5rem_minmax(0,1fr)_auto]"
+                >
+                  <span className="pt-0.5 font-heading text-sm font-semibold text-[#C68A17]">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <div>
+                    <h3 className="font-heading text-lg font-bold">{s.title}</h3>
+                    <p className="mt-1 text-sm leading-relaxed text-[#14141A]/65">
+                      {s.body}
+                    </p>
+                  </div>
+                  <span className="pt-1 text-xs italic text-[#14141A]/50 sm:text-right">
+                    {s.note}
+                  </span>
+                </li>
+              ))}
+            </ol>
+          </FadeIn>
+        </div>
       </Section>
 
       {/* ── Why us ───────────────────────────────────────────── */}
       <Section variant="green">
-        <div className="grid items-center gap-12 lg:grid-cols-2">
+        <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
             <SectionHeader
               eyebrow="Why King's Jeweler"
-              title="A jeweler you can actually talk to"
+              title={
+                <>
+                  A jeweler you can <em className="text-[#F0A92D]">actually talk to</em>
+                </>
+              }
               description="Big-box chains sell boxes. We build relationships — one ring, one repair, one family at a time."
-              center={false}
+              variant="green"
             />
-            <div className="mt-8 space-y-6">
+            <dl className="divide-y divide-white/10">
               {WHY_US.map((item) => (
                 <FadeIn key={item.title}>
-                  <div className="flex items-start gap-4">
-                    <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#F0A92D]/15 text-[#F0A92D]">
-                      <Star size={15} />
-                    </div>
-                    <div>
-                      <h3 className="font-bold text-white">{item.title}</h3>
-                      <p className="mt-1 text-sm leading-relaxed text-white/65">
-                        {item.body}
-                      </p>
-                    </div>
+                  <div className="py-4">
+                    <dt className="font-heading font-bold text-white">
+                      <span aria-hidden="true" className="mr-3 text-[#C68A17]">—</span>
+                      {item.title}
+                    </dt>
+                    <dd className="mt-1 pl-7 text-sm leading-relaxed text-white/65">
+                      {item.body}
+                    </dd>
                   </div>
                 </FadeIn>
               ))}
-            </div>
+            </dl>
           </div>
-          <FadeIn className="relative">
-            {/* Offset gold frame */}
-            <div
-              aria-hidden="true"
-              className="absolute -right-3 -top-3 hidden h-full w-full rounded-2xl border border-[#C68A17]/40 lg:block"
-            />
-            <div className="relative aspect-4/5 overflow-hidden rounded-2xl ring-1 ring-white/10">
-              <Image
-                src={brandImages.aboutFeature}
-                alt="Inside the King's Jeweler showcase"
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                placeholder="blur"
-                blurDataURL={BLUR_DATA_URL}
-                className="object-cover"
-              />
-            </div>
-            {/* Floating review card */}
-            <a
-              href={siteConfig.socials.gmb}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="absolute -bottom-5 -left-3 rounded-xl border border-[#C68A17]/30 bg-[#14141A]/90 px-5 py-4 shadow-xl backdrop-blur-sm transition hover:border-[#C68A17]/60 sm:-left-6"
-            >
-              <div className="flex items-center gap-1 text-[#F0A92D]">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} size={14} fill={i < 4 ? "currentColor" : "none"} />
-                ))}
+          <FadeIn className="lg:sticky lg:top-32">
+            <figure>
+              <div className="relative border border-white/15 p-2">
+                <div className="relative aspect-4/5">
+                  <Image
+                    src={brandImages.aboutFeature}
+                    alt="Inside the King's Jeweler showcase"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    placeholder="blur"
+                    blurDataURL={BLUR_DATA_URL}
+                    className="object-cover"
+                  />
+                </div>
               </div>
-              <p className="mt-1.5 text-sm font-semibold text-white">4.5 stars on Google</p>
-              <p className="text-xs text-white/55">from real local customers</p>
-            </a>
+              <figcaption className="mt-3 flex items-baseline justify-between gap-4 text-xs text-white/50">
+                <span>The case up front — stop by and try something on.</span>
+                <a
+                  href={siteConfig.socials.gmb}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="shrink-0 underline decoration-white/30 underline-offset-2 transition hover:text-white/80"
+                >
+                  4.5 ★ on Google
+                </a>
+              </figcaption>
+            </figure>
           </FadeIn>
         </div>
       </Section>
@@ -311,31 +343,28 @@ export function HomeClient({
       {/* ── We Buy Gold ──────────────────────────────────────── */}
       <section
         id="we-buy-gold"
-        className="relative overflow-hidden bg-linear-to-br from-[#D89B22] via-[#C68A17] to-[#A87310] py-16 text-[#14141A] md:py-24"
+        className="relative overflow-hidden bg-[#C68A17] py-16 text-[#14141A] md:py-24"
       >
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_90%_70%_at_50%_-20%,rgba(255,255,255,0.28),transparent_60%)]" />
-        <div className="absolute inset-x-0 top-0 h-px bg-white/40" />
         <div className="absolute inset-x-0 bottom-0 h-px bg-[#14141A]/25" />
 
         <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid items-center gap-10 lg:grid-cols-2">
+          <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
             <FadeIn>
-              <p className="inline-flex items-center gap-2 rounded-full bg-[#14141A] px-4 py-1.5 text-xs font-heading font-bold uppercase tracking-[0.18em] text-[#F0A92D]">
-                <Coins size={14} />
+              <p className="eyebrow-rule font-heading text-[#14141A]/80">
                 Top Prices Paid
               </p>
-              <h2 className="font-display! mt-5 text-4xl font-normal! uppercase leading-tight md:text-5xl lg:text-6xl">
-                We Buy Gold
+              <h2 className="mt-5 font-heading text-4xl font-bold leading-[1.08] tracking-tight md:text-5xl">
+                We buy <em className="font-medium italic">gold</em>.
               </h2>
               <p className="mt-4 max-w-xl text-lg leading-relaxed text-[#14141A]/80">
                 Bring in gold, silver, diamonds, or jewelry you no longer wear.
                 We weigh it right in front of you and make a fair offer on the
                 spot — sell outright or trade toward anything in the case.
               </p>
-              <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
+              <div className="mt-8 flex flex-wrap items-center gap-5">
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 rounded-sm bg-[#14141A] px-8 py-4 text-base font-semibold uppercase tracking-wider text-white shadow-lg shadow-black/25 transition-all hover:scale-[1.03] hover:bg-black"
+                  className="inline-flex items-center gap-2 rounded-xs bg-[#14141A] px-7 py-3.5 text-base font-semibold text-white transition-colors hover:bg-black"
                 >
                   Get an Offer
                   <ArrowRight size={18} />
@@ -344,100 +373,113 @@ export function HomeClient({
                   href="/sell-gold"
                   className="text-sm font-semibold text-[#14141A]/70 underline decoration-[#14141A]/30 underline-offset-2 transition-colors hover:text-[#14141A]"
                 >
-                  See what we buy & how it works
+                  See what we buy &amp; how it works
                 </Link>
               </div>
-              <p className="mt-4 text-sm font-semibold text-[#14141A]/70">
-                No appointment needed — walk in any day.
+              <p className="mt-4 text-sm text-[#14141A]/70">
+                No appointment needed — walk in any day we're open.
               </p>
             </FadeIn>
-            <StaggerContainer className="grid gap-4">
-              {[
-                {
-                  icon: Scale,
-                  title: "Watch the weigh-in",
-                  body: "Everything is weighed and evaluated in front of you — no back rooms, no games.",
-                },
-                {
-                  icon: BadgeCheck,
-                  title: "Fair, transparent offers",
-                  body: "Honest market-based pricing on gold, silver, diamonds, and estate jewelry.",
-                },
-                {
-                  icon: CreditCard,
-                  title: "Flexible ways to pay & trade",
-                  body: "Take cash, trade toward something new — and when you buy, we accept all major credit cards and offer no-credit-needed financing.",
-                },
-              ].map((item) => (
-                <StaggerItem key={item.title}>
-                  <div className="flex items-start gap-4 rounded-2xl border border-[#14141A]/15 bg-white/25 p-5 backdrop-blur-sm">
-                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#14141A] text-[#F0A92D]">
-                      <item.icon size={20} />
-                    </div>
+            <FadeIn>
+              <ol className="border-t border-[#14141A]/25">
+                {[
+                  {
+                    title: "Watch the weigh-in",
+                    body: "Everything is weighed and evaluated in front of you — no back rooms, no games.",
+                  },
+                  {
+                    title: "Fair, transparent offers",
+                    body: "Honest market-based pricing on gold, silver, diamonds, and estate jewelry.",
+                  },
+                  {
+                    title: "Flexible ways to pay & trade",
+                    body: "Take cash, trade toward something new — and when you buy, we accept all major credit cards and offer no-credit-needed financing.",
+                  },
+                ].map((item, i) => (
+                  <li
+                    key={item.title}
+                    className="grid gap-x-6 gap-y-1 border-b border-[#14141A]/25 py-5 sm:grid-cols-[2.5rem_minmax(0,1fr)]"
+                  >
+                    <span className="pt-0.5 font-heading text-sm font-semibold text-[#14141A]/60">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
                     <div>
-                      <h3 className="font-bold">{item.title}</h3>
+                      <h3 className="font-heading font-bold">{item.title}</h3>
                       <p className="mt-1 text-sm leading-relaxed text-[#14141A]/75">
                         {item.body}
                       </p>
                     </div>
-                  </div>
-                </StaggerItem>
-              ))}
-            </StaggerContainer>
+                  </li>
+                ))}
+              </ol>
+            </FadeIn>
           </div>
         </div>
       </section>
 
       {/* ── Gallery strip ────────────────────────────────────── */}
       <Section variant="dark" id="gallery">
-        <SectionHeader
-          eyebrow="From the Showcase"
-          title="A look at our work"
-          description="Custom pieces, restorations, and favorites from the case."
-        />
-        <StaggerContainer className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-3">
-          {brandImages.cards.slice(0, 6).map((src, i) => (
-            <StaggerItem key={src}>
-              <div className="group relative aspect-square overflow-hidden rounded-xl ring-1 ring-[#14141A]/10 transition-all duration-300 hover:ring-2 hover:ring-[#C68A17]/60">
+        <div className="flex flex-wrap items-end justify-between gap-6">
+          <SectionHeader
+            eyebrow="From the Showcase"
+            title={
+              <>
+                A look at <em className="text-[#A87310]">our work</em>
+              </>
+            }
+            description="Custom pieces, restorations, and favorites from the case."
+          />
+          <FadeIn className="mb-10 md:mb-12">
+            <Link
+              href="/gallery"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-[#C68A17] hover:underline"
+            >
+              View the full gallery
+              <ArrowRight size={16} />
+            </Link>
+          </FadeIn>
+        </div>
+        <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+          {brandImages.cards.slice(0, 5).map((src, i) => (
+            <FadeIn
+              key={src}
+              delay={i * 0.05}
+              className={i === 0 ? "col-span-2 row-span-2" : ""}
+            >
+              <div className="group relative aspect-square overflow-hidden border border-[#14141A]/12">
                 <Image
                   src={src}
                   alt={`Jewelry from the King's Jeweler showcase ${i + 1}`}
                   fill
-                  sizes="(max-width: 768px) 50vw, 33vw"
+                  sizes={i === 0 ? "(max-width: 768px) 100vw, 50vw" : "(max-width: 768px) 50vw, 25vw"}
                   placeholder="blur"
                   blurDataURL={BLUR_DATA_URL}
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                 />
-                <div className="absolute inset-0 bg-linear-to-t from-[#14141A]/30 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
               </div>
-            </StaggerItem>
+            </FadeIn>
           ))}
-        </StaggerContainer>
-        <FadeIn className="mt-10 text-center">
-          <Link
-            href="/gallery"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-[#C68A17] hover:underline"
-          >
-            View the full gallery
-            <ArrowRight size={16} />
-          </Link>
-        </FadeIn>
+        </div>
       </Section>
 
       {/* ── Visit us ─────────────────────────────────────────── */}
       <Section variant="light" id="visit">
         <SectionHeader
           eyebrow="Visit Us"
-          title="Find us at Buckland Hills"
+          title={
+            <>
+              Find us at <em className="text-[#A87310]">Buckland Hills</em>
+            </>
+          }
           description="No appointment needed — stop in during store hours, seven days a week."
         />
-        <div className="mx-auto mt-12 grid max-w-4xl gap-6 md:grid-cols-3">
-          <FadeIn>
-            <div className="relative h-full overflow-hidden rounded-2xl border border-[#14141A]/8 bg-white p-7 text-center shadow-sm">
-              <div className="absolute inset-x-0 top-0 h-0.5 bg-linear-to-r from-transparent via-[#C68A17]/70 to-transparent" />
-              <MapPin size={26} className="mx-auto text-[#C68A17]" />
-              <h3 className="mt-4 font-bold">Location</h3>
-              <p className="mt-2 text-sm leading-relaxed text-[#14141A]/65">
+        <FadeIn>
+          <div className="grid border-y border-[#14141A]/15 md:grid-cols-3 md:divide-x md:divide-[#14141A]/15">
+            <div className="border-b border-[#14141A]/15 py-7 md:border-b-0 md:pr-8">
+              <h3 className="font-heading text-xs font-bold uppercase tracking-[0.18em] text-[#C68A17]">
+                Location
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-[#14141A]/75">
                 {siteConfig.address.suite}
                 <br />
                 {siteConfig.address.street}
@@ -455,27 +497,39 @@ export function HomeClient({
                 <ArrowRight size={14} />
               </a>
             </div>
-          </FadeIn>
-          <FadeIn>
-            <div className="relative h-full overflow-hidden rounded-2xl border border-[#14141A]/8 bg-white p-7 text-center shadow-sm">
-              <div className="absolute inset-x-0 top-0 h-0.5 bg-linear-to-r from-transparent via-[#C68A17]/70 to-transparent" />
-              <Clock size={26} className="mx-auto text-[#C68A17]" />
-              <h3 className="mt-4 font-bold">Store Hours</h3>
-              <ul className="mt-2 space-y-1 text-sm text-[#14141A]/65">
-                {hours.map((row) => (
-                  <li key={row.day}>
-                    <span className="font-medium">{row.day}:</span> {row.hours}
-                  </li>
-                ))}
+            <div className="border-b border-[#14141A]/15 py-7 md:border-b-0 md:px-8">
+              <h3 className="font-heading text-xs font-bold uppercase tracking-[0.18em] text-[#C68A17]">
+                Store Hours
+              </h3>
+              <ul className="mt-3 max-w-xs space-y-1.5 text-sm text-[#14141A]/75">
+                {hours.map((row) => {
+                  const isToday =
+                    todayIndex !== null && rowMatchesDay(row.day, todayIndex);
+                  return (
+                    <li
+                      key={row.day}
+                      className={`flex items-baseline ${isToday ? "font-semibold text-[#14141A]" : ""}`}
+                    >
+                      <span className="font-medium">
+                        {row.day}
+                        {isToday && (
+                          <span className="ml-2 font-heading text-[0.65rem] font-bold uppercase tracking-[0.14em] text-[#A87310]">
+                            Today
+                          </span>
+                        )}
+                      </span>
+                      <span aria-hidden="true" className="dotted-leader" />
+                      <span>{row.hours}</span>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
-          </FadeIn>
-          <FadeIn>
-            <div className="relative h-full overflow-hidden rounded-2xl border border-[#14141A]/8 bg-white p-7 text-center shadow-sm">
-              <div className="absolute inset-x-0 top-0 h-0.5 bg-linear-to-r from-transparent via-[#C68A17]/70 to-transparent" />
-              <Phone size={26} className="mx-auto text-[#C68A17]" />
-              <h3 className="mt-4 font-bold">Get in Touch</h3>
-              <p className="mt-2 text-sm leading-relaxed text-[#14141A]/65">
+            <div className="py-7 md:pl-8">
+              <h3 className="font-heading text-xs font-bold uppercase tracking-[0.18em] text-[#C68A17]">
+                Get in Touch
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-[#14141A]/75">
                 Questions about a repair, a stone, or a surprise proposal? We're
                 happy to help.
               </p>
@@ -485,15 +539,14 @@ export function HomeClient({
               >
                 {siteConfig.phone}
               </a>
-              <p className="mt-3 inline-flex items-center justify-center gap-1.5 text-xs text-[#14141A]/55">
-                <CreditCard size={13} className="text-[#C68A17]" />
+              <p className="mt-3 text-xs text-[#14141A]/55">
                 All major cards accepted · No credit needed financing
               </p>
             </div>
-          </FadeIn>
-        </div>
+          </div>
+        </FadeIn>
         {serviceTowns.length > 0 && (
-          <FadeIn className="mx-auto mt-10 max-w-3xl text-center">
+          <FadeIn className="mt-8">
             <p className="text-sm text-[#14141A]/55">
               Proudly serving {serviceTowns.slice(0, -1).join(", ")} and{" "}
               {serviceTowns[serviceTowns.length - 1]}.
@@ -506,40 +559,42 @@ export function HomeClient({
       {testimonials.length > 0 && (
         <Section variant="dark">
           <SectionHeader
-            eyebrow="Kind Words"
-            title="What our customers say"
+            eyebrow="In Their Words"
+            title={
+              <>
+                What customers <em className="text-[#A87310]">tell us</em>
+              </>
+            }
           />
-          <StaggerContainer className="mt-12 grid gap-6 md:grid-cols-3">
+          <div className="grid gap-x-12 gap-y-10 md:grid-cols-3">
             {testimonials.slice(0, 3).map((t) => (
-              <StaggerItem key={t.author}>
-                <figure className="relative flex h-full flex-col rounded-2xl border border-[#14141A]/8 bg-white p-7 shadow-sm">
-                  <span
-                    aria-hidden="true"
-                    className="font-display absolute right-6 top-3 text-6xl leading-none text-[#C68A17]/15"
-                  >
-                    ”
-                  </span>
-                  <div className="flex gap-1 text-[#C68A17]">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <Star key={i} size={15} fill="currentColor" />
-                    ))}
-                  </div>
-                  <blockquote className="mt-4 flex-1 text-sm leading-relaxed text-[#14141A]/75">
+              <FadeIn key={t.author}>
+                <figure className="flex h-full flex-col border-l-2 border-[#C68A17]/50 pl-6">
+                  <blockquote className="flex-1 font-heading text-lg leading-relaxed text-[#14141A]/85">
                     &ldquo;{t.body}&rdquo;
                   </blockquote>
-                  <figcaption className="mt-5 flex items-center gap-3 border-t border-[#14141A]/8 pt-4">
-                    <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#C68A17]/12 text-sm font-bold text-[#C68A17]">
-                      {t.author.charAt(0)}
-                    </span>
-                    <span>
-                      <p className="text-sm font-bold">{t.author}</p>
-                      <p className="text-xs text-[#14141A]/55">{t.role}</p>
-                    </span>
+                  <figcaption className="mt-5 text-sm">
+                    <span className="font-bold">{t.author}</span>
+                    <span className="text-[#14141A]/55"> · {t.role}</span>
                   </figcaption>
                 </figure>
-              </StaggerItem>
+              </FadeIn>
             ))}
-          </StaggerContainer>
+          </div>
+          <FadeIn className="mt-10">
+            <p className="text-xs text-[#14141A]/50">
+              Pulled from our Google reviews —{" "}
+              <a
+                href={siteConfig.socials.gmb}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-2 hover:text-[#14141A]"
+              >
+                read the rest here
+              </a>
+              .
+            </p>
+          </FadeIn>
         </Section>
       )}
 
@@ -550,7 +605,7 @@ export function HomeClient({
             eyebrow="Questions"
             title="Frequently asked questions"
           />
-          <div className="mx-auto mt-12 max-w-3xl">
+          <div className="max-w-3xl">
             <FAQAccordion items={faqs} variant="light" accentColor="#C68A17" />
           </div>
         </Section>

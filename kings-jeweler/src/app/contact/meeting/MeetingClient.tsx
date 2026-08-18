@@ -19,7 +19,7 @@ export function MeetingClient() {
             <MessageSquare size={16} />
             Let&apos;s Talk
           </div>
-          <h1 className="font-display! text-3xl font-normal! uppercase md:text-4xl lg:text-5xl">
+          <h1 className="text-3xl tracking-tight md:text-4xl lg:text-5xl">
             Prefer to talk it through?
           </h1>
           <p className="mx-auto mt-4 max-w-xl text-lg text-[#14141A]/65">

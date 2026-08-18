@@ -81,11 +81,12 @@ export function ContactClient({ heroSlides }: ContactClientProps) {
         />
         <div className="absolute inset-0 bg-linear-to-b from-[#14141A]/60 via-[#14141A]/70 to-[#14141A]" />
         <div className="relative mx-auto max-w-5xl px-6 pb-16 pt-40 lg:px-8">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#F0A92D]">
+          <p className="eyebrow-rule font-heading text-[#F0A92D]">
             Visit Us
           </p>
-          <h1 className="mt-4 max-w-3xl font-display! text-4xl font-normal! uppercase leading-tight md:text-6xl">
-            Stop by, call, or send a message.
+          <h1 className="mt-5 max-w-3xl text-4xl leading-[1.06] tracking-tight md:text-6xl">
+            Stop by, call, or{" "}
+            <em className="font-medium italic text-[#F0A92D]">send a message</em>.
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-white/75">
             No appointment needed — we&apos;re inside The Shoppes at Buckland

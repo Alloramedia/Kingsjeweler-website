@@ -41,7 +41,7 @@ export default function WebsitePoliciesPage() {
           <p className="mb-3 text-sm font-heading font-semibold uppercase tracking-[0.2em] text-[#C68A17]">
             Legal
           </p>
-          <h1 className="font-display! text-4xl font-normal! uppercase text-white md:text-5xl">
+          <h1 className="text-4xl tracking-tight text-white md:text-5xl">
             Website Policies
           </h1>
           <p className="mt-4 text-lg text-white/60">

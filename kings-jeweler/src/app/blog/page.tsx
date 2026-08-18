@@ -50,11 +50,11 @@ export default async function BlogPage() {
           size="clamp(260px, 32vw, 460px)"
         />
         <div className="relative mx-auto max-w-5xl px-6 pb-16 pt-36 lg:px-8">
-          <p className="text-sm font-semibold uppercase tracking-[0.25em] text-[#F0A92D]">
+          <p className="eyebrow-rule font-heading text-[#F0A92D]">
             The King&apos;s Jeweler Blog
           </p>
-          <h1 className="font-display! mt-4 max-w-3xl text-4xl font-normal! uppercase leading-tight md:text-6xl">
-            Honest jewelry advice
+          <h1 className="mt-5 max-w-3xl text-4xl leading-[1.06] tracking-tight md:text-6xl">
+            Honest jewelry <em className="font-medium italic text-[#F0A92D]">advice</em>
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/75">
             Buying guides, real repair prices, and care tips from the family

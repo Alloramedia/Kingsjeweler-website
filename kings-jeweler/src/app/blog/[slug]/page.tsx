@@ -138,7 +138,7 @@ export default async function BlogDetailPage({
           <p className="mt-6 text-sm font-semibold uppercase tracking-[0.25em] text-[#F0A92D]">
             {post.category}
           </p>
-          <h1 className="font-display! mt-3 text-4xl font-normal! uppercase leading-tight md:text-5xl">
+          <h1 className="mt-3 text-4xl leading-tight tracking-tight md:text-5xl">
             {post.title}
           </h1>
           <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm font-semibold text-white/75">
@@ -266,7 +266,7 @@ export default async function BlogDetailPage({
           size="clamp(280px, 30vw, 440px)"
         />
         <div className="relative z-10 mx-auto max-w-6xl px-6 py-16 lg:px-8 lg:py-24">
-          <h2 className="font-display! text-3xl font-normal! uppercase md:text-4xl">
+          <h2 className="text-3xl tracking-tight md:text-4xl">
             Keep reading
           </h2>
           <div className="mt-10 grid gap-6 md:grid-cols-3">

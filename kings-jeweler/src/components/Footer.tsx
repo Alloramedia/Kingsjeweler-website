@@ -5,7 +5,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { Facebook, Instagram, Music, Mail, Phone, MapPin, Clock, ArrowRight } from "lucide-react";
-import { footerLinks } from "@/lib/constants";
+import { footerLinks, siteConfig } from "@/lib/constants";
 import { useSiteChrome } from "@/components/SiteContentProvider";
 
 const staggerContainer = {
@@ -16,8 +16,8 @@ const staggerContainer = {
 };
 
 const staggerItem = {
-  hidden: { opacity: 0, y: 24, filter: "blur(3px)" },
-  visible: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] as const } },
+  hidden: { opacity: 0, y: 12 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] as const } },
 };
 
 export function Footer() {
@@ -106,7 +106,7 @@ export function Footer() {
                 href={socials.gmb}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-white/60 transition-all duration-400 hover:bg-[#C68A17] hover:text-white hover:scale-110 hover:shadow-lg hover:shadow-[#C68A17]/20"
+                className="flex h-10 w-10 items-center justify-center border border-white/10 text-white/60 transition-colors hover:border-[#C68A17]/60 hover:text-[#F0A92D]"
                 aria-label="Google Business Profile (opens in new window)"
               >
                 <MapPin size={18} />
@@ -115,7 +115,7 @@ export function Footer() {
                 href={socials.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-white/60 transition-all duration-400 hover:bg-[#C68A17] hover:text-white hover:scale-110 hover:shadow-lg hover:shadow-[#C68A17]/20"
+                className="flex h-10 w-10 items-center justify-center border border-white/10 text-white/60 transition-colors hover:border-[#C68A17]/60 hover:text-[#F0A92D]"
                 aria-label="Instagram (opens in new window)"
               >
                 <Instagram size={18} />
@@ -124,7 +124,7 @@ export function Footer() {
                 href={socials.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-white/60 transition-all duration-400 hover:bg-[#C68A17] hover:text-white hover:scale-110 hover:shadow-lg hover:shadow-[#C68A17]/20"
+                className="flex h-10 w-10 items-center justify-center border border-white/10 text-white/60 transition-colors hover:border-[#C68A17]/60 hover:text-[#F0A92D]"
                 aria-label="Facebook (opens in new window)"
               >
                 <Facebook size={18} />
@@ -133,7 +133,7 @@ export function Footer() {
                 href={socials.tiktok}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-white/60 transition-all duration-400 hover:bg-[#C68A17] hover:text-white hover:scale-110 hover:shadow-lg hover:shadow-[#C68A17]/20"
+                className="flex h-10 w-10 items-center justify-center border border-white/10 text-white/60 transition-colors hover:border-[#C68A17]/60 hover:text-[#F0A92D]"
                 aria-label="TikTok (opens in new window)"
               >
                 <Music size={18} />
@@ -201,13 +201,13 @@ export function Footer() {
 
         {/* CTA Banner */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-12 rounded-2xl border border-white/5 bg-white/2 p-8 md:p-10"
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mt-12 border-y border-white/10 py-8"
         >
-          <div className="flex flex-col items-center gap-6 md:flex-row md:justify-between">
+          <div className="flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-between">
             <div>
               <h3 className="font-heading text-lg font-bold text-white">Celebrating something special?</h3>
               <p className="mt-1 text-sm text-white/55">Stop by the store or send us a message — we&apos;ll help you find or create the perfect piece.</p>
@@ -222,13 +222,21 @@ export function Footer() {
           </div>
         </motion.div>
 
+        {/* Oversized sign-off wordmark */}
+        <div className="mt-14 overflow-hidden" aria-hidden="true">
+          <p className="select-none whitespace-nowrap font-heading text-[clamp(3rem,8.5vw,6.5rem)] font-bold leading-none tracking-tight text-white/[0.07]">
+            King&rsquo;s Jeweler{" "}
+            <em className="font-medium italic text-[#C68A17]/30">est. {siteConfig.foundingDate}</em>
+          </p>
+        </div>
+
         {/* Bottom bar */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-16 border-t border-white/5 pt-8 space-y-4"
+          className="mt-8 border-t border-white/5 pt-8 space-y-4"
         >
           <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-xs text-white/55">
             <span className="inline-flex items-center gap-1.5 font-semibold uppercase tracking-[0.14em] text-[#F0A92D]">

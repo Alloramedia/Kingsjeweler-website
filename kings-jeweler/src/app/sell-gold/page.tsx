@@ -119,31 +119,29 @@ export default async function SellGoldPage() {
       <FAQSchema faqs={pageFaqs} />
 
       {/* Hero */}
-      <section className="relative isolate overflow-hidden bg-linear-to-br from-[#D89B22] via-[#C68A17] to-[#A87310] text-[#14141A]">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_90%_70%_at_50%_-20%,rgba(255,255,255,0.28),transparent_60%)]" />
+      <section className="relative isolate overflow-hidden bg-[#C68A17] text-[#14141A]">
         <EmblemWatermark className="-right-16 top-24 hidden md:block" opacity={0.07} size="clamp(260px, 32vw, 460px)" />
-        <div className="relative mx-auto max-w-4xl px-6 pb-16 pt-36 text-center lg:px-8">
-          <p className="inline-flex items-center gap-2 rounded-full bg-[#14141A] px-4 py-1.5 text-xs font-heading font-bold uppercase tracking-[0.18em] text-[#F0A92D]">
-            <Coins size={14} />
+        <div className="relative mx-auto max-w-5xl px-6 pb-16 pt-36 lg:px-8">
+          <p className="eyebrow-rule font-heading text-[#14141A]/80">
             Top Prices Paid
           </p>
-          <h1 className="font-display! mt-5 text-4xl font-normal! uppercase leading-tight md:text-6xl lg:text-7xl">
-            We Buy Gold
+          <h1 className="mt-5 text-4xl leading-[1.06] tracking-tight md:text-6xl">
+            We Buy <em className="font-medium italic">Gold</em>
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-[#14141A]/80 md:text-xl">
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[#14141A]/80 md:text-xl">
             Bring in gold, silver, diamonds, or jewelry you no longer wear.
             We weigh it right in front of you and make a fair, same-day offer
             — sell outright or trade toward anything in the case.
           </p>
-          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <div className="mt-10 flex flex-wrap items-center gap-5">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 rounded-sm bg-[#14141A] px-8 py-4 text-base font-semibold uppercase tracking-wider text-white shadow-lg shadow-black/25 transition-all hover:scale-[1.03] hover:bg-black"
+              className="inline-flex items-center gap-2 rounded-xs bg-[#14141A] px-7 py-3.5 text-base font-semibold text-white transition-colors hover:bg-black"
             >
               Get an Offer
               <ArrowRight size={18} />
             </Link>
-            <p className="text-sm font-semibold text-[#14141A]/70">
+            <p className="text-sm text-[#14141A]/70">
               No appointment needed — walk in any day.
             </p>
           </div>
@@ -157,23 +155,20 @@ export default async function SellGoldPage() {
             <p className="text-sm font-heading font-semibold uppercase tracking-[0.2em] text-[#F0A92D]">
               How It Works
             </p>
-            <h2 className="mt-3 font-display! text-3xl font-normal! uppercase md:text-4xl">
+            <h2 className="mt-3 text-3xl tracking-tight md:text-4xl">
               No games, no back rooms.
             </h2>
           </div>
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
+          <div className="mt-12 grid gap-x-8 gap-y-10 md:grid-cols-3">
             {STEPS.map((step, i) => (
               <div
                 key={step.title}
-                className="relative rounded-2xl border border-white/10 bg-white/5 p-7 backdrop-blur-sm"
+                className="border-t border-white/15 pt-6"
               >
-                <span className="text-xs font-heading font-bold uppercase tracking-[0.2em] text-[#F0A92D]/70">
+                <span className="font-heading text-sm font-semibold text-[#F0A92D]/80">
                   Step {i + 1}
                 </span>
-                <div className="mt-3 flex h-11 w-11 items-center justify-center rounded-full bg-[#C68A17]/15 text-[#F0A92D]">
-                  <step.icon size={20} />
-                </div>
-                <h3 className="mt-4 font-heading text-lg font-bold">
+                <h3 className="mt-2 font-heading text-lg font-bold">
                   {step.title}
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-white/65">
@@ -193,7 +188,7 @@ export default async function SellGoldPage() {
               <p className="text-sm font-heading font-semibold uppercase tracking-[0.2em] text-[#C68A17]">
                 What We Buy
               </p>
-              <h2 className="mt-3 font-display! text-3xl font-normal! uppercase md:text-4xl">
+              <h2 className="mt-3 text-3xl tracking-tight md:text-4xl">
                 If it&apos;s gold, silver, or set with a stone, bring it in.
               </h2>
               <p className="mt-4 text-lg leading-relaxed text-[#14141A]/70">
@@ -212,7 +207,7 @@ export default async function SellGoldPage() {
               </ul>
             </div>
 
-            <div className="rounded-2xl border border-[#14141A]/10 bg-[#FFFDF8] p-7 shadow-sm md:p-9">
+            <div className="rounded-xs border border-[#14141A]/15 bg-[#FFFDF8] p-7 md:p-9">
               <h3 className="text-xl font-bold">
                 What your karat stamp means
               </h3>
@@ -255,7 +250,7 @@ export default async function SellGoldPage() {
             <p className="text-sm font-heading font-semibold uppercase tracking-[0.2em] text-[#F0A92D]">
               Why Sell Local
             </p>
-            <h2 className="mt-3 font-display! text-3xl font-normal! uppercase md:text-4xl">
+            <h2 className="mt-3 text-3xl tracking-tight md:text-4xl">
               Local jewelers pay more than you&apos;d think.
             </h2>
             <p className="mt-4 text-white/70">
@@ -264,7 +259,7 @@ export default async function SellGoldPage() {
             </p>
           </div>
 
-          <div className="mt-12 overflow-hidden rounded-2xl border border-white/10">
+          <div className="mt-12 overflow-hidden rounded-xs border border-white/10">
             {COMPARISON.map((row, i) => (
               <div
                 key={row.buyer}
@@ -310,17 +305,15 @@ export default async function SellGoldPage() {
             ].map((item) => (
               <div
                 key={item.title}
-                className="flex items-start gap-4 rounded-2xl border border-white/10 bg-white/5 p-5"
+                className="border-t border-white/15 pt-5"
               >
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#C68A17]/15 text-[#F0A92D]">
-                  <item.icon size={20} />
-                </div>
-                <div>
-                  <h3 className="font-bold">{item.title}</h3>
-                  <p className="mt-1 text-sm leading-relaxed text-white/65">
-                    {item.body}
-                  </p>
-                </div>
+                <h3 className="flex items-center gap-2.5 font-bold">
+                  <item.icon size={17} className="shrink-0 text-[#F0A92D]" />
+                  {item.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-white/65">
+                  {item.body}
+                </p>
               </div>
             ))}
           </div>
@@ -334,7 +327,7 @@ export default async function SellGoldPage() {
             <p className="text-sm font-heading font-semibold uppercase tracking-[0.2em] text-[#C68A17]">
               Good to Know
             </p>
-            <h2 className="mt-3 font-display! text-3xl font-normal! uppercase text-[#14141A] md:text-4xl">
+            <h2 className="mt-3 text-3xl tracking-tight text-[#14141A] md:text-4xl">
               Questions about selling gold.
             </h2>
           </div>
@@ -357,9 +350,9 @@ export default async function SellGoldPage() {
       {/* Bottom note */}
       <section className="bg-[#FBF9F4] pb-16 text-[#14141A] lg:pb-24">
         <div className="mx-auto max-w-5xl px-6 lg:px-8">
-          <div className="rounded-2xl bg-[#14141A] p-8 text-center text-white md:p-10">
+          <div className="rounded-xs bg-[#14141A] p-8 text-white md:p-10">
             <h2 className="text-xl font-bold">Ready to find out what it&apos;s worth?</h2>
-            <p className="mx-auto mt-2 max-w-xl text-sm leading-relaxed text-white/70">
+            <p className="mt-2 max-w-xl text-sm leading-relaxed text-white/70">
               Bring your gold, silver, or diamonds by King&apos;s Jeweler inside{" "}
               {siteConfig.address.suite} in {siteConfig.address.city},{" "}
               {siteConfig.address.region}. No appointment needed.

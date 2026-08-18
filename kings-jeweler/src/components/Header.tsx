@@ -4,8 +4,8 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Menu, X, Facebook, Instagram, Mail, Phone, MapPin, Music, ChevronDown, Coins, CreditCard } from "lucide-react";
-import { AnimatePresence, motion, useScroll, useSpring } from "framer-motion";
+import { Menu, X, Facebook, Instagram, Mail, Phone, MapPin, Music, ChevronDown } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
 import { navLinks, type NavLink } from "@/lib/constants";
 import { useSiteChrome } from "@/components/SiteContentProvider";
 import { cn } from "@/lib/utils";
@@ -14,8 +14,6 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
   const { contact, socials, logo } = useSiteChrome();
-  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, { stiffness: 60, damping: 30, restDelta: 0.001 });
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
@@ -90,11 +88,6 @@ export function Header() {
 
   return (
     <>
-    {/* Scroll Progress Indicator */}
-    <motion.div
-      className="scroll-progress"
-      style={{ scaleX }}
-    />
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
@@ -106,35 +99,28 @@ export function Header() {
       {/* Utility bar — collapses away once scrolled */}
       <div
         className={cn(
-          "hidden overflow-hidden border-b border-white/8 transition-all duration-500 lg:block",
+          "hidden overflow-hidden border-b border-white/8 transition-all duration-500 xl:block",
           scrolled ? "max-h-0 opacity-0" : "max-h-10 opacity-100"
         )}
       >
         <div className="mx-auto flex h-10 max-w-7xl items-center justify-between px-4 text-xs sm:px-6 lg:px-8">
-          <div className="flex items-center gap-5 text-white/60">
-            <a
-              href={`tel:${contact.phone.replace(/\D/g, "")}`}
-              className="inline-flex items-center gap-1.5 transition-colors hover:text-[#F0A92D]"
-            >
-              <Phone size={12} />
-              {contact.phone}
-            </a>
-            <span className="h-3 w-px bg-white/15" />
-            <span>The Shoppes at Buckland Hills · Manchester, CT</span>
-          </div>
+          <p className="text-white/50">
+            The Shoppes at Buckland Hills · Manchester, Connecticut · Open seven days a week
+          </p>
           <div className="flex items-center gap-5">
             <Link
               href="/sell-gold"
-              className="inline-flex items-center gap-1.5 font-heading font-bold uppercase tracking-[0.14em] text-[#F0A92D] transition-colors hover:text-[#F7DFA8]"
+              className="font-heading text-[0.7rem] font-bold uppercase tracking-[0.16em] text-[#F0A92D] transition-colors hover:text-[#F7DFA8]"
             >
-              <Coins size={13} />
               We Buy Gold — Top Prices Paid
             </Link>
             <span className="h-3 w-px bg-white/15" />
-            <span className="inline-flex items-center gap-1.5 text-white/60">
-              <CreditCard size={12} />
-              No credit needed financing · All major cards accepted
-            </span>
+            <a
+              href={`tel:${contact.phone.replace(/\D/g, "")}`}
+              className="text-white/60 tabular-nums transition-colors hover:text-[#F0A92D]"
+            >
+              {contact.phone}
+            </a>
           </div>
         </div>
       </div>
@@ -170,62 +156,10 @@ export function Header() {
           </button>
         </div>
 
-        {/* Desktop layout — 3-column grid: left | centered logo | right */}
+        {/* Desktop layout — 3-column grid: left nav | centered logo | right nav + CTA */}
         <div className="hidden xl:grid h-24 items-center" style={{ gridTemplateColumns: "1fr auto 1fr" }}>
-          {/* Left: Social icons + nav links */}
-          <div className="flex items-center gap-6">
-            <div className="flex items-center gap-3">
-              <a
-                href={socials.gmb}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white/60 transition-colors hover:text-[#C68A17]"
-                aria-label="Google Business Profile (opens in new window)"
-              >
-                <MapPin size={18} />
-              </a>
-              <a
-                href={socials.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white/60 transition-colors hover:text-[#C68A17]"
-                aria-label="Instagram (opens in new window)"
-              >
-                <Instagram size={18} />
-              </a>
-              <a
-                href={socials.facebook}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white/60 transition-colors hover:text-[#C68A17]"
-                aria-label="Facebook (opens in new window)"
-              >
-                <Facebook size={18} />
-              </a>
-              <a
-                href={socials.tiktok}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white/60 transition-colors hover:text-[#C68A17]"
-                aria-label="TikTok (opens in new window)"
-              >
-                <Music size={18} />
-              </a>
-              <a
-                href={`mailto:${contact.email}`}
-                className="text-white/60 transition-colors hover:text-[#C68A17]"
-                aria-label="Email"
-              >
-                <Mail size={18} />
-              </a>
-              <a
-                href={`tel:${contact.phone.replace(/\D/g, "")}`}
-                className="text-white/60 transition-colors hover:text-[#C68A17]"
-                aria-label="Phone"
-              >
-                <Phone size={18} />
-              </a>
-            </div>
+          {/* Left: primary nav links */}
+          <div className="flex items-center gap-8">
             {navLinks.slice(0, 3).map((link) => (
               <NavItem
                 key={link.href}
@@ -258,8 +192,8 @@ export function Header() {
             />
           </Link>
 
-          {/* Right: nav links + Client Portal + CTA */}
-          <div className="flex items-center gap-6 justify-self-end">
+          {/* Right: nav links + CTA */}
+          <div className="flex items-center gap-8 justify-self-end">
             {navLinks.slice(3).map((link) => (
               <NavItem
                 key={link.href}
@@ -270,9 +204,10 @@ export function Header() {
                 pathname={pathname}
               />
             ))}
+            <span className="h-5 w-px bg-white/15" aria-hidden="true" />
             <Link
               href="/contact"
-              className="btn-gold inline-flex items-center px-5 py-2.5 text-sm font-semibold text-white transition-all hover:scale-105 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C68A17] focus-visible:ring-offset-2 focus-visible:ring-offset-[#14141A]"
+              className="btn-gold inline-flex items-center px-5 py-2.5 text-sm font-semibold text-white whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C68A17] focus-visible:ring-offset-2 focus-visible:ring-offset-[#14141A]"
             >
               Visit or Contact Us
             </Link>
@@ -281,7 +216,7 @@ export function Header() {
       </div>
 
       {/* Bottom gold hairline */}
-      <div className="absolute inset-x-0 bottom-0 h-px bg-linear-to-r from-transparent via-[#C68A17]/45 to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 h-px bg-[#C68A17]/40" />
 
     </header>
 
@@ -300,19 +235,19 @@ export function Header() {
             aria-modal="true"
             aria-label="Navigation menu"
           >
-          <nav className="flex flex-col gap-1 px-6 py-8">
+          <nav className="flex flex-col px-6 py-6">
             {navLinks
               .filter((link) => link.href !== "/sell-gold")
               .map((link) =>
               link.children ? (
-                <div key={link.href}>
+                <div key={link.href} className="border-b border-white/8">
                   <button
                     onClick={() =>
                       setMobileExpanded(
                         mobileExpanded === link.href ? null : link.href
                       )
                     }
-                    className="flex w-full items-center justify-between rounded-lg px-4 py-3.5 text-lg font-medium text-white transition-colors hover:bg-white/5 hover:text-[#C68A17]"
+                    className="flex w-full items-center justify-between px-1 py-4 font-heading text-lg font-medium text-white transition-colors hover:text-[#F0A92D]"
                     aria-expanded={mobileExpanded === link.href}
                   >
                     {link.label}
@@ -325,14 +260,14 @@ export function Header() {
                     />
                   </button>
                   {mobileExpanded === link.href && (
-                    <div className="ml-4 flex flex-col gap-0.5 border-l border-white/10 pl-4 py-1">
+                    <div className="mb-3 ml-1 flex flex-col gap-0.5 border-l border-white/10 pl-4 py-1">
                       {link.children.map((child) =>
                         child.isHeader ? (
                           <Link
                             key={`header-${child.label}`}
                             href={child.href}
                             onClick={() => setMobileOpen(false)}
-                            className="mt-3 mb-1 px-4 text-xs font-semibold uppercase tracking-wider text-[#C68A17]"
+                            className="mt-3 mb-1 px-3 font-heading text-[0.65rem] font-bold uppercase tracking-[0.16em] text-[#C68A17]"
                           >
                             {child.label}
                           </Link>
@@ -341,7 +276,7 @@ export function Header() {
                             key={child.href}
                             href={child.href}
                             onClick={() => setMobileOpen(false)}
-                            className="rounded-lg px-4 py-2.5 text-base text-white/70 transition-colors hover:bg-white/5 hover:text-[#C68A17]"
+                            className="px-3 py-2.5 text-base text-white/70 transition-colors hover:text-white"
                           >
                             {child.label}
                           </Link>
@@ -355,7 +290,7 @@ export function Header() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className="rounded-lg px-4 py-3.5 text-lg font-medium text-white transition-colors hover:bg-white/5 hover:text-[#C68A17]"
+                  className="border-b border-white/8 px-1 py-4 font-heading text-lg font-medium text-white transition-colors hover:text-[#F0A92D]"
                 >
                   {link.label}
                 </Link>
@@ -364,9 +299,8 @@ export function Header() {
             <Link
               href="/sell-gold"
               onClick={() => setMobileOpen(false)}
-              className="mt-4 flex items-center justify-center gap-2 rounded-sm border border-[#C68A17]/50 bg-[#C68A17]/10 px-6 py-3.5 text-center text-base font-heading font-bold uppercase tracking-[0.12em] text-[#F0A92D]"
+              className="mt-6 flex items-center justify-center rounded-xs border border-[#C68A17]/50 bg-[#C68A17]/10 px-6 py-3.5 text-center font-heading text-sm font-bold uppercase tracking-[0.14em] text-[#F0A92D]"
             >
-              <Coins size={17} />
               We Buy Gold — Top Prices Paid
             </Link>
             <Link
@@ -376,8 +310,7 @@ export function Header() {
             >
               Visit or Contact Us
             </Link>
-            <p className="mt-4 flex items-center justify-center gap-1.5 text-center text-xs text-white/50">
-              <CreditCard size={13} />
+            <p className="mt-4 text-center text-xs text-white/50">
               No credit needed financing · All major cards accepted
             </p>
             {/* Social icons mobile */}
@@ -431,8 +364,8 @@ function NavItem({
       <Link
         href={link.href}
         className={cn(
-          "nav-link-animated text-sm font-medium transition-colors hover:text-[#C68A17] uppercase tracking-wider whitespace-nowrap",
-          isActive ? "text-[#C68A17]" : "text-white/80"
+          "nav-link-animated font-heading text-[0.8rem] font-semibold uppercase tracking-[0.16em] whitespace-nowrap transition-colors hover:text-[#F0A92D]",
+          isActive ? "text-[#F0A92D]" : "text-white/80"
         )}
         data-active={isActive}
       >
@@ -471,8 +404,8 @@ function NavItem({
         <Link
           href={link.href}
           className={cn(
-            "nav-link-animated text-sm font-medium transition-colors hover:text-[#C68A17] uppercase tracking-wider whitespace-nowrap",
-            isActive ? "text-[#C68A17]" : "text-white/80"
+            "nav-link-animated font-heading text-[0.8rem] font-semibold uppercase tracking-[0.16em] whitespace-nowrap transition-colors hover:text-[#F0A92D]",
+            isActive ? "text-[#F0A92D]" : "text-white/80"
           )}
           data-active={isActive}
         >
@@ -481,8 +414,8 @@ function NavItem({
         <button
           type="button"
           className={cn(
-            "transition-colors hover:text-[#C68A17]",
-            isActive ? "text-[#C68A17]" : "text-white/80"
+            "transition-colors hover:text-[#F0A92D]",
+            isActive ? "text-[#F0A92D]" : "text-white/80"
           )}
           aria-expanded={isOpen}
           aria-haspopup="true"
@@ -503,14 +436,14 @@ function NavItem({
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -8, scale: 0.96 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -8, scale: 0.96 }}
-            transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            initial={{ opacity: 0, y: -6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
             className="absolute top-full left-1/2 -translate-x-1/2 pt-3 z-50"
             role="menu"
           >
-          <div className="min-w-60 rounded-xl border border-white/10 bg-[#111111]/95 backdrop-blur-xl shadow-2xl shadow-black/40 py-2">
+          <div className="min-w-60 border border-white/12 border-t-2 border-t-[#C68A17] bg-[#14141A]/97 py-2 shadow-xl shadow-black/30 backdrop-blur-xl">
             {link.children.map((child) =>
               child.isHeader ? (
 
@@ -518,7 +451,7 @@ function NavItem({
                   <Link
                     href={child.href}
                     role="menuitem"
-                    className="text-xs font-semibold uppercase tracking-wider text-[#C68A17] hover:text-[#A87310] transition-colors"
+                    className="font-heading text-[0.65rem] font-bold uppercase tracking-[0.16em] text-[#C68A17] transition-colors hover:text-[#F0A92D]"
                   >
                     {child.label}
                   </Link>
@@ -528,7 +461,7 @@ function NavItem({
                   key={child.href}
                   href={child.href}
                   role="menuitem"
-                  className="flex items-center px-5 py-2.5 text-sm text-white/70 transition-colors hover:bg-white/5 hover:text-[#C68A17]"
+                  className="flex items-center px-5 py-2.5 text-sm text-white/70 transition-colors hover:bg-white/5 hover:text-white"
                 >
                   {child.label}
                 </Link>

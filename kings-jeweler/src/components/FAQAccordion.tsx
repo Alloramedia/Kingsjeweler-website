@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import { Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface FAQItem {
@@ -24,47 +24,43 @@ export function FAQAccordion({
   const isLight = variant === "light";
 
   return (
-    <div className={cn(
-      "divide-y rounded-2xl border overflow-hidden",
-      isLight
-        ? "divide-[#1F3A5F]/20 border-[#1F3A5F]/25 bg-white/60"
-        : "divide-white/15 border-white/15 gradient-border-card"
-    )}>
+    <div
+      className={cn(
+        "divide-y border-t border-b",
+        isLight
+          ? "divide-[#14141A]/15 border-[#14141A]/15"
+          : "divide-white/15 border-white/15"
+      )}
+    >
       {items.map((item, i) => {
         const isOpen = openIndex === i;
         const panelId = `faq-panel-${i}`;
         const buttonId = `faq-button-${i}`;
 
         return (
-          <div
-            key={i}
-            className={cn(
-              "transition-colors",
-              isLight ? "hover:bg-[#1F3A5F]/5" : "hover:bg-white/5"
-            )}
-          >
+          <div key={i}>
             <h3>
               <button
                 id={buttonId}
                 onClick={() => setOpenIndex(isOpen ? null : i)}
                 className={cn(
-                  "flex w-full items-center justify-between gap-4 px-6 py-5 text-left transition-colors md:px-8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#C68A17]",
+                  "flex w-full items-baseline justify-between gap-4 py-5 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#C68A17]",
                   isLight
-                    ? "text-[#1F3A5F] hover:bg-[#1F3A5F]/5"
-                    : "text-white hover:bg-white/5"
+                    ? "text-[#14141A] hover:text-[#14141A]/70"
+                    : "text-white hover:text-white/75"
                 )}
                 aria-expanded={isOpen}
                 aria-controls={panelId}
               >
-                <span className="text-base font-semibold md:text-lg">
+                <span className="font-heading text-lg font-bold">
                   {item.question}
                 </span>
-                <ChevronDown
-                  size={20}
+                <Plus
+                  size={18}
                   style={{ color: accentColor }}
                   className={cn(
-                    "shrink-0 transition-transform duration-200",
-                    isOpen && "rotate-180"
+                    "shrink-0 translate-y-0.5 transition-transform duration-200",
+                    isOpen && "rotate-45"
                   )}
                 />
               </button>
@@ -82,8 +78,8 @@ export function FAQAccordion({
                   className="overflow-hidden"
                 >
                   <p className={cn(
-                    "px-6 pb-6 text-base leading-relaxed md:px-8",
-                    isLight ? "text-[#1F3A5F]/65" : "text-white/75"
+                    "max-w-2xl pb-6 text-base leading-relaxed",
+                    isLight ? "text-[#14141A]/65" : "text-white/75"
                   )}>
                     {item.answer}
                   </p>
