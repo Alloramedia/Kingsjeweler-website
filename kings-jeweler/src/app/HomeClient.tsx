@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Star } from "lucide-react";
-import { siteConfig, BLUR_DATA_URL } from "@/lib/constants";
+import { siteConfig, BLUR_DATA_URL, defaultImageAlt } from "@/lib/constants";
 import { Section, SectionHeader } from "@/components/Section";
 import { CTASection } from "@/components/CTASection";
 import { FAQAccordion } from "@/components/FAQAccordion";
@@ -449,7 +449,7 @@ export function HomeClient({
               <div className="group relative aspect-square overflow-hidden border border-[#14141A]/12">
                 <Image
                   src={src}
-                  alt={`Jewelry from the King's Jeweler showcase ${i + 1}`}
+                  alt={defaultImageAlt[src] ?? "Jewelry from the King's Jeweler showcase"}
                   fill
                   sizes={i === 0 ? "(max-width: 768px) 100vw, 50vw" : "(max-width: 768px) 50vw, 25vw"}
                   placeholder="blur"

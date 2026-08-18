@@ -9,9 +9,9 @@ import { CTASection } from "@/components/CTASection";
 import { EmblemWatermark } from "@/components/SectionTextures";
 
 export const metadata: Metadata = {
-  title: "Jewelry Blog — Buying Guides, Repair Costs & Expert Advice",
+  title: "Jewelry Blog — Buying Guides & Advice",
   description:
-    "Honest jewelry advice from the jewelers at King's Jeweler in Manchester, CT — engagement ring buying guides, repair and resizing costs, gold selling tips, watch batteries, and jewelry care.",
+    "Honest jewelry advice from King's Jeweler in Manchester, CT — engagement ring guides, repair and resizing costs, gold selling tips, and jewelry care.",
   alternates: { canonical: "https://www.kingsjewelerct.com/blog" },
   openGraph: {
     title: "Jewelry Blog — Buying Guides & Expert Advice | King's Jeweler",

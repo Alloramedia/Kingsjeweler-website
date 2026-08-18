@@ -1,8 +1,41 @@
 import { siteConfig } from "@/lib/constants";
 import { getSiteContent } from "@/lib/admin/schema";
 
+const WEEK = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+
+function to24h(time: string): string | null {
+  const m = time.trim().match(/^(\d{1,2})(?::(\d{2}))?\s*(AM|PM)$/i);
+  if (!m) return null;
+  const h = (Number(m[1]) % 12) + (/pm/i.test(m[3]) ? 12 : 0);
+  return `${String(h).padStart(2, "0")}:${m[2] ?? "00"}`;
+}
+
+// Freeform admin hours row ("Monday – Friday", "11:00 AM – 7:00 PM") →
+// OpeningHoursSpecification; unparseable rows (e.g. "Closed") are skipped.
+function parseHoursRow(row: { day: string; hours: string }) {
+  const names = row.day
+    .match(/monday|tuesday|wednesday|thursday|friday|saturday|sunday/gi)
+    ?.map((d) => d[0].toUpperCase() + d.slice(1).toLowerCase());
+  if (!names || names.length === 0) return null;
+  let dayOfWeek = names;
+  if (names.length === 2) {
+    const [a, b] = [WEEK.indexOf(names[0]), WEEK.indexOf(names[1])];
+    if (a !== -1 && b !== -1 && a < b) dayOfWeek = WEEK.slice(a, b + 1);
+  }
+  const [opens, closes] = row.hours.split(/[–—-]/).map(to24h);
+  if (!opens || !closes) return null;
+  return { "@type": "OpeningHoursSpecification", dayOfWeek, opens, closes };
+}
+
+/** Social profile URLs only — the GMB map link belongs in hasMap, not sameAs. */
+function socialProfiles(socials: object) {
+  return Object.entries(socials)
+    .filter(([key, url]) => key !== "gmb" && url)
+    .map(([, url]) => url);
+}
+
 export async function LocalBusinessSchema() {
-  const { contact, socials } = await getSiteContent();
+  const { contact, socials, hours } = await getSiteContent();
   const schema = {
     "@context": "https://schema.org",
     "@type": "JewelryStore",
@@ -22,7 +55,18 @@ export async function LocalBusinessSchema() {
       addressCountry: "US",
     },
     hasMap: socials.gmb,
-    sameAs: Object.values(socials),
+    sameAs: socialProfiles(socials),
+    image: [
+      `${siteConfig.url}/og-image.jpg`,
+      `${siteConfig.url}/images/jewelry/kings-07.webp`,
+    ],
+    // TODO: verify against the Google Business Profile pin before launch.
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 41.8046,
+      longitude: -72.5533,
+    },
+    openingHoursSpecification: hours.map(parseHoursRow).filter(Boolean),
     areaServed: {
       "@type": "State",
       name: siteConfig.serviceArea,
@@ -101,7 +145,7 @@ export async function OrganizationSchema() {
       areaServed: "US",
       availableLanguage: ["English"],
     },
-    sameAs: Object.values(socials),
+    sameAs: socialProfiles(socials),
     knowsAbout: [
       "Fine Jewelry",
       "Engagement Rings",

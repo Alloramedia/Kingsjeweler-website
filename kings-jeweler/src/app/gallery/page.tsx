@@ -7,7 +7,7 @@ import { CTASection } from "@/components/CTASection";
 import { getSiteContent } from "@/lib/admin/schema";
 
 export const metadata: Metadata = {
-  title: "Gallery — Custom Jewelry & Work From Our Showcase",
+  title: "Gallery — Custom Jewelry & Restorations",
   description:
     "Browse custom pieces, restorations, and favorites from the King's Jeweler showcase at The Shoppes at Buckland Hills in Manchester, CT.",
   alternates: { canonical: "https://www.kingsjewelerct.com/gallery" },

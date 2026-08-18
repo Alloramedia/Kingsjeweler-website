@@ -9,9 +9,10 @@ import { FAQAccordion } from "@/components/FAQAccordion";
 import { EmblemWatermark } from "@/components/SectionTextures";
 
 const baseMetadata: Metadata = {
-  title: "About King's Jeweler — Family Jewelers in Manchester, CT",
+  // Absolute — the brand is already in the title, so skip the template suffix.
+  title: { absolute: "About King's Jeweler — Family Jewelers in Manchester, CT" },
   description:
-    "Meet King's Jeweler, a family-run jewelry store inside The Shoppes at Buckland Hills in Manchester, Connecticut — where every customer is helped personally by a jeweler who cares.",
+    "King's Jeweler is a family-run jewelry store inside The Shoppes at Buckland Hills in Manchester, CT — every customer helped personally by a jeweler who cares.",
   alternates: {
     canonical: "https://www.kingsjewelerct.com/about",
   },

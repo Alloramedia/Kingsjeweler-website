@@ -6,9 +6,9 @@ import { siteConfig } from "@/lib/constants";
 import { CTASection } from "@/components/CTASection";
 
 const baseMetadata: Metadata = {
-  title: "Jewelry Services | Repairs, Custom Design & Gold Buying",
+  title: "Jewelry Repair, Custom Design & Gold Buying",
   description:
-    "Explore King's Jeweler services — engagement rings, custom jewelry design, ring sizing, chain repair, watch batteries while you wait, appraisals, and fair gold buying in Manchester, CT.",
+    "Engagement rings, custom jewelry design, ring sizing, chain repair, watch batteries, appraisals, and fair gold buying at King's Jeweler in Manchester, CT.",
   alternates: {
     canonical: "https://www.kingsjewelerct.com/services",
   },

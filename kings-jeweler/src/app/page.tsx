@@ -9,7 +9,7 @@ const baseMetadata: Metadata = {
     absolute: "King's Jeweler | Jewelry Store at Buckland Hills in Manchester, CT",
   },
   description:
-    "King's Jeweler is a family jewelry store at The Shoppes at Buckland Hills in Manchester, CT — fine jewelry, engagement rings, custom design, watch batteries, jewelry repair, and gold buying.",
+    "Family-run jewelry store at Buckland Hills in Manchester, CT — engagement rings, custom design, jewelry repair, watch batteries, and gold buying.",
   alternates: {
     canonical: "https://www.kingsjewelerct.com",
   },

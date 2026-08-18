@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     template: "%s | King's Jeweler",
   },
   description:
-    "King's Jeweler is a family jewelry store at The Shoppes at Buckland Hills in Manchester, CT — fine jewelry, engagement rings, custom design, watch batteries, jewelry repair, and gold buying.",
+    "Family-run jewelry store at Buckland Hills in Manchester, CT — engagement rings, custom design, jewelry repair, watch batteries, and gold buying.",
   openGraph: {
     type: "website",
     locale: "en_US",

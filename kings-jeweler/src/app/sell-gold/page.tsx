@@ -11,7 +11,7 @@ import { EmblemWatermark } from "@/components/SectionTextures";
 const baseMetadata: Metadata = {
   title: "We Buy Gold in Manchester, CT",
   description:
-    "Sell gold, silver, diamonds, and estate jewelry at King's Jeweler in The Shoppes at Buckland Hills. We weigh everything in front of you and pay 70–90% of melt value — no appointment needed.",
+    "Sell gold, silver, diamonds, and estate jewelry at King's Jeweler in Manchester, CT. We weigh everything in front of you and pay 70–90% of melt value.",
   alternates: {
     canonical: "https://www.kingsjewelerct.com/sell-gold",
   },

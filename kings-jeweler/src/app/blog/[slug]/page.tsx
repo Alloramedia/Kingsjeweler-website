@@ -27,7 +27,8 @@ export async function generateMetadata({
     return { title: "Article Not Found" };
   }
   return {
-    title: post.title,
+    // Absolute — post titles are long enough without the site-name suffix.
+    title: { absolute: post.title },
     description: post.excerpt,
     alternates: {
       canonical: `https://www.kingsjewelerct.com/blog/${post.slug}`,
@@ -38,6 +39,12 @@ export async function generateMetadata({
       description: post.excerpt,
       publishedTime: post.date,
       authors: [post.author],
+      images: [{ url: post.image, width: 1200, height: 630 }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
       images: [{ url: post.image, width: 1200, height: 630 }],
     },
   };
