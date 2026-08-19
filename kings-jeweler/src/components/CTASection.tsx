@@ -20,10 +20,10 @@ interface CTASectionProps {
 export function CTASection({
   headline = (
     <>
-      Celebrating something <em>special</em>?
+      Come get the <em>royal treatment</em>
     </>
   ),
-  subhead = "Stop by the store or send us a message — whether it's an engagement ring, a repair, or a piece designed just for you, we'll take care of it personally.",
+  subhead = "Whether it's an engagement ring, a five-minute battery, or a piece designed just for you, we take care of it personally. Stop by the store or send us a message.",
   primaryLabel = CTA_PRIMARY.label,
   primaryHref = CTA_PRIMARY.href,
   secondaryLabel = CTA_SECONDARY_RESULTS.label,

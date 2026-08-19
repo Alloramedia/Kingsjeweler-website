@@ -202,10 +202,10 @@ export const defaultMenu: MenuSection[] = [
     group: "Jewelry Services",
     title: "Engagement & Bridal",
     blurb:
-      "Diamond engagement rings, wedding bands, and anniversary pieces — with honest, pressure-free guidance from a real jeweler.",
+      "Diamond engagement rings, wedding bands, and anniversary pieces, with honest, pressure-free guidance from a real jeweler.",
     items: [
       { name: "Engagement rings", desc: "Natural and lab-grown diamonds in every shape and setting style. We work with your budget, not against it." },
-      { name: "Wedding bands", desc: "Classic, modern, and custom bands in gold, platinum, and alternative metals — for him and for her." },
+      { name: "Wedding bands", desc: "Classic, modern, and custom bands in gold, platinum, and alternative metals, for him and for her." },
       { name: "Custom bridal design", desc: "Design a one-of-a-kind ring from scratch, or reset a family stone into something new." },
     ],
   },
@@ -213,12 +213,12 @@ export const defaultMenu: MenuSection[] = [
     group: "Jewelry Services",
     title: "Repair & Restoration",
     blurb:
-      "Expert repairs done with care — many completed the same day while you shop the mall.",
+      "Expert repairs done with care, many completed the same day while you shop the mall.",
     items: [
       { name: "Ring sizing", desc: "Up or down, most sizings ready fast.", price: "Quoted in store" },
       { name: "Chain & clasp repair", desc: "Soldering, clasp replacement, and link repair for gold and silver chains." },
       { name: "Stone setting & prong re-tipping", desc: "Secure loose stones and rebuild worn prongs before a stone is lost." },
-      { name: "Cleaning & polishing", desc: "Bring your jewelry back to life — professional cleaning and inspection." },
+      { name: "Cleaning & polishing", desc: "Bring your jewelry back to life with professional cleaning and inspection." },
     ],
   },
   {
@@ -236,9 +236,9 @@ export const defaultMenu: MenuSection[] = [
     group: "Buying & Appraisals",
     title: "Gold Buying & Appraisals",
     blurb:
-      "Fair, transparent offers — sell outright or trade toward something new.",
+      "Fair, transparent offers. Sell outright or trade toward something new.",
     items: [
-      { name: "Gold & silver buying", desc: "We buy gold, silver, and platinum in any condition — broken chains, old class rings, unmatched earrings." },
+      { name: "Gold & silver buying", desc: "We buy gold, silver, and platinum in any condition: broken chains, old class rings, unmatched earrings." },
       { name: "Diamond buying", desc: "Honest evaluations and competitive offers on diamonds and estate jewelry." },
       { name: "Appraisals", desc: "Written appraisals for insurance and estate purposes.", price: "Quoted in store" },
     ],
@@ -246,9 +246,9 @@ export const defaultMenu: MenuSection[] = [
 ];
 
 export const defaultHeroHome: Required<HeroOverride> = {
-  title: "Manchester's Family Jeweler",
+  title: "Jewelry fit for royalty, service that feels like family",
   subtitle:
-    "Fine jewelry, engagement rings, custom design, watch batteries, and expert repairs — inside The Shoppes at Buckland Hills in Manchester, Connecticut.",
+    "Engagement rings, custom design, watch batteries, expert repairs, and fair gold buying, all handled in person at our counter inside The Shoppes at Buckland Hills.",
 };
 
 export const defaultBrandImages: BrandImages = {
@@ -302,12 +302,12 @@ export const defaultTestimonials: Testimonial[] = [
   {
     author: "Sarah M.",
     role: "Engagement ring · Manchester",
-    body: "They helped my fiancé design the perfect ring without any pressure. The whole experience felt personal — like family, not a sales floor.",
+    body: "They helped my fiancé design the perfect ring without any pressure. The whole experience felt personal, like family instead of a sales floor.",
   },
   {
     author: "James R.",
     role: "Watch battery & repair · South Windsor",
-    body: "Stopped in for a watch battery and they had it done in minutes. Fair price, friendly service — I've been back three times since.",
+    body: "Stopped in for a watch battery and they had it done in minutes. Fair price, friendly service. I've been back three times since.",
   },
   {
     author: "Linda C.",
@@ -321,22 +321,22 @@ export const defaultFaqs: Faqs = {
     {
       question: "Do I need an appointment?",
       answer:
-        "No appointment needed — just stop in during store hours, seven days a week. For custom design consultations, calling ahead helps us set aside time for you, but walk-ins are always welcome.",
+        "No appointment needed. Just stop in during store hours, seven days a week. For custom design consultations, calling ahead helps us set aside time for you, but walk-ins are always welcome.",
     },
     {
       question: "Can you replace my watch battery while I wait?",
       answer:
-        "Yes — most watch batteries are replaced on the spot in just a few minutes, for most makes and models.",
+        "Yes. Most watch batteries are replaced on the spot in just a few minutes, for most makes and models.",
     },
     {
       question: "Do you buy gold and old jewelry?",
       answer:
-        "We do. Bring in gold, silver, platinum, or diamonds in any condition and we'll make a fair, transparent offer — sell outright or trade the value toward something new.",
+        "We do. Bring in gold, silver, platinum, or diamonds in any condition and we'll make a fair, transparent offer. Sell outright or trade the value toward something new.",
     },
     {
       question: "How long do jewelry repairs take?",
       answer:
-        "Many repairs — like ring sizing and chain soldering — can be done quickly, often while you shop the mall. Bigger restorations take longer; we'll always give you an honest timeline up front.",
+        "Many repairs, like ring sizing and chain soldering, can be done quickly, often while you shop the mall. Bigger restorations take longer; we'll always give you an honest timeline up front.",
     },
     {
       question: "Do you make custom jewelry?",
@@ -348,17 +348,17 @@ export const defaultFaqs: Faqs = {
     {
       question: "What makes King's Jeweler different from chain jewelry stores?",
       answer:
-        "We're family owned and operated — when you come in, you talk directly with the jeweler, not a salesperson working a quota. Repairs and custom work happen with us, not at a warehouse three states away.",
+        "We're family owned and operated. When you come in, you talk directly with the jeweler, not a salesperson working a quota. Repairs and custom work happen with us, not at a warehouse three states away.",
     },
     {
       question: "Where exactly is the store?",
       answer:
-        "We're inside The Shoppes at Buckland Hills at 194 Buckland Hills Drive in Manchester, Connecticut — with free mall parking and no appointment needed.",
+        "We're inside The Shoppes at Buckland Hills at 194 Buckland Hills Drive in Manchester, Connecticut, with free mall parking and no appointment needed.",
     },
     {
       question: "Do you work on heirloom and antique pieces?",
       answer:
-        "Absolutely. Restoring family pieces — resizing, resetting stones, rebuilding worn settings — is some of the most meaningful work we do, and we treat every heirloom like it's our own.",
+        "Absolutely. Restoring family pieces, whether that's resizing, resetting stones, or rebuilding worn settings, is some of the most meaningful work we do, and we treat every heirloom like it's our own.",
     },
   ],
 };
@@ -382,27 +382,27 @@ export const seoDefaults: Seo = {
   home: {
     title: "King's Jeweler | Jewelry Store at Buckland Hills in Manchester, CT",
     description:
-      "King's Jeweler is a family jewelry store at The Shoppes at Buckland Hills in Manchester, CT — fine jewelry, engagement rings, custom design, watch batteries, jewelry repair, and gold buying.",
+      "King's Jeweler is a family jewelry store at The Shoppes at Buckland Hills in Manchester, CT offering fine jewelry, engagement rings, custom design, watch batteries, jewelry repair, and gold buying.",
   },
   services: {
-    title: "Jewelry Services — Repairs, Custom Design & Gold Buying",
+    title: "Jewelry Services: Repairs, Custom Design & Gold Buying",
     description:
-      "Explore King's Jeweler services — engagement rings, custom jewelry design, ring sizing, chain repair, watch batteries while you wait, appraisals, and fair gold buying in Manchester, CT.",
+      "Explore King's Jeweler services: engagement rings, custom jewelry design, ring sizing, chain repair, watch batteries while you wait, appraisals, and fair gold buying in Manchester, CT.",
   },
   sellGold: {
     title: "We Buy Gold in Manchester, CT",
     description:
-      "Sell gold, silver, diamonds, and estate jewelry at King's Jeweler in The Shoppes at Buckland Hills. We weigh everything in front of you and pay 70–90% of melt value — no appointment needed.",
+      "Sell gold, silver, diamonds, and estate jewelry at King's Jeweler in The Shoppes at Buckland Hills. We weigh everything in front of you and pay 70–90% of melt value. No appointment needed.",
   },
   gallery: {
-    title: "Gallery — Custom Jewelry & Work From Our Showcase",
+    title: "Gallery: Custom Jewelry & Work From Our Showcase",
     description:
       "Browse custom pieces, restorations, and favorites from the King's Jeweler showcase at The Shoppes at Buckland Hills in Manchester, CT.",
   },
   about: {
-    title: "About King's Jeweler — Family Jewelers in Manchester, CT",
+    title: "About King's Jeweler | Family Jewelers in Manchester, CT",
     description:
-      "Meet King's Jeweler, a family-run jewelry store inside The Shoppes at Buckland Hills in Manchester, Connecticut — where every customer is helped personally by a jeweler who cares.",
+      "Meet King's Jeweler, a family-run jewelry store inside The Shoppes at Buckland Hills in Manchester, Connecticut, where every customer is helped personally by a jeweler who cares.",
   },
   contact: {
     title: "Visit or Contact King's Jeweler",

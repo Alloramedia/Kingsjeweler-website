@@ -19,7 +19,7 @@ interface ContactClientProps {
 }
 
 const inputClass =
-  "w-full rounded-xl border border-[#14141A]/15 bg-white px-4 py-3 text-sm text-[#14141A] placeholder:text-[#14141A]/40 focus:border-[#C68A17] focus:outline-none focus:ring-2 focus:ring-[#C68A17]/25";
+  "w-full rounded-xs border border-[#14141A]/15 bg-white px-4 py-3 text-sm text-[#14141A] placeholder:text-[#14141A]/40 focus:border-[#C68A17] focus:outline-none focus:ring-2 focus:ring-[#C68A17]/25";
 
 const labelClass = "mb-1.5 block text-sm font-semibold text-[#14141A]";
 
@@ -89,7 +89,7 @@ export function ContactClient({ heroSlides }: ContactClientProps) {
             <em className="font-medium italic text-[#F0A92D]">send a message</em>.
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-white/75">
-            No appointment needed — we&apos;re inside The Shoppes at Buckland
+            No appointment needed. We&apos;re inside The Shoppes at Buckland
             Hills seven days a week. For anything else, the form below
             reaches us directly.
           </p>
@@ -101,7 +101,7 @@ export function ContactClient({ heroSlides }: ContactClientProps) {
         <div className="mx-auto grid max-w-6xl gap-12 px-6 lg:grid-cols-[2fr_3fr] lg:px-8">
           {/* Store info */}
           <div className="space-y-6">
-            <div className="rounded-2xl border border-[#14141A]/10 bg-white p-7 shadow-sm">
+            <div className="border border-[#14141A]/15 bg-white p-7">
               <div className="flex items-start gap-4">
                 <MapPin size={22} className="mt-0.5 shrink-0 text-[#C68A17]" />
                 <div>
@@ -127,7 +127,7 @@ export function ContactClient({ heroSlides }: ContactClientProps) {
               </div>
             </div>
 
-            <div className="rounded-2xl border border-[#14141A]/10 bg-white p-7 shadow-sm">
+            <div className="border border-[#14141A]/15 bg-white p-7">
               <div className="flex items-start gap-4">
                 <Clock size={22} className="mt-0.5 shrink-0 text-[#C68A17]" />
                 <div>
@@ -143,7 +143,7 @@ export function ContactClient({ heroSlides }: ContactClientProps) {
               </div>
             </div>
 
-            <div className="rounded-2xl border border-[#14141A]/10 bg-white p-7 shadow-sm">
+            <div className="border border-[#14141A]/15 bg-white p-7">
               <div className="flex items-start gap-4">
                 <Phone size={22} className="mt-0.5 shrink-0 text-[#C68A17]" />
                 <div>
@@ -179,7 +179,7 @@ export function ContactClient({ heroSlides }: ContactClientProps) {
           >
             <form
               onSubmit={handleSubmit}
-              className="rounded-2xl border border-[#14141A]/10 bg-white p-7 shadow-sm md:p-9"
+              className="border border-[#14141A]/15 bg-white p-7 md:p-9"
               noValidate
             >
               <h2 className="text-xl font-bold">Send us a message</h2>
@@ -286,7 +286,7 @@ export function ContactClient({ heroSlides }: ContactClientProps) {
               </div>
 
               {error && (
-                <p className="mt-4 rounded-lg bg-red-50 px-4 py-3 text-sm text-red-700" role="alert">
+                <p className="mt-4 rounded-xs bg-red-50 px-4 py-3 text-sm text-red-700" role="alert">
                   {error}
                 </p>
               )}

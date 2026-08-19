@@ -194,7 +194,7 @@ export default async function BlogDetailPage({
           )}
 
           {post.related && post.related.length > 0 && (
-            <div className="mt-16 rounded-2xl border border-[#C68A17]/25 bg-[#C68A17]/5 p-8">
+            <div className="mt-16 border-l-2 border-[#C68A17] bg-[#C68A17]/5 p-8">
               <h2 className="text-xl font-bold">Related reading</h2>
               <ul className="mt-5 space-y-3">
                 {post.related.map((link) => (
@@ -216,7 +216,7 @@ export default async function BlogDetailPage({
           )}
 
           {/* Author / E-E-A-T */}
-          <div className="mt-16 flex flex-col gap-5 rounded-2xl border border-[#14141A]/10 bg-[#FFFDF8] p-7 shadow-sm sm:flex-row sm:items-center">
+          <div className="mt-16 flex flex-col gap-5 border border-[#14141A]/15 bg-[#FFFDF8] p-7 sm:flex-row sm:items-center">
             <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-full ring-2 ring-[#C68A17]/40">
               <Image
                 src={brandImages.owner}
@@ -248,10 +248,10 @@ export default async function BlogDetailPage({
             </div>
           </div>
 
-          <div className="mt-14 rounded-2xl bg-[#14141A] p-8 text-center text-white">
+          <div className="mt-14 bg-[#14141A] p-8 text-center text-white">
             <h3 className="text-2xl font-bold">Have a question about your jewelry?</h3>
             <p className="mx-auto mt-3 max-w-xl text-white/70">
-              Bring it in — we&apos;ll take a look, explain your options, and
+              Bring it in and we&apos;ll take a look, explain your options, and
               give you an honest answer on the spot at The Shoppes at Buckland
               Hills in Manchester, CT.
             </p>
@@ -281,7 +281,7 @@ export default async function BlogDetailPage({
               <Link
                 key={p.slug}
                 href={`/blog/${p.slug}`}
-                className="group overflow-hidden rounded-2xl border border-white/10 bg-white/5 transition hover:-translate-y-1 hover:bg-white/10"
+                className="group overflow-hidden border border-white/10 bg-white/5 transition-colors hover:border-[#C68A17]/50 hover:bg-white/10"
               >
                 <div className="relative aspect-video overflow-hidden">
                   <Image

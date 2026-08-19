@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Zilla_Slab, Inter, Cinzel } from "next/font/google";
+import { Playfair_Display, Inter, Cinzel } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { LocalBusinessSchema, OrganizationSchema } from "@/components/StructuredData";
@@ -14,7 +14,8 @@ import { getSiteContent, isPreviewMode } from "@/lib/admin/schema";
 import { buildThemeCss } from "@/lib/admin/theme";
 import "./globals.css";
 
-const zillaSlab = Zilla_Slab({
+// Classical high-contrast serif — pairs with the Trajan-style logo wordmark.
+const playfair = Playfair_Display({
   style: ["normal", "italic"],
   variable: "--font-heading",
   subsets: ["latin"],
@@ -42,7 +43,7 @@ export const metadata: Metadata = {
     template: "%s | King's Jeweler",
   },
   description:
-    "Family-run jewelry store at Buckland Hills in Manchester, CT — engagement rings, custom design, jewelry repair, watch batteries, and gold buying.",
+    "Family-run jewelry store at Buckland Hills in Manchester, CT. Engagement rings, custom design, jewelry repair, watch batteries, and gold buying.",
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -50,14 +51,14 @@ export const metadata: Metadata = {
     siteName: "King's Jeweler",
     title: "King's Jeweler | Jewelry Store at Buckland Hills in Manchester, CT",
     description:
-      "Fine jewelry, engagement rings, custom design, watch batteries, and expert repairs — inside The Shoppes at Buckland Hills, Manchester, CT.",
+      "Fine jewelry, engagement rings, custom design, watch batteries, and expert repairs inside The Shoppes at Buckland Hills, Manchester, CT.",
     images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
     title: "King's Jeweler | Jewelry Store in Manchester, CT",
     description:
-      "Fine jewelry, engagement rings, custom design, watch batteries, and expert repairs — inside The Shoppes at Buckland Hills, Manchester, CT.",
+      "Fine jewelry, engagement rings, custom design, watch batteries, and expert repairs inside The Shoppes at Buckland Hills, Manchester, CT.",
     images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
   },
   robots: {
@@ -80,7 +81,7 @@ export default async function RootLayout({
   return (
     <html lang="en" data-scroll-behavior="smooth">
       <body
-        className={`${zillaSlab.variable} ${inter.variable} ${cinzel.variable} antialiased`}
+        className={`${playfair.variable} ${inter.variable} ${cinzel.variable} antialiased`}
         // Suppress body-level hydration warnings caused by browser extensions
         // injecting attributes (e.g. Grammarly, password managers, dark-mode).
         suppressHydrationWarning

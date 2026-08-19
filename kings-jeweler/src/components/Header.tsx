@@ -96,39 +96,10 @@ export function Header() {
           : "bg-[#14141A]/85 backdrop-blur-md"
       )}
     >
-      {/* Utility bar — collapses away once scrolled */}
-      <div
-        className={cn(
-          "hidden overflow-hidden border-b border-white/8 transition-all duration-500 xl:block",
-          scrolled ? "max-h-0 opacity-0" : "max-h-10 opacity-100"
-        )}
-      >
-        <div className="mx-auto flex h-10 max-w-7xl items-center justify-between px-4 text-xs sm:px-6 lg:px-8">
-          <p className="text-white/50">
-            The Shoppes at Buckland Hills · Manchester, Connecticut · Open seven days a week
-          </p>
-          <div className="flex items-center gap-5">
-            <Link
-              href="/sell-gold"
-              className="font-heading text-[0.7rem] font-bold uppercase tracking-[0.16em] text-[#F0A92D] transition-colors hover:text-[#F7DFA8]"
-            >
-              We Buy Gold — Top Prices Paid
-            </Link>
-            <span className="h-3 w-px bg-white/15" />
-            <a
-              href={`tel:${contact.phone.replace(/\D/g, "")}`}
-              className="text-white/60 tabular-nums transition-colors hover:text-[#F0A92D]"
-            >
-              {contact.phone}
-            </a>
-          </div>
-        </div>
-      </div>
-
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Mobile layout */}
         <div className="flex h-20 items-center justify-between xl:hidden">
-          <Link href="/" className="flex shrink-0 items-center gap-2.5" aria-label="King's Jeweler — home">
+          <Link href="/" className="flex shrink-0 items-center gap-2.5" aria-label="King's Jeweler home">
             <Image
               src="/images/kings-jeweler-crest.webp"
               alt=""
@@ -173,7 +144,7 @@ export function Header() {
           </div>
 
           {/* Center: Crest + wordmark lockup — centered in the navbar */}
-          <Link href="/" className="flex items-center gap-3 justify-self-center px-4" aria-label="King's Jeweler — home">
+          <Link href="/" className="flex items-center gap-3 justify-self-center px-4" aria-label="King's Jeweler home">
             <Image
               src="/images/kings-jeweler-crest.webp"
               alt=""
@@ -205,6 +176,12 @@ export function Header() {
               />
             ))}
             <span className="h-5 w-px bg-white/15" aria-hidden="true" />
+            <a
+              href={`tel:${contact.phone.replace(/\D/g, "")}`}
+              className="text-sm font-medium text-white/70 tabular-nums whitespace-nowrap transition-colors hover:text-[#F0A92D]"
+            >
+              {contact.phone}
+            </a>
             <Link
               href="/contact"
               className="btn-gold inline-flex items-center px-5 py-2.5 text-sm font-semibold text-white whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C68A17] focus-visible:ring-offset-2 focus-visible:ring-offset-[#14141A]"
@@ -301,7 +278,7 @@ export function Header() {
               onClick={() => setMobileOpen(false)}
               className="mt-6 flex items-center justify-center rounded-xs border border-[#C68A17]/50 bg-[#C68A17]/10 px-6 py-3.5 text-center font-heading text-sm font-bold uppercase tracking-[0.14em] text-[#F0A92D]"
             >
-              We Buy Gold — Top Prices Paid
+              We Buy Gold · Top Prices Paid
             </Link>
             <Link
               href="/contact"

@@ -8,7 +8,7 @@ import Link from "next/link";
  *
  * Syntax: "Plan your [backyard party](/blog/planning-catering-backyard-party)."
  */
-const LINK_PATTERN = /\[([^\]]+)\]\(([^)]+)\)/g;
+const LINK_PATTERN = /\[([^\]]+)\]\(([^)]+)\)/;
 
 const linkClass =
   "font-semibold text-[#A87310] underline decoration-[#C68A17]/40 underline-offset-2 transition hover:decoration-[#C68A17] hover:text-[#C68A17]";
@@ -18,8 +18,9 @@ export function RichText({ text }: { text: string }) {
   let lastIndex = 0;
   let match: RegExpExecArray | null;
 
-  LINK_PATTERN.lastIndex = 0;
-  while ((match = LINK_PATTERN.exec(text)) !== null) {
+  // Fresh regex per render — the react compiler forbids mutating shared state.
+  const pattern = new RegExp(LINK_PATTERN.source, "g");
+  while ((match = pattern.exec(text)) !== null) {
     const [full, label, href] = match;
 
     if (match.index > lastIndex) {

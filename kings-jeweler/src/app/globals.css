@@ -15,7 +15,7 @@
   --color-card-foreground: var(--card-foreground);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
-  --font-heading: var(--font-heading), 'Zilla Slab', serif;
+  --font-heading: var(--font-heading), 'Playfair Display', serif;
   --font-body: var(--font-body), 'Inter', sans-serif;
   --font-sans: var(--font-body), 'Inter', sans-serif;
   --font-display: var(--font-display), 'Cinzel', serif;
@@ -70,7 +70,7 @@ html {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading), 'Zilla Slab', serif;
+  font-family: var(--font-heading), 'Playfair Display', serif;
   font-weight: 700;
   text-wrap: balance;
 }

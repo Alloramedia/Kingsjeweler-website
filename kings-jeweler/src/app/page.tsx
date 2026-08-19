@@ -1,5 +1,4 @@
 import { Metadata } from "next";
-import ReactDOM from "react-dom";
 import { HomeClient } from "./HomeClient";
 import { getSiteContent, applySeo } from "@/lib/admin/schema";
 import { FAQSchema, ReviewSchema } from "@/components/StructuredData";
@@ -9,7 +8,7 @@ const baseMetadata: Metadata = {
     absolute: "King's Jeweler | Jewelry Store at Buckland Hills in Manchester, CT",
   },
   description:
-    "Family-run jewelry store at Buckland Hills in Manchester, CT — engagement rings, custom design, jewelry repair, watch batteries, and gold buying.",
+    "Family-run jewelry store at Buckland Hills in Manchester, CT offering engagement rings, custom design, jewelry repair, watch batteries, and gold buying.",
   alternates: {
     canonical: "https://www.kingsjewelerct.com",
   },
@@ -20,14 +19,14 @@ const baseMetadata: Metadata = {
     siteName: "King's Jeweler",
     title: "King's Jeweler | Jewelry Store at Buckland Hills in Manchester, CT",
     description:
-      "Fine jewelry, engagement rings, custom design, watch batteries, and expert repairs — inside The Shoppes at Buckland Hills, Manchester, CT.",
+      "Fine jewelry, engagement rings, custom design, watch batteries, and expert repairs, all inside The Shoppes at Buckland Hills, Manchester, CT.",
     images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
     title: "King's Jeweler | Jewelry Store in Manchester, CT",
     description:
-      "Fine jewelry, engagement rings, custom design, watch batteries, and expert repairs — inside The Shoppes at Buckland Hills, Manchester, CT.",
+      "Fine jewelry, engagement rings, custom design, watch batteries, and expert repairs, all inside The Shoppes at Buckland Hills, Manchester, CT.",
     images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
   },
 };
@@ -40,7 +39,6 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function HomePage() {
   const { hero, brandImages, testimonials, faqs, serviceTowns, hours } =
     await getSiteContent();
-  ReactDOM.preload(brandImages.heroHome, { as: "image" });
   return (
     <>
       <FAQSchema faqs={faqs.home} />

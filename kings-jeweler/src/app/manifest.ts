@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "King's Jeweler",
     short_name: "King's Jeweler",
     description:
-      "King's Jeweler is a family jewelry store at The Shoppes at Buckland Hills in Manchester, CT — fine jewelry, engagement rings, custom design, watch batteries, and expert repairs.",
+      "King's Jeweler is a family jewelry store at The Shoppes at Buckland Hills in Manchester, CT, offering fine jewelry, engagement rings, custom design, watch batteries, and expert repairs.",
     start_url: "/",
     display: "standalone",
     background_color: "#FBF9F4",

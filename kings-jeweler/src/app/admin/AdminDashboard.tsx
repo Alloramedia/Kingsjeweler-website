@@ -478,7 +478,7 @@ function HeroEditor({ data }: { data: HeroOverride }) {
     <div className="space-y-5">
       <DraftBanner available={draftAvailable} onRestore={restoreDraft} onDiscard={discardDraft} />
       <p className="text-sm text-slate-500">This is the big headline and intro line on the home page.</p>
-      <Field label="Headline" value={d.title ?? ""} onChange={(v) => setD({ ...d, title: v })} placeholder="Manchester's Family Jeweler" max={160} hint="Tip: press Enter inside this won't work — keep it to one line." />
+      <Field label="Headline" value={d.title ?? ""} onChange={(v) => setD({ ...d, title: v })} placeholder="Jewelry fit for royalty, service that feels like family" max={160} hint="Tip: press Enter inside this won't work — keep it to one line." />
       <Area label="Intro line" value={d.subtitle ?? ""} onChange={(v) => setD({ ...d, subtitle: v })} rows={3} placeholder="Fine jewelry & expert repairs…" max={400} />
       <SaveBar status={status} dirty={dirty} onSave={() => save({ home: d })} viewUrl="/" />
     </div>
@@ -1858,7 +1858,7 @@ function AdminInner({
       <header className="border-b border-slate-200 bg-white">
         <div className="mx-auto flex max-w-5xl items-center justify-between gap-3 px-4 py-2.5 sm:px-6">
           <button onClick={goHome} className="min-w-0 text-left">
-            <h1 className="truncate text-base font-bold text-slate-900">King's Jeweler — Site Editor</h1>
+            <h1 className="truncate text-base font-bold text-slate-900">King’s Jeweler — Site Editor</h1>
             <p className="hidden text-[11px] text-slate-500 sm:block">Edits save as a draft — preview, then publish to go live.</p>
           </button>
           <div className="flex items-center gap-0.5">

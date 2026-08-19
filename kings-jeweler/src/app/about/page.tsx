@@ -10,9 +10,9 @@ import { EmblemWatermark } from "@/components/SectionTextures";
 
 const baseMetadata: Metadata = {
   // Absolute — the brand is already in the title, so skip the template suffix.
-  title: { absolute: "About King's Jeweler — Family Jewelers in Manchester, CT" },
+  title: { absolute: "About King's Jeweler | Family Jewelers in Manchester, CT" },
   description:
-    "King's Jeweler is a family-run jewelry store inside The Shoppes at Buckland Hills in Manchester, CT — every customer helped personally by a jeweler who cares.",
+    "King's Jeweler is a family-run jewelry store inside The Shoppes at Buckland Hills in Manchester, CT, where every customer is helped personally by a jeweler who cares.",
   alternates: {
     canonical: "https://www.kingsjewelerct.com/about",
   },
@@ -40,7 +40,7 @@ const values = [
   {
     icon: Gem,
     title: "Craftsmanship first",
-    body: "Every sizing, setting, and custom piece is done with the care of a jeweler who puts their name on the work — because we do.",
+    body: "Every sizing, setting, and custom piece is done with the care of a jeweler who puts their name on the work, because we do.",
   },
   {
     icon: HeartHandshake,
@@ -50,7 +50,7 @@ const values = [
   {
     icon: Wrench,
     title: "Real work, done here",
-    body: "Repairs and custom work happen with us — not shipped to a warehouse three states away. Many jobs are done while you shop.",
+    body: "Repairs and custom work happen with us, not shipped to a warehouse three states away. Many jobs are done while you shop.",
   },
   {
     icon: ShieldCheck,
@@ -93,7 +93,7 @@ export default async function AboutPage() {
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-white/75">
             We&apos;re a family-run jewelry store inside The Shoppes at Buckland
-            Hills — helping Manchester and the Greater Hartford area celebrate
+            Hills, helping Manchester and the Greater Hartford area celebrate
             life&apos;s biggest moments, one piece at a time.
           </p>
         </div>
@@ -103,9 +103,9 @@ export default async function AboutPage() {
       <section className="relative overflow-hidden bg-[#FBF9F4] text-[#14141A]">
         <div className="relative z-10 mx-auto max-w-4xl px-6 py-20 lg:px-8 lg:py-28">
           <p className="text-lg leading-relaxed text-[#14141A]/75">
-            King's Jeweler was built on a simple idea: when you walk into a
+            King’s Jeweler was built on a simple idea: when you walk into a
             jewelry store, you should be talking to a jeweler. Not a rotating
-            cast of salespeople — the actual person who will size your ring,
+            cast of salespeople, but the actual person who will size your ring,
             set your stone, or design the piece you&apos;ve been imagining.
           </p>
           <p className="mt-4 text-lg leading-relaxed text-[#14141A]/75">
@@ -137,7 +137,7 @@ export default async function AboutPage() {
               The standards behind every piece.
             </h2>
             <p className="mt-4 text-lg text-white/75">
-              These aren&apos;t marketing lines — they&apos;re the rules we work
+              These aren&apos;t marketing lines; they&apos;re the rules we work
               by, every single day.
             </p>
           </div>

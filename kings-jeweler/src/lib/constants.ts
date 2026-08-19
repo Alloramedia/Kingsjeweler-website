@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "King's Jeweler",
   description:
-    "King's Jeweler is a family jewelry store at The Shoppes at Buckland Hills in Manchester, Connecticut — fine jewelry, engagement rings, custom designs, watch batteries, and expert jewelry repair while you shop.",
+    "King's Jeweler is a family jewelry store at The Shoppes at Buckland Hills in Manchester, Connecticut, offering fine jewelry, engagement rings, custom designs, watch batteries, and expert jewelry repair while you shop.",
   // TODO: replace with the real domain before launch.
   url: "https://www.kingsjewelerct.com",
   ogImage: "/og-image.jpg",

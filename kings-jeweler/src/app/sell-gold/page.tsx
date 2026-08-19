@@ -18,7 +18,7 @@ const baseMetadata: Metadata = {
   openGraph: {
     title: "We Buy Gold | King's Jeweler",
     description:
-      "Fair, transparent cash offers on gold, silver, and diamonds — weighed and evaluated right in front of you at our Manchester, CT store.",
+      "Fair, transparent cash offers on gold, silver, and diamonds, weighed and evaluated right in front of you at our Manchester, CT store.",
     images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
   },
   twitter: {
@@ -39,7 +39,7 @@ const STEPS = [
   {
     icon: Search,
     title: "We test & weigh it in front of you",
-    body: "Karat stamps checked, weight taken on a calibrated scale, right at the counter — no back room, no waiting.",
+    body: "Karat stamps checked, weight taken on a calibrated scale, right at the counter. No back room, no waiting.",
   },
   {
     icon: Scale,
@@ -54,7 +54,7 @@ const STEPS = [
 ];
 
 const WHAT_WE_BUY = [
-  "Gold jewelry — any karat, broken or not",
+  "Gold jewelry in any karat, broken or not",
   "Silver jewelry and flatware",
   "Platinum jewelry",
   "Loose and mounted diamonds",
@@ -85,7 +85,7 @@ export default async function SellGoldPage() {
     {
       question: "Is it better to sell gold to a jeweler or a pawn shop?",
       answer:
-        "A jeweler, in almost every case. Jewelers pay higher percentages of melt value and can recognize when a piece is worth more intact — designer names, antiques, and diamond-set items that a scrap-only buyer would undervalue.",
+        "A jeweler, in almost every case. Jewelers pay higher percentages of melt value and can recognize when a piece is worth more intact: designer names, antiques, and diamond-set items that a scrap-only buyer would undervalue.",
     },
     {
       question: "What karat gold is worth the most?",
@@ -95,12 +95,12 @@ export default async function SellGoldPage() {
     {
       question: "Should I sell broken gold jewelry or repair it?",
       answer:
-        "It depends on the piece. Sentimental or high-quality items are usually worth repairing — many fixes cost under $100. Mismatched earrings, kinked hollow chains, and dated pieces you'll never wear are ideal candidates to sell for melt value.",
+        "It depends on the piece. Sentimental or high-quality items are usually worth repairing, and many fixes cost under $100. Mismatched earrings, kinked hollow chains, and dated pieces you'll never wear are ideal candidates to sell for melt value.",
     },
     {
       question: "Do I need an appointment to sell gold?",
       answer:
-        "No — walk in any day during store hours. Most evaluations take just a few minutes, and you'll get a same-day offer.",
+        "No. Walk in any day during store hours. Most evaluations take just a few minutes, and you'll get a same-day offer.",
     },
   ];
 
@@ -114,7 +114,7 @@ export default async function SellGoldPage() {
       />
       <ServiceSchema
         name="Gold Buying"
-        description="We buy gold, silver, platinum, and diamonds — weighed and evaluated in person with fair, transparent offers."
+        description="We buy gold, silver, platinum, and diamonds, weighed and evaluated in person with fair, transparent offers."
       />
       <FAQSchema faqs={pageFaqs} />
 
@@ -130,8 +130,8 @@ export default async function SellGoldPage() {
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[#14141A]/80 md:text-xl">
             Bring in gold, silver, diamonds, or jewelry you no longer wear.
-            We weigh it right in front of you and make a fair, same-day offer
-            — sell outright or trade toward anything in the case.
+            We weigh it right in front of you and make a fair, same-day
+            offer. Sell outright or trade toward anything in the case.
           </p>
           <div className="mt-10 flex flex-wrap items-center gap-5">
             <Link
@@ -142,7 +142,7 @@ export default async function SellGoldPage() {
               <ArrowRight size={18} />
             </Link>
             <p className="text-sm text-[#14141A]/70">
-              No appointment needed — walk in any day.
+              No appointment needed. Walk in any day.
             </p>
           </div>
         </div>
@@ -193,7 +193,7 @@ export default async function SellGoldPage() {
               </h2>
               <p className="mt-4 text-lg leading-relaxed text-[#14141A]/70">
                 Broken chains, single earrings, old class rings, dated pieces
-                you&apos;ll never wear again — condition doesn&apos;t matter,
+                you&apos;ll never wear again. Condition doesn&apos;t matter,
                 and signed or antique pieces are often worth more than melt.
                 We&apos;ll tell you when that&apos;s the case.
               </p>
@@ -213,7 +213,7 @@ export default async function SellGoldPage() {
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-[#14141A]/65">
                 Look inside rings or on chain clasps. European pieces may read
-                417, 585, or 750 — same purity, different stamp.
+                417, 585, or 750: same purity, different stamp.
               </p>
               <dl className="mt-6 space-y-3">
                 {[
@@ -235,7 +235,7 @@ export default async function SellGoldPage() {
               </dl>
               <p className="mt-6 text-xs text-[#14141A]/50">
                 &quot;GF&quot; or &quot;GP&quot; markings mean gold-filled or
-                gold-plated, which carry little melt value — we&apos;ll
+                gold-plated, which carry little melt value. We&apos;ll
                 explain the difference when you bring a piece in.
               </p>
             </div>
@@ -290,7 +290,7 @@ export default async function SellGoldPage() {
               {
                 icon: Scale,
                 title: "Watch the weigh-in",
-                body: "Everything is weighed and evaluated in front of you — no back rooms, no games.",
+                body: "Everything is weighed and evaluated in front of you. No back rooms, no games.",
               },
               {
                 icon: BadgeCheck,
@@ -300,7 +300,7 @@ export default async function SellGoldPage() {
               {
                 icon: CreditCard,
                 title: "Flexible ways to pay & trade",
-                body: "Take cash, or trade toward something new — no credit needed financing available on purchases.",
+                body: "Take cash, or trade toward something new. No credit needed financing available on purchases.",
               },
             ].map((item) => (
               <div
@@ -370,7 +370,7 @@ export default async function SellGoldPage() {
 
       <CTASection
         headline="Have gold sitting in a drawer?"
-        subhead="Stop by The Shoppes at Buckland Hills — we'll weigh it, explain the offer, and pay you the same day."
+        subhead="Stop by The Shoppes at Buckland Hills. We'll weigh it, explain the offer, and pay you the same day."
         primaryLabel="Get an Offer"
         primaryHref="/contact"
         secondaryLabel="Read Our Gold Selling Guide"

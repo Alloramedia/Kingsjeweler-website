@@ -7,7 +7,7 @@ import { CTASection } from "@/components/CTASection";
 import { getSiteContent } from "@/lib/admin/schema";
 
 export const metadata: Metadata = {
-  title: "Gallery — Custom Jewelry & Restorations",
+  title: "Gallery: Custom Jewelry & Restorations",
   description:
     "Browse custom pieces, restorations, and favorites from the King's Jeweler showcase at The Shoppes at Buckland Hills in Manchester, CT.",
   alternates: { canonical: "https://www.kingsjewelerct.com/gallery" },
@@ -57,7 +57,7 @@ export default async function GalleryPage() {
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-white/75">
             A look at the custom pieces, restorations, and fine jewelry we
-            craft and care for at King's Jeweler in The Shoppes at Buckland
+            craft and care for at King’s Jeweler in The Shoppes at Buckland
             Hills, Manchester, Connecticut.
           </p>
         </div>
@@ -72,7 +72,7 @@ export default async function GalleryPage() {
               return (
                 <div
                   key={src}
-                  className="group overflow-hidden rounded-xl border border-[#14141A]/10 bg-[#FFFDF8] shadow-sm break-inside-avoid"
+                  className="group overflow-hidden border border-[#14141A]/15 bg-[#FFFDF8] p-1.5 break-inside-avoid"
                 >
                   <div className="relative overflow-hidden">
                     <Image
@@ -98,7 +98,7 @@ export default async function GalleryPage() {
           </div>
           <p className="mx-auto mt-10 max-w-2xl text-center text-sm text-[#14141A]/55">
             Have a repair or custom piece of your own? Bring it by The
-            Shoppes at Buckland Hills — we&apos;re happy to talk through
+            Shoppes at Buckland Hills. We&apos;re happy to talk through
             options in person, no appointment needed.
           </p>
         </div>

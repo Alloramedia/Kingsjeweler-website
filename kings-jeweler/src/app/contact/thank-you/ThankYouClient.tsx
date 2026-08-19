@@ -9,12 +9,12 @@ export function ThankYouClient() {
   const headline = "Thank you for reaching out.";
 
   const intro =
-    "We've received your message and we'll get back to you shortly. For anything quick — like a watch battery or ring sizing — you're always welcome to just stop by the store.";
+    "We've received your message and we'll get back to you shortly. For anything quick, like a watch battery or ring sizing, you're always welcome to just stop by the store.";
 
   const steps = [
     { step: "1", text: "We review your request and check it with our jeweler." },
     { step: "2", text: "We reach out with answers, options, and honest pricing." },
-    { step: "3", text: "You visit the store — we take care of the rest." },
+    { step: "3", text: "You visit the store, and we take care of the rest." },
   ];
 
   return (
@@ -49,7 +49,7 @@ export function ThankYouClient() {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="mx-auto mt-10 max-w-2xl"
         >
-          <div className="rounded-2xl border border-[#14141A]/10 bg-[#FFFDF8] p-6 md:p-8 shadow-sm">
+          <div className="border border-[#14141A]/15 bg-[#FFFDF8] p-6 md:p-8">
             <h2 className="mb-4 text-center text-lg font-bold">
               What happens next?
             </h2>

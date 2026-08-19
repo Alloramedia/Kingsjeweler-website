@@ -31,7 +31,7 @@ interface HomeClientProps {
 const SERVICES = [
   {
     title: "Engagement Rings & Bridal",
-    body: "Diamond engagement rings and wedding bands for every style and budget — with honest, pressure-free guidance from a real jeweler.",
+    body: "Diamond engagement rings and wedding bands for every style and budget, with honest, pressure-free guidance from a real jeweler.",
     note: "Ask about financing",
   },
   {
@@ -41,7 +41,7 @@ const SERVICES = [
   },
   {
     title: "Jewelry Repair",
-    body: "Ring sizing, chain soldering, prong re-tipping, stone setting, and restoration — done with care, often while you shop the mall.",
+    body: "Ring sizing, chain soldering, prong re-tipping, stone setting, and restoration, all done with care, often while you shop the mall.",
     note: "Many done same day",
   },
   {
@@ -51,12 +51,12 @@ const SERVICES = [
   },
   {
     title: "Gold Buying & Appraisals",
-    body: "Fair, transparent offers on gold, silver, and diamonds — sell outright or trade toward something new. Appraisals available.",
+    body: "Fair, transparent offers on gold, silver, and diamonds. Sell outright or trade toward something new. Appraisals available.",
     note: "Walk-ins welcome",
   },
   {
     title: "Fine Jewelry & Gifts",
-    body: "Necklaces, bracelets, earrings, and chains in gold, silver, and platinum — for anniversaries, birthdays, and just because.",
+    body: "Necklaces, bracelets, earrings, and chains in gold, silver, and platinum, for anniversaries, birthdays, and just because.",
     note: "In the case daily",
   },
 ] as const;
@@ -68,7 +68,7 @@ const WHY_US = [
   },
   {
     title: "Family owned & operated",
-    body: "You deal directly with the jeweler — not a salesperson working a quota.",
+    body: "You deal directly with the jeweler, not a salesperson working a quota.",
   },
   {
     title: "On-site expertise",
@@ -80,7 +80,7 @@ const WHY_US = [
   },
   {
     title: "In the heart of Buckland Hills",
-    body: "Easy to find inside the mall — free parking and no appointment needed.",
+    body: "Easy to find inside the mall, with free parking and no appointment needed.",
   },
 ] as const;
 
@@ -116,10 +116,10 @@ export function HomeClient({
   serviceTowns,
   hours,
 }: HomeClientProps) {
-  const heroTitle = hero.title || "Manchester's Family Jeweler";
+  const heroTitle = hero.title || "Jewelry fit for royalty, service that feels like family";
   const heroSubtitle =
     hero.subtitle ||
-    "Fine jewelry, engagement rings, custom design, and expert repairs — inside The Shoppes at Buckland Hills.";
+    "Engagement rings, custom design, watch batteries, expert repairs, and fair gold buying, all handled in person at our counter inside The Shoppes at Buckland Hills.";
 
   // Resolves on the client only, so SSR and hydration markup agree.
   const todayIndex = useSyncExternalStore(
@@ -129,8 +129,10 @@ export function HomeClient({
   );
 
   const heroWords = heroTitle.trim().split(/\s+/);
-  const heroLead = heroWords.slice(0, -1).join(" ");
-  const heroLast = heroWords[heroWords.length - 1];
+  // Italicize the closing phrase on long titles, just the last word on short ones.
+  const splitAt = heroWords.length > 6 ? -2 : -1;
+  const heroLead = heroWords.slice(0, splitAt).join(" ");
+  const heroLast = heroWords.slice(splitAt).join(" ");
 
   return (
     <>
@@ -144,7 +146,7 @@ export function HomeClient({
         <div className="absolute inset-0 bg-linear-to-b from-[#14141A]/55 via-transparent to-[#14141A]" />
 
         <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pt-44 pb-16 lg:px-8 lg:pb-20">
-          <div className="max-w-2xl">
+          <div className="max-w-3xl">
             <motion.p
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
@@ -166,7 +168,7 @@ export function HomeClient({
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="mt-5 max-w-xl text-lg leading-relaxed text-white/80 md:text-xl"
+              className="mt-5 max-w-2xl text-lg leading-relaxed text-white/80 md:text-xl"
             >
               {heroSubtitle}
             </motion.p>
@@ -207,23 +209,10 @@ export function HomeClient({
               >
                 <Star size={12} className="translate-y-px text-[#F0A92D]" fill="currentColor" />
                 4.5 on Google
-              </a>{" "}
-              — and yes, we still do watch batteries while you wait.
+              </a>
+              . And yes, we still do watch batteries while you wait.
             </motion.p>
           </div>
-        </div>
-
-        {/* Vertical marginalia — a printed-page flourish */}
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute right-8 top-1/2 z-10 hidden -translate-y-1/2 xl:block"
-        >
-          <p
-            className="font-heading text-[0.65rem] font-semibold uppercase tracking-[0.32em] text-white/35"
-            style={{ writingMode: "vertical-rl" }}
-          >
-            Est. {siteConfig.foundingDate} · The Shoppes at Buckland Hills · Manchester, Connecticut
-          </p>
         </div>
 
         {/* Bottom gold hairline */}
@@ -241,7 +230,7 @@ export function HomeClient({
                   The six things people <em className="text-[#A87310]">come in for</em>
                 </>
               }
-              description="From a once-in-a-lifetime engagement ring to a five-minute watch battery — it's all handled here, in person, by us."
+              description="From a once-in-a-lifetime engagement ring to a five-minute watch battery, it's all handled here, in person, by us."
             />
             <FadeIn>
               <Link
@@ -290,7 +279,7 @@ export function HomeClient({
                   A jeweler you can <em className="text-[#F0A92D]">actually talk to</em>
                 </>
               }
-              description="Big-box chains sell boxes. We build relationships — one ring, one repair, one family at a time."
+              description="Big-box chains sell boxes. We build relationships: one ring, one repair, one family at a time."
               variant="green"
             />
             <dl className="divide-y divide-white/10">
@@ -298,7 +287,7 @@ export function HomeClient({
                 <FadeIn key={item.title}>
                   <div className="py-4">
                     <dt className="font-heading font-bold text-white">
-                      <span aria-hidden="true" className="mr-3 text-[#C68A17]">—</span>
+                      <span aria-hidden="true" className="mr-3 inline-block h-px w-4 translate-y-[-0.2em] bg-[#C68A17]" />
                       {item.title}
                     </dt>
                     <dd className="mt-1 pl-7 text-sm leading-relaxed text-white/65">
@@ -312,12 +301,12 @@ export function HomeClient({
           <FadeIn className="lg:sticky lg:top-32">
             <figure>
               <div className="relative border border-white/15 p-2">
-                <div className="relative aspect-4/5">
+                <div className="relative aspect-6/5">
                   <Image
                     src={brandImages.aboutFeature}
                     alt="Inside the King's Jeweler showcase"
                     fill
-                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    sizes="(max-width: 1024px) 100vw, 40vw"
                     placeholder="blur"
                     blurDataURL={BLUR_DATA_URL}
                     className="object-cover"
@@ -325,7 +314,7 @@ export function HomeClient({
                 </div>
               </div>
               <figcaption className="mt-3 flex items-baseline justify-between gap-4 text-xs text-white/50">
-                <span>The case up front — stop by and try something on.</span>
+                <span>The case up front. Stop by and try something on.</span>
                 <a
                   href={siteConfig.socials.gmb}
                   target="_blank"
@@ -359,7 +348,7 @@ export function HomeClient({
               <p className="mt-4 max-w-xl text-lg leading-relaxed text-[#14141A]/80">
                 Bring in gold, silver, diamonds, or jewelry you no longer wear.
                 We weigh it right in front of you and make a fair offer on the
-                spot — sell outright or trade toward anything in the case.
+                spot. Sell outright or trade toward anything in the case.
               </p>
               <div className="mt-8 flex flex-wrap items-center gap-5">
                 <Link
@@ -377,7 +366,7 @@ export function HomeClient({
                 </Link>
               </div>
               <p className="mt-4 text-sm text-[#14141A]/70">
-                No appointment needed — walk in any day we're open.
+                No appointment needed. Walk in any day we’re open.
               </p>
             </FadeIn>
             <FadeIn>
@@ -385,7 +374,7 @@ export function HomeClient({
                 {[
                   {
                     title: "Watch the weigh-in",
-                    body: "Everything is weighed and evaluated in front of you — no back rooms, no games.",
+                    body: "Everything is weighed and evaluated in front of you. No back rooms, no games.",
                   },
                   {
                     title: "Fair, transparent offers",
@@ -393,7 +382,7 @@ export function HomeClient({
                   },
                   {
                     title: "Flexible ways to pay & trade",
-                    body: "Take cash, trade toward something new — and when you buy, we accept all major credit cards and offer no-credit-needed financing.",
+                    body: "Take cash or trade toward something new, and when you buy, we accept all major credit cards and offer no-credit-needed financing.",
                   },
                 ].map((item, i) => (
                   <li
@@ -471,7 +460,7 @@ export function HomeClient({
               Find us at <em className="text-[#A87310]">Buckland Hills</em>
             </>
           }
-          description="No appointment needed — stop in during store hours, seven days a week."
+          description="No appointment needed. Stop in during store hours, seven days a week."
         />
         <FadeIn>
           <div className="grid border-y border-[#14141A]/15 md:grid-cols-3 md:divide-x md:divide-[#14141A]/15">
@@ -530,7 +519,7 @@ export function HomeClient({
                 Get in Touch
               </h3>
               <p className="mt-3 text-sm leading-relaxed text-[#14141A]/75">
-                Questions about a repair, a stone, or a surprise proposal? We're
+                Questions about a repair, a stone, or a surprise proposal? We’re
                 happy to help.
               </p>
               <a
@@ -583,7 +572,7 @@ export function HomeClient({
           </div>
           <FadeIn className="mt-10">
             <p className="text-xs text-[#14141A]/50">
-              Pulled from our Google reviews —{" "}
+              Pulled from our Google reviews.{" "}
               <a
                 href={siteConfig.socials.gmb}
                 target="_blank"
@@ -603,10 +592,42 @@ export function HomeClient({
         <Section variant="light">
           <SectionHeader
             eyebrow="Questions"
-            title="Frequently asked questions"
+            title={
+              <>
+                Frequently asked <em className="text-[#A87310]">questions</em>
+              </>
+            }
           />
-          <div className="max-w-3xl">
+          <div className="grid items-start gap-x-16 gap-y-12 lg:grid-cols-[minmax(0,7fr)_minmax(0,4fr)]">
             <FAQAccordion items={faqs} variant="light" accentColor="#C68A17" />
+            <FadeIn className="lg:sticky lg:top-32">
+              <aside className="border-t-2 border-[#C68A17] pt-6">
+                <h3 className="font-heading text-xl font-bold">
+                  Prefer to just ask?
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-[#14141A]/65">
+                  The quickest answer is usually at the counter, no
+                  appointment needed, seven days a week. Or reach us directly:
+                </p>
+                <a
+                  href={`tel:${siteConfig.phone.replace(/\D/g, "")}`}
+                  className="mt-5 inline-block font-heading text-2xl font-bold tracking-tight text-[#14141A] transition-colors hover:text-[#A87310]"
+                >
+                  {siteConfig.phone}
+                </a>
+                <p className="mt-1 text-xs text-[#14141A]/55">
+                  {siteConfig.address.suite} · {siteConfig.address.city},{" "}
+                  {siteConfig.address.region}
+                </p>
+                <Link
+                  href="/contact"
+                  className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[#C68A17] hover:underline"
+                >
+                  Send us a message
+                  <ArrowRight size={16} />
+                </Link>
+              </aside>
+            </FadeIn>
           </div>
         </Section>
       )}

@@ -57,7 +57,7 @@ export default function WebsitePoliciesPage() {
             <div id="privacy-policy">
               <h2>Privacy Policy</h2>
               <p>
-                King's Jeweler (&ldquo;we,&rdquo; &ldquo;us,&rdquo; or
+                King’s Jeweler (&ldquo;we,&rdquo; &ldquo;us,&rdquo; or
                 &ldquo;our&rdquo;) respects your privacy and is committed to
                 protecting the personal information you share with us. This
                 Privacy Policy explains how we collect, use, and safeguard your
@@ -136,7 +136,7 @@ export default function WebsitePoliciesPage() {
             <div id="terms-of-service" className="pt-8 border-t border-white/10">
               <h2>Terms of Service</h2>
               <p>
-                By accessing and using the King's Jeweler website, you accept and
+                By accessing and using the King’s Jeweler website, you accept and
                 agree to be bound by these Terms of Service.
               </p>
 
@@ -150,8 +150,8 @@ export default function WebsitePoliciesPage() {
 
               <h3>Intellectual Property</h3>
               <p>
-                All content on this website — including text, graphics, logos,
-                images, videos, and software — is the property of King's Jeweler
+                All content on this website, including text, graphics, logos,
+                images, videos, and software, is the property of King’s Jeweler
                 and is protected by copyright and intellectual property laws.
                 You may not reproduce, distribute, or create derivative works
                 without our express written permission.
@@ -168,7 +168,7 @@ export default function WebsitePoliciesPage() {
 
               <h3>Limitation of Liability</h3>
               <p>
-                King's Jeweler shall not be liable for any indirect, incidental,
+                King’s Jeweler shall not be liable for any indirect, incidental,
                 special, or consequential damages arising from your use of this
                 website or our services.
               </p>

@@ -13,14 +13,14 @@ const baseMetadata: Metadata = {
   openGraph: {
     title: "Visit or Contact King's Jeweler",
     description:
-      "Stop by our store at Buckland Hills or send us a message — repairs, custom design, engagement rings, and gold buying.",
+      "Stop by our store at Buckland Hills or send us a message about repairs, custom design, engagement rings, and gold buying.",
     images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Visit or Contact King's Jeweler",
     description:
-      "Stop by our store at Buckland Hills or send us a message — repairs, custom design, engagement rings, and gold buying.",
+      "Stop by our store at Buckland Hills or send us a message about repairs, custom design, engagement rings, and gold buying.",
     images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
   },
 };

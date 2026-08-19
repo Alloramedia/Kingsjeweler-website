@@ -44,7 +44,7 @@ export default async function ServicesPage() {
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/75">
             From once-in-a-lifetime engagement rings to a five-minute watch
-            battery — everything is handled in person, in the store, by a
+            battery, everything is handled in person, in the store, by a
             jeweler who cares about getting it right.
           </p>
         </div>
@@ -104,7 +104,7 @@ export default async function ServicesPage() {
               Not sure what your piece needs?
             </h2>
             <p className="mt-2 max-w-xl text-sm leading-relaxed text-white/70">
-              Bring it in — we'll take a look, explain your options, and give
+              Bring it in and we’ll take a look, explain your options, and give
               you an honest quote on the spot. Find us inside{" "}
               {siteConfig.address.suite} in {siteConfig.address.city},{" "}
               {siteConfig.address.region}.

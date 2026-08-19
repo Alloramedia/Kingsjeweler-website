@@ -42,7 +42,7 @@ export function Footer() {
             <Link
               href="/"
               className="inline-flex items-center gap-3"
-              aria-label="King's Jeweler — home"
+              aria-label="King's Jeweler home"
             >
               <Image
                 src="/images/kings-jeweler-crest.webp"
@@ -53,17 +53,17 @@ export function Footer() {
               />
               <Image
                 src={logo}
-                alt="King's Jeweler — Fine Jewelry"
+                alt="King's Jeweler Fine Jewelry"
                 width={1600}
                 height={533}
                 className="h-14 w-auto"
               />
             </Link>
             <p className="mt-5 text-sm font-heading font-semibold uppercase tracking-[0.2em] text-[#F0A92D]">
-              Fine Jewelry. Family Service.
+              Fine Jewelry. Royal Treatment.
             </p>
             <p className="mt-3 max-w-sm text-sm leading-relaxed text-white/60">
-              A family jewelry store inside The Shoppes at Buckland Hills — engagement rings, custom design, watch batteries, expert repairs, and fair gold buying in Manchester, Connecticut.
+              A family jewelry store inside The Shoppes at Buckland Hills offering engagement rings, custom design, watch batteries, expert repairs, and fair gold buying in Manchester, Connecticut.
             </p>
 
             {/* Contact info */}
@@ -210,7 +210,7 @@ export function Footer() {
           <div className="flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-between">
             <div>
               <h3 className="font-heading text-lg font-bold text-white">Celebrating something special?</h3>
-              <p className="mt-1 text-sm text-white/55">Stop by the store or send us a message — we&apos;ll help you find or create the perfect piece.</p>
+              <p className="mt-1 text-sm text-white/55">Stop by the store or send us a message. We&apos;ll help you find or create the perfect piece.</p>
             </div>
             <Link
               href="/contact"
@@ -240,7 +240,7 @@ export function Footer() {
         >
           <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-xs text-white/55">
             <span className="inline-flex items-center gap-1.5 font-semibold uppercase tracking-[0.14em] text-[#F0A92D]">
-              We Buy Gold — Top Prices Paid
+              We Buy Gold · Top Prices Paid
             </span>
             <span className="hidden h-3 w-px bg-white/15 sm:block" />
             <span>All major credit cards accepted</span>
@@ -249,7 +249,7 @@ export function Footer() {
           </div>
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
           <p className="text-xs text-white/55">
-          &copy; {new Date().getFullYear()} King's Jeweler. All rights reserved.
+          &copy; {new Date().getFullYear()} King’s Jeweler. All rights reserved.
           </p>
           <div className="flex gap-6">
             <Link

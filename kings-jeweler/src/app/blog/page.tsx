@@ -9,12 +9,12 @@ import { CTASection } from "@/components/CTASection";
 import { EmblemWatermark } from "@/components/SectionTextures";
 
 export const metadata: Metadata = {
-  title: "Jewelry Blog — Buying Guides & Advice",
+  title: "Jewelry Blog: Buying Guides & Advice",
   description:
-    "Honest jewelry advice from King's Jeweler in Manchester, CT — engagement ring guides, repair and resizing costs, gold selling tips, and jewelry care.",
+    "Honest jewelry advice from King's Jeweler in Manchester, CT: engagement ring guides, repair and resizing costs, gold selling tips, and jewelry care.",
   alternates: { canonical: "https://www.kingsjewelerct.com/blog" },
   openGraph: {
-    title: "Jewelry Blog — Buying Guides & Expert Advice | King's Jeweler",
+    title: "Jewelry Blog: Buying Guides & Expert Advice | King's Jeweler",
     description:
       "Engagement ring guides, repair costs, gold selling tips, and jewelry care advice from a family jeweler in Manchester, Connecticut.",
     images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
@@ -59,7 +59,7 @@ export default async function BlogPage() {
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/75">
             Buying guides, real repair prices, and care tips from the family
             jewelers at The Shoppes at Buckland Hills in Manchester,
-            Connecticut — written the same way we explain things at the
+            Connecticut, written the same way we explain things at the
             counter.
           </p>
         </div>
@@ -71,7 +71,7 @@ export default async function BlogPage() {
           {featured && (
             <Link
               href={`/blog/${featured.slug}`}
-              className="group grid overflow-hidden rounded-2xl border border-[#14141A]/10 bg-[#FFFDF8] shadow-sm transition hover:shadow-lg lg:grid-cols-2"
+              className="group grid overflow-hidden border border-[#14141A]/15 bg-[#FFFDF8] transition-colors hover:border-[#C68A17]/50 lg:grid-cols-2"
             >
               <div className="relative aspect-[16/10] overflow-hidden lg:aspect-auto">
                 <Image
@@ -86,7 +86,7 @@ export default async function BlogPage() {
                 />
               </div>
               <div className="flex flex-col justify-center p-8 lg:p-12">
-                <span className="inline-flex w-fit rounded-full bg-[#C68A17] px-3 py-1 text-xs font-bold uppercase tracking-wide text-white">
+                <span className="inline-flex w-fit bg-[#C68A17] px-3 py-1 font-heading text-xs font-bold uppercase tracking-[0.14em] text-white">
                   {featured.category}
                 </span>
                 <h2 className="mt-5 text-3xl font-bold leading-tight">
@@ -118,7 +118,7 @@ export default async function BlogPage() {
               <Link
                 key={post.slug}
                 href={`/blog/${post.slug}`}
-                className="group flex flex-col overflow-hidden rounded-2xl border border-[#14141A]/10 bg-[#FFFDF8] shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+                className="group flex flex-col overflow-hidden border border-[#14141A]/15 bg-[#FFFDF8] transition-colors hover:border-[#C68A17]/50"
               >
                 <div className="relative aspect-video overflow-hidden">
                   <Image
@@ -130,7 +130,7 @@ export default async function BlogPage() {
                     blurDataURL={BLUR_DATA_URL}
                     className="object-cover transition duration-500 group-hover:scale-105"
                   />
-                  <span className="absolute left-4 top-4 rounded-full bg-[#C68A17] px-3 py-1 text-xs font-bold uppercase tracking-wide text-white shadow">
+                  <span className="absolute left-4 top-4 bg-[#C68A17] px-3 py-1 font-heading text-xs font-bold uppercase tracking-[0.14em] text-white">
                     {post.category}
                   </span>
                 </div>

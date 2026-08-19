@@ -24,7 +24,7 @@ export function MeetingClient() {
           </h1>
           <p className="mx-auto mt-4 max-w-xl text-lg text-[#14141A]/65">
             Give us a call or send an email and we&apos;ll help with whatever
-            you need — a repair, a custom design, or finding the right piece.
+            you need: a repair, a custom design, or finding the right piece.
             Or send your details through the contact form and we&apos;ll get
             right back to you.
           </p>
@@ -38,7 +38,7 @@ export function MeetingClient() {
         >
           <a
             href={`tel:${siteConfig.phone.replace(/\D/g, "")}`}
-            className="flex items-center gap-4 rounded-2xl border border-[#14141A]/10 bg-[#FFFDF8] p-6 shadow-sm transition-all hover:-translate-y-0.5 hover:border-[#C68A17]/40"
+            className="flex items-center gap-4 border border-[#14141A]/15 bg-[#FFFDF8] p-6 transition-colors hover:border-[#C68A17]/50"
           >
             <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#C68A17]/10 text-[#C68A17]">
               <Phone size={20} />
@@ -50,7 +50,7 @@ export function MeetingClient() {
           </a>
           <a
             href={`mailto:${siteConfig.email}`}
-            className="flex items-center gap-4 rounded-2xl border border-[#14141A]/10 bg-[#FFFDF8] p-6 shadow-sm transition-all hover:-translate-y-0.5 hover:border-[#C68A17]/40"
+            className="flex items-center gap-4 border border-[#14141A]/15 bg-[#FFFDF8] p-6 transition-colors hover:border-[#C68A17]/50"
           >
             <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#C68A17]/10 text-[#C68A17]">
               <Mail size={20} />
