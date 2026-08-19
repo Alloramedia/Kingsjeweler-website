@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { blogPosts } from "@/lib/content";
+import { servicePages } from "@/lib/services";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://www.kingsjewelerct.com";
@@ -32,5 +33,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticEntries, ...blogEntries];
+  const serviceEntries = servicePages.map((service) => ({
+    url: `${baseUrl}/services/${service.slug}`,
+    lastModified,
+    changeFrequency: "weekly" as const,
+    priority: 0.9,
+  }));
+
+  return [...staticEntries, ...serviceEntries, ...blogEntries];
 }

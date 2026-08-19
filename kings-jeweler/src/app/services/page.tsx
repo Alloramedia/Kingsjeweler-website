@@ -1,8 +1,10 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Check } from "lucide-react";
 import { getSiteContent, applySeo } from "@/lib/admin/schema";
-import { siteConfig } from "@/lib/constants";
+import { siteConfig, BLUR_DATA_URL } from "@/lib/constants";
+import { servicePages } from "@/lib/services";
 import { CTASection } from "@/components/CTASection";
 
 const baseMetadata: Metadata = {
@@ -49,7 +51,48 @@ export default async function ServicesPage() {
           </p>
         </div>
       </section>
-
+      {/* ── Service cards ────────────────────────────────── */}
+      <section className="bg-[#FFFDF8] py-16 text-[#14141A] md:py-20">
+        <div className="mx-auto max-w-6xl px-6 lg:px-8">
+          <h2 className="text-2xl tracking-tight text-[#A87310] md:text-3xl">
+            Explore our services
+          </h2>
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {servicePages.map((service) => (
+              <Link
+                key={service.slug}
+                href={`/services/${service.slug}`}
+                className="group block border border-[#14141A]/15 bg-[#FBF9F4] transition-colors hover:border-[#C68A17]"
+              >
+                <div className="relative aspect-4/3 overflow-hidden">
+                  <Image
+                    src={service.heroImage}
+                    alt={service.heroImageAlt}
+                    fill
+                    placeholder="blur"
+                    blurDataURL={BLUR_DATA_URL}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                  />
+                </div>
+                <div className="p-6">
+                  <p className="font-heading text-[0.65rem] font-bold uppercase tracking-[0.16em] text-[#A87310]">
+                    {service.eyebrow}
+                  </p>
+                  <h3 className="mt-2 text-lg font-bold">{service.label}</h3>
+                  <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-[#14141A]/60">
+                    {service.metaDescription}
+                  </p>
+                  <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-[#A87310]">
+                    Learn more
+                    <ArrowRight size={14} className="transition-transform group-hover:translate-x-0.5" />
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
       {/* ── Service groups ──────────────────────────────────── */}
       <section className="bg-[#FBF9F4] py-16 text-[#14141A] md:py-20">
         <div className="mx-auto max-w-5xl space-y-16 px-6 lg:px-8">

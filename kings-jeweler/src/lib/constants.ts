@@ -107,6 +107,17 @@ export const defaultImageAlt: Record<string, string> = {
   "/images/jewelry/kings-44.webp": "Cuban link rings, white-glove service",
   "/images/jewelry/kings-45.webp": "Gold pendants, presented at the counter",
   "/images/jewelry/kings-46.webp": "Diamond solitaire earrings",
+  "/images/jewelry/kings-48.webp": "Necklace showcases on the sales floor",
+  "/images/jewelry/kings-49.webp": "Bracelets in yellow, white, and rose gold",
+  "/images/jewelry/kings-50.webp": "Classic gold rope chains",
+  "/images/jewelry/kings-51.webp": "Men's gold rings in the case",
+  "/images/jewelry/kings-52.webp": "Halo engagement rings in yellow and white gold",
+  "/images/jewelry/kings-53.webp": "Gold cross pendants",
+  "/images/jewelry/kings-54.webp": "Gold sports charms and pendants",
+  "/images/jewelry/kings-55.webp": "Ladies' gold rings with opals and gemstones",
+  "/images/jewelry/kings-56.webp": "Diamond bands, tried on at the counter",
+  "/images/jewelry/kings-57.webp": "A pair of diamond studs, presented",
+  "/images/jewelry/kings-58.webp": "The watch counter at King's Jeweler",
 };
 
 /* ------------------------------------------------------------------ */
@@ -139,7 +150,18 @@ export interface NavLink {
 }
 
 export const navLinks: NavLink[] = [
-  { label: "Services", href: "/services" },
+  {
+    label: "Services",
+    href: "/services",
+    children: [
+      { label: "Engagement Rings", href: "/services/engagement-rings" },
+      { label: "Custom Jewelry Design", href: "/services/custom-jewelry-design" },
+      { label: "Jewelry Repair", href: "/services/jewelry-repair" },
+      { label: "Watch Repair & Batteries", href: "/services/watch-repair-batteries" },
+      { label: "Jewelry Appraisals", href: "/services/jewelry-appraisals" },
+      { label: "Gold Chains & Jewelry", href: "/services/gold-chains-jewelry" },
+    ],
+  },
   { label: "We Buy Gold", href: "/sell-gold" },
   { label: "Gallery", href: "/gallery" },
   { label: "Blog", href: "/blog" },
@@ -148,10 +170,12 @@ export const navLinks: NavLink[] = [
 
 export const footerLinks = {
   services: [
-    { label: "Engagement Rings", href: "/services" },
-    { label: "Custom Jewelry Design", href: "/services" },
-    { label: "Jewelry Repair", href: "/services" },
-    { label: "Watch Repair & Batteries", href: "/services" },
+    { label: "Engagement Rings", href: "/services/engagement-rings" },
+    { label: "Custom Jewelry Design", href: "/services/custom-jewelry-design" },
+    { label: "Jewelry Repair", href: "/services/jewelry-repair" },
+    { label: "Watch Repair & Batteries", href: "/services/watch-repair-batteries" },
+    { label: "Jewelry Appraisals", href: "/services/jewelry-appraisals" },
+    { label: "Gold Chains & Jewelry", href: "/services/gold-chains-jewelry" },
     { label: "We Buy Gold", href: "/sell-gold" },
   ],
   company: [

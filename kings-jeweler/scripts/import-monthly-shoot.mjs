@@ -4,7 +4,7 @@ import path from "node:path";
 import { stat } from "node:fs/promises";
 import sharp from "sharp";
 
-const SRC_DIR = path.resolve("..");
+const SRC_DIR = path.resolve("../brand/photos/monthly-shoot-2025-08");
 const OUT_DIR = path.resolve("public/images/jewelry");
 const MAX = 1600;
 const QUALITY = 80;
@@ -18,6 +18,9 @@ const PICKS = [
   [41, 35], [55, 37], [24, 38],
   [61, 40], [73, 42],
   [80, 44], [79, 45], [82, 46],
+  // Round 2: distinct subjects for service pages + gallery variety
+  [12, 48], [17, 49], [31, 50], [39, 51], [46, 52], [56, 53],
+  [58, 54], [60, 55], [81, 56], [83, 57], [85, 58],
 ];
 
 let out = 0;

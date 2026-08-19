@@ -222,14 +222,6 @@ export function Footer() {
           </div>
         </motion.div>
 
-        {/* Oversized sign-off wordmark */}
-        <div className="mt-14 overflow-hidden" aria-hidden="true">
-          <p className="select-none whitespace-nowrap font-heading text-[clamp(3rem,8.5vw,6.5rem)] font-bold leading-none tracking-tight text-white/[0.07]">
-            King&rsquo;s Jeweler{" "}
-            <em className="font-medium italic text-[#C68A17]/30">est. {siteConfig.foundingDate}</em>
-          </p>
-        </div>
-
         {/* Bottom bar */}
         <motion.div
           initial={{ opacity: 0 }}
