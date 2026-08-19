@@ -625,7 +625,7 @@ function MenuEditor({ data }: { data: MenuSection[] }) {
 }
 
 const emptyPost = (): BlogPost => ({
-  slug: "", title: "", excerpt: "", category: "Stories", image: "/images/jewelry/kings-02.webp",
+  slug: "", title: "", excerpt: "", category: "Stories", image: "/images/jewelry/kings-20.webp",
   author: "King's Jeweler", date: new Date().toISOString().slice(0, 10), readTime: "4 min read", body: [],
 });
 

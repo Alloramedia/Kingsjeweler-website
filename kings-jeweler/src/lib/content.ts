@@ -30,7 +30,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "Ring resizing typically costs $30–$150 depending on the metal, style, and how many sizes you move. A Manchester, CT jeweler breaks down real prices, timelines, and when a ring can't be resized.",
     category: "Jewelry Repair",
-    image: "/images/jewelry/kings-03.webp",
+    image: "/images/jewelry/kings-33.webp",
     author: AUTHOR,
     date: "2026-08-12",
     readTime: "8 min read",
@@ -118,7 +118,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "Everything first-time engagement ring buyers need: how much to spend, the 4Cs in plain English, choosing a setting and metal, finding her ring size secretly, and mistakes to avoid.",
     category: "Engagement Rings",
-    image: "/images/jewelry/kings-06.webp",
+    image: "/images/jewelry/kings-20.webp",
     author: AUTHOR,
     date: "2026-08-05",
     readTime: "11 min read",
@@ -212,7 +212,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "Lab-grown diamonds cost 50–70% less than natural, but are they worth it? A jeweler compares price, resale value, durability, and how to tell them apart before you buy.",
     category: "Diamonds",
-    image: "/images/jewelry/kings-09.webp",
+    image: "/images/jewelry/kings-23.webp",
     author: AUTHOR,
     date: "2026-07-29",
     readTime: "9 min read",
@@ -298,7 +298,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "Selling old gold? Learn how gold buyers calculate offers, what your karat stamps mean, current payout expectations, and why a local jeweler usually beats mail-in buyers and pawn shops.",
     category: "Gold & Appraisals",
-    image: "/images/jewelry/kings-01.webp",
+    image: "/images/jewelry/kings-29.webp",
     author: AUTHOR,
     date: "2026-07-22",
     readTime: "9 min read",
@@ -385,7 +385,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "Watch battery replacement costs $10–$45 at a jeweler and takes about five minutes. Learn what affects the price, water-resistance resealing, and when a dead watch isn't the battery.",
     category: "Watches",
-    image: "/images/jewelry/kings-02.webp",
+    image: "/images/jewelry/kings-09.webp",
     author: AUTHOR,
     date: "2026-07-15",
     readTime: "7 min read",
@@ -470,7 +470,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "A jewelry appraisal costs $50–$150 per piece and is essential for insurance, estates, and divorce settlements. Learn what appraisers check, appraisal types, and how often to update yours.",
     category: "Gold & Appraisals",
-    image: "/images/jewelry/kings-07.webp",
+    image: "/images/jewelry/kings-22.webp",
     author: AUTHOR,
     date: "2026-07-08",
     readTime: "8 min read",
@@ -556,7 +556,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "Clean gold jewelry safely with warm water, dish soap, and a soft brush, and skip toothpaste, bleach, and boiling. A jeweler explains at-home care, stone-by-stone rules, and when to get professional cleaning.",
     category: "Jewelry Care",
-    image: "/images/jewelry/kings-04.webp",
+    image: "/images/jewelry/kings-27.webp",
     author: AUTHOR,
     date: "2026-06-24",
     readTime: "7 min read",
@@ -636,7 +636,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "Custom jewelry is more accessible than most people think. A jeweler walks through the design process step by step: consultations, CAD previews, pricing, timelines, and redesigning heirloom stones.",
     category: "Custom Design",
-    image: "/images/jewelry/kings-05.webp",
+    image: "/images/jewelry/kings-38.webp",
     author: AUTHOR,
     date: "2026-06-10",
     readTime: "9 min read",
@@ -721,7 +721,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "A jeweler's complete wedding band guide: comparing gold, platinum, and alternative metals, choosing comfort-fit widths, matching (or contrasting) your engagement ring, and when to buy.",
     category: "Wedding Bands",
-    image: "/images/jewelry/kings-10.webp",
+    image: "/images/jewelry/kings-24.webp",
     author: AUTHOR,
     date: "2026-05-27",
     readTime: "8 min read",
@@ -801,7 +801,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "A spinning stone, a snagging prong, a stiff clasp: jewelers explain 7 warning signs that a ring, chain, or bracelet needs repair now, and what each fix typically costs.",
     category: "Jewelry Repair",
-    image: "/images/jewelry/kings-11.webp",
+    image: "/images/jewelry/kings-30.webp",
     author: AUTHOR,
     date: "2026-05-13",
     readTime: "8 min read",

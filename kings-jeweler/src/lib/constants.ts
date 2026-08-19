@@ -38,28 +38,34 @@ export const siteConfig = {
 /*  Real store photos live in /public/images/jewelry/                  */
 /* ------------------------------------------------------------------ */
 export const brandImages = {
-  heroHome: "/images/jewelry/kings-01.webp", // gold chains tray
-  heroCatering: "/images/jewelry/kings-02.webp", // gold watch bracelets
-  heroEvents: "/images/jewelry/kings-06.webp", // engagement ring in store
-  menuFeature: "/images/jewelry/kings-09.webp", // diamond-set watches
-  aboutFeature: "/images/jewelry/kings-07.webp", // storefront at Buckland Hills
-  owner: "/images/jewelry/kings-06.webp",
+  heroHome: "/images/jewelry/kings-28.webp", // diamond Cuban chain on bust
+  heroCatering: "/images/jewelry/kings-16.webp", // interior, crest wall
+  heroEvents: "/images/jewelry/kings-12.webp", // storefront in the mall
+  menuFeature: "/images/jewelry/kings-19.webp", // center showcase
+  aboutFeature: "/images/jewelry/kings-13.webp", // storefront, wide
+  owner: "/images/jewelry/kings-14.webp", // sign over the entrance
   // Rotating hero/banner photos — used by the HeroSlideshow background.
   heroSlides: [
-    "/images/jewelry/kings-01.webp",
-    "/images/jewelry/kings-02.webp",
-    "/images/jewelry/kings-08.webp",
-    "/images/jewelry/kings-10.webp",
+    "/images/jewelry/kings-28.webp",
+    "/images/jewelry/kings-20.webp",
+    "/images/jewelry/kings-40.webp",
+    "/images/jewelry/kings-16.webp",
   ],
   // Curated set reused across home offerings and feature cards.
   cards: [
-    "/images/jewelry/kings-03.webp",
-    "/images/jewelry/kings-04.webp",
-    "/images/jewelry/kings-05.webp",
-    "/images/jewelry/kings-09.webp",
-    "/images/jewelry/kings-10.webp",
-    "/images/jewelry/kings-11.webp",
+    "/images/jewelry/kings-20.webp",
+    "/images/jewelry/kings-28.webp",
+    "/images/jewelry/kings-40.webp",
+    "/images/jewelry/kings-35.webp",
+    "/images/jewelry/kings-44.webp",
+    "/images/jewelry/kings-25.webp",
   ],
+} as const;
+
+/* Home hero background video (muted loop) with a poster fallback. */
+export const heroVideo = {
+  src: "/video/hero-home.mp4",
+  poster: "/video/hero-poster.jpg",
 } as const;
 
 /* ------------------------------------------------------------------ */
@@ -74,17 +80,45 @@ export const BLUR_DATA_URL =
 /*  the gallery grid. Editable from the admin dashboard.               */
 /* ------------------------------------------------------------------ */
 export const defaultImageAlt: Record<string, string> = {
-  "/images/jewelry/kings-01.webp": "Gold chains ready for pickup",
-  "/images/jewelry/kings-02.webp": "Gold bracelets in the case",
-  "/images/jewelry/kings-03.webp": "Cartier-style Love bracelets",
-  "/images/jewelry/kings-04.webp": "Gold coin bangles",
   "/images/jewelry/kings-05.webp": "Rolex Submariner on a customer's wrist",
-  "/images/jewelry/kings-06.webp": "A diamond engagement ring, freshly set",
-  "/images/jewelry/kings-07.webp": "Our storefront at The Shoppes at Buckland Hills",
-  "/images/jewelry/kings-08.webp": "Chain bracelets in for repair",
   "/images/jewelry/kings-09.webp": "A luxury chronograph in for service",
-  "/images/jewelry/kings-10.webp": "Gold Cuban link chains",
   "/images/jewelry/kings-11.webp": "A Rolex Datejust, boxed and ready",
+  "/images/jewelry/kings-12.webp": "Our storefront at The Shoppes at Buckland Hills",
+  "/images/jewelry/kings-13.webp": "King's Jeweler, inside The Shoppes at Buckland Hills",
+  "/images/jewelry/kings-14.webp": "The King's Jeweler sign over our entrance",
+  "/images/jewelry/kings-15.webp": "Our storefront from the mall concourse",
+  "/images/jewelry/kings-16.webp": "Inside the store: showcases and the crest wall",
+  "/images/jewelry/kings-17.webp": "The showroom floor at King's Jeweler",
+  "/images/jewelry/kings-18.webp": "Showcases stocked and ready for the day",
+  "/images/jewelry/kings-19.webp": "The center showcase",
+  "/images/jewelry/kings-20.webp": "Engagement rings on display",
+  "/images/jewelry/kings-21.webp": "A bridal set, ready to try on",
+  "/images/jewelry/kings-22.webp": "A tray of diamond solitaires",
+  "/images/jewelry/kings-23.webp": "A solitaire under the case lights",
+  "/images/jewelry/kings-24.webp": "Bridal sets in yellow and white gold",
+  "/images/jewelry/kings-25.webp": "Iced-out Cuban link bracelets",
+  "/images/jewelry/kings-26.webp": "Diamond bracelets on display",
+  "/images/jewelry/kings-27.webp": "Gold tennis bracelets",
+  "/images/jewelry/kings-28.webp": "A diamond Cuban link chain",
+  "/images/jewelry/kings-29.webp": "Gold Cuban link chains",
+  "/images/jewelry/kings-30.webp": "Chains and bracelets in the case",
+  "/images/jewelry/kings-31.webp": "Bracelets stacked in the showcase",
+  "/images/jewelry/kings-32.webp": "Iced-out statement rings",
+  "/images/jewelry/kings-33.webp": "Gold rings in the case",
+  "/images/jewelry/kings-34.webp": "Diamond and gold statement rings",
+  "/images/jewelry/kings-35.webp": "Diamond stud earrings",
+  "/images/jewelry/kings-36.webp": "Diamond studs on display",
+  "/images/jewelry/kings-37.webp": "Gold letter and charm pendants",
+  "/images/jewelry/kings-38.webp": "A pave diamond lion pendant",
+  "/images/jewelry/kings-39.webp": "Gold and diamond pendants",
+  "/images/jewelry/kings-40.webp": "Diamond bangles on the counter",
+  "/images/jewelry/kings-41.webp": "Cartier glasses with custom lenses",
+  "/images/jewelry/kings-42.webp": "A tray of Cartier frames",
+  "/images/jewelry/kings-43.webp": "Cartier frames, boxed",
+  "/images/jewelry/kings-44.webp": "Cuban link rings, white-glove service",
+  "/images/jewelry/kings-45.webp": "Gold pendants, presented at the counter",
+  "/images/jewelry/kings-46.webp": "Diamond solitaire earrings",
+  "/images/jewelry/kings-47.webp": "Charms and pendants in the case",
 };
 
 /* ------------------------------------------------------------------ */

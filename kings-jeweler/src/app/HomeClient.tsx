@@ -1,15 +1,14 @@
 "use client";
 
-import { useSyncExternalStore } from "react";
+import { useEffect, useRef, useSyncExternalStore } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Star } from "lucide-react";
-import { siteConfig, BLUR_DATA_URL, defaultImageAlt } from "@/lib/constants";
+import { siteConfig, heroVideo, BLUR_DATA_URL, defaultImageAlt } from "@/lib/constants";
 import { Section, SectionHeader } from "@/components/Section";
 import { CTASection } from "@/components/CTASection";
 import { FAQAccordion } from "@/components/FAQAccordion";
-import { HeroSlideshow } from "@/components/HeroSlideshow";
 import { FadeIn } from "@/components/animations";
 import type {
   HeroOverride,
@@ -128,6 +127,13 @@ export function HomeClient({
     () => null
   );
 
+  const heroVideoRef = useRef<HTMLVideoElement | null>(null);
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      heroVideoRef.current?.pause();
+    }
+  }, []);
+
   const heroWords = heroTitle.trim().split(/\s+/);
   // Italicize the closing phrase on long titles, just the last word on short ones.
   const splitAt = heroWords.length > 6 ? -2 : -1;
@@ -138,11 +144,20 @@ export function HomeClient({
     <>
       {/* ── Hero ─────────────────────────────────────────────── */}
       <section className="relative flex min-h-[82vh] items-end overflow-hidden bg-[#14141A] text-white">
-        <HeroSlideshow
-          images={brandImages.heroSlides}
-          alt="Fine jewelry at King's Jeweler in Manchester, Connecticut"
-          className="opacity-45"
-        />
+        <div className="absolute inset-0" aria-hidden="true">
+          <video
+            ref={heroVideoRef}
+            className="h-full w-full object-cover opacity-45"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            poster={heroVideo.poster}
+          >
+            <source src={heroVideo.src} type="video/mp4" />
+          </video>
+        </div>
         <div className="absolute inset-0 bg-linear-to-b from-[#14141A]/55 via-transparent to-[#14141A]" />
 
         <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pt-44 pb-16 lg:px-8 lg:pb-20">
@@ -304,7 +319,7 @@ export function HomeClient({
                 <div className="relative aspect-6/5">
                   <Image
                     src={brandImages.aboutFeature}
-                    alt="Inside the King's Jeweler showcase"
+                    alt="King's Jeweler storefront at The Shoppes at Buckland Hills"
                     fill
                     sizes="(max-width: 1024px) 100vw, 40vw"
                     placeholder="blur"
@@ -314,7 +329,7 @@ export function HomeClient({
                 </div>
               </div>
               <figcaption className="mt-3 flex items-baseline justify-between gap-4 text-xs text-white/50">
-                <span>The case up front. Stop by and try something on.</span>
+                <span>Find us on the upper level. Stop by and try something on.</span>
                 <a
                   href={siteConfig.socials.gmb}
                   target="_blank"

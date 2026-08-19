@@ -58,7 +58,7 @@ export async function LocalBusinessSchema() {
     sameAs: socialProfiles(socials),
     image: [
       `${siteConfig.url}/og-image.jpg`,
-      `${siteConfig.url}/images/jewelry/kings-07.webp`,
+      `${siteConfig.url}/images/jewelry/kings-13.webp`,
     ],
     // TODO: verify against the Google Business Profile pin before launch.
     geo: {
