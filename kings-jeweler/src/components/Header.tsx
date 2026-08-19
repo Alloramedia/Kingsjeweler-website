@@ -127,24 +127,10 @@ export function Header() {
           </button>
         </div>
 
-        {/* Desktop layout — 3-column grid: left nav | centered logo | right nav + CTA */}
+        {/* Desktop layout — 3 zones: logo left | links centered | phone + CTA right */}
         <div className="hidden xl:grid h-24 items-center" style={{ gridTemplateColumns: "1fr auto 1fr" }}>
-          {/* Left: primary nav links */}
-          <div className="flex items-center gap-8">
-            {navLinks.slice(0, 3).map((link) => (
-              <NavItem
-                key={link.href}
-                link={link}
-                openDropdown={openDropdown}
-                onEnter={handleDropdownEnter}
-                onLeave={handleDropdownLeave}
-                pathname={pathname}
-              />
-            ))}
-          </div>
-
-          {/* Center: Crest + wordmark lockup — centered in the navbar */}
-          <Link href="/" className="flex items-center gap-3 justify-self-center px-4" aria-label="King's Jeweler home">
+          {/* Left: Crest + wordmark lockup */}
+          <Link href="/" className="flex shrink-0 items-center gap-3 justify-self-start" aria-label="King's Jeweler home">
             <Image
               src="/images/kings-jeweler-crest.webp"
               alt=""
@@ -163,9 +149,9 @@ export function Header() {
             />
           </Link>
 
-          {/* Right: nav links + CTA */}
-          <div className="flex items-center gap-8 justify-self-end">
-            {navLinks.slice(3).map((link) => (
+          {/* Center: nav links */}
+          <div className="flex items-center gap-8 px-8">
+            {navLinks.map((link) => (
               <NavItem
                 key={link.href}
                 link={link}
@@ -175,7 +161,10 @@ export function Header() {
                 pathname={pathname}
               />
             ))}
-            <span className="h-5 w-px bg-white/15" aria-hidden="true" />
+          </div>
+
+          {/* Right: phone + CTA */}
+          <div className="flex items-center gap-6 justify-self-end">
             <a
               href={`tel:${contact.phone.replace(/\D/g, "")}`}
               className="text-sm font-medium text-white/70 tabular-nums whitespace-nowrap transition-colors hover:text-[#F0A92D]"

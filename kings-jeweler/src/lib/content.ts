@@ -470,7 +470,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "A jewelry appraisal costs $50–$150 per piece and is essential for insurance, estates, and divorce settlements. Learn what appraisers check, appraisal types, and how often to update yours.",
     category: "Gold & Appraisals",
-    image: "/images/jewelry/kings-22.webp",
+    image: "/images/jewelry/kings-42.webp",
     author: AUTHOR,
     date: "2026-07-08",
     readTime: "8 min read",
@@ -801,7 +801,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "A spinning stone, a snagging prong, a stiff clasp: jewelers explain 7 warning signs that a ring, chain, or bracelet needs repair now, and what each fix typically costs.",
     category: "Jewelry Repair",
-    image: "/images/jewelry/kings-30.webp",
+    image: "/images/jewelry/kings-44.webp",
     author: AUTHOR,
     date: "2026-05-13",
     readTime: "8 min read",
