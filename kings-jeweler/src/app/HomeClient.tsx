@@ -155,7 +155,8 @@ export function HomeClient({
             preload="metadata"
             poster={heroVideo.poster}
           >
-            <source src={heroVideo.src} type="video/mp4" />
+            <source src={heroVideo.src} media="(min-width: 768px)" type="video/mp4" />
+            <source src={heroVideo.mobileSrc} type="video/mp4" />
           </video>
         </div>
         <div className="absolute inset-0 bg-linear-to-b from-[#14141A]/55 via-transparent to-[#14141A]" />
@@ -255,6 +256,26 @@ export function HomeClient({
                 See the full list of services
                 <ArrowRight size={16} />
               </Link>
+            </FadeIn>
+            <FadeIn className="mt-10">
+              <figure>
+                <div className="border border-[#14141A]/15 p-2">
+                  <div className="relative aspect-4/5">
+                    <Image
+                      src="/images/jewelry/kings-19.webp"
+                      alt="The center showcase at King's Jeweler"
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 35vw"
+                      placeholder="blur"
+                      blurDataURL={BLUR_DATA_URL}
+                      className="object-cover"
+                    />
+                  </div>
+                </div>
+                <figcaption className="mt-3 text-xs text-[#14141A]/50">
+                  The center showcase, restocked every morning.
+                </figcaption>
+              </figure>
             </FadeIn>
           </div>
           <FadeIn>
@@ -416,6 +437,19 @@ export function HomeClient({
                   </li>
                 ))}
               </ol>
+              <div className="mt-8 border border-[#14141A]/25 p-2">
+                <div className="relative aspect-21/9">
+                  <Image
+                    src="/images/jewelry/kings-29.webp"
+                    alt="Gold Cuban link chains at King's Jeweler"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 45vw"
+                    placeholder="blur"
+                    blurDataURL={BLUR_DATA_URL}
+                    className="object-cover"
+                  />
+                </div>
+              </div>
             </FadeIn>
           </div>
         </div>
@@ -477,6 +511,23 @@ export function HomeClient({
           }
           description="No appointment needed. Stop in during store hours, seven days a week."
         />
+        <FadeIn>
+          <figure className="mb-10">
+            <div className="border border-[#14141A]/15 p-2">
+              <div className="relative aspect-21/9 md:aspect-3/1">
+                <Image
+                  src="/images/jewelry/kings-18.webp"
+                  alt="Showcases stocked and ready for the day at King's Jeweler"
+                  fill
+                  sizes="(max-width: 1280px) 100vw, 1200px"
+                  placeholder="blur"
+                  blurDataURL={BLUR_DATA_URL}
+                  className="object-cover"
+                />
+              </div>
+            </div>
+          </figure>
+        </FadeIn>
         <FadeIn>
           <div className="grid border-y border-[#14141A]/15 md:grid-cols-3 md:divide-x md:divide-[#14141A]/15">
             <div className="border-b border-[#14141A]/15 py-7 md:border-b-0 md:pr-8">
@@ -562,43 +613,69 @@ export function HomeClient({
       {/* ── Testimonials ─────────────────────────────────────── */}
       {testimonials.length > 0 && (
         <Section variant="dark">
-          <SectionHeader
-            eyebrow="In Their Words"
-            title={
-              <>
-                What customers <em className="text-[#A87310]">tell us</em>
-              </>
-            }
-          />
-          <div className="grid gap-x-12 gap-y-10 md:grid-cols-3">
-            {testimonials.slice(0, 3).map((t) => (
-              <FadeIn key={t.author}>
-                <figure className="flex h-full flex-col border-l-2 border-[#C68A17]/50 pl-6">
-                  <blockquote className="flex-1 font-heading text-lg leading-relaxed text-[#14141A]/85">
-                    &ldquo;{t.body}&rdquo;
-                  </blockquote>
-                  <figcaption className="mt-5 text-sm">
-                    <span className="font-bold">{t.author}</span>
-                    <span className="text-[#14141A]/55"> · {t.role}</span>
+          <div className="grid items-start gap-x-16 gap-y-10 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)]">
+            <div>
+              <SectionHeader
+                eyebrow="In Their Words"
+                title={
+                  <>
+                    What customers <em className="text-[#A87310]">tell us</em>
+                  </>
+                }
+              />
+              <FadeIn>
+                <figure>
+                  <div className="border border-[#14141A]/15 p-2">
+                    <div className="relative aspect-4/5">
+                      <Image
+                        src="/images/jewelry/kings-56.webp"
+                        alt="Diamond bands, tried on at the counter"
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 30vw"
+                        placeholder="blur"
+                        blurDataURL={BLUR_DATA_URL}
+                        className="object-cover"
+                      />
+                    </div>
+                  </div>
+                  <figcaption className="mt-3 text-xs text-[#14141A]/50">
+                    Trying it on is always free.
                   </figcaption>
                 </figure>
               </FadeIn>
-            ))}
+            </div>
+            <div>
+              <div className="divide-y divide-[#14141A]/10">
+                {testimonials.slice(0, 3).map((t) => (
+                  <FadeIn key={t.author}>
+                    <figure className="border-l-2 border-[#C68A17]/50 py-6 pl-6 first:pt-0">
+                      <blockquote className="font-heading text-lg leading-relaxed text-[#14141A]/85">
+                        &ldquo;{t.body}&rdquo;
+                      </blockquote>
+                      <figcaption className="mt-4 text-sm">
+                        <span className="font-bold">{t.author}</span>
+                        <span className="text-[#14141A]/55"> · {t.role}</span>
+                      </figcaption>
+                    </figure>
+                  </FadeIn>
+                ))}
+              </div>
+              <FadeIn className="mt-8">
+                <p className="text-xs text-[#14141A]/50">
+                  Pulled from our Google reviews.{" "}
+                  <a
+                    href={siteConfig.socials.gmb}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline underline-offset-2 hover:text-[#14141A]"
+                  >
+                    read the rest here
+                  </a>
+                  .
+                </p>
+              </FadeIn>
+            </div>
           </div>
-          <FadeIn className="mt-10">
-            <p className="text-xs text-[#14141A]/50">
-              Pulled from our Google reviews.{" "}
-              <a
-                href={siteConfig.socials.gmb}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline underline-offset-2 hover:text-[#14141A]"
-              >
-                read the rest here
-              </a>
-              .
-            </p>
-          </FadeIn>
         </Section>
       )}
 
@@ -617,6 +694,19 @@ export function HomeClient({
             <FAQAccordion items={faqs} variant="light" accentColor="#C68A17" />
             <FadeIn className="lg:sticky lg:top-32">
               <aside className="border-t-2 border-[#C68A17] pt-6">
+                <div className="mb-6 border border-[#14141A]/15 p-2">
+                  <div className="relative aspect-3/2">
+                    <Image
+                      src="/images/jewelry/kings-58.webp"
+                      alt="The watch counter at King's Jeweler"
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 30vw"
+                      placeholder="blur"
+                      blurDataURL={BLUR_DATA_URL}
+                      className="object-cover"
+                    />
+                  </div>
+                </div>
                 <h3 className="font-heading text-xl font-bold">
                   Prefer to just ask?
                 </h3>

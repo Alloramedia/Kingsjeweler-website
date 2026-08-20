@@ -65,6 +65,7 @@ export const brandImages = {
 /* Home hero background video (muted loop) with a poster fallback. */
 export const heroVideo = {
   src: "/video/hero-home.mp4",
+  mobileSrc: "/video/hero-home-mobile.mp4", // portrait cut served below md
   poster: "/video/hero-poster.jpg",
 } as const;
 
