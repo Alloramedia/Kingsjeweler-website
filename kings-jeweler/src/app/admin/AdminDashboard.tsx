@@ -441,7 +441,7 @@ function SocialsEditor({ data }: { data: SocialLinks }) {
       <DraftBanner available={draftAvailable} onRestore={restoreDraft} onDiscard={discardDraft} />
       <p className="text-sm text-slate-500">Paste the full web address of each page (starts with https://). Leave blank to hide one.</p>
       {rows.map((r) => (
-        <Field key={r.key} label={r.label} value={d[r.key]} onChange={(v) => setD({ ...d, [r.key]: v })} placeholder={`https://${r.key}.com/kingsjeweler`} max={300} />
+        <Field key={r.key} label={r.label} value={d[r.key]} onChange={(v) => setD({ ...d, [r.key]: v })} placeholder={`https://${r.key}.com/kingsjewelerct`} max={300} />
       ))}
       <SaveBar status={status} dirty={dirty} onSave={() => save()} viewUrl="/" />
     </div>

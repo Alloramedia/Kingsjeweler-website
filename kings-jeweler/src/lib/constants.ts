@@ -19,9 +19,9 @@ export const siteConfig = {
   serviceArea: "Greater Hartford, Connecticut",
   region: "CT",
   socials: {
-    facebook: "https://facebook.com/kingsjeweler",
-    instagram: "https://instagram.com/kingsjeweler",
-    tiktok: "https://www.tiktok.com/@kingsjeweler",
+    facebook: "https://www.facebook.com/kingsjewelerct",
+    instagram: "https://www.instagram.com/kingsjewelerct",
+    tiktok: "https://www.tiktok.com/@kingsjewelerct",
     // TODO: replace with the real Google Business Profile share link.
     gmb: "https://maps.google.com/?q=Kings+Jeweler+Buckland+Hills+Manchester+CT",
   },
