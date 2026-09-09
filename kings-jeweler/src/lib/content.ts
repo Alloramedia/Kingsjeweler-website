@@ -333,13 +333,13 @@ export const blogPosts: BlogPost[] = [
         heading: "Where to sell: comparing your options",
         paragraphs: [
           "Local independent jewelers generally pay the most, 70–90% of melt, because they refine in bulk and also resell better pieces. Pawn shops typically pay 40–60%. Mail-in TV buyers are consistently the worst, often 30–50%, and you've mailed away your leverage. Gold parties and traveling hotel buyers rely on sellers not knowing melt value.",
-          "Whoever you choose: get the weighing done in front of you, get offers itemized by karat, and never leave items \"for later evaluation\" without a detailed receipt.",
+          "Whoever you choose: ask how the offer relates to the day's gold price, get offers itemized by karat, and never leave items \"for later evaluation\" without a detailed receipt.",
         ],
       },
       {
         heading: "Selling gold in the Hartford area",
         paragraphs: [
-          "At King's Jeweler in The Shoppes at Buckland Hills, we test and weigh your gold right at the counter, explain the math, and make a same-day cash offer. No appointment needed, no obligation to sell. If a piece is worth more as jewelry than as metal, we'll say so.",
+          "At King's Jeweler in The Shoppes at Buckland Hills, we test and weigh your gold, explain the math, and make a same-day cash offer. No appointment needed, no obligation to sell. If a piece is worth more as jewelry than as metal, we'll say so.",
           "Gather your pieces and [stop in or contact us](/contact). If you're deciding between selling and insuring, read our guide to [jewelry appraisals](/blog/jewelry-appraisals-explained) first; some \"scrap\" turns out to be worth protecting.",
         ],
       },

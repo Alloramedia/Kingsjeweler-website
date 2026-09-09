@@ -236,7 +236,7 @@ export const defaultMenu: MenuSection[] = [
     group: "Buying & Appraisals",
     title: "Gold Buying & Appraisals",
     blurb:
-      "Fair, transparent offers. Sell outright or trade toward something new.",
+      "Fair, same-day offers. Sell outright or trade toward something new.",
     items: [
       { name: "Gold & silver buying", desc: "We buy gold, silver, and platinum in any condition: broken chains, old class rings, unmatched earrings." },
       { name: "Diamond buying", desc: "Honest evaluations and competitive offers on diamonds and estate jewelry." },
@@ -331,7 +331,7 @@ export const defaultFaqs: Faqs = {
     {
       question: "Do you buy gold and old jewelry?",
       answer:
-        "We do. Bring in gold, silver, platinum, or diamonds in any condition and we'll make a fair, transparent offer. Sell outright or trade the value toward something new.",
+        "We do. Bring in gold, silver, platinum, or diamonds in any condition and we'll make a fair, same-day offer. Sell outright or trade the value toward something new.",
     },
     {
       question: "How long do jewelry repairs take?",
@@ -392,7 +392,7 @@ export const seoDefaults: Seo = {
   sellGold: {
     title: "We Buy Gold in Manchester, CT",
     description:
-      "Sell gold, silver, diamonds, and estate jewelry at King's Jeweler in The Shoppes at Buckland Hills. We weigh everything in front of you and pay 70–90% of melt value. No appointment needed.",
+      "Sell gold, silver, diamonds, and estate jewelry at King's Jeweler in The Shoppes at Buckland Hills. Same-day offers based on the day's gold price, typically 70–90% of melt value. No appointment needed.",
   },
   gallery: {
     title: "Gallery: Custom Jewelry & Work From Our Showcase",

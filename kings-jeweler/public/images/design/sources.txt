@@ -1,0 +1,14 @@
+Style reference images for the /design builder.
+Files named {piece}-{style-slug}.webp are auto-detected (see src/app/design/page.tsx).
+
+Sources (Pexels License, free for commercial use, no attribution required):
+- ring-eternity-band.webp      https://www.pexels.com/photo/27687905/  (Anastasia Nagibina)
+- bracelet-rope-bracelet.webp  https://www.pexels.com/photo/12155925/  (Duygu Kamar)
+- bracelet-charm-bracelet.webp https://www.pexels.com/photo/38909356/  (Cesar O'Neill)
+- charm-photo-memorial.webp    https://www.pexels.com/photo/6275807/   (cottonbro studio)
+- charm-nameplate.webp         https://www.pexels.com/photo/11139363/  (moonlightshotz, cropped)
+
+All other builder styles use King's Jeweler inventory photos from
+/public/images/jewelry/ (mapped in src/app/design/page.tsx) or the built-in sketch.
+To replace any style visual, drop a square webp here with the matching filename
+(print the full list with: node scripts/generate-design-images.mjs --prompts).

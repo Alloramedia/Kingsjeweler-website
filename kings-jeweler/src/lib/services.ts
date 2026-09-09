@@ -67,7 +67,7 @@ export const servicePages: ServicePage[] = [
     h1: "The ring she says yes to,",
     h1Em: "found together",
     intro:
-      "This is the one purchase you want to get right. At King's Jeweler you sit down with a jeweler, not a commissioned salesperson, and compare real diamonds side by side under proper light until the choice is obvious. No pressure, no jargon, no games with the price tag.",
+      "This is the one purchase you want to get right. At King's Jeweler you sit down with a jeweler, not a commissioned salesperson, and compare real diamonds side by side under proper light until the choice is obvious. No pressure, no jargon.",
     heroImage: "/images/jewelry/kings-20.webp",
     heroImageAlt: "Engagement rings on display at King's Jeweler",
     schemaName: "Engagement Rings",
@@ -293,7 +293,7 @@ export const servicePages: ServicePage[] = [
     h1: "Broken today,",
     h1Em: "beautiful again",
     intro:
-      "A snapped chain, a ring that no longer fits, a stone that rattles when you tap it. Whatever happened, bring it in. We inspect it in front of you, explain exactly what it needs, and quote the repair on the spot. No mailing your jewelry to a stranger, no mystery pricing.",
+      "A snapped chain, a ring that no longer fits, a stone that rattles when you tap it. Whatever happened, bring it in. We inspect it, explain exactly what it needs, and quote the repair on the spot. No mailing your jewelry to a stranger, no mystery pricing.",
     heroImage: "/images/jewelry/kings-44.webp",
     heroImageAlt: "White-glove inspection of gold rings at King's Jeweler",
     schemaName: "Jewelry Repair",
@@ -510,7 +510,7 @@ export const servicePages: ServicePage[] = [
     h1: "Know exactly",
     h1Em: "what it's worth",
     intro:
-      "Whether you are insuring an engagement ring, settling an estate, or just curious about grandma's brooch, a proper appraisal turns guesswork into a number you can act on. We examine your piece in front of you and explain how we got to the value, in plain English.",
+      "Whether you are insuring an engagement ring, settling an estate, or just curious about grandma's brooch, a proper appraisal turns guesswork into a number you can act on. We examine your piece with proper instruments and explain how we got to the value, in plain English.",
     heroImage: "/images/jewelry/kings-42.webp",
     heroImageAlt: "White-glove presentation at King's Jeweler",
     schemaName: "Jewelry Appraisals",
@@ -540,7 +540,7 @@ export const servicePages: ServicePage[] = [
       {
         heading: "What happens during an appraisal",
         paragraphs: [
-          "We test the metal, weigh the piece, measure and grade the stones under magnification, and factor in craftsmanship, brand, and condition. You watch the whole process, and we explain each step as we go. No disappearing into a back room with your jewelry.",
+          "We test the metal, weigh the piece, measure and grade the stones under magnification, and factor in craftsmanship, brand, and condition. Then we walk you through how each factor shaped the final number, so nothing about the value is a mystery.",
           "You leave with documentation that states what the piece is, what it contains, and what it is worth for the purpose you need, whether that is an insurance schedule or an estate file.",
         ],
         image: "/images/jewelry/kings-29.webp",
@@ -578,7 +578,7 @@ export const servicePages: ServicePage[] = [
       {
         question: "Will you appraise jewelry I want to sell you?",
         answer:
-          "We keep those conversations separate and honest. If you want to sell, we make a transparent offer based on the same evaluation we show you. If you just want the number, that is fine too. There is never an obligation.",
+          "We keep those conversations separate and honest. If you want to sell, we make a fair offer based on the same evaluation we show you. If you just want the number, that is fine too. There is never an obligation.",
       },
       {
         question: "Can you appraise antique or estate jewelry?",
@@ -592,7 +592,7 @@ export const servicePages: ServicePage[] = [
     ],
     ctaHeadline: "Curious what it's worth?",
     ctaSubhead:
-      "Bring it in. We will evaluate it in front of you and give you a number you can trust, at The Shoppes at Buckland Hills.",
+      "Bring it in. We will evaluate it properly and give you a number you can trust, at The Shoppes at Buckland Hills.",
   },
 
   /* ── Gold Chains & Jewelry ────────────────────────────────────── */
@@ -643,7 +643,7 @@ export const servicePages: ServicePage[] = [
       {
         heading: "Solid gold, tested and guaranteed",
         paragraphs: [
-          "Every chain and pendant in our cases is real gold, stamped and verified. We will weigh any piece in front of you, explain karat and gram weight, and show you exactly what you are paying for. When you buy gold from a jeweler who also tests and buys gold every day, there is nowhere for nonsense to hide.",
+          "Every chain and pendant in our cases is real gold, stamped and verified. We will weigh any piece for you, explain karat and gram weight, and show you exactly what you are paying for. When you buy gold from a jeweler who also tests and buys gold every day, there is nowhere for nonsense to hide.",
           "Prefer it iced? Our diamond Cuban chains, pendants, and bracelets are set with genuine stones, not crystals, and priced well below the flagship-store equivalents.",
         ],
         image: "/images/jewelry/kings-50.webp",
@@ -672,7 +672,7 @@ export const servicePages: ServicePage[] = [
       {
         question: "Is your jewelry real gold?",
         answer:
-          "Yes. We sell solid 10k, 14k, and 18k gold, stamped and tested. We do not sell plated or filled pieces as anything other than what they are, and we will weigh and verify any piece in front of you.",
+          "Yes. We sell solid 10k, 14k, and 18k gold, stamped and tested. We do not sell plated or filled pieces as anything other than what they are, and we will gladly weigh and verify any piece for you.",
       },
       {
         question: "How much does a gold Cuban link chain cost?",

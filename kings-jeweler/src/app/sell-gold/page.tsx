@@ -11,21 +11,21 @@ import { EmblemWatermark } from "@/components/SectionTextures";
 const baseMetadata: Metadata = {
   title: "We Buy Gold in Manchester, CT",
   description:
-    "Sell gold, silver, diamonds, and estate jewelry at King's Jeweler in Manchester, CT. We weigh everything in front of you and pay 70–90% of melt value.",
+    "Sell gold, silver, diamonds, and estate jewelry at King's Jeweler in Manchester, CT. Same-day offers based on the day's gold price, typically 70–90% of melt value.",
   alternates: {
     canonical: "https://www.kingsjewelerct.com/sell-gold",
   },
   openGraph: {
     title: "We Buy Gold | King's Jeweler",
     description:
-      "Fair, transparent cash offers on gold, silver, and diamonds, weighed and evaluated right in front of you at our Manchester, CT store.",
+      "Fair, same-day cash offers on gold, silver, and diamonds from an experienced jeweler at our Manchester, CT store.",
     images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
     title: "We Buy Gold | King's Jeweler",
     description:
-      "Fair, transparent cash offers on gold, silver, and diamonds in Manchester, CT.",
+      "Fair, same-day cash offers on gold, silver, and diamonds in Manchester, CT.",
     images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
   },
 };
@@ -38,13 +38,13 @@ export async function generateMetadata(): Promise<Metadata> {
 const STEPS = [
   {
     icon: Search,
-    title: "We test & weigh it in front of you",
-    body: "Karat stamps checked, weight taken on a calibrated scale, right at the counter. No back room, no waiting.",
+    title: "Sit down with a jeweler",
+    body: "Karat stamps checked, unmarked pieces tested, weight taken on a calibrated scale, all by a jeweler who buys and sells gold every day.",
   },
   {
     icon: Scale,
     title: "We explain the math",
-    body: "We'll walk you through melt value and how we arrived at your offer, so you know exactly what you're being paid for.",
+    body: "We'll walk you through the day's gold price, your weight and karat, and how we arrived at your offer, so you know exactly what you're being paid for.",
   },
   {
     icon: Coins,
@@ -65,7 +65,7 @@ const WHAT_WE_BUY = [
 ];
 
 const COMPARISON = [
-  { buyer: "King's Jeweler", pays: "70–90% of melt value", note: "Weighed in front of you, same-day cash" },
+  { buyer: "King's Jeweler", pays: "70–90% of melt value", note: "Experienced buyer, same-day cash" },
   { buyer: "Pawn shops", pays: "40–60% of melt value", note: "Often structured as a loan, not a sale" },
   { buyer: "Mail-in TV buyers", pays: "30–50% of melt value", note: "You ship first, lose your leverage to negotiate" },
 ];
@@ -114,7 +114,7 @@ export default async function SellGoldPage() {
       />
       <ServiceSchema
         name="Gold Buying"
-        description="We buy gold, silver, platinum, and diamonds, weighed and evaluated in person with fair, transparent offers."
+        description="We buy gold, silver, platinum, and diamonds with fair, same-day offers based on current market prices."
       />
       <FAQSchema faqs={pageFaqs} />
 
@@ -130,8 +130,9 @@ export default async function SellGoldPage() {
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[#14141A]/80 md:text-xl">
             Bring in gold, silver, diamonds, or jewelry you no longer wear.
-            We weigh it right in front of you and make a fair, same-day
-            offer. Sell outright or trade toward anything in the case.
+            Sit down with an experienced jeweler and get a fair, same-day
+            offer based on the day&rsquo;s gold price. Sell outright or trade
+            toward anything in the case.
           </p>
           <div className="mt-10 flex flex-wrap items-center gap-5">
             <Link
@@ -156,7 +157,7 @@ export default async function SellGoldPage() {
               How It Works
             </p>
             <h2 className="mt-3 text-3xl tracking-tight md:text-4xl">
-              No games, no back rooms.
+              Simpler than you&apos;d think.
             </h2>
           </div>
           <div className="mt-12 grid gap-x-8 gap-y-10 md:grid-cols-3">
@@ -289,13 +290,13 @@ export default async function SellGoldPage() {
             {[
               {
                 icon: Scale,
-                title: "Watch the weigh-in",
-                body: "Everything is weighed and evaluated in front of you. No back rooms, no games.",
+                title: "Evaluated by a jeweler",
+                body: "Your pieces are tested and weighed by a jeweler who buys, sells, and builds gold jewelry every day, not a scrap desk.",
               },
               {
                 icon: BadgeCheck,
-                title: "Fair, transparent offers",
-                body: "Honest market-based pricing on gold, silver, diamonds, and estate jewelry.",
+                title: "Fair, honest offers",
+                body: "Market-based pricing on gold, silver, diamonds, and estate jewelry, and we'll tell you when a piece is worth more than melt.",
               },
               {
                 icon: CreditCard,

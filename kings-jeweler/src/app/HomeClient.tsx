@@ -50,7 +50,7 @@ const SERVICES = [
   },
   {
     title: "Gold Buying & Appraisals",
-    body: "Fair, transparent offers on gold, silver, and diamonds. Sell outright or trade toward something new. Appraisals available.",
+    body: "Fair, same-day offers on gold, silver, and diamonds. Sell outright or trade toward something new. Appraisals available.",
     note: "Walk-ins welcome",
   },
   {
@@ -383,8 +383,9 @@ export function HomeClient({
               </h2>
               <p className="mt-4 max-w-xl text-lg leading-relaxed text-[#14141A]/80">
                 Bring in gold, silver, diamonds, or jewelry you no longer wear.
-                We weigh it right in front of you and make a fair offer on the
-                spot. Sell outright or trade toward anything in the case.
+                Sit down with an experienced jeweler and get a fair offer based
+                on the day&rsquo;s gold price. Sell outright or trade toward anything
+                in the case.
               </p>
               <div className="mt-8 flex flex-wrap items-center gap-5">
                 <Link
@@ -409,12 +410,12 @@ export function HomeClient({
               <ol className="border-t border-[#14141A]/25">
                 {[
                   {
-                    title: "Watch the weigh-in",
-                    body: "Everything is weighed and evaluated in front of you. No back rooms, no games.",
+                    title: "Evaluated by a jeweler",
+                    body: "Your pieces are tested and weighed by a jeweler who buys, sells, and builds gold jewelry every day.",
                   },
                   {
-                    title: "Fair, transparent offers",
-                    body: "Honest market-based pricing on gold, silver, diamonds, and estate jewelry.",
+                    title: "Fair, honest offers",
+                    body: "Market-based pricing on gold, silver, diamonds, and estate jewelry, tied to the day's gold price.",
                   },
                   {
                     title: "Flexible ways to pay & trade",

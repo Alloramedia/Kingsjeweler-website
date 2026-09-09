@@ -163,6 +163,7 @@ export const navLinks: NavLink[] = [
       { label: "Gold Chains & Jewelry", href: "/services/gold-chains-jewelry" },
     ],
   },
+  { label: "Design Your Own", href: "/design" },
   { label: "We Buy Gold", href: "/sell-gold" },
   { label: "Gallery", href: "/gallery" },
   { label: "Blog", href: "/blog" },
@@ -171,6 +172,7 @@ export const navLinks: NavLink[] = [
 
 export const footerLinks = {
   services: [
+    { label: "Design Your Own Jewelry", href: "/design" },
     { label: "Engagement Rings", href: "/services/engagement-rings" },
     { label: "Custom Jewelry Design", href: "/services/custom-jewelry-design" },
     { label: "Jewelry Repair", href: "/services/jewelry-repair" },

@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages = [
     "",
     "/services",
+    "/design",
     "/sell-gold",
     "/gallery",
     "/about",
@@ -23,7 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${baseUrl}${path}`,
     lastModified,
     changeFrequency: (path === "/website-policies" ? "yearly" : "weekly") as "yearly" | "weekly",
-    priority: path === "" ? 1 : ["/services", "/sell-gold", "/gallery", "/blog"].includes(path) ? 0.9 : 0.8,
+    priority: path === "" ? 1 : ["/services", "/design", "/sell-gold", "/gallery", "/blog"].includes(path) ? 0.9 : 0.8,
   }));
 
   const blogEntries = blogPosts.map((post) => ({
