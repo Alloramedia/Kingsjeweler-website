@@ -380,7 +380,7 @@ export function DesignClient({ aiRenders = false }: { aiRenders?: boolean }) {
                 </>
               );
               return (
-                <li key={label} className="text-xs font-semibold uppercase tracking-[0.14em]">
+                <li key={label} className="font-label text-xs font-medium uppercase tracking-[0.18em]">
                   {reachable ? (
                     <button
                       type="button"
@@ -814,7 +814,7 @@ export function DesignClient({ aiRenders = false }: { aiRenders?: boolean }) {
                         className="absolute inset-0 h-full w-full object-cover"
                       />
                       {aiStale && (
-                        <span className="absolute inset-x-0 top-0 bg-[#14141A]/80 px-3 py-1.5 text-center text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-[#F0A92D]">
+                        <span className="absolute inset-x-0 top-0 bg-[#14141A]/80 px-3 py-1.5 text-center font-label text-[0.65rem] font-medium uppercase tracking-[0.16em] text-[#F0A92D]">
                           Selections changed — re-render to update
                         </span>
                       )}
@@ -840,7 +840,7 @@ export function DesignClient({ aiRenders = false }: { aiRenders?: boolean }) {
                       </span>
                     </div>
                   )}
-                  <span className="absolute bottom-2 right-2.5 text-[0.6rem] uppercase tracking-[0.14em] text-[#14141A]/35 mix-blend-difference">
+                  <span className="absolute bottom-2 right-2.5 font-label text-[0.6rem] uppercase tracking-[0.18em] text-[#14141A]/35 mix-blend-difference">
                     {aiImage && !aiLoading ? "AI studio preview" : "Live sketch"}
                   </span>
                 </div>

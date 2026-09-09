@@ -96,7 +96,7 @@ export function Header() {
           : "bg-[#14141A]/85 backdrop-blur-md"
       )}
     >
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-[1500px] px-4 sm:px-6 lg:px-8">
         {/* Mobile layout */}
         <div className="flex h-20 items-center justify-between xl:hidden">
           <Link href="/" className="flex shrink-0 items-center gap-2.5" aria-label="King's Jeweler home">
@@ -127,8 +127,9 @@ export function Header() {
           </button>
         </div>
 
-        {/* Desktop layout — 3 zones: logo left | links centered | phone + CTA right */}
-        <div className="hidden xl:grid h-24 items-center" style={{ gridTemplateColumns: "1fr auto 1fr" }}>
+        {/* Desktop layout — 3 zones: logo left | links centered | phone + CTA right.
+            auto/1fr/auto keeps side columns content-sized so they can never overlap the nav. */}
+        <div className="hidden xl:grid h-24 items-center grid-cols-[auto_1fr_auto]">
           {/* Left: Crest + wordmark lockup */}
           <Link href="/" className="flex shrink-0 items-center gap-3 justify-self-start" aria-label="King's Jeweler home">
             <Image
@@ -137,7 +138,7 @@ export function Header() {
               width={879}
               height={1224}
               priority
-              className="h-17 w-auto"
+              className="h-14 2xl:h-17 w-auto"
             />
             <Image
               src={logo}
@@ -145,12 +146,12 @@ export function Header() {
               width={1600}
               height={533}
               priority
-              className="h-12 w-auto"
+              className="h-10 2xl:h-12 w-auto"
             />
           </Link>
 
           {/* Center: nav links */}
-          <div className="flex items-center gap-8 px-8">
+          <div className="flex items-center justify-center gap-6 2xl:gap-9 px-6">
             {navLinks.map((link) => (
               <NavItem
                 key={link.href}
@@ -167,7 +168,7 @@ export function Header() {
           <div className="flex items-center gap-6 justify-self-end">
             <a
               href={`tel:${contact.phone.replace(/\D/g, "")}`}
-              className="text-sm font-medium text-white/70 tabular-nums whitespace-nowrap transition-colors hover:text-[#F0A92D]"
+              className="hidden 2xl:block text-sm font-medium text-white/70 tabular-nums whitespace-nowrap transition-colors hover:text-[#F0A92D]"
             >
               {contact.phone}
             </a>
@@ -233,7 +234,7 @@ export function Header() {
                             key={`header-${child.label}`}
                             href={child.href}
                             onClick={() => setMobileOpen(false)}
-                            className="mt-3 mb-1 px-3 font-heading text-[0.65rem] font-bold uppercase tracking-[0.16em] text-[#C68A17]"
+                            className="mt-3 mb-1 px-3 font-label text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-[#C68A17]"
                           >
                             {child.label}
                           </Link>
@@ -265,7 +266,7 @@ export function Header() {
             <Link
               href="/sell-gold"
               onClick={() => setMobileOpen(false)}
-              className="mt-6 flex items-center justify-center rounded-xs border border-[#C68A17]/50 bg-[#C68A17]/10 px-6 py-3.5 text-center font-heading text-sm font-bold uppercase tracking-[0.14em] text-[#F0A92D]"
+              className="mt-6 flex items-center justify-center rounded-xs border border-[#C68A17]/50 bg-[#C68A17]/10 px-6 py-3.5 text-center font-label text-sm font-medium uppercase tracking-[0.18em] text-[#F0A92D]"
             >
               We Buy Gold · Top Prices Paid
             </Link>
@@ -330,7 +331,7 @@ function NavItem({
       <Link
         href={link.href}
         className={cn(
-          "nav-link-animated font-heading text-[0.8rem] font-semibold uppercase tracking-[0.16em] whitespace-nowrap transition-colors hover:text-[#F0A92D]",
+          "nav-link-animated font-label text-[0.76rem] font-medium uppercase tracking-[0.24em] whitespace-nowrap transition-colors hover:text-[#F0A92D]",
           isActive ? "text-[#F0A92D]" : "text-white/80"
         )}
         data-active={isActive}
@@ -370,7 +371,7 @@ function NavItem({
         <Link
           href={link.href}
           className={cn(
-            "nav-link-animated font-heading text-[0.8rem] font-semibold uppercase tracking-[0.16em] whitespace-nowrap transition-colors hover:text-[#F0A92D]",
+            "nav-link-animated font-label text-[0.76rem] font-medium uppercase tracking-[0.24em] whitespace-nowrap transition-colors hover:text-[#F0A92D]",
             isActive ? "text-[#F0A92D]" : "text-white/80"
           )}
           data-active={isActive}
@@ -417,7 +418,7 @@ function NavItem({
                   <Link
                     href={child.href}
                     role="menuitem"
-                    className="font-heading text-[0.65rem] font-bold uppercase tracking-[0.16em] text-[#C68A17] transition-colors hover:text-[#F0A92D]"
+                    className="font-label text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-[#C68A17] transition-colors hover:text-[#F0A92D]"
                   >
                     {child.label}
                   </Link>

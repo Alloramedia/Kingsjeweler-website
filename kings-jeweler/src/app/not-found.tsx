@@ -34,7 +34,7 @@ export default function NotFound() {
           </Link>
         </div>
         <div className="mt-12 border-t border-[#14141A]/10 pt-8">
-          <p className="mb-4 text-sm font-medium uppercase tracking-widest text-[#14141A]/40">
+          <p className="mb-4 font-label text-sm font-medium uppercase tracking-[0.26em] text-[#14141A]/40">
             Popular pages
           </p>
           <div className="flex flex-wrap justify-center gap-3">

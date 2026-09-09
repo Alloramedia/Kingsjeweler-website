@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter, Cinzel } from "next/font/google";
+import { Playfair_Display, Inter, Jost } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { LocalBusinessSchema, OrganizationSchema } from "@/components/StructuredData";
@@ -17,23 +17,24 @@ import "./globals.css";
 // Classical high-contrast serif — pairs with the Trajan-style logo wordmark.
 const playfair = Playfair_Display({
   style: ["normal", "italic"],
-  variable: "--font-heading",
+  variable: "--font-playfair",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
 });
 
 const inter = Inter({
-  variable: "--font-body",
+  variable: "--font-inter",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
 });
 
-// Elegant engraved-style display face for hero/accent headlines via the
-// `font-display` utility — not body or default headings.
-const cinzel = Cinzel({
-  variable: "--font-display",
+// Refined geometric sans for the label layer — nav links, eyebrows, tags,
+// buttons — via the `font-label` utility. Tracked caps read "luxury" where
+// uppercased serifs read heavy.
+const jost = Jost({
+  variable: "--font-jost",
   subsets: ["latin"],
-  weight: ["400", "600"],
+  weight: ["400", "500", "600"],
 });
 
 export const metadata: Metadata = {
@@ -81,7 +82,7 @@ export default async function RootLayout({
   return (
     <html lang="en" data-scroll-behavior="smooth">
       <body
-        className={`${playfair.variable} ${inter.variable} ${cinzel.variable} antialiased`}
+        className={`${playfair.variable} ${inter.variable} ${jost.variable} antialiased`}
         // Suppress body-level hydration warnings caused by browser extensions
         // injecting attributes (e.g. Grammarly, password managers, dark-mode).
         suppressHydrationWarning

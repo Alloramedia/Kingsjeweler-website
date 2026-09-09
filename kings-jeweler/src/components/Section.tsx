@@ -56,7 +56,7 @@ export function SectionHeader({
     >
       {eyebrow && (
         <p
-          className={`eyebrow-rule mb-4 font-heading ${eyebrowColor ?? (onDarkBand ? "text-[#F0A92D]" : "text-[#C68A17]")}`}
+          className={`eyebrow-rule mb-4 ${eyebrowColor ?? (onDarkBand ? "text-[#F0A92D]" : "text-[#C68A17]")}`}
         >
           {eyebrow}
         </p>

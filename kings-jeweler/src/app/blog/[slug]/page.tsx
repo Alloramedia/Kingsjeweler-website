@@ -142,7 +142,7 @@ export default async function BlogDetailPage({
           >
             <ArrowLeft size={16} /> Back to blog
           </Link>
-          <p className="mt-6 text-sm font-semibold uppercase tracking-[0.25em] text-[#F0A92D]">
+          <p className="mt-6 font-label text-xs font-medium uppercase tracking-[0.28em] text-[#F0A92D]">
             {post.category}
           </p>
           <h1 className="mt-3 text-4xl leading-tight tracking-tight md:text-5xl">
@@ -227,7 +227,7 @@ export default async function BlogDetailPage({
               />
             </div>
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#C68A17]">
+              <p className="font-label text-xs font-medium uppercase tracking-[0.24em] text-[#C68A17]">
                 Written by
               </p>
               <p className="mt-1 text-lg font-bold">
@@ -295,7 +295,7 @@ export default async function BlogDetailPage({
                   />
                 </div>
                 <div className="p-5">
-                  <p className="text-xs font-bold uppercase tracking-wide text-[#F0A92D]">
+                  <p className="font-label text-xs font-medium uppercase tracking-[0.18em] text-[#F0A92D]">
                     {p.category}
                   </p>
                   <h3 className="mt-1.5 text-lg font-bold leading-snug">

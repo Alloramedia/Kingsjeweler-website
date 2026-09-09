@@ -59,7 +59,7 @@ export function Footer() {
                 className="h-14 w-auto"
               />
             </Link>
-            <p className="mt-5 text-sm font-heading font-semibold uppercase tracking-[0.2em] text-[#F0A92D]">
+            <p className="mt-5 font-label text-sm font-medium uppercase tracking-[0.24em] text-[#F0A92D]">
               Fine Jewelry. Royal Treatment.
             </p>
             <p className="mt-3 max-w-sm text-sm leading-relaxed text-white/60">
@@ -143,7 +143,7 @@ export function Footer() {
 
           {/* Services */}
           <motion.div variants={staggerItem}>
-            <h3 className="mb-5 text-xs font-bold uppercase tracking-[0.2em] text-[#C68A17]">
+            <h3 className="mb-5 font-label text-xs font-medium uppercase tracking-[0.24em] text-[#C68A17]">
               Services
             </h3>
             <ul className="space-y-3">
@@ -162,7 +162,7 @@ export function Footer() {
 
           {/* Company */}
           <motion.div variants={staggerItem}>
-            <h3 className="mb-5 text-xs font-bold uppercase tracking-[0.2em] text-[#C68A17]">
+            <h3 className="mb-5 font-label text-xs font-medium uppercase tracking-[0.24em] text-[#C68A17]">
               Company
             </h3>
             <ul className="space-y-3">
@@ -181,7 +181,7 @@ export function Footer() {
 
           {/* Guides */}
           <motion.div variants={staggerItem}>
-            <h3 className="mb-5 text-xs font-bold uppercase tracking-[0.2em] text-[#C68A17]">
+            <h3 className="mb-5 font-label text-xs font-medium uppercase tracking-[0.24em] text-[#C68A17]">
               Guides
             </h3>
             <ul className="space-y-3">
@@ -231,7 +231,7 @@ export function Footer() {
           className="mt-8 border-t border-white/5 pt-8 space-y-4"
         >
           <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-xs text-white/55">
-            <span className="inline-flex items-center gap-1.5 font-semibold uppercase tracking-[0.14em] text-[#F0A92D]">
+            <span className="inline-flex items-center gap-1.5 font-label font-medium uppercase tracking-[0.18em] text-[#F0A92D]">
               We Buy Gold · Top Prices Paid
             </span>
             <span className="hidden h-3 w-px bg-white/15 sm:block" />

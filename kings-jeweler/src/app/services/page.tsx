@@ -76,7 +76,7 @@ export default async function ServicesPage() {
                   />
                 </div>
                 <div className="p-6">
-                  <p className="font-heading text-[0.65rem] font-bold uppercase tracking-[0.16em] text-[#A87310]">
+                  <p className="font-label text-[0.65rem] font-medium uppercase tracking-[0.2em] text-[#A87310]">
                     {service.eyebrow}
                   </p>
                   <h3 className="mt-2 text-lg font-bold">{service.label}</h3>

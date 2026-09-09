@@ -130,7 +130,7 @@ export default async function AboutPage() {
         <EmblemWatermark className="-left-20 bottom-0 hidden lg:block" opacity={0.05} size="clamp(280px, 30vw, 440px)" />
         <div className="relative mx-auto max-w-6xl px-6 py-20 lg:px-8 lg:py-28">
           <div className="max-w-2xl">
-            <p className="text-sm font-heading font-semibold uppercase tracking-[0.2em] text-[#F0A92D]">
+            <p className="font-label text-xs font-medium uppercase tracking-[0.26em] text-[#F0A92D]">
               What We Stand For
             </p>
             <h2 className="mt-3 text-3xl tracking-tight md:text-4xl">
@@ -178,7 +178,7 @@ export default async function AboutPage() {
             </div>
           </div>
           <div>
-            <p className="text-sm font-heading font-semibold uppercase tracking-[0.2em] text-[#C68A17]">
+            <p className="font-label text-xs font-medium uppercase tracking-[0.26em] text-[#C68A17]">
               Meet the Family
             </p>
             <h2 className="mt-3 text-3xl tracking-tight md:text-4xl">
@@ -210,7 +210,7 @@ export default async function AboutPage() {
       <section className="relative overflow-hidden bg-[#FBF9F4]">
         <div className="relative z-10 mx-auto max-w-3xl px-6 py-20 lg:px-8 lg:py-28">
           <div className="text-center">
-            <p className="text-sm font-heading font-semibold uppercase tracking-[0.2em] text-[#C68A17]">
+            <p className="font-label text-xs font-medium uppercase tracking-[0.26em] text-[#C68A17]">
               Good to Know
             </p>
             <h2 className="mt-3 text-3xl tracking-tight text-[#14141A] md:text-4xl">

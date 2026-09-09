@@ -86,7 +86,7 @@ export default async function BlogPage() {
                 />
               </div>
               <div className="flex flex-col justify-center p-8 lg:p-12">
-                <span className="inline-flex w-fit bg-[#C68A17] px-3 py-1 font-heading text-xs font-bold uppercase tracking-[0.14em] text-white">
+                <span className="inline-flex w-fit bg-[#C68A17] px-3 py-1 font-label text-xs font-medium uppercase tracking-[0.18em] text-white">
                   {featured.category}
                 </span>
                 <h2 className="mt-5 text-3xl font-bold leading-tight">
@@ -130,7 +130,7 @@ export default async function BlogPage() {
                     blurDataURL={BLUR_DATA_URL}
                     className="object-cover transition duration-500 group-hover:scale-105"
                   />
-                  <span className="absolute left-4 top-4 bg-[#C68A17] px-3 py-1 font-heading text-xs font-bold uppercase tracking-[0.14em] text-white">
+                  <span className="absolute left-4 top-4 bg-[#C68A17] px-3 py-1 font-label text-xs font-medium uppercase tracking-[0.18em] text-white">
                     {post.category}
                   </span>
                 </div>

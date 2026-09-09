@@ -38,7 +38,7 @@ export default function WebsitePoliciesPage() {
       />
       <section className="bg-[#14141A] pt-32 pb-16 md:pt-40 md:pb-20">
         <div className="mx-auto max-w-4xl px-6 lg:px-8">
-          <p className="mb-3 text-sm font-heading font-semibold uppercase tracking-[0.2em] text-[#C68A17]">
+          <p className="mb-3 font-label text-xs font-medium uppercase tracking-[0.26em] text-[#C68A17]">
             Legal
           </p>
           <h1 className="text-4xl tracking-tight text-white md:text-5xl">

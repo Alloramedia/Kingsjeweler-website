@@ -441,14 +441,14 @@ function Plate({
       {/* Engraving: light undercut below dark strike */}
       <text
         x={x + w / 2} y={y + h / 2 + fontSize * 0.36 + 0.8} textAnchor="middle"
-        fontFamily="var(--font-heading), 'Zilla Slab', serif" fontStyle={italic ? "italic" : undefined}
+        fontFamily="var(--font-playfair), 'Playfair Display', serif" fontStyle={italic ? "italic" : undefined}
         fontSize={fontSize} fontWeight="700" fill="#FFFFFF" opacity="0.55"
       >
         {text}
       </text>
       <text
         x={x + w / 2} y={y + h / 2 + fontSize * 0.36} textAnchor="middle"
-        fontFamily="var(--font-heading), 'Zilla Slab', serif" fontStyle={italic ? "italic" : undefined}
+        fontFamily="var(--font-playfair), 'Playfair Display', serif" fontStyle={italic ? "italic" : undefined}
         fontSize={fontSize} fontWeight="700" fill={metal.deep}
       >
         {text}
@@ -574,13 +574,13 @@ function RingArt({ spec }: { spec: RenderSpec }) {
           <ellipse cx={cx} cy={63} rx={26} ry={17} fill={art.plate} stroke={metal.deep} strokeWidth="1.2" />
           <ellipse cx={cx} cy={63} rx={20.5} ry={12} fill="none" stroke="#FFFFFF" strokeWidth="1" opacity="0.5" />
           <text
-            x={cx} y={71.5} textAnchor="middle" fontFamily="var(--font-heading), 'Zilla Slab', serif"
+            x={cx} y={71.5} textAnchor="middle" fontFamily="var(--font-playfair), 'Playfair Display', serif"
             fontStyle="italic" fontSize="22" fontWeight="700" fill="#FFFFFF" opacity="0.55"
           >
             {plateText(spec, "K").slice(0, 1).toUpperCase()}
           </text>
           <text
-            x={cx} y={70.7} textAnchor="middle" fontFamily="var(--font-heading), 'Zilla Slab', serif"
+            x={cx} y={70.7} textAnchor="middle" fontFamily="var(--font-playfair), 'Playfair Display', serif"
             fontStyle="italic" fontSize="22" fontWeight="700" fill={metal.deep}
           >
             {plateText(spec, "K").slice(0, 1).toUpperCase()}
@@ -895,13 +895,13 @@ function CharmArt({ spec }: { spec: RenderSpec }) {
       {(style === "Initial / letter" || style === "" || style === "Not sure yet") && (
         <>
           <text
-            x={cx + 2.5} y={176} textAnchor="middle" fontFamily="var(--font-heading), 'Zilla Slab', serif"
+            x={cx + 2.5} y={176} textAnchor="middle" fontFamily="var(--font-playfair), 'Playfair Display', serif"
             fontSize="112" fontWeight="700" fill="#14141A" opacity="0.25" filter={art.gleam}
           >
             {plateText(spec, "A").slice(0, 1).toUpperCase()}
           </text>
           <text
-            x={cx} y={173} textAnchor="middle" fontFamily="var(--font-heading), 'Zilla Slab', serif"
+            x={cx} y={173} textAnchor="middle" fontFamily="var(--font-playfair), 'Playfair Display', serif"
             fontSize="112" fontWeight="700" fill={art.plate} stroke={metal.deep} strokeWidth="1.4"
           >
             {plateText(spec, "A").slice(0, 1).toUpperCase()}

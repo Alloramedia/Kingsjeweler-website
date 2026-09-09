@@ -153,7 +153,7 @@ export default async function SellGoldPage() {
       <section className="bg-[#14141A] text-white metal-texture">
         <div className="mx-auto max-w-6xl px-6 py-16 lg:px-8 lg:py-24">
           <div className="mx-auto max-w-2xl text-center">
-            <p className="text-sm font-heading font-semibold uppercase tracking-[0.2em] text-[#F0A92D]">
+            <p className="font-label text-xs font-medium uppercase tracking-[0.26em] text-[#F0A92D]">
               How It Works
             </p>
             <h2 className="mt-3 text-3xl tracking-tight md:text-4xl">
@@ -186,7 +186,7 @@ export default async function SellGoldPage() {
         <div className="mx-auto max-w-5xl px-6 py-16 lg:px-8 lg:py-24">
           <div className="grid gap-12 lg:grid-cols-2 lg:items-start">
             <div>
-              <p className="text-sm font-heading font-semibold uppercase tracking-[0.2em] text-[#C68A17]">
+              <p className="font-label text-xs font-medium uppercase tracking-[0.26em] text-[#C68A17]">
                 What We Buy
               </p>
               <h2 className="mt-3 text-3xl tracking-tight md:text-4xl">
@@ -248,7 +248,7 @@ export default async function SellGoldPage() {
       <section className="bg-[#14141A] text-white">
         <div className="mx-auto max-w-5xl px-6 py-16 lg:px-8 lg:py-24">
           <div className="mx-auto max-w-2xl text-center">
-            <p className="text-sm font-heading font-semibold uppercase tracking-[0.2em] text-[#F0A92D]">
+            <p className="font-label text-xs font-medium uppercase tracking-[0.26em] text-[#F0A92D]">
               Why Sell Local
             </p>
             <h2 className="mt-3 text-3xl tracking-tight md:text-4xl">
@@ -271,7 +271,7 @@ export default async function SellGoldPage() {
                 <p className="font-heading font-bold">
                   {row.buyer}
                   {i === 0 && (
-                    <span className="ml-2 rounded-full bg-[#C68A17] px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-[#14141A]">
+                    <span className="ml-2 rounded-full bg-[#C68A17] px-2.5 py-0.5 font-label text-[10px] font-semibold uppercase tracking-[0.14em] text-[#14141A]">
                       Us
                     </span>
                   )}
@@ -325,7 +325,7 @@ export default async function SellGoldPage() {
       <section className="bg-[#FBF9F4]">
         <div className="mx-auto max-w-3xl px-6 py-16 lg:px-8 lg:py-24">
           <div className="text-center">
-            <p className="text-sm font-heading font-semibold uppercase tracking-[0.2em] text-[#C68A17]">
+            <p className="font-label text-xs font-medium uppercase tracking-[0.26em] text-[#C68A17]">
               Good to Know
             </p>
             <h2 className="mt-3 text-3xl tracking-tight text-[#14141A] md:text-4xl">

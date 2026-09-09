@@ -230,7 +230,7 @@ export default async function ServiceDetailPage({
 
           {service.relatedPosts.length > 0 && (
             <div className="mt-12 rounded-xs border border-[#14141A]/15 bg-[#FFFDF8] p-7">
-              <h3 className="font-heading text-xs font-bold uppercase tracking-[0.16em] text-[#A87310]">
+              <h3 className="font-label text-xs font-medium uppercase tracking-[0.22em] text-[#A87310]">
                 Keep reading
               </h3>
               <ul className="mt-4 space-y-3">

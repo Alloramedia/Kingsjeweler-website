@@ -532,7 +532,7 @@ export function HomeClient({
         <FadeIn>
           <div className="grid border-y border-[#14141A]/15 md:grid-cols-3 md:divide-x md:divide-[#14141A]/15">
             <div className="border-b border-[#14141A]/15 py-7 md:border-b-0 md:pr-8">
-              <h3 className="font-heading text-xs font-bold uppercase tracking-[0.18em] text-[#C68A17]">
+              <h3 className="font-label text-xs font-medium uppercase tracking-[0.22em] text-[#C68A17]">
                 Location
               </h3>
               <p className="mt-3 text-sm leading-relaxed text-[#14141A]/75">
@@ -554,7 +554,7 @@ export function HomeClient({
               </a>
             </div>
             <div className="border-b border-[#14141A]/15 py-7 md:border-b-0 md:px-8">
-              <h3 className="font-heading text-xs font-bold uppercase tracking-[0.18em] text-[#C68A17]">
+              <h3 className="font-label text-xs font-medium uppercase tracking-[0.22em] text-[#C68A17]">
                 Store Hours
               </h3>
               <ul className="mt-3 max-w-xs space-y-1.5 text-sm text-[#14141A]/75">
@@ -569,7 +569,7 @@ export function HomeClient({
                       <span className="font-medium">
                         {row.day}
                         {isToday && (
-                          <span className="ml-2 font-heading text-[0.65rem] font-bold uppercase tracking-[0.14em] text-[#A87310]">
+                          <span className="ml-2 font-label text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-[#A87310]">
                             Today
                           </span>
                         )}
@@ -582,7 +582,7 @@ export function HomeClient({
               </ul>
             </div>
             <div className="py-7 md:pl-8">
-              <h3 className="font-heading text-xs font-bold uppercase tracking-[0.18em] text-[#C68A17]">
+              <h3 className="font-label text-xs font-medium uppercase tracking-[0.22em] text-[#C68A17]">
                 Get in Touch
               </h3>
               <p className="mt-3 text-sm leading-relaxed text-[#14141A]/75">
