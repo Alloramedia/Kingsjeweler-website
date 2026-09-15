@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: "Gallery: Custom Jewelry & Restorations",
   description:
     "Browse custom pieces, restorations, and favorites from the King's Jeweler showcase at The Shoppes at Buckland Hills in Manchester, CT.",
-  alternates: { canonical: "https://www.kingsjewelerct.com/gallery" },
+  alternates: { canonical: "https://kingsjewelerct.com/gallery" },
   openGraph: {
     title: "Gallery | King's Jeweler",
     description:

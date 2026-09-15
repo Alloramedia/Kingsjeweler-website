@@ -13,7 +13,7 @@ const baseMetadata: Metadata = {
   description:
     "Sell gold, silver, diamonds, and estate jewelry at King's Jeweler in Manchester, CT. Same-day offers based on the day's gold price, typically 70–90% of melt value.",
   alternates: {
-    canonical: "https://www.kingsjewelerct.com/sell-gold",
+    canonical: "https://kingsjewelerct.com/sell-gold",
   },
   openGraph: {
     title: "We Buy Gold | King's Jeweler",

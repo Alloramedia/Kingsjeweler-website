@@ -12,7 +12,7 @@ const baseMetadata: Metadata = {
   description:
     "Engagement rings, custom jewelry design, ring sizing, chain repair, watch batteries, appraisals, and fair gold buying at King's Jeweler in Manchester, CT.",
   alternates: {
-    canonical: "https://www.kingsjewelerct.com/services",
+    canonical: "https://kingsjewelerct.com/services",
   },
 };
 

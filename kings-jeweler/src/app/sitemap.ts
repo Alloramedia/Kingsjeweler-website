@@ -3,7 +3,7 @@ import { blogPosts } from "@/lib/content";
 import { servicePages } from "@/lib/services";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://www.kingsjewelerct.com";
+  const baseUrl = "https://kingsjewelerct.com";
   // Use a fixed date for static pages — `new Date()` would produce the
   // build timestamp which is misleading.  Update this when content changes.
   const lastModified = new Date("2026-08-17");

@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Design Your Own Jewelry: Rings, Chains & Charms",
   description:
     "Build your dream ring, chain, bracelet, or charm step by step. Pick the style, metal, and stones — our jewelers in Manchester, CT bring it to life.",
-  alternates: { canonical: "https://www.kingsjewelerct.com/design" },
+  alternates: { canonical: "https://kingsjewelerct.com/design" },
   openGraph: {
     title: "Design Your Own Jewelry | King's Jeweler",
     description:

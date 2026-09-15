@@ -40,7 +40,7 @@ const jost = Jost({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.kingsjewelerct.com"),
+  metadataBase: new URL("https://kingsjewelerct.com"),
   title: {
     default: "King's Jeweler | Jewelry Store at Buckland Hills in Manchester, CT",
     template: "%s | King's Jeweler",
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://www.kingsjewelerct.com",
+    url: "https://kingsjewelerct.com",
     siteName: "King's Jeweler",
     title: "King's Jeweler | Jewelry Store at Buckland Hills in Manchester, CT",
     description:
@@ -69,6 +69,10 @@ export const metadata: Metadata = {
     follow: true,
     googleBot: { index: true, follow: true },
   },
+  // Google Search Console ownership verification (meta-tag method).
+  verification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+    ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
+    : undefined,
 };
 
 export default async function RootLayout({

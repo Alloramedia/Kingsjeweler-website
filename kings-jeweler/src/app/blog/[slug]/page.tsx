@@ -31,7 +31,7 @@ export async function generateMetadata({
     title: { absolute: post.title },
     description: post.excerpt,
     alternates: {
-      canonical: `https://www.kingsjewelerct.com/blog/${post.slug}`,
+      canonical: `https://kingsjewelerct.com/blog/${post.slug}`,
     },
     openGraph: {
       type: "article",

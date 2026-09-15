@@ -2,7 +2,7 @@
 
 **Fine Jewelry. Family Service.**
 
-This is the source code for the [King's Jeweler](https://www.kingsjewelerct.com) website — a
+This is the source code for the [King's Jeweler](https://kingsjewelerct.com) website — a
 family jewelry store inside The Shoppes at Buckland Hills in Manchester, Connecticut.
 Engagement rings, custom design, watch batteries, expert repairs, and fair gold buying.
 

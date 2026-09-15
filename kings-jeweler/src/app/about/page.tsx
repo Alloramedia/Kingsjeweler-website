@@ -14,7 +14,7 @@ const baseMetadata: Metadata = {
   description:
     "King's Jeweler is a family-run jewelry store inside The Shoppes at Buckland Hills in Manchester, CT, where every customer is helped personally by a jeweler who cares.",
   alternates: {
-    canonical: "https://www.kingsjewelerct.com/about",
+    canonical: "https://kingsjewelerct.com/about",
   },
   openGraph: {
     title: "About King's Jeweler",

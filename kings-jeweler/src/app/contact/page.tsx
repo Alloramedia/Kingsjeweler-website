@@ -8,7 +8,7 @@ const baseMetadata: Metadata = {
   description:
     "Visit King's Jeweler at The Shoppes at Buckland Hills in Manchester, CT, or send us a message about repairs, custom design, engagement rings, or gold buying.",
   alternates: {
-    canonical: "https://www.kingsjewelerct.com/contact",
+    canonical: "https://kingsjewelerct.com/contact",
   },
   openGraph: {
     title: "Visit or Contact King's Jeweler",

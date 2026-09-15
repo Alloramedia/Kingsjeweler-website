@@ -7,13 +7,13 @@ export const metadata: Metadata = {
   description:
     "Privacy policy and terms of service for King's Jeweler. Learn how we collect, use, and protect your information.",
   alternates: {
-    canonical: "https://www.kingsjewelerct.com/website-policies",
+    canonical: "https://kingsjewelerct.com/website-policies",
   },
   openGraph: {
     title: "Website Policies | King's Jeweler",
     description:
       "Privacy policy and terms of service for King's Jeweler. Learn how we collect, use, and protect your information.",
-    url: "https://www.kingsjewelerct.com/website-policies",
+    url: "https://kingsjewelerct.com/website-policies",
     siteName: "King's Jeweler",
     type: "website",
     images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],

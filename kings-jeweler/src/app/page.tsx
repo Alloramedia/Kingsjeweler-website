@@ -10,12 +10,12 @@ const baseMetadata: Metadata = {
   description:
     "Family-run jewelry store at Buckland Hills in Manchester, CT offering engagement rings, custom design, jewelry repair, watch batteries, and gold buying.",
   alternates: {
-    canonical: "https://www.kingsjewelerct.com",
+    canonical: "https://kingsjewelerct.com",
   },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://www.kingsjewelerct.com",
+    url: "https://kingsjewelerct.com",
     siteName: "King's Jeweler",
     title: "King's Jeweler | Jewelry Store at Buckland Hills in Manchester, CT",
     description:

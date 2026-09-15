@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title: "Jewelry Blog: Buying Guides & Advice",
   description:
     "Honest jewelry advice from King's Jeweler in Manchester, CT: engagement ring guides, repair and resizing costs, gold selling tips, and jewelry care.",
-  alternates: { canonical: "https://www.kingsjewelerct.com/blog" },
+  alternates: { canonical: "https://kingsjewelerct.com/blog" },
   openGraph: {
     title: "Jewelry Blog: Buying Guides & Expert Advice | King's Jeweler",
     description:
