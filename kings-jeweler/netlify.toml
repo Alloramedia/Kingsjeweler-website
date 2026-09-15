@@ -2,6 +2,13 @@
   command = "npm run build"
   publish = ".next"
 
+[build.environment]
+  # Next 16 (Turbopack) inlines process.env values into SERVER chunks, which
+  # trips Netlify's secrets scanner. Those paths are the serverless function
+  # bundle + build cache — never publicly served. Scanning stays enabled for
+  # everything else (a real leak into client assets still fails the build).
+  SECRETS_SCAN_OMIT_PATHS = ".netlify/**,.next/**"
+
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
