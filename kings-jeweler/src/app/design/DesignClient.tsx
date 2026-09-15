@@ -21,6 +21,7 @@ import {
 } from "@/lib/builder";
 import { BUDGET_OPTIONS } from "@/lib/cta";
 import { BLUR_DATA_URL, siteConfig } from "@/lib/constants";
+import { hasMarketingConsent, metaTrack, newMetaEventId } from "@/lib/meta-pixel";
 import {
   PieceRendering,
   MetalSwatch,
@@ -269,6 +270,10 @@ export function DesignClient({ aiRenders = false }: { aiRenders?: boolean }) {
     setError(null);
     const fd = new FormData(e.currentTarget);
 
+    // Meta dedup id — only sent when the visitor hasn't declined cookies,
+    // which also gates the server-side CAPI mirror of this lead.
+    const eventId = hasMarketingConsent() ? newMetaEventId() : "";
+
     const payload = {
       ...spec,
       name: String(fd.get("name") || ""),
@@ -276,6 +281,7 @@ export function DesignClient({ aiRenders = false }: { aiRenders?: boolean }) {
       phone: String(fd.get("phone") || ""),
       contactMethod: String(fd.get("contactMethod") || ""),
       aiPreviewed: !!aiImage,
+      eventId,
       confirm_url: String(fd.get("confirm_url") || ""), // honeypot
     };
 
@@ -295,6 +301,7 @@ export function DesignClient({ aiRenders = false }: { aiRenders?: boolean }) {
         const body = await res.json().catch(() => null);
         throw new Error(body?.error || "Something went wrong. Please try again.");
       }
+      if (eventId) metaTrack("Lead", { content_name: "Design Builder" }, eventId);
       router.push("/contact/thank-you");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");

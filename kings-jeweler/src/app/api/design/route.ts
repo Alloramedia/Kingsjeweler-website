@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { appendMessage } from "@/lib/admin/store";
+import { sendMetaCapiEvent } from "@/lib/meta-capi";
 import {
   METAL_OPTIONS,
   KARAT_OPTIONS,
@@ -30,6 +31,8 @@ interface DesignFormData {
   phone: string;
   contactMethod?: string;
   aiPreviewed?: boolean;
+  /** Meta Pixel dedup id — present only when the visitor allows tracking. */
+  eventId?: string;
   confirm_url?: string; // honeypot field
 }
 
@@ -192,6 +195,21 @@ export async function POST(request: NextRequest) {
         { error: "We couldn't save your design right now. Please try again, or call us directly." },
         { status: 502 }
       );
+    }
+
+    // ── Meta Conversions API mirror. eventId is only sent by the client when
+    //    the visitor hasn't declined cookies (consent gate), and it matches the
+    //    browser Pixel's eventID so Meta deduplicates the pair. ──
+    const metaEventId = sanitize(data.eventId, 64).replace(/[^A-Za-z0-9-]/g, "");
+    if (metaEventId) {
+      await sendMetaCapiEvent({
+        request,
+        eventName: "Lead",
+        eventId: metaEventId,
+        email: sanitized.email,
+        phone: sanitized.phone,
+        customData: { content_name: "Design Builder", content_category: piece.label },
+      });
     }
 
     return NextResponse.json({ success: true }, { status: 200 });

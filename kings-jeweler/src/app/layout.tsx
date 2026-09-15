@@ -6,6 +6,8 @@ import { LocalBusinessSchema, OrganizationSchema } from "@/components/Structured
 import { CookieConsent } from "@/components/CookieConsent";
 import { BackToTop } from "@/components/BackToTop";
 import { ConsentGoogleAnalytics } from "@/components/ConsentGoogleAnalytics";
+import { MetaPixel } from "@/components/MetaPixel";
+import { MetaCallTracking } from "@/components/MetaCallTracking";
 import { SiteContentProvider } from "@/components/SiteContentProvider";
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import { PreviewBanner } from "@/components/PreviewBanner";
@@ -75,6 +77,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const gaId = process.env.NEXT_PUBLIC_GA_ID;
+  const metaPixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID;
   const content = await getSiteContent();
   const themeCss = buildThemeCss(content.colors);
   const preview = await isPreviewMode();
@@ -114,6 +117,12 @@ export default async function RootLayout({
         </HideOnAdmin>
         {preview && <PreviewBanner />}
         {gaId && <ConsentGoogleAnalytics gaId={gaId} />}
+        {metaPixelId && (
+          <>
+            <MetaPixel pixelId={metaPixelId} />
+            <MetaCallTracking />
+          </>
+        )}
       </body>
     </html>
   );

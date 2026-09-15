@@ -22,11 +22,11 @@ const securityHeaders = [
     key: "Content-Security-Policy",
     value: [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' https://link.msgsndr.com https://www.googletagmanager.com https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://googleads.g.doubleclick.net https://www.googleadservices.com",
+      "script-src 'self' 'unsafe-inline' https://link.msgsndr.com https://www.googletagmanager.com https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://googleads.g.doubleclick.net https://www.googleadservices.com https://connect.facebook.net",
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "img-src 'self' data: blob: https: http:",
       "font-src 'self' https://fonts.gstatic.com",
-      "connect-src 'self' https://www.google.com https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://www.googletagmanager.com https://api.leadconnectorhq.com",
+      "connect-src 'self' https://www.google.com https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://www.googletagmanager.com https://api.leadconnectorhq.com https://connect.facebook.net https://www.facebook.com",
       "frame-src 'self' https://www.google.com https://api.leadconnectorhq.com https://www.youtube.com https://www.youtube-nocookie.com https://link.msgsndr.com https://www.googletagmanager.com",
       "object-src 'none'",
       "base-uri 'self'",

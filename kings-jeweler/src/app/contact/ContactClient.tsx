@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { MapPin, Clock, Phone, Mail, ArrowRight, Loader2 } from "lucide-react";
 import { siteConfig } from "@/lib/constants";
+import { hasMarketingConsent, metaTrack, newMetaEventId } from "@/lib/meta-pixel";
 import { HeroSlideshow } from "@/components/HeroSlideshow";
 import {
   SERVICE_HELP_OPTIONS,
@@ -34,6 +35,10 @@ export function ContactClient({ heroSlides }: ContactClientProps) {
     const form = e.currentTarget;
     const fd = new FormData(form);
 
+    // Meta dedup id — only sent when the visitor hasn't declined cookies,
+    // which also gates the server-side CAPI mirror of this lead.
+    const eventId = hasMarketingConsent() ? newMetaEventId() : "";
+
     const payload = {
       name: String(fd.get("name") || ""),
       business: "",
@@ -44,6 +49,7 @@ export function ContactClient({ heroSlides }: ContactClientProps) {
       budget: String(fd.get("budget") || ""),
       howHeard: String(fd.get("howHeard") || ""),
       message: String(fd.get("message") || ""),
+      eventId,
       confirm_url: String(fd.get("confirm_url") || ""), // honeypot
     };
 
@@ -63,6 +69,7 @@ export function ContactClient({ heroSlides }: ContactClientProps) {
         const body = await res.json().catch(() => null);
         throw new Error(body?.error || "Something went wrong. Please try again.");
       }
+      if (eventId) metaTrack("Lead", { content_name: payload.help }, eventId);
       router.push("/contact/thank-you");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
