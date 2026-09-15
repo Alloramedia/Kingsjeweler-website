@@ -185,6 +185,7 @@ export const footerLinks = {
     { label: "About", href: "/about" },
     { label: "Services", href: "/services" },
     { label: "We Buy Gold", href: "/sell-gold" },
+    { label: "Areas We Serve", href: "/locations" },
     { label: "Gallery", href: "/gallery" },
     { label: "Blog", href: "/blog" },
     { label: "Contact", href: "/contact" },

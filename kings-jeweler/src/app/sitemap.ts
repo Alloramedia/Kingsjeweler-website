@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { blogPosts } from "@/lib/content";
 import { servicePages } from "@/lib/services";
+import { townPages } from "@/lib/locations";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://kingsjewelerct.com";
@@ -17,6 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/about",
     "/blog",
     "/contact",
+    "/locations",
     "/website-policies",
   ];
 
@@ -41,5 +43,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }));
 
-  return [...staticEntries, ...serviceEntries, ...blogEntries];
+  const locationEntries = townPages.map((t) => ({
+    url: `${baseUrl}/locations/${t.slug}`,
+    lastModified: new Date("2026-09-15"),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  return [...staticEntries, ...serviceEntries, ...locationEntries, ...blogEntries];
 }

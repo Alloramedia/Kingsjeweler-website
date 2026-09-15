@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     template: "%s | King's Jeweler",
   },
   description:
-    "Family-run jewelry store at Buckland Hills in Manchester, CT. Engagement rings, custom design, jewelry repair, watch batteries, and gold buying.",
+    "Family-run jewelry store at Buckland Hills in Manchester, CT, serving Hartford County and Tolland County. Engagement rings, custom design, jewelry repair, watch batteries, and gold buying.",
   openGraph: {
     type: "website",
     locale: "en_US",
