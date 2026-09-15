@@ -8,6 +8,9 @@
   # bundle + build cache — never publicly served. Scanning stays enabled for
   # everything else (a real leak into client assets still fails the build).
   SECRETS_SCAN_OMIT_PATHS = ".netlify/**,.next/**"
+  # The pixel ID is public by design (NEXT_PUBLIC_, inlined into client JS,
+  # visible in page source) — not a secret. Real secrets stay scanned.
+  SECRETS_SCAN_OMIT_KEYS = "NEXT_PUBLIC_META_PIXEL_ID"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
