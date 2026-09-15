@@ -19,6 +19,10 @@ interface ContactFormData {
   dietary?: string;
   howHeard?: string;
   message?: string;
+  /** Service-specific follow-up answers from the contact wizard. */
+  answers?: { label: string; value: string }[];
+  /** Reference photo uploaded via /api/contact/upload. */
+  photoUrl?: string;
   /** Meta Pixel dedup id — present only when the visitor allows tracking. */
   eventId?: string;
   confirm_url?: string; // honeypot field
@@ -69,7 +73,9 @@ export async function POST(request: NextRequest) {
     const allowedOrigins = [
       "https://www.kingsjewelerct.com",
       "https://kingsjewelerct.com",
-      ...(process.env.NODE_ENV === "development" ? ["http://localhost:3000"] : []),
+      ...(process.env.NODE_ENV === "development"
+        ? ["http://localhost:3000", "http://127.0.0.1:3000"]
+        : []),
     ];
     if (!origin || !allowedOrigins.includes(origin)) {
       return NextResponse.json(
@@ -134,6 +140,23 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // ── Wizard follow-up answers: sanitize and cap (labels/values are
+    //    free-form by design, but bounded so the inbox can't be flooded) ──
+    const answers = (Array.isArray(data.answers) ? data.answers : [])
+      .slice(0, 8)
+      .map((a) => ({
+        label: sanitize(a?.label, 60),
+        value: sanitize(a?.value, 300),
+      }))
+      .filter((a) => a.label && a.value);
+
+    // ── Reference photo: only accept keys our own upload route generates ──
+    const photoUrl =
+      typeof data.photoUrl === "string" &&
+      /^\/media\/[a-z0-9]+-[a-z0-9]+\.webp$/i.test(data.photoUrl)
+        ? data.photoUrl
+        : "";
+
     // Validate help option matches allowed values (kept in sync with the
     // contact form via the shared SERVICE_HELP_OPTIONS source of truth).
     if (!(SERVICE_HELP_OPTIONS as readonly string[]).includes(sanitized.help)) {
@@ -183,6 +206,8 @@ export async function POST(request: NextRequest) {
           ["Location", sanitized.eventLocation],
           ["Budget", sanitized.budget],
           ["Dietary needs", sanitized.dietary],
+          ...answers.map((a) => [a.label, a.value] as [string, string]),
+          ["Reference photo", photoUrl],
           ["Heard about us", sanitized.howHeard],
         ]
           .filter(([, v]) => v)

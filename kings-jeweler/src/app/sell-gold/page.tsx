@@ -164,7 +164,7 @@ export default async function SellGoldPage() {
               Call {siteConfig.phone}
             </a>
             <Link
-              href="/contact"
+              href="/contact?help=Gold+Buying+%2F+Trade-In"
               className="inline-flex items-center gap-2 rounded-xs border border-white/40 px-7 py-3.5 text-base font-semibold text-white transition-colors hover:border-white hover:bg-white/10"
             >
               Get an Offer
@@ -494,7 +494,7 @@ export default async function SellGoldPage() {
                 Call {siteConfig.phone}
               </a>
               <Link
-                href="/contact"
+                href="/contact?help=Gold+Buying+%2F+Trade-In"
                 className="inline-flex items-center gap-2 rounded-xs border border-white/30 px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:border-white/60 hover:bg-white/5"
               >
                 Get an Offer
@@ -509,7 +509,7 @@ export default async function SellGoldPage() {
         headline="Have gold sitting in a drawer?"
         subhead="Stop by The Shoppes at Buckland Hills. We'll weigh it, explain the offer, and pay you the same day."
         primaryLabel="Get an Offer"
-        primaryHref="/contact"
+        primaryHref="/contact?help=Gold+Buying+%2F+Trade-In"
         secondaryLabel="Read Our Gold Selling Guide"
         secondaryHref="/blog/how-to-sell-gold-jewelry"
       />
@@ -537,7 +537,7 @@ export default async function SellGoldPage() {
           Directions
         </a>
         <Link
-          href="/contact"
+          href="/contact?help=Gold+Buying+%2F+Trade-In"
           className="flex items-center justify-center gap-1.5 bg-[#C68A17] py-4 text-sm font-semibold text-white transition-colors hover:bg-[#A87310]"
         >
           Get an Offer

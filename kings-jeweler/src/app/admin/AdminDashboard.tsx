@@ -1268,7 +1268,12 @@ function MessagesPanel({ onBack, onChanged }: { onBack: () => void; onChanged?: 
                     <dl className="grid gap-x-4 gap-y-1.5 sm:grid-cols-2">
                       {m.business && (<div><dt className="text-xs font-semibold uppercase tracking-wide text-slate-400">Event / company</dt><dd className="text-slate-800">{m.business}</dd></div>)}
                       {m.details.map((row, i) => (
-                        <div key={i}><dt className="text-xs font-semibold uppercase tracking-wide text-slate-400">{row.label}</dt><dd className="text-slate-800">{row.value}</dd></div>
+                        <div key={i}><dt className="text-xs font-semibold uppercase tracking-wide text-slate-400">{row.label}</dt><dd className="text-slate-800">{row.value.startsWith("/media/") ? (
+                          <a href={row.value} target="_blank" rel="noopener noreferrer" className="mt-1 inline-block">
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img src={row.value} alt={row.label} className="h-24 w-24 rounded-lg border border-slate-200 object-cover transition hover:opacity-90" />
+                          </a>
+                        ) : row.value}</dd></div>
                       ))}
                     </dl>
                     {m.message && (

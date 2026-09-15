@@ -30,8 +30,13 @@ export async function generateMetadata(): Promise<Metadata> {
   return applySeo(baseMetadata, seo.contact);
 }
 
-export default async function ContactPage() {
+export default async function ContactPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ help?: string }>;
+}) {
   const { brandImages } = await getSiteContent();
+  const { help } = await searchParams;
   return (
     <>
       <BreadcrumbSchema
@@ -40,7 +45,11 @@ export default async function ContactPage() {
           { name: "Contact", href: "/contact" },
         ]}
       />
-      <ContactClient heroSlides={brandImages.heroSlides} heroImage={brandImages.heroEvents} />
+      <ContactClient
+        heroSlides={brandImages.heroSlides}
+        heroImage={brandImages.heroEvents}
+        initialHelp={help}
+      />
     </>
   );
 }
