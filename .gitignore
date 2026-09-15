@@ -17,3 +17,6 @@ out/
 .DS_Store
 Thumbs.db
 brand/photos/monthly-shoot-2025-08/
+
+# Raw client photo sources (processed copies live in kings-jeweler/public/images/)
+/King's Jeweler.jpg

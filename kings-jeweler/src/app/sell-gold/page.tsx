@@ -1,12 +1,12 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Scale, BadgeCheck, CreditCard, Coins, Gem, Search, Phone, MapPin } from "lucide-react";
-import { siteConfig } from "@/lib/constants";
+import { siteConfig, BLUR_DATA_URL } from "@/lib/constants";
 import { applySeo, getSiteContent } from "@/lib/admin/schema";
 import { BreadcrumbSchema, ServiceSchema, FAQSchema } from "@/components/StructuredData";
 import { CTASection } from "@/components/CTASection";
 import { FAQAccordion } from "@/components/FAQAccordion";
-import { EmblemWatermark } from "@/components/SectionTextures";
 
 const baseMetadata: Metadata = {
   title: "We Buy Gold in Manchester, CT",
@@ -127,16 +127,29 @@ export default async function SellGoldPage() {
       <FAQSchema faqs={pageFaqs} />
 
       {/* Hero */}
-      <section className="relative isolate overflow-hidden bg-[#C68A17] text-[#14141A]">
-        <EmblemWatermark className="-right-16 top-24 hidden md:block" opacity={0.07} size="clamp(260px, 32vw, 460px)" />
+      <section className="relative isolate overflow-hidden bg-[#14141A] text-white">
+        <Image
+          src="/images/sell-gold-hero.webp"
+          alt="Gold chains being weighed on a scale at King's Jeweler"
+          fill
+          priority
+          placeholder="blur"
+          blurDataURL={BLUR_DATA_URL}
+          sizes="100vw"
+          className="object-cover object-center opacity-40"
+        />
+        <div
+          className="absolute inset-0 bg-linear-to-b from-[#14141A]/70 via-[#14141A]/45 to-[#14141A]"
+          aria-hidden="true"
+        />
         <div className="relative mx-auto max-w-5xl px-6 pb-16 pt-36 lg:px-8">
-          <p className="eyebrow-rule font-heading text-[#14141A]/80">
+          <p className="eyebrow-rule font-heading text-[#F0A92D]">
             Top Prices Paid
           </p>
           <h1 className="mt-5 text-4xl leading-[1.06] tracking-tight md:text-6xl">
-            We Buy <em className="font-medium italic">Gold</em>
+            We Buy <em className="font-medium italic text-[#F0A92D]">Gold</em>
           </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[#14141A]/80 md:text-xl">
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/80 md:text-xl">
             Bring in gold, silver, diamonds, or jewelry you no longer wear.
             Sit down with an experienced jeweler and get a fair, same-day
             offer based on the day&rsquo;s gold price. Sell outright or trade
@@ -145,14 +158,14 @@ export default async function SellGoldPage() {
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <a
               href={phoneHref}
-              className="inline-flex items-center gap-2 rounded-xs bg-[#14141A] px-7 py-3.5 text-base font-semibold text-white transition-colors hover:bg-black"
+              className="btn-gold inline-flex items-center gap-2 px-7 py-3.5 text-base font-semibold text-white"
             >
               <Phone size={18} />
               Call {siteConfig.phone}
             </a>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 rounded-xs border border-[#14141A]/50 px-7 py-3.5 text-base font-semibold text-[#14141A] transition-colors hover:border-[#14141A] hover:bg-[#14141A]/5"
+              className="inline-flex items-center gap-2 rounded-xs border border-white/40 px-7 py-3.5 text-base font-semibold text-white transition-colors hover:border-white hover:bg-white/10"
             >
               Get an Offer
               <ArrowRight size={18} />
@@ -161,13 +174,13 @@ export default async function SellGoldPage() {
               href={directionsUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#14141A]/80 underline decoration-[#14141A]/30 underline-offset-2 transition-colors hover:text-[#14141A]"
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-white/80 underline decoration-white/30 underline-offset-2 transition-colors hover:text-[#F0A92D]"
             >
               <MapPin size={15} />
               Get Directions
             </a>
           </div>
-          <p className="mt-5 text-sm text-[#14141A]/70">
+          <p className="mt-5 text-sm text-white/70">
             No appointment needed · Same-day cash · Family-run since{" "}
             {siteConfig.foundingDate} · 4.5 ★ on Google
           </p>
