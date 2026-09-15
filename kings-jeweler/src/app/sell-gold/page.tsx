@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Scale, BadgeCheck, CreditCard, Coins, Gem, Search } from "lucide-react";
+import { ArrowRight, Scale, BadgeCheck, CreditCard, Coins, Gem, Search, Phone, MapPin } from "lucide-react";
 import { siteConfig } from "@/lib/constants";
 import { applySeo, getSiteContent } from "@/lib/admin/schema";
 import { BreadcrumbSchema, ServiceSchema, FAQSchema } from "@/components/StructuredData";
@@ -71,6 +71,14 @@ const COMPARISON = [
 ];
 
 export default async function SellGoldPage() {
+  const { hours } = await getSiteContent();
+  const phoneHref = `tel:${siteConfig.phone.replace(/\D/g, "")}`;
+  const mapQuery = encodeURIComponent(
+    `King's Jeweler, ${siteConfig.address.street}, ${siteConfig.address.city}, ${siteConfig.address.region} ${siteConfig.address.zip}`
+  );
+  const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${mapQuery}`;
+  const mapEmbedUrl = `https://www.google.com/maps?q=${mapQuery}&output=embed`;
+
   const pageFaqs = [
     {
       question: "How much do jewelers pay for gold?",
@@ -134,18 +142,35 @@ export default async function SellGoldPage() {
             offer based on the day&rsquo;s gold price. Sell outright or trade
             toward anything in the case.
           </p>
-          <div className="mt-10 flex flex-wrap items-center gap-5">
+          <div className="mt-10 flex flex-wrap items-center gap-4">
+            <a
+              href={phoneHref}
+              className="inline-flex items-center gap-2 rounded-xs bg-[#14141A] px-7 py-3.5 text-base font-semibold text-white transition-colors hover:bg-black"
+            >
+              <Phone size={18} />
+              Call {siteConfig.phone}
+            </a>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 rounded-xs bg-[#14141A] px-7 py-3.5 text-base font-semibold text-white transition-colors hover:bg-black"
+              className="inline-flex items-center gap-2 rounded-xs border border-[#14141A]/50 px-7 py-3.5 text-base font-semibold text-[#14141A] transition-colors hover:border-[#14141A] hover:bg-[#14141A]/5"
             >
               Get an Offer
               <ArrowRight size={18} />
             </Link>
-            <p className="text-sm text-[#14141A]/70">
-              No appointment needed. Walk in any day.
-            </p>
+            <a
+              href={directionsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#14141A]/80 underline decoration-[#14141A]/30 underline-offset-2 transition-colors hover:text-[#14141A]"
+            >
+              <MapPin size={15} />
+              Get Directions
+            </a>
           </div>
+          <p className="mt-5 text-sm text-[#14141A]/70">
+            No appointment needed · Same-day cash · Family-run since{" "}
+            {siteConfig.foundingDate} · 4.5 ★ on Google
+          </p>
         </div>
       </section>
 
@@ -321,6 +346,95 @@ export default async function SellGoldPage() {
         </div>
       </section>
 
+      {/* Visit us / map */}
+      <section id="visit" className="bg-[#FBF9F4] text-[#14141A]">
+        <div className="mx-auto max-w-6xl px-6 py-16 lg:px-8 lg:py-24">
+          <div className="grid gap-10 lg:grid-cols-2 lg:items-start lg:gap-16">
+            <div>
+              <p className="font-label text-xs font-medium uppercase tracking-[0.26em] text-[#C68A17]">
+                Visit Us
+              </p>
+              <h2 className="mt-3 text-3xl tracking-tight md:text-4xl">
+                Inside The Shoppes at Buckland Hills.
+              </h2>
+              <p className="mt-4 text-lg leading-relaxed text-[#14141A]/70">
+                Free mall parking, no appointment needed. Most evaluations
+                take just a few minutes, so you can stop in while you shop.
+              </p>
+
+              <div className="mt-8 grid gap-8 sm:grid-cols-2">
+                <div>
+                  <h3 className="font-label text-xs font-medium uppercase tracking-[0.22em] text-[#C68A17]">
+                    Address
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-[#14141A]/75">
+                    King&apos;s Jeweler
+                    <br />
+                    {siteConfig.address.suite}
+                    <br />
+                    {siteConfig.address.street}
+                    <br />
+                    {siteConfig.address.city}, {siteConfig.address.region}{" "}
+                    {siteConfig.address.zip}
+                  </p>
+                  <a
+                    href={phoneHref}
+                    className="mt-4 inline-block font-heading text-xl font-bold tracking-tight text-[#14141A] transition-colors hover:text-[#A87310]"
+                  >
+                    {siteConfig.phone}
+                  </a>
+                </div>
+                <div>
+                  <h3 className="font-label text-xs font-medium uppercase tracking-[0.22em] text-[#C68A17]">
+                    Store Hours
+                  </h3>
+                  <ul className="mt-3 space-y-1.5 text-sm text-[#14141A]/75">
+                    {hours.map((row) => (
+                      <li key={row.day} className="flex items-baseline">
+                        <span className="font-medium">{row.day}</span>
+                        <span aria-hidden="true" className="dotted-leader" />
+                        <span>{row.hours}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              <div className="mt-9 flex flex-wrap items-center gap-4">
+                <a
+                  href={directionsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-gold inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold text-white"
+                >
+                  <MapPin size={16} />
+                  Get Directions
+                </a>
+                <a
+                  href={phoneHref}
+                  className="inline-flex items-center gap-2 rounded-xs border border-[#14141A]/40 px-7 py-3.5 text-sm font-semibold text-[#14141A] transition-colors hover:border-[#14141A] hover:bg-[#14141A]/5"
+                >
+                  <Phone size={16} />
+                  Call the Store
+                </a>
+              </div>
+            </div>
+
+            <div className="border border-[#14141A]/15 bg-[#FFFDF8] p-2">
+              <iframe
+                src={mapEmbedUrl}
+                title="Map to King's Jeweler at The Shoppes at Buckland Hills in Manchester, CT"
+                className="h-80 w-full lg:h-[440px]"
+                style={{ border: 0 }}
+                loading="lazy"
+                allowFullScreen
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* FAQ */}
       <section className="bg-[#FBF9F4]">
         <div className="mx-auto max-w-3xl px-6 py-16 lg:px-8 lg:py-24">
@@ -358,13 +472,22 @@ export default async function SellGoldPage() {
               {siteConfig.address.suite} in {siteConfig.address.city},{" "}
               {siteConfig.address.region}. No appointment needed.
             </p>
-            <Link
-              href="/contact"
-              className="btn-gold mt-6 inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold text-white"
-            >
-              Get an Offer
-              <ArrowRight size={16} />
-            </Link>
+            <div className="mt-6 flex flex-wrap items-center gap-4">
+              <a
+                href={phoneHref}
+                className="btn-gold inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold text-white"
+              >
+                <Phone size={16} />
+                Call {siteConfig.phone}
+              </a>
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 rounded-xs border border-white/30 px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:border-white/60 hover:bg-white/5"
+              >
+                Get an Offer
+                <ArrowRight size={16} />
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -377,6 +500,36 @@ export default async function SellGoldPage() {
         secondaryLabel="Read Our Gold Selling Guide"
         secondaryHref="/blog/how-to-sell-gold-jewelry"
       />
+
+      {/* Sticky mobile action bar */}
+      <nav
+        data-mobile-cta-bar
+        aria-label="Quick actions"
+        className="fixed inset-x-0 bottom-0 z-[45] grid grid-cols-3 border-t border-[#14141A]/20 bg-[#FFFDF8]/95 backdrop-blur-sm pb-[env(safe-area-inset-bottom)] lg:hidden"
+      >
+        <a
+          href={phoneHref}
+          className="flex items-center justify-center gap-1.5 py-4 text-sm font-semibold text-[#14141A]"
+        >
+          <Phone size={16} className="text-[#A87310]" />
+          Call
+        </a>
+        <a
+          href={directionsUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center justify-center gap-1.5 border-x border-[#14141A]/15 py-4 text-sm font-semibold text-[#14141A]"
+        >
+          <MapPin size={16} className="text-[#A87310]" />
+          Directions
+        </a>
+        <Link
+          href="/contact"
+          className="flex items-center justify-center gap-1.5 bg-[#C68A17] py-4 text-sm font-semibold text-white transition-colors hover:bg-[#A87310]"
+        >
+          Get an Offer
+        </Link>
+      </nav>
     </>
   );
 }

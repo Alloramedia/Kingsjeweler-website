@@ -27,7 +27,7 @@ const securityHeaders = [
       "img-src 'self' data: blob: https: http:",
       "font-src 'self' https://fonts.gstatic.com",
       "connect-src 'self' https://www.google.com https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://www.googletagmanager.com https://api.leadconnectorhq.com",
-      "frame-src 'self' https://api.leadconnectorhq.com https://www.youtube.com https://www.youtube-nocookie.com https://link.msgsndr.com https://www.googletagmanager.com",
+      "frame-src 'self' https://www.google.com https://api.leadconnectorhq.com https://www.youtube.com https://www.youtube-nocookie.com https://link.msgsndr.com https://www.googletagmanager.com",
       "object-src 'none'",
       "base-uri 'self'",
       "form-action 'self'",

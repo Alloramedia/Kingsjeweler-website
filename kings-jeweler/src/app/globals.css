@@ -634,7 +634,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .animate-page-in {
-  animation: page-in 0.25s cubic-bezier(0.33, 1, 0.68, 1) both;
+  /* No fill mode: a retained fill transform would trap fixed-position children */
+  animation: page-in 0.25s cubic-bezier(0.33, 1, 0.68, 1);
 }
 
 /* ═══════ HERO ENTRANCE ANIMATIONS (CSS-only for fast LCP) ═══════ */
@@ -712,4 +713,14 @@ h1, h2, h3, h4, h5, h6 {
   height: 6px;
   border-radius: 999px;
   background: linear-gradient(to right, #14141A, #C68A17);
+}
+
+/* Pages with a fixed mobile CTA bar: clear the footer and back-to-top button */
+@media (max-width: 63.999rem) {
+  body:has([data-mobile-cta-bar]) footer {
+    padding-bottom: 3.5rem;
+  }
+  body:has([data-mobile-cta-bar]) button[aria-label="Back to top"] {
+    bottom: 5rem;
+  }
 }
